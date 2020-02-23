@@ -7,7 +7,10 @@ import { createStore } from 'redux';
 import manageLogin from './reducers/manageLogin'
 //import * as serviceWorker from './serviceWorker';
 
-let store = createStore(manageLogin);
+const store = createStore(
+  manageLogin,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={store}>

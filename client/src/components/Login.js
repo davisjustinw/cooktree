@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 class Login extends Component {
   render() {
     return (
+      <form>
+        <input type='text'>
+
+
+      </form>
       <p>{this.props.user.email}</p>
     )
   }
