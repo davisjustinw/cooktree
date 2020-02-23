@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rtree_development
+  username: rtree
+  password: <%= ENV['RTREE_DATABASE_PASSWORD'] %>
+
+test:
+  <<: *default
+  database: rtree_test
+  username: rtree
+  password: <%= ENV['RTREE_DATABASE_PASSWORD'] %>
+  
+production:
+  <<: *default
+  database: rtree_production
+  username: rtree
+  password: <%= ENV['RTREE_DATABASE_PASSWORD'] %>
