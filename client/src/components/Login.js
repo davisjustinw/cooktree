@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { changeHandler } from '../handlers/form'
-
+import { submitLogin } from '../actions/login'
 class Login extends Component {
   constructor(props) {
     super()
@@ -13,25 +13,33 @@ class Login extends Component {
 
   handleChange = changeHandler.bind(this);
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.submitLogin(this.state.email);
+  }
+
   render() {
     return (
-      <form>
-        <input
-          onChange={this.handleChange}
-          type='text'
-          name='email'
-          value={this.state.email}
-          placeholder='email'
-        /><br/>
-        <input
-          onChange={this.handleChange}
-          type='text'
-          name='password'
-          value={this.state.password}
-          placeholder='password   '
-        /><br/>
-        <input type='submit'/>
-      </form>
+      <div className='login'>
+        <h1>{this.props.user.email}</h1><br/>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            type='text'
+            name='email'
+            value={this.state.email}
+            placeholder='email'
+          /><br/>
+          <input
+            onChange={this.handleChange}
+            type='text'
+            name='password'
+            value={this.state.password}
+            placeholder='password'
+          /><br/>
+          <input type='submit'/>
+        </form>
+      </div> //end login
     )
   }
 }
@@ -42,4 +50,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = {
+  submitLogin
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
