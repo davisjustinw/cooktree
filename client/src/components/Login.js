@@ -13,7 +13,6 @@ class Login extends Component {
   }
 
   handleChange = changeHandler.bind(this);
-
   handleSubmit = loginHandler.bind(this);
 
   render() {
