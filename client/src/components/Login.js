@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { changeHandler } from '../handlers/form'
+import { changeHandler, loginHandler } from '../handlers/form'
 import { submitLogin } from '../actions/login'
 
 class Login extends Component {
@@ -14,10 +14,7 @@ class Login extends Component {
 
   handleChange = changeHandler.bind(this);
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.submitLogin(this.state.email);
-  }
+  handleSubmit = loginHandler.bind(this);
 
   render() {
     return (
