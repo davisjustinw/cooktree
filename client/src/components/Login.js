@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { changeHandler, loginHandler } from '../handlers/form'
-import { submitLogin } from '../actions/login'
+import { changeHandler } from '../handlers/form'
+
 
 class Login extends Component {
   constructor(props) {
@@ -13,12 +12,31 @@ class Login extends Component {
   }
 
   handleChange = changeHandler.bind(this);
-  handleSubmit = loginHandler.bind(this);
+
+  handleSubmit = (event) => {
+      event.preventDefault()
+
+      const userInfo = this.state;
+      const headers = {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user: userInfo
+        })
+      }
+      fetch("http://localhost:3001/login", headers)
+        .then(resp => resp.json())
+        .then(console.log)
+        .catch(console.log)
+    }
+
 
   render() {
     return (
       <div className='login'>
-        <h1>{this.props.user.email}</h1><br/>
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
@@ -41,14 +59,4 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-const mapDispatchToProps = {
-  submitLogin
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
