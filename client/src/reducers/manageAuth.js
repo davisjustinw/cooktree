@@ -15,14 +15,28 @@ export default function manageAuth(
       }
 
     case 'SUBMIT_LOGIN':
-      console.log('submiting')
-
       return {
         ...state,
         user: {
           email: action.user
         },
         requesting: false
+      }
+
+    case 'PENDING_LOGOUT':
+      return {
+        ...state,
+        requesting: true
+      }
+
+    case 'SUBMIT_LOGOUT':
+      console.log('submitting logout')
+      return {
+        ...state,
+        requesting: false,
+        user: {
+          email: ''
+        }
       }
 
     default:

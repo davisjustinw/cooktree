@@ -28,8 +28,28 @@ const submitLogin = userInfo => {
 }
 
 const submitLogout = () => {
-  return {
-    type: 'SUBMIT_LOGOUT'
+  return dispatch => {
+    dispatch({ type: 'PENDING_LOGOUT' })
+
+    const headers = {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+
+    fetch("http://localhost:3001/logout", headers)
+      .then(resp => resp.json())
+      .then(({message}) => {
+          console.log(message)
+          dispatch({
+            type: 'SUBMIT_LOGOUT'
+          })
+        }
+      )
+      .catch(console.log)
+
   }
 }
 

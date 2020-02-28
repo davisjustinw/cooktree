@@ -10,14 +10,20 @@ class SessionsController < ApplicationController
       render json: resp, status: :ok
     else
       resp = {
-        error: "Invalid credentials",
+        error: "Invalid credentials"
       }
       render json: resp, status: :unauthorized
     end
   end
 
   def destroy
+    session.clear
 
+    resp = {
+      message: "Logout Successful"
+    }
+
+    render json: resp, status: :ok
   end
 
   def get_current_user
