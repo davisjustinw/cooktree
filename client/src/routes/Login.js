@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
 
-
-
 class Login extends Component {
   constructor(props) {
     super()
@@ -45,6 +43,7 @@ class Login extends Component {
           <input type='submit'/>
         </form>
         <Link to='/signup'>Signup</Link>
+        <Link to='/recipes'>Recipes</Link>
       </div> //end login
     )
   }

@@ -26,4 +26,20 @@ class SessionsController < ApplicationController
     render json: resp, status: :ok
   end
 
+  def get_current_user
+    puts 'get_current_user'
+    if logged_in?
+      puts 'logged in'
+      resp = {
+        user: current_user.email
+      }
+      render json: resp, status: :ok
+    else
+      puts 'not loggd in'
+      resp = {
+        user: ''
+      }
+      render json: resp, status: :unauthorized
+    end
+  end
 end

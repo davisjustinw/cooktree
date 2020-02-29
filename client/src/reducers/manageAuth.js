@@ -43,6 +43,16 @@ export default function manageAuth(
         }
       }
 
+    case 'GET_CURRENT_USER':
+      console.log('getting current user')
+      return {
+        state,
+        requesting: false,
+        user: {
+          email: action.user
+        }
+      }
+
     default:
       return state;
   }

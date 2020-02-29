@@ -81,10 +81,37 @@ const submitSignup = userInfo => {
   }
 }
 
+const getCurrentUser = () => {
+  return dispatch => {
+    dispatch({ type: 'PENDING_REQUEST' })
+
+    const headers = {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+
+    fetch("http://localhost:3001/get_current_user", headers)
+      .then(resp => resp.json())
+      .then(({user}) => {
+          console.log(user)
+          dispatch({
+            type: 'GET_CURRENT_USER',
+            user, user
+          })
+        }
+      )
+      .catch(console.log)
+  }
+}
+
 
 
 export {
   submitLogin,
   submitLogout,
-  submitSignup
+  submitSignup,
+  getCurrentUser
 }
