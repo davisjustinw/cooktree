@@ -33,13 +33,12 @@ class SessionsController < ApplicationController
       resp = {
         user: current_user.email
       }
-      render json: resp, status: :ok
     else
       puts 'not loggd in'
       resp = {
         user: ''
       }
-      render json: resp, status: :unauthorized
     end
+    render json: resp, status: :ok
   end
 end
