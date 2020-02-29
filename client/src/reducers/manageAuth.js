@@ -8,7 +8,7 @@ export default function manageAuth(
   action
 ) {
   switch (action.type) {
-    case 'PENDING_LOGIN':
+    case 'PENDING_REQUEST':
       return {
         ...state,
         requesting: true
@@ -23,14 +23,18 @@ export default function manageAuth(
         requesting: false
       }
 
-    case 'PENDING_LOGOUT':
-      return {
-        ...state,
-        requesting: true
-      }
-
     case 'SUBMIT_LOGOUT':
       console.log('submitting logout')
+      return {
+        ...state,
+        requesting: false,
+        user: {
+          email: ''
+        }
+      }
+
+    case 'SUBMIT_SIGNUP':
+      console.log('submitting signup')
       return {
         ...state,
         requesting: false,

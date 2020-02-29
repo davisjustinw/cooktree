@@ -26,7 +26,4 @@ class SessionsController < ApplicationController
     render json: resp, status: :ok
   end
 
-  def get_current_user
-
-  end
 end

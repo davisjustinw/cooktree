@@ -1,7 +1,7 @@
 
 const submitLogin = userInfo => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_LOGIN' })
+    dispatch({ type: 'PENDING_REQUEST' })
 
     const headers = {
       method: "POST",
@@ -29,7 +29,7 @@ const submitLogin = userInfo => {
 
 const submitLogout = () => {
   return dispatch => {
-    dispatch({ type: 'PENDING_LOGOUT' })
+    dispatch({ type: 'PENDING_REQUEST' })
 
     const headers = {
       method: "DELETE",
@@ -53,9 +53,38 @@ const submitLogout = () => {
   }
 }
 
+const submitSignup = userInfo => {
+  return (dispatch) => {
+    dispatch({ type: 'PENDING_REQUEST' })
+
+    const headers = {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: userInfo
+      })
+    }
+    fetch("http://localhost:3001/signup", headers)
+      .then(resp => resp.json())
+      .then(({user}) => {
+          console.log(user)
+          dispatch({
+            type: 'SUBMIT_LOGIN',
+            user: user
+          })
+        }
+      )
+      .catch(console.log)
+  }
+}
+
 
 
 export {
   submitLogin,
-  submitLogout
+  submitLogout,
+  submitSignup
 }

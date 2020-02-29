@@ -1,15 +1,15 @@
 import React from 'react';
-import Auth from './containers/Auth';
-import RecipeButton from './components/RecipeButton';
+import Router from './Router'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
   return (
-    <div className="App">
-      <Auth/>
-      <br/>
-      <RecipeButton/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Router/>
+      </div>
+    </BrowserRouter>
   );
 }
 
