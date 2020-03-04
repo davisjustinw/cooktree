@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react'
 import Routes from './Routes'
 import Logout from './components/Logout'
+import { connect } from 'react-redux'
+import { getCurrentUser } from './actions/auth'
 
-function App() {
+class App extends Component {
+  componentDidMount() {
+    this.props.getCurrentUser()
+  }
 
-  return (
-    <div className="App">
-      <Routes/>
-      <Logout/>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <Routes/>
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCurrentUser: () => dispatch(getCurrentUser())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

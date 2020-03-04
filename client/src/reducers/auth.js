@@ -1,14 +1,14 @@
-export default function manageAuth(
-  state = {
-    user: {
-      email: ''
-    },
-    requesting: false
+const initialState = {
+  user: {
+    email: ''
   },
-  action
-) {
+  requesting: true
+}
+
+function auth(state = initialState, action) {
   switch (action.type) {
     case 'PENDING_REQUEST':
+      console.log('pending request')
       return {
         ...state,
         requesting: true
@@ -17,10 +17,10 @@ export default function manageAuth(
     case 'SUBMIT_LOGIN':
       return {
         ...state,
+        requesting: false,
         user: {
           email: action.user
-        },
-        requesting: false
+        }
       }
 
     case 'SUBMIT_LOGOUT':
@@ -46,7 +46,7 @@ export default function manageAuth(
     case 'GET_CURRENT_USER':
       console.log('getting current user')
       return {
-        state,
+        ...state,
         requesting: false,
         user: {
           email: action.user
@@ -57,3 +57,5 @@ export default function manageAuth(
       return state;
   }
 }
+
+export default auth

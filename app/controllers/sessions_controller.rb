@@ -18,23 +18,21 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-
     resp = {
       message: "Logout Successful"
     }
-
     render json: resp, status: :ok
   end
 
   def get_current_user
-    puts 'get_current_user'
+    puts 'ROUTE: get_current_user'
     if logged_in?
       puts 'logged in'
       resp = {
         user: current_user.email
       }
     else
-      puts 'not loggd in'
+      puts 'not logged in'
       resp = {
         user: ''
       }

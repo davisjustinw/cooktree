@@ -1,5 +1,5 @@
 
-const submitLogin = userInfo => {
+const submitLogin = ({email, password}) => {
   return (dispatch) => {
     dispatch({ type: 'PENDING_REQUEST' })
 
@@ -10,7 +10,7 @@ const submitLogin = userInfo => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        user: userInfo
+        user: {email, password}
       })
     }
     fetch("http://localhost:3001/login", headers)
@@ -99,7 +99,7 @@ const getCurrentUser = () => {
           console.log(user)
           dispatch({
             type: 'GET_CURRENT_USER',
-            user, user
+            user: user
           })
         }
       )

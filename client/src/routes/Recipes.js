@@ -7,7 +7,7 @@ const Recipes = props => {
       <h2>Recipes</h2>
       {console.log('recipes')}
       {console.log(props)}
-      <h3></h3>
+      <h3>Some Recipes</h3>
     </div>
   )
 }

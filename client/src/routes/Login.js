@@ -9,6 +9,7 @@ class Login extends Component {
   constructor(props) {
     super()
     this.state = {
+      redirectToReferrer: false,
       email: '',
       password: ''
     }
@@ -22,6 +23,7 @@ class Login extends Component {
   }
 
   render() {
+
     return (
       <div className='login'>
         <h2>Login</h2>
@@ -43,15 +45,8 @@ class Login extends Component {
           <input type='submit'/>
         </form>
         <Link to='/signup'>Signup</Link>
-        <Link to='/recipes'>Recipes</Link>
       </div> //end login
     )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    user: state.user
   }
 }
 
@@ -61,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
