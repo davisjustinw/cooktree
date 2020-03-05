@@ -6,23 +6,23 @@ import Loading from '../components/Loading'
 function PrivateRoute({ children, ...rest }) {
   console.log('private route')
   console.log(rest)
+  const { requesting, user } = rest
 
   const authRoute = ({ location }) => (
-    rest.requesting ? (
+    requesting ? (
       <Loading/>
     ) : (
-      rest.user ? (
+      user ? (
         children
       ) : (
         <Redirect
           to={{
             pathname: "/login",
-            state: { from: location }
+            state: { from: location.pathname }
           }}
         />
       )
     )
-
   )
 
   return <Route {...rest} render={authRoute}/>

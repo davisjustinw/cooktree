@@ -22,10 +22,11 @@ class Login extends Component {
   }
 
   render() {
-    const { redirectToReferrer } = this.props
+    const { redirectToReferrer, location } = this.props
 
     if (redirectToReferrer === true) {
-      return <Redirect to='/recipes' />
+      const { from } = location.state
+      return <Redirect to={from} />
     }
     return (
       <div className='login'>
