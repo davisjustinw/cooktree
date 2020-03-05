@@ -29,7 +29,7 @@ const submitLogin = ({email, password}) => {
 
 const submitLogout = () => {
   return dispatch => {
-    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({ type: 'SUBMIT_LOGOUT' })
 
     const headers = {
       method: "DELETE",
@@ -43,9 +43,7 @@ const submitLogout = () => {
       .then(resp => resp.json())
       .then(({message}) => {
           console.log(message)
-          dispatch({
-            type: 'SUBMIT_LOGOUT'
-          })
+
         }
       )
       .catch(console.log)

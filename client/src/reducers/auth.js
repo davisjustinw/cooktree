@@ -1,8 +1,7 @@
 const initialState = {
-  user: {
-    email: ''
-  },
-  requesting: true
+  user: '',
+  requesting: true,
+  redirectToReferrer: false
 }
 
 function auth(state = initialState, action) {
@@ -18,9 +17,8 @@ function auth(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        user: {
-          email: action.user
-        }
+        redirectToReferrer: true,
+        user: action.user
       }
 
     case 'SUBMIT_LOGOUT':
@@ -28,9 +26,8 @@ function auth(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        user: {
-          email: ''
-        }
+        redirectToReferrer: false,
+        user: ''
       }
 
     case 'SUBMIT_SIGNUP':
@@ -38,9 +35,7 @@ function auth(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        user: {
-          email: ''
-        }
+        user: ''
       }
 
     case 'GET_CURRENT_USER':
@@ -48,9 +43,7 @@ function auth(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        user: {
-          email: action.user
-        }
+        user: action.user
       }
 
     default:

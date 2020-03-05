@@ -11,7 +11,7 @@ function PrivateRoute({ children, ...rest }) {
     rest.requesting ? (
       <Loading/>
     ) : (
-      rest.user.email ? (
+      rest.user ? (
         children
       ) : (
         <Redirect

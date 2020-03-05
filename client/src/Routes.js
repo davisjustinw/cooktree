@@ -10,9 +10,9 @@ import Recipes from './routes/Recipes';
 const Routes = props => {
     return (
       <Switch>
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <PrivateRoute path="/recipes" >
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/' component={Signup} />
+        <PrivateRoute exact path="/recipes" >
           <Recipes />
         </PrivateRoute>
       </Switch>

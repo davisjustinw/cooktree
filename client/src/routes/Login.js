@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
@@ -9,7 +9,6 @@ class Login extends Component {
   constructor(props) {
     super()
     this.state = {
-      redirectToReferrer: false,
       email: '',
       password: ''
     }
@@ -23,7 +22,11 @@ class Login extends Component {
   }
 
   render() {
+    const { redirectToReferrer } = this.props
 
+    if (redirectToReferrer === true) {
+      return <Redirect to='/recipes' />
+    }
     return (
       <div className='login'>
         <h2>Login</h2>
@@ -44,11 +47,14 @@ class Login extends Component {
           /><br/>
           <input type='submit'/>
         </form>
-        <Link to='/signup'>Signup</Link>
       </div> //end login
     )
   }
 }
+
+const mapStateToProps = state => ({
+  redirectToReferrer: state.auth.redirectToReferrer
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -56,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
