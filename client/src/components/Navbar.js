@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Logout from './Logout'
 
-const Navbar = props => {
+const Navbar = () => {
   return (
     <div>
       <NavLink to="/login">

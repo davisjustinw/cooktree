@@ -28,10 +28,10 @@ function PrivateRoute({ children, ...rest }) {
   return <Route {...rest} render={authRoute}/>
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ auth }) => {
   return {
-    user: state.auth.user,
-    requesting: state.auth.requesting
+    user: auth.user,
+    requesting: auth.requesting
   }
 }
 

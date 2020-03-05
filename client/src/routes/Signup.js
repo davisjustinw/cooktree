@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 import { changeHandler } from '../handlers/form'
 import { connect } from 'react-redux'
 import { submitSignup } from '../actions/auth'
 
 class Signup extends Component {
-  constructor(props) {
+  constructor() {
     super()
     this.state = {
       email: '',
@@ -15,7 +14,7 @@ class Signup extends Component {
 
   handleChange = changeHandler.bind(this);
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
       event.preventDefault()
       this.props.submitSignup(this.state);
   }
@@ -47,10 +46,8 @@ class Signup extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => ({
     submitSignup: user => dispatch(submitSignup(user))
-  }
-}
+})
 
 export default connect(null, mapDispatchToProps)(Signup);

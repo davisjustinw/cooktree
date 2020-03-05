@@ -12,10 +12,6 @@ const Recipes = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
+const mapStateToProps = ({ user }) => ({ user })
 
 export default connect(mapStateToProps, null)(Recipes)

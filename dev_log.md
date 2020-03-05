@@ -7,6 +7,7 @@
 
 [x] Clean up logout function
 [x] route to recipes when login successful
+* route to referrer after login
 * Pull session check from private route and create separate HOC
 * build login/logout w name switcher in navbar
 * Styling?

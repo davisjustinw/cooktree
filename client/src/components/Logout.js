@@ -13,10 +13,4 @@ const Logout = props => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    submitLogout: () => dispatch(submitLogout())
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Logout);
+export default connect(null, { submitLogout })(Logout);

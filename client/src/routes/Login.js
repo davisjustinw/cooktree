@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
@@ -52,8 +52,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  redirectToReferrer: state.auth.redirectToReferrer
+const mapStateToProps = ({ auth }) => ({
+  redirectToReferrer: auth.redirectToReferrer
 })
 
 const mapDispatchToProps = (dispatch) => {

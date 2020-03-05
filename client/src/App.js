@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Routes from './Routes'
-import Logout from './components/Logout'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/auth'
 import Navbar from './components/Navbar'
@@ -20,15 +19,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ auth }) => {
   return {
-    user: state.auth.user
+    user: auth.user
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getCurrentUser: () => dispatch(getCurrentUser())
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { getCurrentUser })(App);

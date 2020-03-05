@@ -1,7 +1,6 @@
-import React from 'react';
 import { getRecipes } from '../handlers/recipe'
 
-const RecipeButton = props => {
+const RecipeButton = () => {
   return <button onClick={ getRecipes }>click me</button>
 }
 
