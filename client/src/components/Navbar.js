@@ -1,19 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import Logout from './Logout'
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
+
   return (
     <div>
-      <NavLink to="/login">
-        Login
-      </NavLink>
+      { user ? (
+        <NavLink to="/logout">
+          Logout
+        </NavLink>
+      ) :(
+        <NavLink to="/login">
+          Login
+        </NavLink>
+      )}
       <NavLink to="/recipes">
         Recipes
       </NavLink>
-      <Logout/>
+
     </div>
   )
 }
 
-export default Navbar
+const mapStateToProps = ({ auth }) => ({ user: auth.user })
+export default connect(mapStateToProps)(Navbar)
