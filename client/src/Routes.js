@@ -13,8 +13,11 @@ const Routes = props => {
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/logout' component={Logout} />
-        <Route exact path='/' component={Signup} />
-        <PrivateRoute exact path="/recipes" >
+        <Route exact path='/signup' component={Signup} />
+        <PrivateRoute exact path="/" redirectTo="/signup">
+          <Recipes />
+        </PrivateRoute>
+        <PrivateRoute exact path="/recipes" redirectTo="/login">
           <Recipes />
         </PrivateRoute>
       </Switch>

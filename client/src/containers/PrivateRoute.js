@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 import Loading from '../components/Loading'
 
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ children, redirectTo, ...rest }) {
   console.log('private route')
   console.log(rest)
   const { requesting, user } = rest
@@ -17,7 +17,7 @@ function PrivateRoute({ children, ...rest }) {
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: redirectTo,
             state: { from: location.pathname }
           }}
         />
