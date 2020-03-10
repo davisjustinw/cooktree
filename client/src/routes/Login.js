@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
 
@@ -29,9 +30,8 @@ class Login extends Component {
       return <Redirect to={from} />
     }
     return (
-      <div className='login'>
-        <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
+          <h2>Login</h2>
           <input
             onChange={this.handleChange}
             type='text'
@@ -46,10 +46,9 @@ class Login extends Component {
             value={this.state.password}
             placeholder='password'
           /><br/>
-          <input type='submit'/>
-          
+
+          <Button type='submit' variant="contained">Submit</Button>
         </form>
-      </div> //end login
     )
   }
 }
