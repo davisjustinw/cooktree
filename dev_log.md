@@ -52,30 +52,107 @@ Material UI
 * User can see who made a specific version of a Recipe.
 * Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
 
+
 # Views
-## Signup
-### Actions
 
-Able to sign up as a user
-  * make connection to Person
+## Signup - /signup
 
-## Login
+### Action
+  * submit
 
-## Find or create (Person, Connection, Recipe, Ingredient)
+### Nav
+  * login
 
-## Recipes
-Recipes the user planted, made, or remembered
-### Actions
+## Login - /login
+
+### Action
+  * submit
+
+### Nav
+  * signup
+
+
+## Recipes - /recipes
+
+### components
+  * AppBar
+  * RecipeList
+  * RecipeCard
+  * AddRecipe FAB
+
+### Action
   * show recipe
-  * decle
-## Recipe
+  * add recipe
+  * del recipe
+  * search by recipe name, connection
+  * logout
 
-## Connections (Circle)
+### Tabs
+  * Connections
+  * Recipes
+
+## Recipe - /recipes/:id
+
+### Components
+  * AppBar (Converted?)
+  * RightSheet
+    * MakeList
+    * MakeCard
+  * MemoryBook
+    * MemoryCard
+  * TabBar
+    * Tab
+  * StepList
+    * StepCard
+      * IngredientList
+        * Ingredient
+      * StepAction
+
+
+### Action
+  * add/edit step
+  * add/edit memory
+  * add/edit make
+
+### Tabs
+  * Connections
+  * Recipes
+
+### Right Sheet
+  * Makes
+
+## Connections
+
+### Components
+  * AppBar
+  * TabBar
+    * Tab
+  * ConnectionList
+    * ConnectionCard
+    * AddConnection FAB?
+
+### Action
+  * Add/Edit Connection (who is this person to me)
+  * Show Connection
 
 ## Connection
-who is this person to me
+
+### Components
+  * AppBar (converted)
+  * TabBar
+    * Tab
+  * RecipeList
+    * RecipeCard
+  * ConnectionList
+    * ConnectionCard
+
+### Actions
+  * Add Recipe
+  * Add Connection?
+  * Invite User?
 
 
+## Find or create (Person, Connection, Recipe, Ingredient)
 
 ## Models
 
