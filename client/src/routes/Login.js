@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-
+import Button from '@material-ui/core/Button';
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
 
@@ -47,6 +47,7 @@ class Login extends Component {
             placeholder='password'
           /><br/>
           <input type='submit'/>
+          
         </form>
       </div> //end login
     )

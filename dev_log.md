@@ -18,7 +18,9 @@
 
 [x] Refine User Stories
 [x] Brainstorm UX, Components, Pages
-[x] Braingstorm Models
+[x] Brainstorm Models
+
+
 
 * Styling?
 Material UI
