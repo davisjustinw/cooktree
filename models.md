@@ -6,19 +6,22 @@
     * password
     * user?
 
+has_many recipes
+
 ### Recipe
+has_many steps
+has_many ingredients through steps
 
 ### Step
+belongs_to recipe
 
 ### Ingredient
-
-### Equipment
-
-### Action
+belongs_to step
 
 ### Memory
+belongs_to Recipe
+belongs_to Person
 
 ### Connection
-  * Person Recipe
-  * Person Person
-  * Recipe Recipe?
+  has_many People
+  belongs_to People
