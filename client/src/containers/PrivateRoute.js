@@ -6,31 +6,36 @@ import Loading from '../components/Loading'
 function PrivateRoute({ children, redirectTo, ...rest }) {
   console.log('private route')
   console.log(rest)
-  const { requesting, user } = rest
+  const { authStatus, user } = rest
 
-  const authRoute = ({ location }) => (
-    requesting ? (
-      <Loading/>
-    ) : (
-      user ? (
-        children
-      ) : (
-        <Redirect
-          to={{
-            pathname: redirectTo,
-            state: { from: location.pathname }
-          }}
-        />
-      )
-    )
-  )
+  const authRoute = ({ location }) => {
+    switch(authStatus) {
+      case 'LOGGED_IN':
+        return children
+      case 'LOGGED_OUT':
+        return (
+          <Redirect
+            to={{
+              pathname: redirectTo,
+              state: { from: location.pathname }
+            }}
+          />
+        )
+      case 'REQUESTING':
+        return <Loading/>
+      default:
+        return null
+    }
+
+  }
+
   return <Route {...rest} render={authRoute}/>
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     user: auth.user,
-    requesting: auth.requesting
+    authStatus: auth.status
   }
 }
 

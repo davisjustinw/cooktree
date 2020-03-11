@@ -33,6 +33,7 @@ class Login extends Component {
     const { redirectToReferrer, location, classes } = this.props
 
     if (redirectToReferrer === true) {
+      console.log("redirecting from login")
       const { from } = location.state || { from: { pathname: '/' } }
       return <Redirect to={from} />
     }
