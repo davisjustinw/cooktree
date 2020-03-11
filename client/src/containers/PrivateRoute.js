@@ -24,7 +24,6 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
       )
     )
   )
-
   return <Route {...rest} render={authRoute}/>
 }
 

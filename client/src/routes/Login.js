@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, Link as RouterLink } from 'react-router-dom';
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
 
@@ -10,6 +9,9 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
+
+import Copyright from '../components/Copyright'
 
 class Login extends Component {
   constructor(props) {
@@ -73,7 +75,13 @@ class Login extends Component {
               Login
             </Button>
           </form>
+          <RouterLink to="/signup">
+            {"Don't have an account? Sign Up"}
+          </RouterLink>
         </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
       </Container>
     )
   }

@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AuthButton from './AuthButton'
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -21,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Navbar = props => {
-
   const classes = useStyles();
   return (
     <div className={classes.root}>
