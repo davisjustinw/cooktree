@@ -1,6 +1,6 @@
 const initialState = {
   user: '',
-  requesting: true,
+  status: 'REQUESTING',
   redirectToReferrer: false
 }
 
@@ -10,13 +10,13 @@ function auth(state = initialState, action) {
       console.log('pending request')
       return {
         ...state,
-        requesting: true
+        status: 'REQUESTING'
       }
 
     case 'SUBMIT_LOGIN':
       return {
         ...state,
-        requesting: false,
+        status: 'LOGGED_IN',
         redirectToReferrer: true,
         user: action.user
       }
@@ -25,24 +25,26 @@ function auth(state = initialState, action) {
       console.log('submitting logout')
       return {
         ...state,
-        requesting: false,
+        status: 'LOGGED_OUT',
         redirectToReferrer: false,
         user: ''
       }
 
     case 'SUBMIT_SIGNUP':
+      //might need work here
       console.log('submitting signup')
       return {
         ...state,
-        requesting: false,
+        status: 'LOGGED_OUT',
         user: ''
       }
 
     case 'GET_CURRENT_USER':
       console.log('getting current user')
+
       return {
         ...state,
-        requesting: false,
+        status: (action.user ? 'LOGGED_IN' : 'LOGGED_OUT'),
         user: action.user
       }
 
