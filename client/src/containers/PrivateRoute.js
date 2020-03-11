@@ -4,11 +4,9 @@ import { Route, Redirect } from 'react-router-dom'
 import Loading from '../components/Loading'
 
 function PrivateRoute({ children, redirectTo, ...rest }) {
-  console.log('private route')
-  console.log(rest)
-  const { authStatus, user } = rest
+  const { authStatus, location } = rest
 
-  const authRoute = ({ location }) => {
+  const authRoute = () => {
     switch(authStatus) {
       case 'LOGGED_IN':
         return children
@@ -26,7 +24,6 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
       default:
         return null
     }
-
   }
 
   return <Route {...rest} render={authRoute}/>
