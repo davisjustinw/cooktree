@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AuthButton from './AuthButton'
-
+import Tabbar from './Tabbar'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +36,7 @@ const Navbar = props => {
         <AuthButton/>
       </Toolbar>
       </AppBar>
+      <Tabbar/>
     </div>
   )
 }
