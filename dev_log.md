@@ -20,10 +20,23 @@
 [x] Brainstorm UX, Components, Pages
 [x] Brainstorm Models
 
+# 10 March
+[x] navbar
+[x] authbutton for navbar
+[x] styling for signup and login
+
+# 11 March
+[x] signup link for login page
+[x] clean up state for auth update private routes
+[x] tabbar with routing capability
+
+* add more button with menu to appbar
+* add signout to more button
+* hide tabbar for signup and login
+* add side sheet button
+* search 
 
 
-* Styling?
-Material UI
 
 # User Stories
 * User can sign up

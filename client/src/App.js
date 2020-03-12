@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Routes from './Routes'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/auth'
-import Navbar from './components/Navbar'
+import NavBar from './components/NavBar'
 
 class App extends Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <NavBar />
         <Routes/>
       </div>
     )

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Tabbar = ({ location }) => {
+const TabBar = ({ location }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(location.pathname);
 
@@ -37,4 +37,4 @@ const Tabbar = ({ location }) => {
   );
 }
 
-export default withRouter(Tabbar)
+export default withRouter(TabBar)

@@ -7,7 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AuthButton from './AuthButton'
-import Tabbar from './Tabbar'
+import TabBar from './TabBar'
+import HistoryIcon from '@material-ui/icons/History'
+import SearchBar from './SearchBar'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Navbar = props => {
+const NavBar = props => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -34,11 +36,13 @@ const Navbar = props => {
           Cook Tree
         </Typography>
         <AuthButton/>
+        <SearchBar />
+        <HistoryIcon />
       </Toolbar>
       </AppBar>
-      <Tabbar/>
+      <TabBar/>
     </div>
   )
 }
 
-export default Navbar
+export default NavBar
