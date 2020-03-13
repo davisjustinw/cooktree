@@ -42,7 +42,6 @@ const NavBar = props => {
         <Typography variant="h6" className={classes.title}>
           Cook Tree
         </Typography>
-        <AuthButton/>
         <SearchBar />
         <HistoryIcon />
       </Toolbar>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavBar from '../components/NavBar'
 import MenuDrawer from '../components/MenuDrawer'
+import { withRouter } from 'react-router'
 
 class ControlContainer extends Component {
   constructor(props) {
@@ -18,20 +19,27 @@ class ControlContainer extends Component {
   }
 
   render(){
+    const { location } = this.props
+    const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
     return (
       <div>
         <NavBar
           handleDrawerToggle={this.handleDrawerToggle.bind(this)}
           drawerWidth={this.state.drawerWidth}
+          showControls={showControls}
         />
-        <MenuDrawer
-          handleDrawerToggle={this.handleDrawerToggle.bind(this)}
-          mobileOpen={this.state.mobileOpen}
-          drawerWidth={this.state.drawerWidth}
-        />
+        {
+          showControls ? (
+            <MenuDrawer
+              handleDrawerToggle={this.handleDrawerToggle.bind(this)}
+              mobileOpen={this.state.mobileOpen}
+              drawerWidth={this.state.drawerWidth}
+            />
+          ) : ( null )
+        }
       </div>
     )
   }
 }
 
-export default ControlContainer
+export default withRouter(ControlContainer)
