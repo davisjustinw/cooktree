@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Routes from './Routes'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/auth'
-import NavBar from './components/NavBar'
+import ControlContainer from './containers/ControlContainer'
+import { withStyles } from '@material-ui/core/styles'
 
 class App extends Component {
   componentDidMount() {
@@ -12,10 +13,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <ControlContainer/>
         <Routes/>
       </div>
     )
+  }
+}
+
+const styles = {
+  root: {
+    display: 'flex'
   }
 }
 
@@ -25,4 +32,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default connect(mapStateToProps, { getCurrentUser })(withStyles(styles)(App));

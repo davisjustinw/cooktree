@@ -29,12 +29,15 @@
 [x] signup link for login page
 [x] clean up state for auth update private routes
 [x] tabbar with routing capability
+[x] add history button
+[x] add search bar
 
-* add more button with menu to appbar
-* add signout to more button
-* hide tabbar for signup and login
-* add side sheet button
-* search 
+12 March
+[x] add menu to left nav button
+[x] make menu drawer responsive
+[x] add components, recipes buttons to left drawer
+
+* add login info to left sheet
 
 
 

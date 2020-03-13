@@ -39,6 +39,7 @@ class Login extends Component {
     }
     return (
       <Container component="main" maxWidth="xs">
+        <div className={classes.toolbar} />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
             Login
@@ -113,6 +114,7 @@ const useStyles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  toolbar: theme.mixins.toolbar
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Login));

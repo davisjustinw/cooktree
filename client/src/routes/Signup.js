@@ -29,6 +29,7 @@ class Signup extends Component {
     const { classes } = this.props
     return (
       <Container component="main" maxWidth="xs">
+        <div className={classes.toolbar} />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
             Sign Up
@@ -88,6 +89,7 @@ const useStyles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  toolbar: theme.mixins.toolbar
 });
 
 const mapDispatchToProps = dispatch => ({
