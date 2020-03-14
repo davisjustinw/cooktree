@@ -47,10 +47,11 @@
 
 # 14 March
 
-* add log out to menuitem
-  * avatar
-  * username
-  * logout
+[x] add log out to menuitem
+  [x] avatar
+  [x] username
+  [x] logout
+[x] get rid of drawer toolbar spacer in mobile
 * add user edit route
    * add ability to upload avatar
 

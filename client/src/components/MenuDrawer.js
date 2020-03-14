@@ -28,7 +28,9 @@ const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
 
   const drawer = (
     <>
-      <div className={classes.toolbar}/>
+      <Hidden mdDown implementation="css" >
+        <div className={classes.toolbar}/>
+      </Hidden>
       <Divider />
       <UserDrawer/>
       <Divider />
