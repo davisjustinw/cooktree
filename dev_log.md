@@ -52,6 +52,7 @@
   [x] username
   [x] logout
 [x] get rid of drawer toolbar spacer in mobile
+* wire up
 * add user edit route
    * add ability to upload avatar
 

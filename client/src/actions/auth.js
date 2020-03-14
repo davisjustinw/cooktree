@@ -30,7 +30,7 @@ const submitLogin = ({email, password}) => {
 const submitLogout = () => {
   return dispatch => {
     dispatch({ type: 'SUBMIT_LOGOUT' })
-
+    dispatch({ type: 'TOGGLE_MOBILE_OPEN'})
     const headers = {
       method: "DELETE",
       credentials: "include",
