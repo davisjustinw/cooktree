@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import HistoryIcon from '@material-ui/icons/History'
 import SearchBar from './SearchBar'
+import Hidden from '@material-ui/core/Hidden'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -14,9 +15,6 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('lg')]: {
-      display: 'none',
-    }
   },
   title: {
     flexGrow: 1
@@ -29,15 +27,17 @@ const NavBar = props => {
     <>
       <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
-        <IconButton
-          onClick={props.handleDrawerToggle}
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-        >
-          <MenuIcon />
-        </IconButton>
+        <Hidden smUp implementation="css">
+          <IconButton
+            onClick={props.handleDrawerToggle}
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
         <Typography variant="h6" className={classes.title}>
           Cook Tree
         </Typography>

@@ -43,8 +43,9 @@
 [x] hide controls at login and signup routes
 [x] page content for recipes adjusting to fixed drawer
    [x] adding control state to router to control drawer and route state
-* hide menu icon when drawer out
+[x] hide menu icon when drawer out
 
+* add log out to menu
 
 # User Stories
 * User can sign up
