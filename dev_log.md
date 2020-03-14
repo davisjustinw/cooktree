@@ -32,15 +32,18 @@
 [x] add history button
 [x] add search bar
 
-12 March
+# 12 March
 [x] add menu to left nav button
 [x] make menu drawer responsive
 [x] add components, recipes buttons to left drawer
 
 * add login info to left sheet
 
-13 March
-
+# 13 March
+[x] hide controls at login and signup routes
+[x] page content for recipes adjusting to fixed drawer
+   [x] adding control state to router to control drawer and route state
+* hide menu icon when drawer out
 
 
 # User Stories

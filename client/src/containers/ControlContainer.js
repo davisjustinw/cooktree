@@ -1,45 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import NavBar from '../components/NavBar'
 import MenuDrawer from '../components/MenuDrawer'
-import { withRouter } from 'react-router'
+import { toggleMobileOpen } from '../actions/controls'
 
-class ControlContainer extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-      mobileOpen: false,
-      drawerWidth: 240
-    }
-  }
-
-  handleDrawerToggle() {
-    this.setState({
-      mobileOpen: !this.state.mobileOpen
-    })
-  }
-
-  render(){
-    const { location } = this.props
-    const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
-    return (
-      <div>
-        <NavBar
-          handleDrawerToggle={this.handleDrawerToggle.bind(this)}
-          drawerWidth={this.state.drawerWidth}
-          showControls={showControls}
-        />
-        {
-          showControls ? (
-            <MenuDrawer
-              handleDrawerToggle={this.handleDrawerToggle.bind(this)}
-              mobileOpen={this.state.mobileOpen}
-              drawerWidth={this.state.drawerWidth}
-            />
-          ) : ( null )
-        }
-      </div>
-    )
-  }
+const ControlContainer = props => {
+  const { location, drawerWidth, mobileOpen, toggleMobileOpen } = props
+  const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
+  console.log(`showControls ${showControls}`)
+  return (
+    <>
+      <NavBar
+        handleDrawerToggle={toggleMobileOpen}
+        drawerWidth={drawerWidth}
+        showControls={showControls}
+      />
+      {
+        showControls ? (
+          <MenuDrawer
+            toggleMobileOpen={toggleMobileOpen}
+            mobileOpen={mobileOpen}
+            drawerWidth={drawerWidth}
+          />
+        ) : ( null )
+      }
+    </>
+  )
 }
 
-export default withRouter(ControlContainer)
+const mapStateToProps = ({ controls }) => ({
+  drawerWidth: controls.drawerWidth,
+  mobileOpen: controls.mobileOpen
+})
+
+export default connect(mapStateToProps, { toggleMobileOpen })(withRouter(ControlContainer))

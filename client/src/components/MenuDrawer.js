@@ -8,11 +8,12 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Hidden from '@material-ui/core/Hidden'
 
-const MenuDrawer = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
-
+const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
+  console.log(`mobileOpen ${mobileOpen}`)
+  console.log(`drawerWidth ${drawerWidth}`)
   const classes = makeStyles(theme => ({
     drawer: {
-      [theme.breakpoints.up('lg')]: {
+      [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
         flexShrink: 0,
       }
@@ -40,12 +41,12 @@ const MenuDrawer = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
 
   return (
     <nav className={classes.drawer} >
-      <Hidden lgUp implementation="css">
+      <Hidden smUp implementation="css">
         <Drawer
           variant="temporary"
           anchor='left'
           open={mobileOpen}
-          onClose={handleDrawerToggle}
+          onClose={toggleMobileOpen}
           classes={{
             paper: classes.drawerPaper,
           }}
@@ -56,7 +57,7 @@ const MenuDrawer = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
           {drawer}
         </Drawer>
       </Hidden>
-      <Hidden mdDown implementation="css">
+      <Hidden xsDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,

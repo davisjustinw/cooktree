@@ -38,6 +38,7 @@ class Login extends Component {
       return <Redirect to={from} />
     }
     return (
+      <div className={classes.content} >
       <Container component="main" maxWidth="xs">
         <div className={classes.toolbar} />
         <div className={classes.paper}>
@@ -85,6 +86,7 @@ class Login extends Component {
           <Copyright />
         </Box>
       </Container>
+      </div>
     )
   }
 }
@@ -114,7 +116,11 @@ const useStyles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Login));

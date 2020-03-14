@@ -6,10 +6,12 @@ import {
 } from 'redux'
 
 import auth from './reducers/auth'
+import controls from './reducers/controls'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
-  auth
+  auth,
+  controls
 })
 
 const composeEnhancer =
