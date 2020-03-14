@@ -45,7 +45,15 @@
    [x] adding control state to router to control drawer and route state
 [x] hide menu icon when drawer out
 
-* add log out to menu
+# 14 March
+
+* add log out to menuitem
+  * avatar
+  * username
+  * logout
+* add user edit route
+   * add ability to upload avatar
+
 
 # User Stories
 * User can sign up

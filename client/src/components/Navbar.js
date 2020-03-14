@@ -27,7 +27,7 @@ const NavBar = props => {
     <>
       <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
-        <Hidden smUp implementation="css">
+        <Hidden lgUp implementation="css">
           <IconButton
             onClick={props.handleDrawerToggle}
             edge="start"
