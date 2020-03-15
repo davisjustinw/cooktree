@@ -52,9 +52,19 @@
   [x] username
   [x] logout
 [x] get rid of drawer toolbar spacer in mobile
+[x] hide controls on login/signup
+
+# 15 March
+* add ability to upload avatar
+  * upload
+  * show uploaded
+  * submit to server
 * wire up
+  * add user migration
+    * avatar image
+    * username
 * add user edit route
-   * add ability to upload avatar
+
 
 
 # User Stories

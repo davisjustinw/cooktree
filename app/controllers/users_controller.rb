@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 def create
+  puts params
   @user = User.create(user_params)
 
   if @user
@@ -19,7 +20,7 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:email, :password)
+  params.require(:user).permit(:email, :password, :avatar)
 end
 
 end
