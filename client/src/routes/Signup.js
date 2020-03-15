@@ -8,68 +8,101 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/Input'
-import PublishIcon from '@material-ui/icons/Publish'
+
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Avatar from '@material-ui/core/Avatar'
+import FileUpload from '../components/FileUpload'
 
 class Signup extends Component {
   constructor() {
     super()
     this.state = {
+      username: '',
       email: '',
       password: '',
-      fileName: '',
-      file: null
+      avatar: null,
+      file: {
+        name: '',
+        url: null
+      }
     }
   }
 
   handleChange = changeHandler.bind(this);
 
-  handleFileChange = event => {
+  handleFileChange = ({ target }) => {
+    const file = target.files[0]
+
     this.setState({
-      fileName: event.target.value.split( '\\' ).pop(),
-      file: URL.createObjectURL(event.target.files[0])
+      avatar: file,
+      file: {
+        name: target.value.split( '\\' ).pop(),
+        url: URL.createObjectURL(file)
+      }
     })
   }
 
   handleSubmit = event => {
       event.preventDefault()
-      this.props.submitSignup(this.state);
+      const { state } = this
+      const { username, email, password, avatar } = state
+      const data = new FormData()
+
+      data.append('username', username)
+      data.append('email', email)
+      data.append('password', password)
+      data.append('avatar', avatar)
+      for(var pair of data.entries()) {
+       console.log(pair[0]+ ', '+ pair[1]);
+      }
+      //this.props.submitSignup(data);
   }
 
   render() {
     const { classes } = this.props
+    const { state, handleChange, handleFileChange, handleSubmit } = this
+    const { file } = state
+
     return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className={classes.container}>
         <div className={classes.toolbar} />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
           <Avatar
-            alt={this.state.fileName || 'avatar'}
-            src={this.state.file}
+            alt={file.name || 'avatar'}
+            src={file.url}
             className={classes.avatar}
           >
             <ScatterPlotIcon />
           </Avatar>
-          <form className={classes.form} onSubmit={this.handleSubmit}>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
-              onChange={this.handleChange}
-              value={this.state.email}
+              onChange={handleChange}
+              value={state.username}
+              variant="filled"
+              margin="normal"
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoFocus
+            />
+            <TextField
+              onChange={handleChange}
+              value={state.email}
               variant="filled"
               margin="normal"
               fullWidth
               id="email"
               label="Email Address"
               name="email"
-              autoFocus
             />
 
             <TextField
-              onChange={this.handleChange}
-              value={this.state.password}
+              onChange={handleChange}
+              value={state.password}
               variant="filled"
               margin="normal"
               fullWidth
@@ -78,26 +111,13 @@ class Signup extends Component {
               name="password"
             />
 
-            <input
-              onChange={this.handleFileChange}
-              accept="image/*"
-              className={classes.input}
+            <FileUpload
+              handleFileChange={handleFileChange}
               id="avatar"
-              name="file"
-              type="file"
+              name="avatar"
+              file={file}
+              className={classes.button}
             />
-            <label htmlFor="avatar">
-              <Button
-                variant="contained"
-                color="primary"
-                component='span'
-                fullWidth
-                className={classes.button}
-              >
-                <PublishIcon className={classes.publishIcon}/>
-                { this.state.fileName || 'Upload avatar' }
-              </Button>
-            </label>
             <Button
               type="submit"
               fullWidth
@@ -116,9 +136,6 @@ class Signup extends Component {
 }
 
 const useStyles = theme => ({
-  publishIcon: {
-    marginRight: theme.spacing(1)
-  },
   avatar: {
     marginTop: theme.spacing(1),
     width: theme.spacing(7),
@@ -135,12 +152,13 @@ const useStyles = theme => ({
     marginTop: theme.spacing(1),
   },
   button: {
-    margin: theme.spacing(3, 0, 2),
+    marginTop: theme.spacing(3),
   },
   toolbar: theme.mixins.toolbar,
-  input: {
-    display: 'none'
+  container: {
+    marginBottom: theme.spacing(4)
   }
+
 });
 
 const mapDispatchToProps = dispatch => ({

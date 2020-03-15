@@ -56,15 +56,15 @@
 
 # 15 March
 * add ability to upload avatar
-  * upload
-  * show uploaded
+  [x] upload
+  [x] show uploaded
   * submit to server
 * wire up
   * add user migration
     * avatar image
     * username
 * add user edit route
-
+* keyboard accessible upload button
 
 
 # User Stories
