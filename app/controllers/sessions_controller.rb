@@ -1,11 +1,17 @@
 class SessionsController < ApplicationController
+  include Rails.application.routes.url_helpers
+
   def create
     @user = User.find_by(email: params[:user][:email])
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       resp = {
-        user: @user.email
+        user: {
+            username: @user.username,
+            email: @user.email,
+            avatar: rails_blob_path(@user.avatar, only_path: true)
+          }
       }
       render json: resp, status: :ok
     else
@@ -29,12 +35,16 @@ class SessionsController < ApplicationController
     if logged_in?
       puts 'logged in'
       resp = {
-        user: current_user.email
+        user: {
+          username: @user.username,
+          email: @user.email,
+          avatar: rails_blob_path(@user.avatar, only_path: true)
+        }
       }
     else
       puts 'not logged in'
       resp = {
-        user: ''
+        user: nil
       }
     end
     render json: resp, status: :ok

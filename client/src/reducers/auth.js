@@ -1,5 +1,5 @@
 const initialState = {
-  user: '',
+  user: null,
   status: 'REQUESTING',
   redirectToReferrer: false
 }
@@ -27,7 +27,7 @@ function auth(state = initialState, action) {
         ...state,
         status: 'LOGGED_OUT',
         redirectToReferrer: false,
-        user: ''
+        user: {}
       }
 
     case 'SUBMIT_SIGNUP':
@@ -35,8 +35,9 @@ function auth(state = initialState, action) {
       console.log('submitting signup')
       return {
         ...state,
-        status: 'LOGGED_OUT',
-        user: ''
+        status: 'LOGGED_IN',
+        redirectToReferrer: true,
+        user: action.user
       }
 
     case 'GET_CURRENT_USER':

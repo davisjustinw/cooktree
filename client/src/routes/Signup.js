@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { changeHandler } from '../handlers/form'
 import { connect } from 'react-redux'
 import { submitSignup } from '../actions/auth'
@@ -57,9 +58,14 @@ class Signup extends Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, redirectToReferrer } = this.props
     const { state, handleChange, handleFileChange, handleSubmit } = this
     const { file } = state
+
+    if (redirectToReferrer === true) {
+      console.log("redirecting from signup")
+      return <Redirect to='/' />
+    }
 
     return (
       <Container component="main" maxWidth="xs" className={classes.container}>
@@ -92,8 +98,7 @@ class Signup extends Component {
               value={state.email}
               variant="filled"
               margin="normal"
-              fullWidth
-              id="email"
+              fullWidth id="email"
               label="Email Address"
               name="email"
             />
@@ -159,8 +164,12 @@ const useStyles = theme => ({
 
 });
 
+const mapStateToProps = ({ auth }) => ({
+  redirectToReferrer: auth.redirectToReferrer
+})
+
 const mapDispatchToProps = dispatch => ({
     submitSignup: user => dispatch(submitSignup(user))
 })
 
-export default connect(null, mapDispatchToProps)(withStyles(useStyles)(Signup));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Signup));
