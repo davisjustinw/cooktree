@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
 def create
-  puts params
+  puts '***'
+  puts user_params
+  puts '***'
   @user = User.create(user_params)
-
+  puts "fffuuuun"
   if @user
     session[:user_id] = @user.id
     resp = {
@@ -20,7 +22,7 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:email, :password, :avatar)
+  params.permit(:username, :email, :password, :avatar)
 end
 
 end

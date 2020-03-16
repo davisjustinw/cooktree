@@ -65,6 +65,7 @@
     * username
 * add user edit route
 * keyboard accessible upload button
+* block direct route to login and signup when logged in
 
 
 # User Stories

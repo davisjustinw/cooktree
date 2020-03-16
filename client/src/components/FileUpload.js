@@ -8,10 +8,9 @@ class FileUpload extends Component {
     super(props)
 
     this.fileUpload = createRef()
-    this.showFileUpload = this.showFileUpload.bind(this)
   }
 
-  showFileUpload() {
+  showFileUpload = () => {
     console.log('showFileUpload')
     this.fileUpload.current.click();
   }

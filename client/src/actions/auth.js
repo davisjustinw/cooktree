@@ -4,16 +4,16 @@ const submitLogin = ({email, password}) => {
     dispatch({ type: 'PENDING_REQUEST' })
 
     const headers = {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         user: {email, password}
       })
     }
-    fetch("http://localhost:3001/login", headers)
+    fetch('http://localhost:3001/login', headers)
       .then(resp => resp.json())
       .then(({user}) => {
           console.log(user)
@@ -32,14 +32,14 @@ const submitLogout = () => {
     dispatch({ type: 'SUBMIT_LOGOUT' })
     dispatch({ type: 'TOGGLE_MOBILE_OPEN'})
     const headers = {
-      method: "DELETE",
-      credentials: "include",
+      method: 'DELETE',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     }
 
-    fetch("http://localhost:3001/logout", headers)
+    fetch('http://localhost:3001/logout', headers)
       .then(resp => resp.json())
       .then(({message}) => {
           console.log(message)
@@ -54,17 +54,13 @@ const submitSignup = userInfo => {
   return (dispatch) => {
     dispatch({ type: 'PENDING_REQUEST' })
 
+    console.log(userInfo)
     const headers = {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: userInfo
-      })
+      method: 'POST',
+      credentials: 'include',
+      body: userInfo
     }
-    fetch("http://localhost:3001/signup", headers)
+    fetch('http://localhost:3001/signup', headers)
       .then(resp => resp.json())
       .then(({user}) => {
           console.log(user)
@@ -83,14 +79,14 @@ const getCurrentUser = () => {
     dispatch({ type: 'PENDING_REQUEST' })
 
     const headers = {
-      method: "GET",
-      credentials: "include",
+      method: 'GET',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     }
 
-    fetch("http://localhost:3001/get_current_user", headers)
+    fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
       .then(({user}) => {
           console.log(user)

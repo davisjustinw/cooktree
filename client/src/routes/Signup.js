@@ -44,7 +44,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      const { state } = this
+      const { state, props } = this
       const { username, email, password, avatar } = state
       const data = new FormData()
 
@@ -52,10 +52,8 @@ class Signup extends Component {
       data.append('email', email)
       data.append('password', password)
       data.append('avatar', avatar)
-      for(var pair of data.entries()) {
-       console.log(pair[0]+ ', '+ pair[1]);
-      }
-      //this.props.submitSignup(data);
+
+      props.submitSignup(data);
   }
 
   render() {
