@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -10,6 +11,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 const UserDrawer = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const { username, email } = props.user
+  let avatar = ''
+  
+  if(props.user.avatar) {
+    avatar = `http://localhost:3001${props.user.avatar}`
+  }
+
+  console.log('***')
+  console.log(props.user.avatar)
+  console.log('***')
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -22,12 +33,15 @@ const UserDrawer = props => {
     <>
       <CardHeader
         avatar={
-          <Avatar>
+          <Avatar
+            alt={username || 'avatar'}
+            src={avatar}
+          >
             M
           </Avatar>
         }
-        title='Musashi42'
-        subheader='one@two.com'
+        title={username}
+        subheader={email}
         action={
           <>
           <IconButton onClick={handleClick}>
@@ -56,4 +70,8 @@ const UserDrawer = props => {
   )
 }
 
-export default UserDrawer
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user
+})
+
+export default connect(mapStateToProps)(UserDrawer)
