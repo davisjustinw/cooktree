@@ -4,8 +4,7 @@ const initialState = {
     email: '',
     avatar: ''
   },
-  status: 'REQUESTING',
-  redirectToReferrer: false
+  status: 'REQUESTING'
 }
 
 function auth(state = initialState, action) {
@@ -21,7 +20,6 @@ function auth(state = initialState, action) {
       return {
         ...state,
         status: 'LOGGED_IN',
-        redirectToReferrer: true,
         user: action.user
       }
 
@@ -30,7 +28,6 @@ function auth(state = initialState, action) {
       return {
         ...state,
         status: 'LOGGED_OUT',
-        redirectToReferrer: false,
         user: {
           username: '',
           email: '',
@@ -44,7 +41,6 @@ function auth(state = initialState, action) {
       return {
         ...state,
         status: 'LOGGED_IN',
-        redirectToReferrer: true,
         user: action.user
       }
 

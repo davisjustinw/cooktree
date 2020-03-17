@@ -30,9 +30,9 @@ class Login extends Component {
   }
 
   render() {
-    const { redirectToReferrer, location, classes } = this.props
+    const { status, location, classes } = this.props
 
-    if (redirectToReferrer === true) {
+    if (status === 'LOGGED_IN') {
       console.log("redirecting from login")
       const { from } = location.state || { from: { pathname: '/' } }
       return <Redirect to={from} />
@@ -92,7 +92,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  redirectToReferrer: auth.redirectToReferrer
+  status: auth.status
 })
 
 const mapDispatchToProps = (dispatch) => {

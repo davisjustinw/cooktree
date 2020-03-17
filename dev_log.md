@@ -59,7 +59,7 @@
   [x] upload
   [x] show uploaded
   [x] submit to server
-* wire up
+[x] wire up
   [x] add user migration
     [x] avatar image
     [x] username
@@ -67,10 +67,8 @@
 [x] keyboard accessible upload button
 
 # 16 March
-[x] direct navigation is logging user out
-* block direct route to login and signup when logged in
-
-
+[x] fix direct navigation is logging user out
+[x] block direct route to login and signup when logged in
 
 
 # User Stories

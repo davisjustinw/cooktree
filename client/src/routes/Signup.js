@@ -58,11 +58,11 @@ class Signup extends Component {
   }
 
   render() {
-    const { classes, redirectToReferrer } = this.props
+    const { classes, status } = this.props
     const { state, handleChange, handleFileChange, handleSubmit } = this
     const { file } = state
 
-    if (redirectToReferrer === true) {
+    if (status === 'LOGGED_IN') {
       console.log("redirecting from signup")
       return <Redirect to='/' />
     }
@@ -165,7 +165,7 @@ const useStyles = theme => ({
 });
 
 const mapStateToProps = ({ auth }) => ({
-  redirectToReferrer: auth.redirectToReferrer
+  status: auth.status
 })
 
 const mapDispatchToProps = dispatch => ({
