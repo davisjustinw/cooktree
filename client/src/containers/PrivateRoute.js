@@ -9,8 +9,10 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
   const authRoute = () => {
     switch(authStatus) {
       case 'LOGGED_IN':
+        console.log('pr_logged in')
         return children
       case 'LOGGED_OUT':
+        console.log('pr_logged out')
         return (
           <Redirect
             to={{
@@ -20,6 +22,7 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
           />
         )
       case 'REQUESTING':
+        console.log('pr_requesting')
         return <Loading/>
       default:
         return null

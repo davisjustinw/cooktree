@@ -13,14 +13,11 @@ const UserDrawer = props => {
 
   const { username, email } = props.user
   let avatar = ''
-  
+
   if(props.user.avatar) {
     avatar = `http://localhost:3001${props.user.avatar}`
   }
 
-  console.log('***')
-  console.log(props.user.avatar)
-  console.log('***')
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };

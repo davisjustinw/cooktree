@@ -49,12 +49,11 @@ function auth(state = initialState, action) {
       }
 
     case 'GET_CURRENT_USER':
-      console.log('getting current user')
-
+      const { user } = action
       return {
         ...state,
-        status: (action.user ? 'LOGGED_IN' : 'LOGGED_OUT'),
-        user: action.user
+        status: (user.username ? 'LOGGED_IN' : 'LOGGED_OUT'),
+        user: user
       }
 
     default:

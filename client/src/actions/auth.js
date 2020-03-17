@@ -10,7 +10,7 @@ const submitLogin = ({email, password}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: {email, password}
+        user: {email, password }
       })
     }
     fetch('http://localhost:3001/login', headers)
@@ -89,7 +89,7 @@ const getCurrentUser = () => {
     fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
       .then(({user}) => {
-          console.log(user)
+          
           dispatch({
             type: 'GET_CURRENT_USER',
             user: user

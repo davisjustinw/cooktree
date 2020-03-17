@@ -9,7 +9,11 @@ def create
   if @user
     session[:user_id] = @user.id
     resp = {
-      user: @user.email
+      user: {
+        username: @user.username,
+        email: @user.email,
+        avatar: rails_blob_path(@user.avatar, only_path: true)
+      }
     }
     render json: resp, status: :ok
   else
