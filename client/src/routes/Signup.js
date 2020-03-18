@@ -18,7 +18,7 @@ class Signup extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      name: '',
       email: '',
       password: '',
       avatar: null,
@@ -46,12 +46,12 @@ class Signup extends Component {
   handleSubmit = event => {
       event.preventDefault()
       const { state, props } = this
-      const { username, email, password, avatar } = state
+      const { name, email, password, avatar } = state
       const data = new FormData()
 
-      data.append('username', username)
       data.append('email', email)
       data.append('password', password)
+      data.append('name', name)
       data.append('avatar', avatar)
 
       props.submitSignup(data);
@@ -84,13 +84,13 @@ class Signup extends Component {
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
               onChange={handleChange}
-              value={state.username}
+              value={state.name}
               variant="filled"
               margin="normal"
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
+              id="name"
+              label="Name"
+              name="name"
               autoFocus
             />
             <TextField

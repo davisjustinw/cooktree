@@ -34,13 +34,14 @@ class SessionsController < ApplicationController
     puts 'ROUTE: get_current_user'
     if logged_in?
       puts 'logged in'
-      puts current_user
       puts '***'
       resp = {
         user: {
-          username: current_user.username,
           email: current_user.email,
-          avatar: rails_blob_path(current_user.avatar, only_path: true)
+        },
+        person: {
+          name: current_person.name,
+          avatar: rails_blob_path(current_person.avatar, only_path: true)
         }
       }
     else

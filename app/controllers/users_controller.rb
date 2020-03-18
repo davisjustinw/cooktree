@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
 
 def create
-  puts '***'
-  puts user_params
-  puts '***'
   @user = User.create(user_params)
-  puts "fffuuuun"
+  @person = Person.create(person_params)
+  @person.user = @user
+
   if @user
     session[:user_id] = @user.id
+    @person = @user.person
     resp = {
       user: {
-        username: @user.username,
         email: @user.email,
-        avatar: rails_blob_path(@user.avatar, only_path: true)
+      },
+      person: {
+        name: @person.name,
+        avatar: rails_blob_path(@person.avatar, only_path: true)
       }
+
     }
     render json: resp, status: :ok
   else
@@ -26,7 +29,17 @@ end
 
 private
 def user_params
-  params.permit(:username, :email, :password, :avatar)
+  params.permit(
+    :email,
+    :password
+  )
+end
+
+def person_params
+  params.permit(
+    :name,
+    :avatar
+  )
 end
 
 end

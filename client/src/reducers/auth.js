@@ -1,7 +1,9 @@
 const initialState = {
   user: {
-    username: '',
     email: '',
+  },
+  person: {
+    name: '',
     avatar: ''
   },
   status: 'REQUESTING'
@@ -20,7 +22,8 @@ function auth(state = initialState, action) {
       return {
         ...state,
         status: 'LOGGED_IN',
-        user: action.user
+        user: action.user,
+        person: action.person
       }
 
     case 'SUBMIT_LOGOUT':
@@ -29,27 +32,30 @@ function auth(state = initialState, action) {
         ...state,
         status: 'LOGGED_OUT',
         user: {
-          username: '',
           email: '',
+        },
+        person: {
+          name: '',
           avatar: ''
-        }
+        },
       }
 
     case 'SUBMIT_SIGNUP':
-      //might need work here
       console.log('submitting signup')
       return {
         ...state,
         status: 'LOGGED_IN',
-        user: action.user
+        user: action.user,
+        person: action.person
       }
 
     case 'GET_CURRENT_USER':
-      const { user } = action
+      const { user, person } = action
       return {
         ...state,
-        status: (user.username ? 'LOGGED_IN' : 'LOGGED_OUT'),
-        user: user
+        status: (user.email ? 'LOGGED_IN' : 'LOGGED_OUT'),
+        user: user,
+        person: person
       }
 
     default:

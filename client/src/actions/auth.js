@@ -62,11 +62,12 @@ const submitSignup = userInfo => {
     }
     fetch('http://localhost:3001/signup', headers)
       .then(resp => resp.json())
-      .then(({user}) => {
+      .then(({user, person}) => {
           console.log(user)
           dispatch({
             type: 'SUBMIT_LOGIN',
-            user: user
+            user: user,
+            person: person
           })
         }
       )
@@ -88,11 +89,12 @@ const getCurrentUser = () => {
 
     fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
-      .then(({user}) => {
-          
+      .then(({user, person}) => {
+
           dispatch({
             type: 'GET_CURRENT_USER',
-            user: user
+            user: user,
+            person: person
           })
         }
       )

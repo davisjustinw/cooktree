@@ -11,11 +11,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 const UserDrawer = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const { username, email } = props.user
+  const { email } = props.user
+  const { name } = props.person
   let avatar = ''
 
-  if(props.user.avatar) {
-    avatar = `http://localhost:3001${props.user.avatar}`
+  if(props.person.avatar) {
+    avatar = `http://localhost:3001${props.person.avatar}`
   }
 
   const handleClick = event => {
@@ -31,13 +32,13 @@ const UserDrawer = props => {
       <CardHeader
         avatar={
           <Avatar
-            alt={username || 'avatar'}
+            alt={name || 'avatar'}
             src={avatar}
           >
             M
           </Avatar>
         }
-        title={username}
+        title={name}
         subheader={email}
         action={
           <>
@@ -68,7 +69,8 @@ const UserDrawer = props => {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  user: auth.user
+  user: auth.user,
+  person: auth.person
 })
 
 export default connect(mapStateToProps)(UserDrawer)

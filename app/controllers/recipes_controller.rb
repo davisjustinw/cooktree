@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
     if logged_in?
-      @recipes = current_user.recipes
+      @recipes = current_person.recipes
       render json: @recipes, status: :ok
     else
       render json: {

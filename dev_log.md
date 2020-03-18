@@ -69,11 +69,16 @@
 # 16 March
 [x] fix direct navigation is logging user out
 [x] block direct route to login and signup when logged in
+[x] remove exteraneous redirect to referrer
+
+* connections
+* validations on user signup
+* weird pending request hangup? when navigating directly to signup
 
 
 # User Stories
-* User can sign up
-* User can login and Logout
+[x] User can sign up
+[x] User can login and Logout
   - name
   - password
   - avatar
