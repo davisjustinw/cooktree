@@ -8,7 +8,7 @@ import { toggleMobileOpen } from '../actions/controls'
 const ControlContainer = props => {
   const { location, drawerWidth, mobileOpen, toggleMobileOpen } = props
   const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
-  console.log(`showControls ${showControls}`)
+  
   return (
     <>
       <NavBar

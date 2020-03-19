@@ -11,8 +11,6 @@ import UserDrawer from './UserDrawer'
 
 
 const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
-  console.log(`mobileOpen ${mobileOpen}`)
-  console.log(`drawerWidth ${drawerWidth}`)
   const classes = makeStyles(theme => ({
     drawer: {
       [theme.breakpoints.up('lg')]: {

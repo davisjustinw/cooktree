@@ -2,8 +2,6 @@
 const submitLogin = ({email, password}) => {
   return (dispatch) => {
     dispatch({ type: 'PENDING_REQUEST' })
-    console.log(`email: ${email}`)
-    console.log(`password: ${password}`)
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -20,7 +18,6 @@ const submitLogin = ({email, password}) => {
     fetch('http://localhost:3001/login', headers)
       .then(resp => resp.json())
       .then(({user, person}) => {
-          console.log(user)
           dispatch({
             type: 'SUBMIT_LOGIN',
             user: user,
@@ -58,8 +55,6 @@ const submitLogout = () => {
 const submitSignup = userInfo => {
   return (dispatch) => {
     dispatch({ type: 'PENDING_REQUEST' })
-
-    console.log(userInfo)
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -68,7 +63,6 @@ const submitSignup = userInfo => {
     fetch('http://localhost:3001/signup', headers)
       .then(resp => resp.json())
       .then(({user, person}) => {
-          console.log(user)
           dispatch({
             type: 'SUBMIT_LOGIN',
             user: user,
