@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_person
-    @current_user.person
+    current_user.person
   end
 
   def logged_in?

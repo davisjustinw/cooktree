@@ -2,7 +2,8 @@
 const submitLogin = ({email, password}) => {
   return (dispatch) => {
     dispatch({ type: 'PENDING_REQUEST' })
-
+    console.log(`email: ${email}`)
+    console.log(`password: ${password}`)
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -10,16 +11,20 @@ const submitLogin = ({email, password}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: {email, password }
+        user: {
+          email: email,
+          password: password
+        }
       })
     }
     fetch('http://localhost:3001/login', headers)
       .then(resp => resp.json())
-      .then(({user}) => {
+      .then(({user, person}) => {
           console.log(user)
           dispatch({
             type: 'SUBMIT_LOGIN',
-            user: user
+            user: user,
+            person: person
           })
         }
       )

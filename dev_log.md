@@ -71,9 +71,14 @@
 [x] block direct route to login and signup when logged in
 [x] remove exteraneous redirect to referrer
 
+# 18 March
+[x] add Person
+[x] update login for split between Person and User
+
 * connections
 * validations on user signup
-* weird pending request hangup? when navigating directly to signup
+* serialize
+* message for login failure
 
 
 # User Stories
