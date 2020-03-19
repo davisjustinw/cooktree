@@ -12,7 +12,6 @@ const initialState = {
 function auth(state = initialState, action) {
   switch (action.type) {
     case 'PENDING_REQUEST':
-      console.log('pending request')
       return {
         ...state,
         status: 'REQUESTING'
@@ -27,7 +26,6 @@ function auth(state = initialState, action) {
       }
 
     case 'SUBMIT_LOGOUT':
-      console.log('submitting logout')
       return {
         ...state,
         status: 'LOGGED_OUT',
@@ -41,7 +39,6 @@ function auth(state = initialState, action) {
       }
 
     case 'SUBMIT_SIGNUP':
-      console.log('submitting signup')
       return {
         ...state,
         status: 'LOGGED_IN',
