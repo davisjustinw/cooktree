@@ -78,11 +78,12 @@
 
 # 19 March
 [x] message for login failure
+[x] weird pending request on login auth.js:15
 
-* weird pending request on login auth.js:15
+* serialize
 * connections
 * validations on user signup
-* serialize
+
 
 
 

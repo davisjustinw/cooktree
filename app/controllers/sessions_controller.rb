@@ -1,29 +1,14 @@
 class SessionsController < ApplicationController
   include Rails.application.routes.url_helpers
+  include ErrorMessage
 
   def create
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-
-      resp = {
-        user: {
-          email: @user.email,
-        },
-        person: {
-          name: current_person.name,
-          avatar: rails_blob_path(current_person.avatar, only_path: true)
-        }
-      }
-      render json: resp, status: :ok
+      render json: current_user_person_json, status: :ok
     else
-      resp = {
-        error: {
-          status: '400',
-          message: "Invalid credentials"
-        }
-      }
-      render json: resp, status: :bad_request
+      render json: invalid_credentials, status: :bad_request
     end
   end
 
@@ -36,30 +21,10 @@ class SessionsController < ApplicationController
   end
 
   def get_current_user
-    puts 'ROUTE: get_current_user'
     if logged_in?
-      puts 'logged in'
-      puts '***'
-      resp = {
-        user: {
-          email: current_user.email,
-        },
-        person: {
-          name: current_person.name,
-          avatar: rails_blob_path(current_person.avatar, only_path: true)
-        }
-      }
+      resp = current_user_person_json
     else
-      puts 'not logged in'
-      resp = {
-        user: {
-          email: '',
-        },
-        person: {
-          name: '',
-          avatar: ''
-        }
-      }
+      resp = empty_user_person_json
     end
     render json: resp, status: :ok
   end
