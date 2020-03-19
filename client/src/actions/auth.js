@@ -17,15 +17,26 @@ const submitLogin = ({email, password}) => {
     }
     fetch('http://localhost:3001/login', headers)
       .then(resp => resp.json())
-      .then(({user, person}) => {
-          dispatch({
-            type: 'SUBMIT_LOGIN',
-            user: user,
-            person: person
-          })
-        }
-      )
-      .catch(console.log)
+      .then(({ user, person, error }) => {
+          if(user){
+            console.log('submit')
+            dispatch({ type: 'CLEAR_ERRORS' })
+            dispatch({
+              type: 'SUBMIT_LOGIN',
+              user: user,
+              person: person
+            })
+          } else if (error) {
+            dispatch({
+              type: 'UPDATE_ERRORS',
+              error: error
+            })
+          }
+      })
+      .catch(errors => {
+          console.log('catch errors')
+          console.log(errors)
+      })
   }
 }
 
@@ -89,7 +100,6 @@ const getCurrentUser = () => {
     fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
       .then(({user, person}) => {
-
           dispatch({
             type: 'GET_CURRENT_USER',
             user: user,

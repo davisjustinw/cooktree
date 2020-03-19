@@ -18,9 +18,12 @@ class SessionsController < ApplicationController
       render json: resp, status: :ok
     else
       resp = {
-        error: "Invalid credentials"
+        error: {
+          status: '400',
+          message: "Invalid credentials"
+        }
       }
-      render json: resp, status: :unauthorized
+      render json: resp, status: :bad_request
     end
   end
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect, Link as RouterLink } from 'react-router-dom';
 import { changeHandler } from '../handlers/form'
 import { submitLogin } from '../actions/auth'
-
+import ErrorMessage from '../components/ErrorMessage'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
@@ -39,6 +39,7 @@ class Login extends Component {
     }
     return (
       <div className={classes.content} >
+      <ErrorMessage/>
       <Container component="main" maxWidth="xs">
         <div className={classes.toolbar} />
         <div className={classes.paper}>

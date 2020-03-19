@@ -75,6 +75,10 @@
 [x] add Person
 [x] update login for split between Person and User
 
+
+# 19 March
+
+* weird pending request on login auth.js:15
 * connections
 * validations on user signup
 * serialize

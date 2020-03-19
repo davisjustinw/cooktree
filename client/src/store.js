@@ -7,11 +7,13 @@ import {
 
 import auth from './reducers/auth'
 import controls from './reducers/controls'
+import error from './reducers/error'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
   auth,
-  controls
+  controls,
+  error
 })
 
 const composeEnhancer =
