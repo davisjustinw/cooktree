@@ -1,12 +1,12 @@
 class RecipesController < ApplicationController
+  include ErrorMessage
+
   def index
     if logged_in?
       @recipes = current_person.recipes
       render json: @recipes, status: :ok
     else
-      render json: {
-        error: "No user logged in", status: :unauthorized
-      }
+      render login_required
     end
   end
 end

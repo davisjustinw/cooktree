@@ -9,33 +9,16 @@ const submitLogin = ({email, password}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: {
-          email: email,
-          password: password
-        }
+        user: { email, password }
       })
     }
     fetch('http://localhost:3001/login', headers)
       .then(resp => resp.json())
-      .then(({ user, person, error }) => {
-          if(user){
-            console.log('submit')
-            dispatch({ type: 'CLEAR_ERRORS' })
-            dispatch({
-              type: 'SUBMIT_LOGIN',
-              user: user,
-              person: person
-            })
-          } else if (error) {
-            dispatch({
-              type: 'UPDATE_ERRORS',
-              error: error
-            })
-          }
+      .then(json => {
+        catch_errors_dispatch_login(json, dispatch)
       })
-      .catch(errors => {
-          console.log('catch errors')
-          console.log(errors)
+      .catch((error) => {
+        console.error('Fetch error', error)
       })
   }
 }
@@ -59,7 +42,6 @@ const submitLogout = () => {
         }
       )
       .catch(console.log)
-
   }
 }
 
@@ -73,15 +55,12 @@ const submitSignup = userInfo => {
     }
     fetch('http://localhost:3001/signup', headers)
       .then(resp => resp.json())
-      .then(({user, person}) => {
-          dispatch({
-            type: 'SUBMIT_LOGIN',
-            user: user,
-            person: person
-          })
-        }
-      )
-      .catch(console.log)
+      .then(json => {
+        catch_errors_dispatch_login(json, dispatch)
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
   }
 }
 
@@ -111,7 +90,31 @@ const getCurrentUser = () => {
   }
 }
 
-
+const catch_errors_dispatch_login = ({ user, person, error, validation_errors }, dispatch) => {
+    if(user){
+      console.log('user')
+      dispatch({ type: 'CLEAR_ERRORS' })
+      dispatch({
+        type: 'SUBMIT_LOGIN',
+        user: user,
+        person: person
+      })
+    } else if (error) {
+      console.log('***')
+      console.log(error)
+      console.log('***')
+      dispatch({
+        type: 'UPDATE_ERRORS',
+        error: error
+      })
+    } else if (validation_errors) {
+      console.log('validation_errors')
+      dispatch({
+        type: 'UPDATE_VALIDATION_ERRORS',
+        validation_errors: validation_errors
+      })
+    }
+}
 
 export {
   submitLogin,

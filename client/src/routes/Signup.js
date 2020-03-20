@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
-
+import ErrorMessage from '../components/ErrorMessage'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Avatar from '@material-ui/core/Avatar'
 import FileUpload from '../components/FileUpload'
@@ -58,7 +58,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { classes, status } = this.props
+    const { classes, status, errors } = this.props
     const { state, handleChange, handleFileChange, handleSubmit } = this
     const { file } = state
 
@@ -70,6 +70,7 @@ class Signup extends Component {
     return (
       <Container component="main" maxWidth="xs" className={classes.container}>
         <div className={classes.toolbar} />
+        <ErrorMessage />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
             Sign Up
@@ -81,10 +82,12 @@ class Signup extends Component {
           >
             <ScatterPlotIcon />
           </Avatar>
-          <form className={classes.form} onSubmit={handleSubmit}>
+          <form noValidate className={classes.form} onSubmit={handleSubmit}>
             <TextField
               onChange={handleChange}
               value={state.name}
+              error={!!errors.person.name}
+              helperText={errors.person.name}
               variant="filled"
               margin="normal"
               fullWidth
@@ -92,26 +95,35 @@ class Signup extends Component {
               label="Name"
               name="name"
               autoFocus
+              required
             />
             <TextField
               onChange={handleChange}
               value={state.email}
+              error={!!errors.user.email}
+              helperText={errors.user.email}
               variant="filled"
               margin="normal"
-              fullWidth id="email"
+              fullWidth
+              id="email"
               label="Email Address"
               name="email"
+              type="email"
+              required
             />
 
             <TextField
               onChange={handleChange}
               value={state.password}
+              error={!!errors.user.password}
+              helperText={errors.user.password}
               variant="filled"
               margin="normal"
               fullWidth
               id="password"
               label="Password"
               name="password"
+              required
             />
 
             <FileUpload
@@ -164,8 +176,9 @@ const useStyles = theme => ({
 
 });
 
-const mapStateToProps = ({ auth }) => ({
-  status: auth.status
+const mapStateToProps = ({ auth, error }) => ({
+  status: auth.status,
+  errors: error.validation_errors
 })
 
 const mapDispatchToProps = dispatch => ({

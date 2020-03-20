@@ -79,13 +79,18 @@
 # 19 March
 [x] message for login failure
 [x] weird pending request on login auth.js:15
-
-* serialize
-* connections
+[x] serialize session
 * validations on user signup
+  - email is email format
+  - email not taken
+  - username not taken
+  - password present
+  - if no avatar add avatar based on username
 
 
+* connections
 
+* invitation
 
 # User Stories
 [x] User can sign up

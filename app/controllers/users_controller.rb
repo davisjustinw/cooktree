@@ -1,29 +1,18 @@
 class UsersController < ApplicationController
+include ErrorMessage
 
 def create
-  @user = User.create(user_params)
-  @person = Person.create(person_params)
-  @person.user = @user
+  @user = User.new(user_params)
+  @user.build_person(person_params)
+  @user.save
 
-  if @user
+  if @user.persisted?
     session[:user_id] = @user.id
     @person = @user.person
-    resp = {
-      user: {
-        email: @user.email,
-      },
-      person: {
-        name: @person.name,
-        avatar: rails_blob_path(@person.avatar, only_path: true)
-      }
-
-    }
-    render json: resp, status: :ok
+    render current_user_person_json
   else
-    resp = {
-      error: "Invalid User"
-    }
-    render json: resp, status: :unauthorized
+    # need better response here
+    render invalid_input(@user.errors, @user.person.errors)
   end
 end
 

@@ -1,5 +1,9 @@
 const initialState = {
-  messages: []
+  messages: [],
+  validation_errors: {
+    user: '',
+    person: ''
+  }
 }
 
 function error(state = initialState, action) {
@@ -12,7 +16,21 @@ function error(state = initialState, action) {
     case 'CLEAR_ERRORS':
       return {
         ...state,
-        messages: []
+        messages: [],
+        validation_errors: {
+          user: '',
+          person: ''
+        }
+      }
+    case 'UPDATE_VALIDATION_ERRORS':
+      return {
+        ...state,
+        validation_errors: action.validation_errors
+      }
+    case 'CLEAR_VALIDATION_ERRORS':
+      return {
+        ...state,
+        validation_errors: {}
       }
     default:
       return state

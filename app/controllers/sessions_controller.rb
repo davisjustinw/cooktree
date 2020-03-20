@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      render json: current_user_person_json, status: :ok
+      render current_user_person_json
     else
-      render json: invalid_credentials, status: :bad_request
+      render invalid_credentials
     end
   end
 

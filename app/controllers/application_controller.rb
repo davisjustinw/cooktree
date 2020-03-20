@@ -9,13 +9,16 @@ class ApplicationController < ActionController::API
 
   def current_user_person_json
     {
-      user: {
-        email: current_user.email,
+      json: {
+        user: {
+          email: current_user.email,
+        },
+        person: {
+          name: current_person.name,
+          avatar: rails_blob_path(current_person.avatar, only_path: true)
+        }
       },
-      person: {
-        name: current_person.name,
-        avatar: rails_blob_path(current_person.avatar, only_path: true)
-      }
+      status: :ok
     }
   end
 

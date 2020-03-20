@@ -9,7 +9,7 @@ namespace :qdb do
     puts 'Migrating'
     Rake::Task["db:migrate"].execute
 
-    puts 'Seeding'
-    Rake::Task["db:seed"].execute
+    #puts 'Seeding'
+    #Rake::Task["db:seed"].execute
   end
 end
