@@ -21,7 +21,7 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      avatar: null,
+      avatar: '',
       file: {
         name: '',
         url: null

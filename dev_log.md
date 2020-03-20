@@ -80,11 +80,12 @@
 [x] message for login failure
 [x] weird pending request on login auth.js:15
 [x] serialize session
-* validations on user signup
-  - email is email format
-  - email not taken
-  - username not taken
-  - password present
+[x] validations on user signup
+  [x] email is email format
+  [x] email not taken
+  [x] username not taken
+  [x] password present
+
   - if no avatar add avatar based on username
 
 

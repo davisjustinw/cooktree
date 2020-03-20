@@ -3,12 +3,14 @@ include ErrorMessage
 
 def create
   @user = User.new(user_params)
-  @user.build_person(person_params)
+  @user.build_person(name: person_params[:name])
+
   @user.save
 
   if @user.persisted?
     session[:user_id] = @user.id
     @person = @user.person
+    @person.avatar.attach(person_params[:avatar]) if !person_params[:avatar].blank?
     render current_user_person_json
   else
     # need better response here

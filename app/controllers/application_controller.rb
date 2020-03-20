@@ -8,6 +8,8 @@ class ApplicationController < ActionController::API
   end
 
   def current_user_person_json
+    avatar = ''
+    avatar = rails_blob_path(current_person.avatar, only_path: true) if current_person.avatar.attached?
     {
       json: {
         user: {
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::API
         },
         person: {
           name: current_person.name,
-          avatar: rails_blob_path(current_person.avatar, only_path: true)
+          avatar: avatar
         }
       },
       status: :ok
