@@ -80,14 +80,18 @@
 [x] message for login failure
 [x] weird pending request on login auth.js:15
 [x] serialize session
+
+# 20 March
 [x] validations on user signup
   [x] email is email format
   [x] email not taken
   [x] username not taken
   [x] password present
 
-  - if no avatar add avatar based on username
+  [x] if no avatar add avatar based on username
 
+# 21 March
+* fix links in nav drawer for connections and recipes
 
 * connections
 
@@ -117,8 +121,8 @@
   - connections to people
 * users can add memories to Recipes.
 
-* Users are People
-* People don't have to be users
+[x] Users are People
+[x] People don't have to be users
 * People connect to Recipes
 * People may connect to other people
 * Connections have meta data (ate, cooked etc)

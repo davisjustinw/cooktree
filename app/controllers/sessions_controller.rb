@@ -14,19 +14,11 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    resp = {
-      message: "Logout Successful"
-    }
-    render json: resp, status: :ok
+    render json: { message: "Logout Successful" }, status: :ok
   end
 
   def get_current_user
-    if logged_in?
-      resp = current_user_person_json
-    else
-      resp = empty_user_person_json
-    end
-    render json: resp, status: :ok
+    render logged_in? ? current_user_person_json : empty_user_person_json
   end
 
   private

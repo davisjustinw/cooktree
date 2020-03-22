@@ -1,6 +1,5 @@
 const initialState = {
-  mobileOpen: false,
-  drawerWidth: 240
+  mobileOpen: false
 }
 
 function controls(state = initialState, action) {

@@ -4,4 +4,7 @@ class Person < ApplicationRecord
   validates :name, presence: true
   has_many :recipe_people
   has_many :recipes, through: :recipe_people
+
+  has_many :connections
+  has_many :relations, through: :connections
 end

@@ -26,13 +26,16 @@ class ApplicationController < ActionController::API
 
   def empty_user_person_json
     {
-      user: {
-        email: '',
+      json: {
+        user: {
+          email: '',
+        },
+        person: {
+          name: '',
+          avatar: ''
+        }
       },
-      person: {
-        name: '',
-        avatar: ''
-      }
+      status: :ok
     }
   end
 

@@ -2,14 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 const Recipes = props => {
-  console.log('recipes route')
-  const classes = makeStyles(theme => ({
-    toolbar: theme.mixins.toolbar,
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-    },
-  }))();
+  const classes = useStyles()
 
   return (
     <>
@@ -20,5 +13,14 @@ const Recipes = props => {
     </>
   )
 }
+
+// STYLES
+const useStyles = makeStyles(theme => ({
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
 
 export default Recipes

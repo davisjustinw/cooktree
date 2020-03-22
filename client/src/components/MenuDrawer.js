@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
@@ -9,20 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Hidden from '@material-ui/core/Hidden'
 import UserDrawer from './UserDrawer'
 
-
-const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
-  const classes = makeStyles(theme => ({
-    drawer: {
-      [theme.breakpoints.up('lg')]: {
-        width: drawerWidth,
-        flexShrink: 0,
-      }
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-    toolbar: theme.mixins.toolbar
-  }))();
+const MenuDrawer = ({ mobileOpen, toggleMobileOpen }) => {
+  const classes = useStyles()
 
   const drawer = (
     <>
@@ -32,10 +20,10 @@ const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
       <UserDrawer/>
       <Divider/>
       <List>
-        <ListItem button key="Connections">
+        <ListItem button component={RouterLink} to='/connections'>
           <ListItemText primary="Connections" />
         </ListItem>
-        <ListItem button key="Recipes">
+        <ListItem button component={RouterLink} to='/recipes'>
           <ListItemText primary="Recipes" />
         </ListItem>
       </List>
@@ -73,6 +61,20 @@ const MenuDrawer = ({ mobileOpen, toggleMobileOpen, drawerWidth }) => {
       </Hidden>
     </nav>
   )
+
 }
+
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    [theme.breakpoints.up('lg')]: {
+      width: 240,
+      flexShrink: 0,
+    }
+  },
+  drawerPaper: {
+    width: 240,
+  },
+  toolbar: theme.mixins.toolbar
+}));
 
 export default MenuDrawer

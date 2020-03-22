@@ -1,12 +1,25 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 
 const Connections = props => {
-  console.log('connections route')
+  const classes = useStyles()
+
   return (
-    <div>
-      <h2>Connections</h2>
-    </div>
+    <>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <h2>Connections</h2>
+      </main>
+    </>
   )
 }
+
+const useStyles = makeStyles(theme => ({
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
 
 export default Connections
