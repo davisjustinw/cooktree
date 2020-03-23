@@ -10,7 +10,9 @@ import UserDrawer from './UserDrawer'
 
 const DrawerContents = ({ toggleMobileOpen, temporary }) => {
   const classes = useStyles()
-  const handleMenuClick = event => toggleMobileOpen(event)
+  const handleMenuClick = event => {
+    temporary && toggleMobileOpen(event)
+  }
 
   return (
     <>
