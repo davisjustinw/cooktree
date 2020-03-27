@@ -91,11 +91,36 @@
   [x] if no avatar add avatar based on username
 
 # 21 March
-* fix links in nav drawer for connections and recipes
+  [x] fix links in nav drawer for connections and recipes
 
+# 22 March
+  [x] close drawer on nav link click
+
+# 23 March
+  [x] connection card
+
+# 24 March
+  [x] fake data for People
+  [x] connections index route
+
+# 25 March
+  [x] get connections useEffect
+
+# 26 March
+  * connection avatar solution
+    - scope for connections
+  * list connections on connections route page
+
+* current_user method in two places (ApplicationController and record)
 * connections
-
+  * index
+    - name relation avatar
+    - add connection
+  * show page
+    - list recipes and contributions make this a splash at first
 * invitation
+
+* clear error when routing to new page
 
 # User Stories
 [x] User can sign up

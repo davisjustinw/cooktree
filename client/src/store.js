@@ -6,12 +6,14 @@ import {
 } from 'redux'
 
 import auth from './reducers/auth'
+import connections from './reducers/connections'
 import controls from './reducers/controls'
 import error from './reducers/error'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
   auth,
+  connections,
   controls,
   error
 })

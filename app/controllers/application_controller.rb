@@ -16,6 +16,7 @@ class ApplicationController < ActionController::API
           email: current_user.email,
         },
         person: {
+          id: current_person.id,
           name: current_person.name,
           avatar: avatar
         }
@@ -31,6 +32,7 @@ class ApplicationController < ActionController::API
           email: '',
         },
         person: {
+          id: '',
           name: '',
           avatar: ''
         }

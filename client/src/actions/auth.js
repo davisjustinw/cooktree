@@ -100,9 +100,6 @@ const catch_errors_dispatch_login = ({ user, person, error, validation_errors },
         person: person
       })
     } else if (error) {
-      console.log('***')
-      console.log(error)
-      console.log('***')
       dispatch({
         type: 'UPDATE_ERRORS',
         error: error

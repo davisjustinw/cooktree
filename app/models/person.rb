@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   has_one :user
   has_one_attached :avatar
   validates :name, presence: true
@@ -7,4 +9,9 @@ class Person < ApplicationRecord
 
   has_many :connections
   has_many :relations, through: :connections
+  
+
+  def avatar_url
+    rails_blob_path(self.avatar, only_path: true) if self.avatar.attached?
+  end
 end

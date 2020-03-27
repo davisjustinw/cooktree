@@ -3,6 +3,7 @@ const initialState = {
     email: '',
   },
   person: {
+    id: '',
     name: '',
     avatar: ''
   },
@@ -33,6 +34,7 @@ function auth(state = initialState, action) {
           email: '',
         },
         person: {
+          id: '',
           name: '',
           avatar: ''
         },
