@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Routes from './Routes'
+import Routes from './components/Routes'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/auth'
-import ControlContainer from './containers/ControlContainer'
+import ControlContainer from './components/containers/ControlContainer'
 import { withStyles } from '@material-ui/core/styles'
 
 class App extends Component {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getHeader, url } from '../actions/fetchHelpers'
+import { getHeader, url } from '../../actions/fetchHelpers'
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import ConnectionCard from '../components/ConnectionCard'
+import ConnectionCard from '../ConnectionCard'
+import Container from '@material-ui/core/Container'
 
 const Connections = ({ person }) => {
   const { id } = person
@@ -24,6 +25,7 @@ const Connections = ({ person }) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <h2>Connections</h2>
+        <Container maxWidth='md' className={classes.container}>
         {
           connections.map(connection => {
             const {relationship, relation} = connection
@@ -39,6 +41,7 @@ const Connections = ({ person }) => {
             )
           })
         }
+        </Container>
       </main>
     </>
   )
@@ -50,6 +53,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  }
 }));
 
 const mapStateToProps = ({ auth }) => ({

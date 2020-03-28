@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
-import Loading from '../components/Loading'
+import Loading from '../Loading'
 
 function PrivateRoute({ children, redirectTo, ...rest }) {
   const { authStatus, location } = rest
@@ -25,7 +25,7 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
         return null
     }
   }
-
+  console.log(rest)
   return <Route {...rest} render={authRoute}/>
 }
 

@@ -107,18 +107,23 @@
   [x] get connections useEffect
 
 # 26 March
-  * connection avatar solution
-    - scope for connections
-  * list connections on connections route page
+  [x] connection avatar solution  
+  [x] list connections on connections route page
+
+# 27 March
+  [x] ComponentCard styling
+  [x] connections
+    [x] index
+    [x] show splash page
+
+# 28 March
+  * instead of connections?person_id=n /people/n/connections
+  * add connection on connections page
+  * invitation
+
 
 * current_user method in two places (ApplicationController and record)
-* connections
-  * index
-    - name relation avatar
-    - add connection
-  * show page
-    - list recipes and contributions make this a splash at first
-* invitation
+* list recipes and contributions on connection show page
 
 * clear error when routing to new page
 

@@ -4,8 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from './containers/PrivateRoute';
 import Login from './routes/Login';
-import Logout from './components/Logout'
+import Logout from './Logout'
 import Signup from './routes/Signup';
+import Connection from './Connection'
 import Connections from './routes/Connections'
 import Recipes from './routes/Recipes';
 
@@ -18,9 +19,12 @@ const Routes = props => {
         <PrivateRoute exact path="/" redirectTo="/login">
           <Recipes />
         </PrivateRoute>
+        <Route path="/connections/:connectionId" component={Connection}/>
+
         <PrivateRoute exact path="/connections" redirectTo="/login">
           <Connections />
         </PrivateRoute>
+
         <PrivateRoute exact path="/recipes" redirectTo="/login">
           <Recipes />
         </PrivateRoute>

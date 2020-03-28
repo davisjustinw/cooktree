@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link as RouterLink } from 'react-router-dom';
-import { changeHandler } from '../handlers/form'
-import { submitLogin } from '../actions/auth'
-import ErrorMessage from '../components/ErrorMessage'
+import { changeHandler } from '../../handlers/form'
+import { submitLogin } from '../../actions/auth'
+import ErrorMessage from '../ErrorMessage'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
@@ -11,7 +11,7 @@ import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 
-import Copyright from '../components/Copyright'
+import Copyright from '../Copyright'
 
 class Login extends Component {
   constructor(props) {
