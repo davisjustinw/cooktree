@@ -7,15 +7,15 @@ const initialState = {
     name: '',
     avatar: ''
   },
-  status: 'REQUESTING'
+  status: 'LOGGING_IN'
 }
 
 function auth(state = initialState, action) {
   switch (action.type) {
-    case 'PENDING_REQUEST':
+    case 'PENDING_LOGIN':
       return {
         ...state,
-        status: 'REQUESTING'
+        status: 'LOGGING_IN'
       }
 
     case 'SUBMIT_LOGIN':

@@ -1,7 +1,7 @@
 
 const submitLogin = ({email, password}) => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({ type: 'PENDING_LOGIN' })
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -47,7 +47,7 @@ const submitLogout = () => {
 
 const submitSignup = userInfo => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({ type: 'PENDING_LOGIN' })
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -65,8 +65,9 @@ const submitSignup = userInfo => {
 }
 
 const getCurrentUser = () => {
+  console.log('getCurrentUser')
   return dispatch => {
-    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({ type: 'PENDING_LOGIN' })
 
     const headers = {
       method: 'GET',

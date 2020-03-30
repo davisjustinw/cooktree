@@ -4,13 +4,16 @@ import { Route, Redirect } from 'react-router-dom'
 import Loading from '../Loading'
 
 function PrivateRoute({ children, redirectTo, ...rest }) {
+  console.log('PrivateRoute')
+  console.log(rest)
   const { authStatus, location } = rest
-
   const authRoute = () => {
     switch(authStatus) {
       case 'LOGGED_IN':
+        console.log('pr LOGGED_IN')
         return children
       case 'LOGGED_OUT':
+        console.log('pr LOGGED_OUT')
         return (
           <Redirect
             to={{
@@ -19,13 +22,12 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
             }}
           />
         )
-      case 'REQUESTING':
+      case 'LOGGING_IN':
         return <Loading/>
       default:
         return null
     }
   }
-  console.log(rest)
   return <Route {...rest} render={authRoute}/>
 }
 

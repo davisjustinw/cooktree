@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import { getHeader, url } from '../../actions/fetchHelpers'
-import { makeStyles } from '@material-ui/core/styles'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ConnectionCard from '../ConnectionCard'
-import Container from '@material-ui/core/Container'
+import { getConnections } from '../../actions/requesters'
+import Loading from '../Loading'
 
-const Connections = ({ person }) => {
-  const { id } = person
-  const classes = useStyles()
-  const [connections, setConnections] = useState([])
+class Connections extends Component {
+  componentDidMount() {
+    console.log('mounting')
+    this.props.getConnections(this.props.person.id)
+  }
 
-  useEffect(() => {
-    fetch(`${url}/connections?person_id=${id}`, getHeader)
-      .then(resp => resp.json())
-      .then(connections => {
-        setConnections(connections)
-      })
-      .catch(console.log)
-  }, [id])
-
-
-  return (
-    <>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
+  render(){
+    const { connections } = this.props
+    console.log(connections)
+    if(!connections){
+      return <Loading/>
+    } else {
+      return (
+      <>
         <h2>Connections</h2>
-        <Container maxWidth='md' className={classes.container}>
         {
-          connections.map(connection => {
+            connections.map(connection => {
             const {relationship, relation} = connection
             const { id, name, avatar_url } = relation
             return (
@@ -37,30 +30,23 @@ const Connections = ({ person }) => {
                 name={name}
                 relationship={relationship}
                 id={id}
-              />
-            )
-          })
+              />)
+            })
         }
-        </Container>
-      </main>
-    </>
-  )
+      </>
+    )
+    }
+  }
 }
 
-const useStyles = makeStyles(theme => ({
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  }
-}));
-
-const mapStateToProps = ({ auth }) => ({
-  person: auth.person
+const mapStateToProps = ({auth, requesters}) => ({
+  person: auth.person,
+  connections: requesters.connections,
+  requesting: requesters.requesting
 })
 
-export default connect(mapStateToProps)(Connections)
+const mapDispatchToProps = (dispatch) => ({
+  getConnections: personId => dispatch(getConnections(personId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Connections)

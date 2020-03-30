@@ -117,11 +117,20 @@
     [x] show splash page
 
 # 28 March
-  * instead of connections?person_id=n /people/n/connections
-  * add connection on connections page
-  * invitation
+  [x] add connection on connections page
+  [x] restructured private routes to deal with nesting
+  [x] instead of connections?person_id=n /people/n/connections
 
+# 29 March
+  [x] Create redirect private component
 
+* fix logout signup redirects
+
+* root redirect  
+* nav components in people Component
+* invitation
+* re-write Login to functional component with useState
+* might need a check in login for authorized from
 * current_user method in two places (ApplicationController and record)
 * list recipes and contributions on connection show page
 

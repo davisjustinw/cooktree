@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles';
 import { changeHandler } from '../../handlers/form'
 import { connect } from 'react-redux'
 import { submitSignup } from '../../actions/auth'
 
-import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
-import ErrorMessage from '../ErrorMessage'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Avatar from '@material-ui/core/Avatar'
+import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 import FileUpload from '../FileUpload'
 
 class Signup extends Component {
@@ -58,19 +56,13 @@ class Signup extends Component {
   }
 
   render() {
-    const { classes, status, errors } = this.props
+    const { classes, errors } = this.props
     const { state, handleChange, handleFileChange, handleSubmit } = this
     const { file } = state
 
-    if (status === 'LOGGED_IN') {
-      console.log("redirecting from signup")
-      return <Redirect to='/' />
-    }
-
     return (
-      <Container component="main" maxWidth="xs" className={classes.container}>
-        <div className={classes.toolbar} />
-        <ErrorMessage />
+      <>
+        <RedirectLoggedIn/>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
             Sign Up
@@ -144,8 +136,7 @@ class Signup extends Component {
             </Button>
           </form>
         </div>
-      </Container>
-
+      </>
     )
   }
 }
@@ -169,15 +160,9 @@ const useStyles = theme => ({
   button: {
     marginTop: theme.spacing(3),
   },
-  toolbar: theme.mixins.toolbar,
-  container: {
-    marginBottom: theme.spacing(4)
-  }
-
 });
 
-const mapStateToProps = ({ auth, error }) => ({
-  status: auth.status,
+const mapStateToProps = ({ error }) => ({
   errors: error.validation_errors
 })
 

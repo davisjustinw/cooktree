@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { url, getHeader } from '../actions/fetchHelpers'
 
-const Connection = ({match, location}) => {
+const Connection = ({ match }) => {
   const classes = useStyles()
   const id = match.params.connectionId
 
