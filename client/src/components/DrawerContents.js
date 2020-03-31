@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { mapPersonToProps } from './helpers/stateMappers'
 import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -8,7 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import Hidden from '@material-ui/core/Hidden'
 import UserDrawer from './UserDrawer'
 
-const DrawerContents = ({ toggleMobileOpen, temporary }) => {
+const DrawerContents = ({ person, toggleMobileOpen, temporary }) => {
   const classes = useStyles()
   const handleMenuClick = event => {
     temporary && toggleMobileOpen(event)
@@ -22,11 +24,16 @@ const DrawerContents = ({ toggleMobileOpen, temporary }) => {
       <UserDrawer/>
       <Divider/>
       <List>
-        <ListItem button onClick={handleMenuClick} component={RouterLink} to='/connections'>
-          <ListItemText primary="Connections" />
+        <ListItem
+          button onClick={handleMenuClick}
+          component={RouterLink}
+          to={`/people/${person.id}/connections`} >
+            <ListItemText primary="Connections" />
         </ListItem>
-        <ListItem button onClick={handleMenuClick} component={RouterLink} to='/recipes'>
-          <ListItemText primary="Recipes" />
+        <ListItem button onClick={handleMenuClick}
+          component={RouterLink}
+          to={`/people/${person.id}/recipes`}>
+            <ListItemText primary="Recipes" />
         </ListItem>
       </List>
     </>
@@ -37,4 +44,4 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default DrawerContents
+export default connect(mapPersonToProps)(DrawerContents)

@@ -46,9 +46,6 @@ const ConnectionCard = ({ avatar_url, name, relationship, id }) => {
 }
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: theme.spacing(30)
-  },
   anchor: {
     textDecoration: 'none',
     marginBottom: 0

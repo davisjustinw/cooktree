@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { mapPersonToProps } from '../stateHelpers'
+import { mapPersonToProps } from '../helpers/stateMappers'
 import Connections from './Connections'
 import Recipes from './Recipes'
 import PrivateRoute from '../redirects/PrivateRoute'

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { mapAuthToProps } from './helpers/stateMappers'
 import { Link as RouterLink } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -9,15 +10,15 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const UserDrawer = props => {
+const UserDrawer = ({ user, person }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const { email } = props.user
-  const { name } = props.person
+  const { email } = user
+  const { name } = person
   let avatar = ''
 
-  if(props.person.avatar) {
-    avatar = `http://localhost:3001${props.person.avatar}`
+  if(person.avatar) {
+    avatar = `http://localhost:3001${person.avatar}`
   }
 
   const handleClick = event => {
@@ -69,9 +70,4 @@ const UserDrawer = props => {
   )
 }
 
-const mapStateToProps = ({ auth }) => ({
-  user: auth.user,
-  person: auth.person
-})
-
-export default connect(mapStateToProps)(UserDrawer)
+export default connect(mapAuthToProps)(UserDrawer)

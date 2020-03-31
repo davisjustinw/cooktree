@@ -1,34 +1,17 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import NavBar from '../NavBar'
 import MenuDrawer from '../MenuDrawer'
-import { toggleMobileOpen } from '../../actions/controls'
 
-const ControlContainer = props => {
-  const { location, mobileOpen, toggleMobileOpen } = props
+const ControlContainer = ({ location }) => {
   const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
 
   return (
     <>
-      <NavBar
-        handleDrawerToggle={toggleMobileOpen}
-        showControls={showControls}
-      />
-      {
-        showControls ? (
-          <MenuDrawer
-            toggleMobileOpen={toggleMobileOpen}
-            mobileOpen={mobileOpen}
-          />
-        ) : ( null )
-      }
+      <NavBar showControls={showControls} />
+      { showControls ? (<MenuDrawer />) : ( null ) }
     </>
   )
 }
 
-const mapStateToProps = ({ controls }) => ({
-  mobileOpen: controls.mobileOpen
-})
-
-export default connect(mapStateToProps, { toggleMobileOpen })(withRouter(ControlContainer))
+export default withRouter(ControlContainer)

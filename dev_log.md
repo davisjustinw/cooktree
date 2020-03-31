@@ -124,16 +124,23 @@
 # 29 March
   [x] Create redirect private component
 
-* fix logout signup redirects
+# 30 March
+  [x] fixed private route
+  [x] logout redirects properly
+  [x] signup redirects properly
+  [x] login redirects properly
+  [x] root redirect  
 
-* root redirect  
+* root flashes login before redirect
+* can I stop wierd flash on redirect on not logged in
+
 * nav components in people Component
 * invitation
 * re-write Login to functional component with useState
 * might need a check in login for authorized from
 * current_user method in two places (ApplicationController and record)
 * list recipes and contributions on connection show page
-
+* what does authorization look like for different users
 * clear error when routing to new page
 
 # User Stories

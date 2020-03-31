@@ -5,7 +5,7 @@ import Loading from '../Loading'
 
 function PrivateRoute({ children, redirectTo, ...rest }) {
   console.log('PrivateRoute')
-  console.log(rest)
+  
   const { authStatus, location } = rest
   const authRoute = () => {
     switch(authStatus) {

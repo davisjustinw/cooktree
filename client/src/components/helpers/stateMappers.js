@@ -12,8 +12,18 @@ const mapPersonToProps = ({ auth }) => ({
   person: auth.person
 })
 
+const mapUserToProps = ({ auth }) => ({
+  user: auth.user
+})
+
+const mapControlsToProps = ({ controls }) => ({
+  mobileOpen: controls.mobileOpen
+})
+
 export {
   mapAuthToProps,
   mapStatusToProps,
-  mapPersonToProps
+  mapPersonToProps,
+  mapUserToProps,
+  mapControlsToProps
 }

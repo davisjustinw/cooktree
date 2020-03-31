@@ -11,8 +11,6 @@ function requesters(state = initialState, action) {
         requesting: true
       }
     case 'GET_CONNECTIONS':
-      console.log('get_connections switch')
-      console.log(action)
       const { connections } = action
       return {
         ...state,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { mapAuthToProps } from '../../reducers/stateHelpers'
+import { mapAuthToProps } from '../helpers/stateMappers'
 
 const RedirectLoggedIn = ({ status, person }) => {
   if (status === 'LOGGED_IN') {

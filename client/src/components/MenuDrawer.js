@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { mapControlsToProps } from './helpers/stateMappers'
+import { toggleMobileOpen } from '../actions/controls'
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -33,7 +36,6 @@ const MenuDrawer = ({ mobileOpen, toggleMobileOpen }) => {
       </Hidden>
     </nav>
   )
-
 }
 
 const useStyles = makeStyles(theme => ({
@@ -46,4 +48,4 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default MenuDrawer
+export default connect(mapControlsToProps, { toggleMobileOpen })(MenuDrawer)
