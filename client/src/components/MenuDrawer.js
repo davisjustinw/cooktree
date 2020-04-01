@@ -27,10 +27,7 @@ const MenuDrawer = ({ mobileOpen, toggleMobileOpen }) => {
         </Drawer>
       </Hidden>
       <Hidden mdDown implementation="css">
-        <Drawer
-          variant="permanent"
-          open
-        >
+        <Drawer variant="permanent" open >
           <DrawerContents toggleMobileOpen={toggleMobileOpen} />
         </Drawer>
       </Hidden>

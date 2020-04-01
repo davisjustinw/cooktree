@@ -2,7 +2,9 @@ const initialState = {
   messages: [],
   validation_errors: {
     user: '',
-    person: ''
+    person: '',
+    connection: '',
+    
   }
 }
 

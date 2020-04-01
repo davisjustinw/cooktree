@@ -130,9 +130,13 @@
   [x] signup redirects properly
   [x] login redirects properly
   [x] root redirect  
+  [x] fix menu drawer
+
+* add user
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
+
 
 * nav components in people Component
 * invitation

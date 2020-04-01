@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import NavBar from '../NavBar'
+import Navbar from '../Navbar'
 import MenuDrawer from '../MenuDrawer'
 
 const ControlContainer = ({ location }) => {
@@ -8,7 +8,7 @@ const ControlContainer = ({ location }) => {
 
   return (
     <>
-      <NavBar showControls={showControls} />
+      <Navbar showControls={showControls} />
       { showControls ? (<MenuDrawer />) : ( null ) }
     </>
   )

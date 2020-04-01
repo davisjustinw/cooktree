@@ -1,6 +1,5 @@
 const initialState = {
-  connections: [],
-  requesting: true
+  connections: []
 }
 
 function requesters(state = initialState, action) {
@@ -8,17 +7,20 @@ function requesters(state = initialState, action) {
     case 'PENDING_REQUEST':
       return {
         ...state,
-        requesting: true
       }
     case 'GET_CONNECTIONS':
       const { connections } = action
       return {
         ...state,
         connections: connections,
-        requesting: false
       }
+    case 'POST_CONNECTION':
+      const { connection } = action
+      console.log('push connection')
+      console.log(connection)
+      return state
     default:
-      return state;
+      return state
   }
 }
 

@@ -12,8 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 import HistoryIcon from '@material-ui/icons/History'
 import SearchBar from './SearchBar'
 import Hidden from '@material-ui/core/Hidden'
-
-const NavBar = ({ toggleMobileOpen, location }) => {
+//navbar
+const Navbar = ({ toggleMobileOpen, location }) => {
   const classes = useStyles();
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -58,4 +58,4 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default withRouter(connect(null, { toggleMobileOpen })(NavBar))
+export default withRouter(connect(null, { toggleMobileOpen })(Navbar))

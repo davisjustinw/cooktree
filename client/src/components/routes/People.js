@@ -3,6 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { mapPersonToProps } from '../helpers/stateMappers'
 import Connections from './Connections'
+import ConnectionNew from './ConnectionNew'
 import Recipes from './Recipes'
 import PrivateRoute from '../redirects/PrivateRoute'
 
@@ -11,6 +12,9 @@ const People = ({ person }) => {
   return (
     <>
       <Switch>
+        <PrivateRoute path={`${match.url}/connections/new`} redirectTo='/login'>
+          <ConnectionNew person={person} />
+        </PrivateRoute>
         <PrivateRoute path={`${match.url}/connections`} redirectTo='/login'>
           <Connections person={person} />
         </PrivateRoute>

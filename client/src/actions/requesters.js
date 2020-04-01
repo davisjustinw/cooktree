@@ -16,6 +16,18 @@ const getConnections = (id) => {
   }
 }
 
+const postConnection = connection => {
+  return dispatch => {
+    console.log('dispatch post connection')
+    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({
+      type: 'ADD_CONNECTION',
+      connection: connection
+    })
+  }
+}
+
 export {
-  getConnections
+  getConnections,
+  postConnection
 }
