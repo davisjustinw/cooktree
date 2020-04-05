@@ -8,8 +8,15 @@ const getHeader = {
   }
 }
 
+const postHeader = body => ({
+ method: 'POST',
+ credentials: 'include',
+ body: body
+})
+
 
 export {
   url,
-  getHeader
+  getHeader,
+  postHeader
 }

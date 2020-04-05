@@ -32,9 +32,11 @@ const Navbar = ({ toggleMobileOpen, location }) => {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography variant="h6" className={classes.title}>
-            Cook Tree
-          </Typography>
+          <Hidden xsDown implementation="css" className={classes.title}>
+            <Typography variant="h6" >
+              Cook Tree
+            </Typography>
+          </Hidden>
           <SearchBar />
           <HistoryIcon />
           </>

@@ -132,7 +132,11 @@
   [x] root redirect  
   [x] fix menu drawer
 
-* add user
+# 31 March
+  [x] add connection
+  [x] new connection form
+
+* wire new connection form to controller
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in

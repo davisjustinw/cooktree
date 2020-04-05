@@ -4,7 +4,6 @@ const initialState = {
     user: '',
     person: '',
     connection: '',
-    
   }
 }
 
@@ -21,7 +20,8 @@ function error(state = initialState, action) {
         messages: [],
         validation_errors: {
           user: '',
-          person: ''
+          person: '',
+          connection: ''
         }
       }
     case 'UPDATE_VALIDATION_ERRORS':

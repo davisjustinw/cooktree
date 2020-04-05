@@ -24,7 +24,7 @@ class Connections extends Component {
     } else {
       return (
       <>
-        <Typography variant='h4' gutterbottom>
+        <Typography variant='h4' gutterBottom>
           Connections
         </Typography>
         {
@@ -42,7 +42,6 @@ class Connections extends Component {
           })
         }
         <Fab
-          button
           component={RouterLink}
           to={`/people/${person.id}/connections/new`}
           color="secondary"

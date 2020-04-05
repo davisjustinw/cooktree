@@ -12,6 +12,18 @@ module ErrorMessage
     }
   end
 
+  def invalid_connection(person_errors, connection_errors)
+    {
+      json: {
+        validation_errors: {
+          connection: connection_errors,
+          person:  person_errors
+        }
+      },
+      status: :bad_request
+    }
+  end
+
   def invalid_credentials
     {
       json: {

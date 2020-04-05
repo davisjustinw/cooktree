@@ -14,7 +14,7 @@ const RootRoutes = ({ status, person }) => {
         <People person={person}/>
       </Route>
       <Route path='/login'>
-        <Login status={status} person={person}/>
+        <Login/>
       </Route>
       <Route path='/logout' component={Logout} />
       <Route path='/signup'>

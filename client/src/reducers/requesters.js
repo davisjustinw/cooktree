@@ -14,11 +14,14 @@ function requesters(state = initialState, action) {
         ...state,
         connections: connections,
       }
-    case 'POST_CONNECTION':
+    case 'ADD_CONNECTION':
       const { connection } = action
-      console.log('push connection')
-      console.log(connection)
-      return state
+      console.log('add connection')
+
+      return {
+        ...state,
+        connections: [...state.connections, connection]
+      }
     default:
       return state
   }

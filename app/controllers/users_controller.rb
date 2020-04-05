@@ -20,17 +20,11 @@ end
 
 private
 def user_params
-  params.permit(
-    :email,
-    :password
-  )
+  params.permit :email, :password
 end
 
 def person_params
-  params.permit(
-    :name,
-    :avatar
-  )
+  params.permit :name, :avatar
 end
 
 end

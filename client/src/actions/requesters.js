@@ -1,4 +1,4 @@
-import { getHeader, url } from './fetchHelpers'
+import { getHeader, url, postHeader } from './fetchHelpers'
 
 const getConnections = (id) => {
   return dispatch => {
@@ -18,13 +18,38 @@ const getConnections = (id) => {
 
 const postConnection = connection => {
   return dispatch => {
-    console.log('dispatch post connection')
     dispatch({ type: 'PENDING_REQUEST' })
-    dispatch({
-      type: 'ADD_CONNECTION',
-      connection: connection
-    })
+    fetch(`${url}/connections`, postHeader(connection))
+      .then(resp => resp.json())
+      .then(json => {
+        catch_errors_dispatch_connections(json, dispatch)
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
   }
+}
+
+const catch_errors_dispatch_connections = ({ connection, person, error, validation_errors }, dispatch) => {
+    if(connection){
+      console.log('connection')
+      dispatch({ type: 'CLEAR_ERRORS' })
+      dispatch({
+        type: 'ADD_CONNECTION',
+        connection: connection
+      })
+    } else if (error) {
+      dispatch({
+        type: 'UPDATE_ERRORS',
+        error: error
+      })
+    } else if (validation_errors) {
+      console.log('validation_errors')
+      dispatch({
+        type: 'UPDATE_VALIDATION_ERRORS',
+        validation_errors: validation_errors
+      })
+    }
 }
 
 export {
