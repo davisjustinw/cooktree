@@ -19,9 +19,11 @@ const getConnections = (id) => {
 const postConnection = connection => {
   return dispatch => {
     dispatch({ type: 'PENDING_REQUEST' })
+    console.log(postHeader(connection))
     fetch(`${url}/connections`, postHeader(connection))
       .then(resp => resp.json())
       .then(json => {
+        console.log('json response')
         catch_errors_dispatch_connections(json, dispatch)
       })
       .catch((error) => {
@@ -30,13 +32,14 @@ const postConnection = connection => {
   }
 }
 
-const catch_errors_dispatch_connections = ({ connection, person, error, validation_errors }, dispatch) => {
-    if(connection){
+const catch_errors_dispatch_connections = (json, dispatch) => {
+    const { id, error, validation_errors } = json
+    if(id){
       console.log('connection')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
-        type: 'ADD_CONNECTION',
-        connection: connection
+        type: 'CONNECTION_ADDED',
+        //connection: connection
       })
     } else if (error) {
       dispatch({

@@ -1,4 +1,5 @@
 const initialState = {
+  submitSuccess: false,
   connections: []
 }
 
@@ -14,13 +15,14 @@ function requesters(state = initialState, action) {
         ...state,
         connections: connections,
       }
-    case 'ADD_CONNECTION':
-      const { connection } = action
+    case 'CONNECTION_ADDED':
+      //const { connection } = action
       console.log('add connection')
 
       return {
         ...state,
-        connections: [...state.connections, connection]
+        //connections: [...state.connections, connection],
+        submitSuccess: true
       }
     default:
       return state

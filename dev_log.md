@@ -136,11 +136,12 @@
   [x] add connection
   [x] new connection form
 
-* wire new connection form to controller
+# 5 April
+  [x] wire new connection form to controller
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
-
+* can I submit connection and return to connections without getConnections round trip
 
 * nav components in people Component
 * invitation

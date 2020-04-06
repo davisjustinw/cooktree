@@ -37,10 +37,9 @@ class ConnectionsController < ApplicationController
 
   def create
     if logged_in?
+      puts params
       connection = Connection.new person: current_person, relationship: connection_params[:relationship]
-      puts "connection made"
-      puts connection.relationship
-      connection.person.build person_params
+      connection.build_relation person_params
       puts "person made"
       connection.save
 
