@@ -153,6 +153,7 @@
   [x] move upload button to avatar placeholder
 
   * update add connection to add email and Invitation
+
   * token url for invite signup
   * invitation sign url
   * make invitation button on connections status specific

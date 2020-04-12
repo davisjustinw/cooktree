@@ -1,5 +1,4 @@
 module ErrorMessage
-
   def invalid_input(user_errors, person_errors)
     {
       json: {

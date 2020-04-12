@@ -1,18 +1,12 @@
 class ConnectionsController < ApplicationController
   include ErrorMessage
+  include Serializers
 
   def index
     if logged_in?
       person = Person.find_by(id: params[:person_id])
       connections = person.connections
-      render json: connections.to_json(
-        only: [:id, :relationship],
-        include: {
-          relation: {
-            only: [:name, :id, :avatar_url],
-            methods: [:avatar_url]}
-        }
-      ), status: :ok
+      render connection_json(connections)
     else
       render login_required
     end
@@ -22,15 +16,7 @@ class ConnectionsController < ApplicationController
     if logged_in?
       puts 'show connection'
       connection = Connection.find_by(id: params[:id])
-
-      render json: connection.to_json(
-        only: [:id, :relationship],
-        include: {
-          relation: {
-            only: [:name, :id, :avatar_url],
-            methods: [:avatar_url]}
-        }
-      ), status: :ok
+      render connection_json(connection)
     else
       render login_required
     end
@@ -41,18 +27,10 @@ class ConnectionsController < ApplicationController
       puts params
       connection = Connection.new person: current_person, relationship: connection_params[:relationship]
       connection.build_relation person_params
-      puts "person made"
       connection.save
 
       if connection.persisted?
-        render json: connection.to_json(
-          only: [:id, :relationship],
-          include: {
-            relation: {
-              only: [:name, :id, :avatar_url],
-              methods: [:avatar_url]}
-          }
-        ), status: :ok
+        render connection_json(connection)
       else
         render invalid_connection(connection.errors, connection.person.errors)
       end
@@ -68,6 +46,10 @@ class ConnectionsController < ApplicationController
 
   def person_params
     params.permit :name, :avatar
+  end
+
+  def user_params
+    params.permit :email
   end
 
 end

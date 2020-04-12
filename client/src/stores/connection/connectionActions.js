@@ -56,8 +56,7 @@ const catch_errors_dispatch_connections = (json, dispatch) => {
     if(id){
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
-        type: 'POST_CONNECTION_COMPLETE',
-        //connection: connection
+        type: 'POST_CONNECTION_COMPLETE'
       })
     } else if (error) {
       dispatch({

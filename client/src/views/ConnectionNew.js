@@ -43,20 +43,21 @@ class ConnectionNew extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const { avatar, name, relationship } = this.state
+    const { avatar, name, relationship, email } = this.state
     const data = new FormData()
 
     data.append('avatar', avatar)
     data.append('name', name)
     data.append('relationship', relationship)
-
+    data.append('email', email)
     this.props.postConnection(data);
   }
 
   render() {
     const { handleChange, handleFileChange, handleSubmit } = this
     const { classes, errors, personId, submitSuccess } = this.props
-    const { name, email, relationship, file } = this.state
+    const { file, name, relationship, email } = this.state
+
     if (submitSuccess === true) {
       return <Redirect to={`/people/${personId}/connections`} />
     }
@@ -103,12 +104,12 @@ class ConnectionNew extends Component {
               <TextField id="email"
                 value={email}
                 onChange={handleChange}
-                error={!!errors.connection.email}
-                helperText={errors.connection.email}
+                error={!!errors.user.email}
+                helperText={errors.user.email}
                 variant="filled"
                 margin="normal"
                 fullWidth
-                label="Email"
+                label="Email Invitation"
                 name="email"
               />
 
