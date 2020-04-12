@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { useRouteMatch } from 'react-router-dom'
 
-import { url } from '../stores/helpers/fetchHelpers'
+import { url, postHeader} from '../stores/helpers/fetchHelpers'
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -15,6 +15,20 @@ import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 const ConnectionCard = ({ avatar_url, name, relationship, personId, id }) => {
   const match = useRouteMatch('/people/:id')
   const classes = useStyles()
+
+  const sendInvitation = () => {
+    const invitation = { email: 'three@four.com', sender: 'Mao'}
+
+    fetch(`${url}/invite`, postHeader(invitation))
+      .then(resp => resp.json())
+      .then(json => {
+        console.log(json)
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
+  }
+
   return (
     <Card variant='outlined' className={classes.root}>
       <CardHeader
@@ -39,7 +53,7 @@ const ConnectionCard = ({ avatar_url, name, relationship, personId, id }) => {
         >
           View
         </Button>
-        <Button size="small" color="primary">
+        <Button onClick={sendInvitation} size="small" color="primary">
           Invite
         </Button>
       </CardActions>

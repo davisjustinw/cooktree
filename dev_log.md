@@ -140,9 +140,12 @@
   [x] wire new connection form to controller
 
 # 6 April
-  * invitation
   [x] connection show Page
 
+# 11 April
+  [x] fixed CORB with connection show page
+  [x] current_user method in two places (ApplicationController and record)
+  * invitation
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
@@ -150,7 +153,7 @@
 X nav components in people Component?
 X re-write Login to functional component with useState
 X might need a check in login for authorized from
-* current_user method in two places (ApplicationController and record)
+
 * list recipes and contributions on connection show page
 * what does authorization look like for different users
 * clear error when routing to new page

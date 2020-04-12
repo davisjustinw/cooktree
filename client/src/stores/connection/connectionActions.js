@@ -39,13 +39,10 @@ const getConnections = id => {
 
 const postConnection = connection => {
   return dispatch => {
-    console.log(connection)
     dispatch({ type: 'POST_CONNECTION' })
-    console.log(postHeader(connection))
     fetch(`${url}/connections`, postHeader(connection))
       .then(resp => resp.json())
       .then(json => {
-        console.log('json response')
         catch_errors_dispatch_connections(json, dispatch)
       })
       .catch((error) => {
@@ -57,7 +54,6 @@ const postConnection = connection => {
 const catch_errors_dispatch_connections = (json, dispatch) => {
     const { id, error, validation_errors } = json
     if(id){
-      console.log('connection')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
         type: 'POST_CONNECTION_COMPLETE',
@@ -69,7 +65,6 @@ const catch_errors_dispatch_connections = (json, dispatch) => {
         error: error
       })
     } else if (validation_errors) {
-      console.log('validation_errors')
       dispatch({
         type: 'UPDATE_VALIDATION_ERRORS',
         validation_errors: validation_errors
