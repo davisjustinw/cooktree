@@ -151,9 +151,10 @@
   [x] add dynamic data to emails
   [x] add front end driven data for emails
   [x] move upload button to avatar placeholder
+  [x] add connection serializer
 
   * update add connection to add email and Invitation
-
+  * aka on a person
   * token url for invite signup
   * invitation sign url
   * make invitation button on connections status specific
