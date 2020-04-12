@@ -5,12 +5,11 @@ import { connect } from 'react-redux'
 import { submitSignup } from '../stores/user/userActions'
 
 import Typography from '@material-ui/core/Typography'
+import AvatarUpload from '../components/AvatarUpload'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
-import Avatar from '@material-ui/core/Avatar'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
-import FileUpload from '../components/FileUpload'
+
 
 class Signup extends Component {
   constructor() {
@@ -67,13 +66,14 @@ class Signup extends Component {
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
-          <Avatar
-            alt={file.name || 'avatar'}
-            src={file.url}
-            className={classes.avatar}
-          >
-            <ScatterPlotIcon />
-          </Avatar>
+
+          <AvatarUpload
+            handleFileChange={handleFileChange}
+            id="avatar"
+            name="avatar"
+            file={file}
+          />
+
           <form noValidate className={classes.form} onSubmit={handleSubmit}>
             <TextField
               onChange={handleChange}
@@ -118,13 +118,6 @@ class Signup extends Component {
               required
             />
 
-            <FileUpload
-              handleFileChange={handleFileChange}
-              id="avatar"
-              name="avatar"
-              file={file}
-              className={classes.button}
-            />
             <Button
               type="submit"
               fullWidth
@@ -142,11 +135,6 @@ class Signup extends Component {
 }
 
 const useStyles = theme => ({
-  avatar: {
-    marginTop: theme.spacing(1),
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
   paper: {
     marginTop: theme.spacing(4),
     display: 'flex',
@@ -156,6 +144,9 @@ const useStyles = theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   button: {
     marginTop: theme.spacing(3),

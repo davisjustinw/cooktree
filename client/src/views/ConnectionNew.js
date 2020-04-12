@@ -5,11 +5,10 @@ import { withStyles } from '@material-ui/core/styles'
 import { changeHandler } from '../helpers/form'
 import { postConnection } from '../stores/connection/connectionActions'
 
-import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
-import FileUpload from '../components/FileUpload'
+import AvatarUpload from '../components/AvatarUpload'
 import { Redirect } from 'react-router-dom'
-import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
+
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 
@@ -19,6 +18,7 @@ class ConnectionNew extends Component {
     this.state = {
       submitSuccess: false,
       name: '',
+      email: '',
       relationship: '',
       file: {
         name: '',
@@ -56,7 +56,7 @@ class ConnectionNew extends Component {
   render() {
     const { handleChange, handleFileChange, handleSubmit } = this
     const { classes, errors, personId, submitSuccess } = this.props
-    const { name, relationship, file } = this.state
+    const { name, email, relationship, file } = this.state
     if (submitSuccess === true) {
       return <Redirect to={`/people/${personId}/connections`} />
     }
@@ -64,16 +64,15 @@ class ConnectionNew extends Component {
         <>
           <div className={classes.paper}>
             <Typography component="h1" variant="h5">
-              Add Person
+              Add Connection
             </Typography>
-            <Avatar
-              alt={file.name || 'avatar'}
-              src={file.url}
-              className={classes.avatar}
-            >
-              <ScatterPlotIcon />
-            </Avatar>
+
             <form noValidate className={classes.form} onSubmit={handleSubmit}>
+              <AvatarUpload id="avatar"
+                handleFileChange={handleFileChange}
+                name="avatar"
+                file={{ name: file.name, url: file.url }}
+              />
               <TextField id="name"
                 value={name}
                 onChange={handleChange}
@@ -101,12 +100,18 @@ class ConnectionNew extends Component {
                 required
               />
 
-              <FileUpload id="avatar"
-                handleFileChange={handleFileChange}
-                name="avatar"
-                file={{ name: file.name, url: file.url }}
-                className={classes.button}
+              <TextField id="email"
+                value={email}
+                onChange={handleChange}
+                error={!!errors.connection.email}
+                helperText={errors.connection.email}
+                variant="filled"
+                margin="normal"
+                fullWidth
+                label="Email"
+                name="email"
               />
+
               <Button
                 type="submit"
                 fullWidth
@@ -125,11 +130,6 @@ class ConnectionNew extends Component {
 }
 
 const useStyles = theme => ({
-  avatar: {
-    marginTop: theme.spacing(1),
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
   paper: {
     marginTop: theme.spacing(4),
     display: 'flex',
@@ -139,6 +139,9 @@ const useStyles = theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   button: {
     marginTop: theme.spacing(3),

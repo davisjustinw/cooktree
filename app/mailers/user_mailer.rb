@@ -1,6 +1,8 @@
 class UserMailer < ApplicationMailer
 
-  def invitation()
-    mail(to:  'three@four.com', subject: "CookTree Invitation")
+  def invitation(invitation)
+    @user = invitation[:user]
+    @sender = invitation[:sender]
+    mail(to:  @user[:email], subject: "CookTree Invitation")
  end
 end

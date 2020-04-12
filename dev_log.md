@@ -145,8 +145,20 @@
 # 11 April
   [x] fixed CORB with connection show page
   [x] current_user method in two places (ApplicationController and record)
+
+# 12 April
+  [x] emails sending with letter letter_opener
+  [x] add dynamic data to emails
+  [x] add front end driven data for emails
+  [x] move upload button to avatar placeholder
+
+  * update add connection to add email and Invitation
+  * token url for invite signup
+  * invitation sign url
+  * make invitation button on connections status specific
   * invitation
 
+* cancel on avatar upload bombs out
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
 * can I submit connection and return to connections without getConnections round trip

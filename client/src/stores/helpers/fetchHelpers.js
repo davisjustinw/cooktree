@@ -8,6 +8,15 @@ const getHeader = {
   }
 }
 
+const jsonPostHeader = body => ({
+  method: 'POST',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(body)
+})
+
 const postHeader = body => ({
  method: 'POST',
  credentials: 'include',
@@ -17,5 +26,6 @@ const postHeader = body => ({
 export {
   url,
   getHeader,
-  postHeader
+  postHeader,
+  jsonPostHeader
 }

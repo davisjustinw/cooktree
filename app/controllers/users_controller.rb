@@ -25,11 +25,13 @@ def invite
   puts params
   puts '***'
   # @invitation = { email: 'four@five.com', sender: 'Mao'}
-  UserMailer.invitation().deliver_now
+
+  UserMailer.invitation(params[:invitation]).deliver_now
   render json: { message: 'Invitation Sent' }, status: :ok
 end
 
 private
+
 def user_params
   params.permit :email, :password
 end
