@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import RootRoutes from './components/routes/RootRoutes'
+import RootRoutes from './routes/RootRoutes'
 import { connect } from 'react-redux'
-import { getCurrentUser } from './actions/auth'
+import { getCurrentUser } from './stores/user/userActions'
 import ControlContainer from './components/containers/ControlContainer'
 import { withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -43,9 +43,9 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ user }) => {
   return {
-    user: auth.user
+    user: user.user
   }
 }
 

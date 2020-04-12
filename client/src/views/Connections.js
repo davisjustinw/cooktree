@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getConnections } from '../../actions/requesters'
+import { getConnections } from '../stores/connection/connectionActions'
 import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
-import ConnectionCard from '../ConnectionCard'
-import Loading from '../Loading'
+import ConnectionCard from '../components/ConnectionCard'
+import Loading from '../components/Loading'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import Typography from '@material-ui/core/Typography'
 
 class Connections extends Component {
   componentDidMount() {
-    console.log('mounting')
-    this.props.getConnections(this.props.person.id)
+    this.props.getConnections(this.props.person_id)
   }
 
   render(){
-    const { connections, classes, person } = this.props
-    console.log(connections)
+    const { connections, classes, person_id } = this.props
     if(!connections){
       return <Loading/>
     } else {
@@ -29,21 +27,24 @@ class Connections extends Component {
         </Typography>
         {
           connections.map(connection => {
-          const {relationship, relation} = connection
-          const { id, name, avatar_url } = relation
+
+          const { id, relationship, relation } = connection
+          const { name, avatar_url } = relation
+
           return (
             <ConnectionCard
               key={id}
               avatar_url={avatar_url}
               name={name}
               relationship={relationship}
+              person_id={person_id}
               id={id}
             />)
           })
         }
         <Fab
           component={RouterLink}
-          to={`/people/${person.id}/connections/new`}
+          to={`/people/${person_id}/connections/new`}
           color="secondary"
           className={classes.fab}
         >
@@ -55,10 +56,12 @@ class Connections extends Component {
   }
 }
 
-const mapStateToProps = ({auth, requesters}) => ({
-  person: auth.person,
-  connections: requesters.connections
-})
+const mapStateToProps = ({ connection, user }) => {
+  return {
+    connections: connection.list,
+    person_id: user.person_id
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   getConnections: personId => dispatch(getConnections(personId))

@@ -20,6 +20,7 @@ class ConnectionsController < ApplicationController
 
   def show
     if logged_in?
+      puts 'show connection'
       connection = Connection.find_by(id: params[:id])
 
       render json: connection.to_json(

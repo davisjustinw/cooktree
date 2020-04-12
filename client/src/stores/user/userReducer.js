@@ -1,17 +1,13 @@
 const initialState = {
-  user: {
-    email: '',
-  },
-  person: {
-    id: '',
-    name: '',
-    avatar: ''
-  },
+  email: '',
+  person_id: '',
+  name: '',
+  avatar: '',
   status: 'LOGGING_IN'
 }
 
-function auth(state = initialState, action) {
-  switch (action.type) {
+function user(state = initialState, { type, user, person }) {
+  switch (type) {
     case 'PENDING_LOGIN':
       return {
         ...state,
@@ -22,39 +18,40 @@ function auth(state = initialState, action) {
       return {
         ...state,
         status: 'LOGGED_IN',
-        user: action.user,
-        person: action.person
+        email: user.email,
+        person_id: person.id,
+        name: person.name,
+        avatar: person.avatar
       }
 
     case 'SUBMIT_LOGOUT':
       return {
         ...state,
         status: 'LOGGED_OUT',
-        user: {
-          email: '',
-        },
-        person: {
-          id: '',
-          name: '',
-          avatar: ''
-        },
+        email: '',
+        id: '',
+        name: '',
+        avatar: ''
       }
 
     case 'SUBMIT_SIGNUP':
       return {
         ...state,
         status: 'LOGGED_IN',
-        user: action.user,
-        person: action.person
+        email: user.email,
+        person_id: person.id,
+        name: person.name,
+        avatar: person.avatar
       }
 
     case 'GET_CURRENT_USER':
-      const { user, person } = action
       return {
         ...state,
         status: (user.email ? 'LOGGED_IN' : 'LOGGED_OUT'),
-        user: user,
-        person: person
+        email: user.email,
+        person_id: person.id,
+        name: person.name,
+        avatar: person.avatar
       }
 
     default:
@@ -62,4 +59,4 @@ function auth(state = initialState, action) {
   }
 }
 
-export default auth
+export default user

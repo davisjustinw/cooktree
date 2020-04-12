@@ -5,16 +5,16 @@ import {
   combineReducers
 } from 'redux'
 
-import auth from './reducers/auth'
-import requesters from './reducers/requesters'
-import controls from './reducers/controls'
-import error from './reducers/error'
+import user from './stores/user/userReducer'
+import connection from './stores/connection/connectionReducer'
+import ui from './stores/ui/uiReducer'
+import error from './stores/error/errorReducer'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
-  auth,
-  requesters,
-  controls,
+  user,
+  connection,
+  ui,
   error
 })
 

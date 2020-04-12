@@ -1,13 +1,34 @@
-import { getHeader, url, postHeader } from './fetchHelpers'
+import { getHeader, url, postHeader } from '../helpers/fetchHelpers'
 
-const getConnections = (id) => {
+const getConnection = id => {
   return dispatch => {
-    dispatch({ type: 'PENDING_REQUEST'})
+    dispatch({ type: 'GET_CONNECTION'})
+    fetch(`${url}/connections/${id}`, getHeader)
+      .then(resp => resp.json())
+      .then(connection => {
+        const { relation, relationship, id } = connection
+        dispatch({
+          type: 'GET_CONNECTION_COMPLETE',
+          current: {
+            connection_id: id,
+            relation_id: relation.id,
+            name: relation.name,
+            avatar_url: relation.avatar_url,
+            relationship: relationship
+          }
+        })
+      })
+  }
+}
+
+const getConnections = id => {
+  return dispatch => {
+    dispatch({ type: 'GET_CONNECTIONS'})
     fetch(`${url}/connections?person_id=${id}`, getHeader)
       .then(resp => resp.json())
       .then(connections => {
           dispatch({
-            type: 'GET_CONNECTIONS',
+            type: 'GET_CONNECTIONS_COMPLETE',
             connections: connections
           })
         }
@@ -18,7 +39,7 @@ const getConnections = (id) => {
 
 const postConnection = connection => {
   return dispatch => {
-    dispatch({ type: 'PENDING_REQUEST' })
+    dispatch({ type: 'POST_CONNECTION' })
     console.log(postHeader(connection))
     fetch(`${url}/connections`, postHeader(connection))
       .then(resp => resp.json())
@@ -38,7 +59,7 @@ const catch_errors_dispatch_connections = (json, dispatch) => {
       console.log('connection')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
-        type: 'CONNECTION_ADDED',
+        type: 'POST_CONNECTION_COMPLETE',
         //connection: connection
       })
     } else if (error) {
@@ -57,5 +78,6 @@ const catch_errors_dispatch_connections = (json, dispatch) => {
 
 export {
   getConnections,
-  postConnection
+  postConnection,
+  getConnection
 }

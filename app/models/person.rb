@@ -9,9 +9,9 @@ class Person < ApplicationRecord
 
   has_many :connections
   has_many :relations, through: :connections
-  
+
 
   def avatar_url
-    rails_blob_path(self.avatar, only_path: true) if self.avatar.attached?
+    rails_blob_path(self.avatar, disposition: "attachment", only_path: true) if self.avatar.attached?
   end
 end

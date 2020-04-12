@@ -1,16 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { mapUserToProps } from '../stores/mappers'
 import { Route, Redirect } from 'react-router-dom'
-import Loading from '../Loading'
+import Loading from '../components/Loading'
 
-function PrivateRoute({ children, redirectTo, ...rest }) {
-  console.log('PrivateRoute')
-  
-  const { authStatus, location } = rest
+function PrivateRoute(props) {
+  const { children, redirectTo, ...rest } = props
+  const { status, location } = rest
+
   const authRoute = () => {
-    switch(authStatus) {
+    switch(status) {
       case 'LOGGED_IN':
         console.log('pr LOGGED_IN')
+        // how do I pass props to children here
         return children
       case 'LOGGED_OUT':
         console.log('pr LOGGED_OUT')
@@ -28,14 +30,9 @@ function PrivateRoute({ children, redirectTo, ...rest }) {
         return null
     }
   }
-  return <Route {...rest} render={authRoute}/>
+  return (
+    <Route {...rest} render={authRoute}/>
+  )
 }
 
-const mapStateToProps = ({ auth }) => {
-  return {
-    user: auth.user,
-    authStatus: auth.status
-  }
-}
-
-export default connect(mapStateToProps)(PrivateRoute)
+export default connect(mapUserToProps)(PrivateRoute)

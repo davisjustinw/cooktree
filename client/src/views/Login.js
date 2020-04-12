@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom';
-import { useFormInput } from '../../handlers/form'
-import { submitLogin } from '../../actions/auth'
+import { useFormInput } from '../helpers/form'
+import { submitLogin } from '../stores/user/userActions'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
 import { makeStyles } from '@material-ui/core/styles';

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { mapAuthToProps } from './helpers/stateMappers'
+import { mapUserToProps } from '../stores/mappers'
 import { Link as RouterLink } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -10,15 +10,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const UserDrawer = ({ user, person }) => {
+const UserDrawer = ({ email, name, avatar }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  let avatar_url = ''
 
-  const { email } = user
-  const { name } = person
-  let avatar = ''
-
-  if(person.avatar) {
-    avatar = `http://localhost:3001${person.avatar}`
+  if(avatar) {
+    avatar_url = `http://localhost:3001${avatar}`
   }
 
   const handleClick = event => {
@@ -35,7 +32,7 @@ const UserDrawer = ({ user, person }) => {
         avatar={
           <Avatar
             alt={name || 'avatar'}
-            src={avatar}
+            src={avatar_url}
           >
             {!avatar ? <ScatterPlotIcon/> : null}
           </Avatar>
@@ -70,4 +67,4 @@ const UserDrawer = ({ user, person }) => {
   )
 }
 
-export default connect(mapAuthToProps)(UserDrawer)
+export default connect(mapUserToProps)(UserDrawer)

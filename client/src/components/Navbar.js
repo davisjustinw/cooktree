@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleMobileOpen } from '../actions/controls'
+import { toggleMobileOpen } from '../stores/ui/uiActions'
 import { withRouter } from 'react-router'
 import { makeStyles } from '@material-ui/core/styles'
 

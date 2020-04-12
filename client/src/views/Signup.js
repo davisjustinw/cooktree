@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { changeHandler } from '../../handlers/form'
+import { changeHandler } from '../helpers/form'
 import { connect } from 'react-redux'
-import { submitSignup } from '../../actions/auth'
+import { submitSignup } from '../stores/user/userActions'
 
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Avatar from '@material-ui/core/Avatar'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
-import FileUpload from '../FileUpload'
+import FileUpload from '../components/FileUpload'
 
 class Signup extends Component {
   constructor() {

@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get '/get_current_user', to: 'sessions#get_current_user'
 
   resources :recipes, only: [:index]
-  resources :connections, only: [:index, :create]
+  resources :connections, only: [:index, :create, :show]
 end

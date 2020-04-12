@@ -139,14 +139,17 @@
 # 5 April
   [x] wire new connection form to controller
 
+# 6 April
+  * invitation
+  [x] connection show Page
+
+
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
 * can I submit connection and return to connections without getConnections round trip
-
-* nav components in people Component
-* invitation
-* re-write Login to functional component with useState
-* might need a check in login for authorized from
+X nav components in people Component?
+X re-write Login to functional component with useState
+X might need a check in login for authorized from
 * current_user method in two places (ApplicationController and record)
 * list recipes and contributions on connection show page
 * what does authorization look like for different users

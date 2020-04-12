@@ -2,7 +2,7 @@ const initialState = {
   mobileOpen: false
 }
 
-function controls(state = initialState, action) {
+function ui(state = initialState, action) {
   switch(action.type){
     case 'TOGGLE_MOBILE_OPEN':
       return {
@@ -14,4 +14,4 @@ function controls(state = initialState, action) {
   }
 }
 
-export default controls
+export default ui
