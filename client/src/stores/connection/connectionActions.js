@@ -39,6 +39,7 @@ const getConnections = id => {
 
 const postConnection = connection => {
   return dispatch => {
+    console.log(connection)
     dispatch({ type: 'POST_CONNECTION' })
     console.log(postHeader(connection))
     fetch(`${url}/connections`, postHeader(connection))

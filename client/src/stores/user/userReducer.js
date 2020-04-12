@@ -1,6 +1,6 @@
 const initialState = {
   email: '',
-  person_id: '',
+  personId: '',
   name: '',
   avatar: '',
   status: 'LOGGING_IN'
@@ -19,7 +19,7 @@ function user(state = initialState, { type, user, person }) {
         ...state,
         status: 'LOGGED_IN',
         email: user.email,
-        person_id: person.id,
+        personId: person.id,
         name: person.name,
         avatar: person.avatar
       }
@@ -29,7 +29,7 @@ function user(state = initialState, { type, user, person }) {
         ...state,
         status: 'LOGGED_OUT',
         email: '',
-        id: '',
+        personId: '',
         name: '',
         avatar: ''
       }
@@ -39,7 +39,7 @@ function user(state = initialState, { type, user, person }) {
         ...state,
         status: 'LOGGED_IN',
         email: user.email,
-        person_id: person.id,
+        personId: person.id,
         name: person.name,
         avatar: person.avatar
       }
@@ -49,7 +49,7 @@ function user(state = initialState, { type, user, person }) {
         ...state,
         status: (user.email ? 'LOGGED_IN' : 'LOGGED_OUT'),
         email: user.email,
-        person_id: person.id,
+        personId: person.id,
         name: person.name,
         avatar: person.avatar
       }

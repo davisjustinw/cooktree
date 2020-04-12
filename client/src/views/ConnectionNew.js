@@ -55,10 +55,10 @@ class ConnectionNew extends Component {
 
   render() {
     const { handleChange, handleFileChange, handleSubmit } = this
-    const { classes, errors, person, submitSuccess } = this.props
+    const { classes, errors, personId, submitSuccess } = this.props
     const { name, relationship, file } = this.state
     if (submitSuccess === true) {
-      return <Redirect to={`/people/${person.id}/connections`} />
+      return <Redirect to={`/people/${personId}/connections`} />
     }
     return (
         <>
@@ -145,10 +145,10 @@ const useStyles = theme => ({
   },
 })
 
-const mapStateToProps = ({ error, auth, requesters }) => ({
+const mapStateToProps = ({ error, user, connection }) => ({
   errors: error.validation_errors,
-  person: auth.person,
-  submitSuccess: requesters.submitSuccess
+  personId: user.personId,
+  submitSuccess: connection.submitSuccess
 })
 
 const mapDispatchToProps = dispatch => ({
