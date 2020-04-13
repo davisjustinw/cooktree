@@ -4,8 +4,8 @@ class ConnectionsController < ApplicationController
 
   def index
     if logged_in?
-      person = Person.find_by(id: params[:person_id])
-      connections = person.connections
+      user = User.find_by(id: params[:id])
+      connections = user.connections
       render connection_json(connections)
     else
       render login_required

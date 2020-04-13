@@ -12,8 +12,8 @@ import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const ConnectionCard = ({ avatar_url, name, relationship, personId, id }) => {
-  const match = useRouteMatch('/people/:id')
+const ConnectionCard = ({ avatar_url, name, relationship, userId, id }) => {
+  const match = useRouteMatch('/users/:id')
   const classes = useStyles()
 
   const sendInvitation = () => {

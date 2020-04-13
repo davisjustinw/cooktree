@@ -1,4 +1,4 @@
 class RecipePerson < ApplicationRecord
   belongs_to :recipe
-  belongs_to :person
+  belongs_to :user
 end

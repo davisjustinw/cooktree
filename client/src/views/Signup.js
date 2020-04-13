@@ -78,8 +78,8 @@ class Signup extends Component {
             <TextField
               onChange={handleChange}
               value={state.name}
-              error={!!errors.person.name}
-              helperText={errors.person.name}
+              error={!!errors.user.name}
+              helperText={errors.user.name}
               variant="filled"
               margin="normal"
               fullWidth

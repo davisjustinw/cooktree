@@ -1,12 +1,12 @@
 const initialState = {
-  email: '',
-  personId: '',
+  status: 'LOGGING_IN',
+  id: '',
   name: '',
-  avatar: '',
-  status: 'LOGGING_IN'
+  email: '',
+  avatar: ''
 }
 
-function user(state = initialState, { type, user, person }) {
+function user(state = initialState, { type, user }) {
   switch (type) {
     case 'PENDING_LOGIN':
       return {
@@ -18,19 +18,19 @@ function user(state = initialState, { type, user, person }) {
       return {
         ...state,
         status: 'LOGGED_IN',
+        id: user.id,
+        name: user.name,
         email: user.email,
-        personId: person.id,
-        name: person.name,
-        avatar: person.avatar
+        avatar: user.avatar
       }
 
     case 'SUBMIT_LOGOUT':
       return {
         ...state,
         status: 'LOGGED_OUT',
-        email: '',
-        personId: '',
+        id: '',
         name: '',
+        email: '',
         avatar: ''
       }
 
@@ -38,20 +38,20 @@ function user(state = initialState, { type, user, person }) {
       return {
         ...state,
         status: 'LOGGED_IN',
+        id: user.id,
+        name: user.name,
         email: user.email,
-        personId: person.id,
-        name: person.name,
-        avatar: person.avatar
+        avatar: user.avatar
       }
 
     case 'GET_CURRENT_USER':
       return {
         ...state,
         status: (user.email ? 'LOGGED_IN' : 'LOGGED_OUT'),
+        id: user.id,
+        name: user.name,
         email: user.email,
-        personId: person.id,
-        name: person.name,
-        avatar: person.avatar
+        avatar: user.avatar
       }
 
     default:

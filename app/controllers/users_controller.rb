@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
 include ErrorMessage
+include Serializers
 
 def create
   @user = User.new(user_params)
-  @user.build_person(name: person_params[:name])
-
   @user.save
 
   if @user.persisted?
     session[:user_id] = @user.id
-    @person = @user.person
-    @person.avatar.attach(person_params[:avatar]) if !person_params[:avatar].blank?
-    render current_user_person_json
+    @user.avatar.attach(user_params[:avatar]) if !user_params[:avatar].blank?
+    render user_json(current_user)
   else
     # need better response here
     render invalid_input(@user.errors, @user.person.errors)
@@ -33,11 +31,7 @@ end
 private
 
 def user_params
-  params.permit :email, :password
-end
-
-def person_params
-  params.permit :name, :avatar
+  params.permit :name, :email, :password, :avatar
 end
 
 end

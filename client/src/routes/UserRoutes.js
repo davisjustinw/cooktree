@@ -6,8 +6,8 @@ import ConnectionNew from '../views/ConnectionNew'
 import Recipes from '../views/Recipes'
 import PrivateRoute from '../redirects/PrivateRoute'
 
-const PeopleRoutes = () => {
-  const match = useRouteMatch('/people/:id')
+const UserRoutes = () => {
+  const match = useRouteMatch('/users/:id')
   return (
     <>
       <Switch>
@@ -26,4 +26,4 @@ const PeopleRoutes = () => {
   )
 }
 
-export default PeopleRoutes
+export default UserRoutes

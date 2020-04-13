@@ -24,7 +24,7 @@ moot = Person.first
 5.times do
   name = Faker::Ancient.hero
   puts name
-  p = Person.create name: name
+  p = User.create name: name
   avatar = get_avatar name
   p.avatar.attach io: avatar, filename: "#{name}.png"
   moot.connections.create relation: p, relationship: Faker::Relationship.familial

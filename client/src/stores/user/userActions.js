@@ -37,7 +37,7 @@ const submitLogout = () => {
 
     fetch('http://localhost:3001/logout', headers)
       .then(resp => resp.json())
-      .then(({message}) => {
+      .then(({ message }) => {
           console.log(message)
         }
       )
@@ -79,11 +79,10 @@ const getCurrentUser = () => {
 
     fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
-      .then(({user, person}) => {
+      .then(({ user }) => {
           dispatch({
             type: 'GET_CURRENT_USER',
-            user: user,
-            person: person
+            user: user
           })
         }
       )
@@ -91,14 +90,14 @@ const getCurrentUser = () => {
   }
 }
 
-const catch_errors_dispatch_login = ({ user, person, error, validation_errors }, dispatch) => {
+const catch_errors_dispatch_login = (json, dispatch) => {
+    const { user, error, validation_errors } = json
     if(user){
       console.log('user')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
         type: 'SUBMIT_LOGIN',
-        user: user,
-        person: person
+        user: user
       })
     } else if (error) {
       dispatch({

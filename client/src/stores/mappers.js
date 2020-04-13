@@ -1,7 +1,7 @@
 const mapUserToProps = ({ user }) => ({
-  email: user.email,
-  person_id: user.person_id,
+  id: user.id,
   name: user.name,
+  email: user.email,
   avatar: user.avatar,
   status: user.status
 })

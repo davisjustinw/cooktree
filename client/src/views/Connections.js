@@ -12,11 +12,11 @@ import Typography from '@material-ui/core/Typography'
 
 class Connections extends Component {
   componentDidMount() {
-    this.props.getConnections(this.props.personId)
+    this.props.getConnections(this.props.userId)
   }
 
   render(){
-    const { connections, classes, personId } = this.props
+    const { connections, classes, userId } = this.props
     if(!connections){
       return <Loading/>
     } else {
@@ -37,14 +37,14 @@ class Connections extends Component {
               avatar_url={avatar_url}
               name={name}
               relationship={relationship}
-              personId={personId}
+              userId={userId}
               id={id}
             />)
           })
         }
         <Fab
           component={RouterLink}
-          to={`/people/${personId}/connections/new`}
+          to={`/people/${userId}/connections/new`}
           color="secondary"
           className={classes.fab}
         >
@@ -59,12 +59,12 @@ class Connections extends Component {
 const mapStateToProps = ({ connection, user }) => {
   return {
     connections: connection.list,
-    personId: user.personId
+    userId: user.id
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getConnections: personId => dispatch(getConnections(personId))
+  getConnections: userId => dispatch(getConnections(userId))
 })
 
 const useStyles = theme => ({

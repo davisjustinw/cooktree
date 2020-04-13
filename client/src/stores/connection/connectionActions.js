@@ -24,7 +24,9 @@ const getConnection = id => {
 const getConnections = id => {
   return dispatch => {
     dispatch({ type: 'GET_CONNECTIONS'})
-    fetch(`${url}/connections?person_id=${id}`, getHeader)
+    console.log('get connection')
+    console.log(id)
+    fetch(`${url}/connections?id=${id}`, getHeader)
       .then(resp => resp.json())
       .then(connections => {
           dispatch({

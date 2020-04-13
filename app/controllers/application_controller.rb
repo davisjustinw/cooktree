@@ -1,44 +1,6 @@
 class ApplicationController < ActionController::API
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def current_person
-    current_user.person
-  end
-
-  def current_user_person_json
-    avatar = ''
-    avatar = rails_blob_path(current_person.avatar, only_path: true) if current_person.avatar.attached?
-    {
-      json: {
-        user: {
-          email: current_user.email,
-        },
-        person: {
-          id: current_person.id,
-          name: current_person.name,
-          avatar: avatar
-        }
-      },
-      status: :ok
-    }
-  end
-
-  def empty_user_person_json
-    {
-      json: {
-        user: {
-          email: '',
-        },
-        person: {
-          id: '',
-          name: '',
-          avatar: ''
-        }
-      },
-      status: :ok
-    }
+    current_user ||= User.find_by(id: session[:user_id])
   end
 
   def logged_in?
