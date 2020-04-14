@@ -153,6 +153,8 @@
   [x] move upload button to avatar placeholder
   [x] add connection serializer
 
+  * fix build relation in create connection controller 
+
   * update add connection to add email and Invitation
   * aka on a person
   * token url for invite signup

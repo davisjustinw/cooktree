@@ -55,11 +55,11 @@ class ConnectionNew extends Component {
 
   render() {
     const { handleChange, handleFileChange, handleSubmit } = this
-    const { classes, errors, personId, submitSuccess } = this.props
+    const { classes, errors, userId, submitSuccess } = this.props
     const { file, name, relationship, email } = this.state
 
     if (submitSuccess === true) {
-      return <Redirect to={`/people/${personId}/connections`} />
+      return <Redirect to={`/users/${userId}/connections`} />
     }
     return (
         <>
@@ -77,8 +77,8 @@ class ConnectionNew extends Component {
               <TextField id="name"
                 value={name}
                 onChange={handleChange}
-                error={!!errors.person.name}
-                helperText={errors.person.name}
+                error={!!errors.user.name}
+                helperText={errors.user.name}
                 variant="filled"
                 margin="normal"
                 fullWidth
@@ -151,7 +151,7 @@ const useStyles = theme => ({
 
 const mapStateToProps = ({ error, user, connection }) => ({
   errors: error.validation_errors,
-  personId: user.personId,
+  userId: user.id,
   submitSuccess: connection.submitSuccess
 })
 

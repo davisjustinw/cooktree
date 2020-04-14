@@ -86,7 +86,6 @@ class Signup extends Component {
               id="name"
               label="Name"
               name="name"
-              autoFocus
               required
             />
             <TextField

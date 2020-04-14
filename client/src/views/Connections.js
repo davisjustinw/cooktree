@@ -44,7 +44,7 @@ class Connections extends Component {
         }
         <Fab
           component={RouterLink}
-          to={`/people/${userId}/connections/new`}
+          to={`/users/${userId}/connections/new`}
           color="secondary"
           className={classes.fab}
         >

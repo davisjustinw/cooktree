@@ -25,14 +25,16 @@ class ConnectionsController < ApplicationController
   def create
     if logged_in?
       puts params
-      connection = Connection.new person: current_person, relationship: connection_params[:relationship]
-      connection.build_relation person_params
+      connection = Connection.new user: current_user, relationship: connection_params[:relationship]
+      relation = User.new relation_params
+      relation.save
+      connection.relation = relation
       connection.save
 
       if connection.persisted?
         render connection_json(connection)
       else
-        render invalid_connection(connection.errors, connection.person.errors)
+        render invalid_connection(connection.errors, connection.user.errors)
       end
     else
       render login_required
@@ -44,12 +46,8 @@ class ConnectionsController < ApplicationController
     params.permit :relationship
   end
 
-  def person_params
-    params.permit :name, :avatar
-  end
-
-  def user_params
-    params.permit :email
+  def relation_params
+    params.permit :name, :email, :avatar
   end
 
 end
