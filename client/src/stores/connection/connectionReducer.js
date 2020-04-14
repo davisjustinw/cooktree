@@ -36,6 +36,11 @@ function connection(state = initialState, action) {
         ...state,
         submitSuccess: true
       }
+    case 'SUBMIT_SUCCESS':
+      return {
+        ...state,
+        submitSuccess: false
+      }
     default:
       return state
   }

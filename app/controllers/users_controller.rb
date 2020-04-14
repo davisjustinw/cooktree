@@ -17,13 +17,6 @@ def create
 end
 
 def invite
-  puts '***'
-  puts 'invitation'
-  puts '***'
-  puts params
-  puts '***'
-  # @invitation = { email: 'four@five.com', sender: 'Mao'}
-
   UserMailer.invitation(params[:invitation]).deliver_now
   render json: { message: 'Invitation Sent' }, status: :ok
 end

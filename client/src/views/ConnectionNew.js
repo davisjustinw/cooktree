@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 
 import { changeHandler } from '../helpers/form'
-import { postConnection } from '../stores/connection/connectionActions'
+import { postConnection, resetSuccess } from '../stores/connection/connectionActions'
 
 import Button from '@material-ui/core/Button'
 import AvatarUpload from '../components/AvatarUpload'
@@ -55,10 +55,11 @@ class ConnectionNew extends Component {
 
   render() {
     const { handleChange, handleFileChange, handleSubmit } = this
-    const { classes, errors, userId, submitSuccess } = this.props
+    const { classes, errors, userId, submitSuccess, resetSuccess } = this.props
     const { file, name, relationship, email } = this.state
 
     if (submitSuccess === true) {
+      resetSuccess()
       return <Redirect to={`/users/${userId}/connections`} />
     }
     return (
@@ -156,7 +157,8 @@ const mapStateToProps = ({ error, user, connection }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    postConnection: formData => dispatch(postConnection(formData))
+    postConnection: formData => dispatch(postConnection(formData)),
+    resetSuccess: () => dispatch(resetSuccess())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(ConnectionNew))

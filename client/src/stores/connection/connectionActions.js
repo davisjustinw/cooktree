@@ -24,11 +24,12 @@ const getConnection = id => {
 const getConnections = id => {
   return dispatch => {
     dispatch({ type: 'GET_CONNECTIONS'})
-    console.log('get connection')
+    console.log('get connections')
     console.log(id)
     fetch(`${url}/connections?id=${id}`, getHeader)
       .then(resp => resp.json())
       .then(connections => {
+          console.log(connections)
           dispatch({
             type: 'GET_CONNECTIONS_COMPLETE',
             connections: connections
@@ -73,8 +74,15 @@ const catch_errors_dispatch_connections = (json, dispatch) => {
     }
 }
 
+const resetSuccess = () => {
+  return dispatch => {
+    dispatch({ type: 'SUBMIT_SUCCESS' })
+  }
+}
+
 export {
   getConnections,
   postConnection,
-  getConnection
+  getConnection,
+  resetSuccess
 }

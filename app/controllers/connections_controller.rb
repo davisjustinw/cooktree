@@ -3,41 +3,31 @@ class ConnectionsController < ApplicationController
   include Serializers
 
   def index
-    if logged_in?
-      user = User.find_by(id: params[:id])
-      connections = user.connections
-      render connection_json(connections)
-    else
-      render login_required
-    end
+    redirect_if_not_logged_in
+    user = User.find_by(id: params[:id])
+    connections = user.connections
+    render connection_json(connections)
   end
 
   def show
-    if logged_in?
-      puts 'show connection'
-      connection = Connection.find_by(id: params[:id])
-      render connection_json(connection)
-    else
-      render login_required
-    end
+    redirect_if_not_logged_in
+    connection = Connection.find_by(id: params[:id])
+    render connection_json(connection)
   end
 
   def create
-    if logged_in?
-      puts params
-      connection = Connection.new user: current_user, relationship: connection_params[:relationship]
-      relation = User.new relation_params
-      relation.save
-      connection.relation = relation
-      connection.save
+    redirect_if_not_logged_in
 
-      if connection.persisted?
-        render connection_json(connection)
-      else
-        render invalid_connection(connection.errors, connection.user.errors)
-      end
+    connection = Connection.new user: current_user, relationship: connection_params[:relationship]
+    relation = User.create relation_params
+    connection.relation = relation
+    connection.save
+
+    if connection.persisted?
+      UserMailer.invitation(relation, current_user).deliver_now if relation[:email]
+      render connection_json(connection)
     else
-      render login_required
+      render invalid_connection(connection.errors, connection.user.errors)
     end
   end
 
@@ -49,5 +39,6 @@ class ConnectionsController < ApplicationController
   def relation_params
     params.permit :name, :email, :avatar
   end
+
 
 end

@@ -153,13 +153,18 @@
   [x] move upload button to avatar placeholder
   [x] add connection serializer
 
-  * fix build relation in create connection controller 
+# 13 April
+  [x] fix build relation in create connection controller
+  [x] update add connection to add email and Invitation
+  [x] fixed add connection button doesn't work after new connection
 
-  * update add connection to add email and Invitation
-  * aka on a person
   * token url for invite signup
-  * invitation sign url
+  * invitation signup url
   * make invitation button on connections status specific
+
+  * need validations in create connection
+  * aka on a person
+
   * invitation
 
 * cancel on avatar upload bombs out

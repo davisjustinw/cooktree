@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :relations, through: :connections
 
   validates :name, presence: true
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, allow_blank: true
   validates :email, format: { with: /[^\s]@[^\s]/,
     message: "must have an '@' symbol" }, allow_blank: true
 
