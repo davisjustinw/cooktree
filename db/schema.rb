@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_032132) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "activated", default: false
+    t.string "status", default: "NO_INVITE"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

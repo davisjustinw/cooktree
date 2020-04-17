@@ -158,6 +158,10 @@
   [x] update add connection to add email and Invitation
   [x] fixed add connection button doesn't work after new connection
 
+# 16 April
+
+  status no_invite, invited, confirmed
+
   * token url for invite signup
   * invitation signup url
   * make invitation button on connections status specific

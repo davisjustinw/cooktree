@@ -24,7 +24,10 @@ class ConnectionsController < ApplicationController
     connection.save
 
     if connection.persisted?
-      UserMailer.invitation(relation, current_user).deliver_now if relation[:email]
+      relation.invitation from: current_user if relation[:email]
+      puts '***'
+      puts relation.status
+      puts '***'
       render connection_json(connection)
     else
       render invalid_connection(connection.errors, connection.user.errors)
@@ -32,6 +35,8 @@ class ConnectionsController < ApplicationController
   end
 
   private
+
+
   def connection_params
     params.permit :relationship
   end

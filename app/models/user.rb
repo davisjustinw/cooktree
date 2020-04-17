@@ -14,8 +14,18 @@ class User < ApplicationRecord
   validates :email, format: { with: /[^\s]@[^\s]/,
     message: "must have an '@' symbol" }, allow_blank: true
 
-  # need to custom validate email & password presence
+  #status: NO_INVITE, INVITED, CONFIRMED
+  # need to validate email & password presence on signup but not add connection
   def avatar_url
-    rails_blob_path(self.avatar, disposition: "attachment", only_path: true) if self.avatar.attached?
+    if self.avatar.attached?
+      rails_blob_path(self.avatar, disposition: "attachment", only_path: true)
+    end
   end
+
+  def invitation(from:)
+    UserMailer.invitation(self, from).deliver_now
+    self.status = "INVITED"
+    self.save
+  end
+
 end

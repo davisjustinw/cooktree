@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :email
       t.string :password_digest
-      t.boolean :activated, default: false
+      t.string :status, default: "NO_INVITE"
       t.timestamps
     end
   end
