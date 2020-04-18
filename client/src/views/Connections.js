@@ -27,19 +27,7 @@ class Connections extends Component {
         </Typography>
         {
           connections.map(connection => {
-
-          const { id, relationship, relation } = connection
-          const { name, avatar_url } = relation
-
-          return (
-            <ConnectionCard
-              key={id}
-              avatar_url={avatar_url}
-              name={name}
-              relationship={relationship}
-              userId={userId}
-              id={id}
-            />)
+            return <ConnectionCard key={connection.id} connection={connection}/>
           })
         }
         <Fab

@@ -159,8 +159,18 @@
   [x] fixed add connection button doesn't work after new connection
 
 # 16 April
+  [x] send invite to connections with email
+  [x] set status to invited
 
-  status no_invite, invited, confirmed
+# 18 April
+  * invite control
+    - no_invite:
+      1. show invite button
+      2. onClick show mini form for email
+      3. onSubmit send invite change status to invited.
+
+    - invited: show invited disabled button or chip
+    - confirmed: show nothing
 
   * token url for invite signup
   * invitation signup url

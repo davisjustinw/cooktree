@@ -37,7 +37,7 @@ module Serializers
         only: [:id, :relationship],
         include: {
           relation: {
-            only: [:name, :id, :avatar_url],
+            only: [:name, :id, :avatar_url, :status, :email],
             methods: [:avatar_url]}
         }
       ), status: :ok
