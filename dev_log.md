@@ -165,12 +165,16 @@
 # 18 April
   * invite control
     - no_invite:
-      1. show invite button
-      2. onClick show mini form for email
+      [x]. show invite button
+      [x]. onClick show mini form for email
       3. onSubmit send invite change status to invited.
 
     - invited: show invited disabled button or chip
     - confirmed: show nothing
+
+# 19 April
+  [x] Fixed new connection with no invite is showing as invited
+
 
   * token url for invite signup
   * invitation signup url

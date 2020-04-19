@@ -24,7 +24,7 @@ class ConnectionsController < ApplicationController
     connection.save
 
     if connection.persisted?
-      relation.invitation from: current_user if relation[:email]
+      relation.invitation from: current_user if !relation[:email].empty?
       puts '***'
       puts relation.status
       puts '***'
