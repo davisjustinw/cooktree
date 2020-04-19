@@ -1,22 +1,22 @@
-import React, { useState, createRef } from 'react'
+import React from 'react'
 import { useFormInput } from '../helpers/form'
 
-import { fade, makeStyles } from '@material-ui/core/styles'
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
-import InputBase from '@material-ui/core/InputBase'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import Grow from '@material-ui/core/Grow'
+
 import { url, jsonPostHeader} from '../stores/helpers/fetchHelpers'
 
 const InviteForm = ({ user, toggleInvite }) => {
   const classes = useStyles()
+  const email = useFormInput('')
 
   const sendInvitation = () => {
     const invitation = {
-      invitation: { user: { email: 'yo@yo.com'}, sender: 'Mao' }
+      user: {
+        email: email.value,
+        id: user.id
+      }
     }
 
     fetch(`${url}/invite`, jsonPostHeader(invitation))
@@ -32,11 +32,15 @@ const InviteForm = ({ user, toggleInvite }) => {
   return (
     <div className={classes.form}>
       <TextField
+        {...email}
+        id={`${user.id}Email`}
+        name="email"
         label="email"
         variant="outlined"
         size="small"
       />
       <Button
+        onClick={sendInvitation}
         variant="contained"
         size="medium"
         color="primary"

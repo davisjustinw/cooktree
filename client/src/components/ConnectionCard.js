@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
 import { useRouteMatch } from 'react-router-dom'
 
 import { url } from '../stores/helpers/fetchHelpers'
@@ -21,9 +20,8 @@ const ConnectionCard = ({ connection }) => {
   const { name, avatar_url } = relation
 
   const match = useRouteMatch('/users/:id')
-  const classes = useStyles()
   const [expand, setExpand] = useState(false)
-  
+
   const toggleInvite = () => {
     setExpand(!expand)
   }
@@ -57,7 +55,7 @@ const ConnectionCard = ({ connection }) => {
         />
 
       </CardActions>
-      <Collapse in={expand} timeout="auto" unmountOnExit>
+      <Collapse in={expand} timeout="auto">
         <CardContent>
           <InviteForm user={relation} />
         </CardContent>
@@ -65,10 +63,5 @@ const ConnectionCard = ({ connection }) => {
     </Card>
   )
 }
-
-const useStyles = makeStyles(theme => ({
-
-}))
-
 
 export default ConnectionCard
