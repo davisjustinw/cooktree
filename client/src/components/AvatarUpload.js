@@ -26,7 +26,6 @@ class FileUpload extends Component {
           id={id}
           name={name}
           type="file"
-
           hidden
         />
         <IconButton onClick={this.showFileUpload} >

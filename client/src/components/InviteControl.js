@@ -1,30 +1,21 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { url, jsonPostHeader} from '../stores/helpers/fetchHelpers'
+import InviteForm from './InviteForm'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 
-const InviteControl = ({ user }) => {
+const InviteControl = ({ user, toggleInvite, expand }) => {
   const { email, status } = user
-  //status: NO_INVITE, INVITED, CONFIRMED
-  // NO_INVITE:
-  const sendInvitation = () => {
-    const invitation = {
-      invitation: { user: { email: 'yo@yo.com'}, sender: 'Mao' }
-    }
-
-    fetch(`${url}/invite`, jsonPostHeader(invitation))
-      .then(resp => resp.json())
-      .then(json => {
-        console.log(json)
-      })
-      .catch((error) => {
-        console.error('Fetch error', error)
-      })
-  }
+  const classes = useStyles()
 
   switch(status) {
     case 'NO_INVITE':
       return (
-        <Button onClick={sendInvitation} size="small" color="primary">
+        <Button
+          onClick={toggleInvite}
+          className={expand ? classes.activated : null}
+          size="small"
+          color="primary"
+        >
           Invite
         </Button>
       )
@@ -39,5 +30,11 @@ const InviteControl = ({ user }) => {
       return null
   }
 }
+
+const useStyles = makeStyles(theme => ({
+  activated: {
+    backgroundColor: theme.palette.action.hover
+  }
+}))
 
 export default InviteControl
