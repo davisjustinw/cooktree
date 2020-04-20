@@ -22,11 +22,4 @@ class User < ApplicationRecord
     end
   end
 
-  def invitation(from:)
-    puts "invitation: to #{self.name}, #{self.email}"
-    UserMailer.invitation(self, from).deliver_now
-    self.status = "INVITED"
-    self.save
-  end
-
 end

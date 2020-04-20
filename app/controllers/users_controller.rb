@@ -16,20 +16,7 @@ def create
   end
 end
 
-def invite
-  #tweak this
-  redirect_if_not_logged_in
-  relation = User.find_by id: invitation_params[:id]
-  relation.invitation from: current_user
-
-  # UserMailer.invitation(params[:invitation]).deliver_now
-  render json: { message: 'Invitation Sent' }, status: :ok
-end
-
 private
-def invitation_params
-  params.require(:user).permit :id, :email
-end
 
 def user_params
   params.permit :name, :email, :password, :avatar

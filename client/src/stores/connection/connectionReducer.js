@@ -41,6 +41,20 @@ function connection(state = initialState, action) {
         ...state,
         submitSuccess: false
       }
+    case 'UPDATE_CONNECTION':
+      const newConnection = action.connection
+
+      const newList = state.list.map(connection => {
+          if(connection.id === newConnection.id){
+            return newConnection
+          } else {
+            return connection
+          }
+      })
+      return {
+        ...state,
+        list: newList
+      }
     default:
       return state
   }

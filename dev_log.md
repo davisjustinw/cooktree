@@ -169,12 +169,13 @@
       [x]. onClick show mini form for email
       -> onSubmit send invite change status to invited.
 
-    - invited: show invited disabled button or chip
-    - confirmed: show nothing
+    [x] invited: show invited disabled button or chip
+    [x] confirmed: show nothing
 
 # 19 April
   [x] Fixed new connection with no invite is showing as invited
-  3. onSubmit send invite change status to invited.
+  [x] onSubmit send invite change status to invited.
+  * refresh Connections after successful invite
 
   * token url for invite signup
   * invitation signup url

@@ -80,9 +80,16 @@ const resetSuccess = () => {
   }
 }
 
+const updateConnection = connection => {
+  return dispatch => {
+    dispatch({ type: 'UPDATE_CONNECTION', connection: connection })
+  }
+}
+
 export {
   getConnections,
   postConnection,
   getConnection,
-  resetSuccess
+  resetSuccess,
+  updateConnection
 }

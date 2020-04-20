@@ -34,8 +34,18 @@ class ConnectionsController < ApplicationController
     end
   end
 
-  private
+  def invite
+    redirect_if_not_logged_in
+    connection = Connection.find params[:id]
+    connection.update(invitation_params)
+    connection.invitation
+    render connection_json(connection)
+  end
 
+  private
+  def invitation_params
+    params.require(:connection).permit(relation_attributes: [:id, :name, :email])
+  end
 
   def connection_params
     params.permit :relationship
@@ -44,6 +54,5 @@ class ConnectionsController < ApplicationController
   def relation_params
     params.permit :name, :email, :avatar
   end
-
 
 end

@@ -7,15 +7,18 @@ import TextField from '@material-ui/core/TextField'
 
 import { url, jsonPostHeader} from '../stores/helpers/fetchHelpers'
 
-const InviteForm = ({ user, toggleInvite }) => {
+const InviteForm = ({ connection, toggleInvite }) => {
+  const { relation } = connection
   const classes = useStyles()
   const email = useFormInput('')
 
   const sendInvitation = () => {
     const invitation = {
-      user: {
-        email: email.value,
-        id: user.id
+      id: connection.id,
+      relation_attributes: {
+        id: connection.relation.id,
+        name: connection.relation.name,
+        email: email.value
       }
     }
 
@@ -33,7 +36,7 @@ const InviteForm = ({ user, toggleInvite }) => {
     <div className={classes.form}>
       <TextField
         {...email}
-        id={`${user.id}Email`}
+        id={`${relation.id}Email`}
         name="email"
         label="email"
         variant="outlined"

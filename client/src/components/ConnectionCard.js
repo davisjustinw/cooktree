@@ -57,7 +57,7 @@ const ConnectionCard = ({ connection }) => {
       </CardActions>
       <Collapse in={expand} timeout="auto">
         <CardContent>
-          <InviteForm user={relation} />
+          <InviteForm connection={connection} />
         </CardContent>
       </Collapse>
     </Card>
