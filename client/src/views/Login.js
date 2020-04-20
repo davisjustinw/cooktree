@@ -67,7 +67,7 @@ const Login = ({ submitLogin }) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   submitLogin: user => dispatch(submitLogin(user))
 })
 

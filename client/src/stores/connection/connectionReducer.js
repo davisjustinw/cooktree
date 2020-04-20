@@ -43,7 +43,7 @@ function connection(state = initialState, action) {
       }
     case 'UPDATE_CONNECTION':
       const newConnection = action.connection
-
+      console.log("in update connection")
       const newList = state.list.map(connection => {
           if(connection.id === newConnection.id){
             return newConnection

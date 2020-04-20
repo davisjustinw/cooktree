@@ -4,7 +4,11 @@ class Connection < ApplicationRecord
   accepts_nested_attributes_for :relation
 
   def invitation
+    puts "before mailer"
+    puts self.relation
+    puts self.user
     UserMailer.invitation(self.relation, self.user).deliver_now
+    puts "after mailer"
     # use update attribute?
     self.relation.status = "INVITED"
     self.relation.save

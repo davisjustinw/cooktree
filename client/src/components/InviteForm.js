@@ -1,16 +1,21 @@
-import React from 'react'
-import { useFormInput } from '../helpers/form'
-
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { updateConnection } from '../stores/connection/connectionActions'
 import { makeStyles } from '@material-ui/core/styles'
+import { useFormInput } from '../helpers/form'
+import { url, jsonPostHeader} from '../stores/helpers/fetchHelpers'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
-import { url, jsonPostHeader} from '../stores/helpers/fetchHelpers'
-
-const InviteForm = ({ connection, toggleInvite }) => {
+const InviteForm = ({ connection, toggleInvite, updateConnection }) => {
   const { relation } = connection
   const classes = useStyles()
-  const email = useFormInput('')
+  //const email = useFormInput('')
+  const [email, setEmail] = useState('')
+
+  const handleChange = event => {
+      setEmail(event.target.value);
+  }
 
   const sendInvitation = () => {
     const invitation = {
@@ -18,14 +23,16 @@ const InviteForm = ({ connection, toggleInvite }) => {
       relation_attributes: {
         id: connection.relation.id,
         name: connection.relation.name,
-        email: email.value
+        email: email
       }
     }
-
+    console.log('fetching')
     fetch(`${url}/invite`, jsonPostHeader(invitation))
       .then(resp => resp.json())
-      .then(json => {
-        console.log(json)
+      .then(jsonConnection => {
+        updateConnection(jsonConnection)
+        setEmail('')
+        toggleInvite()
       })
       .catch((error) => {
         console.error('Fetch error', error)
@@ -35,8 +42,9 @@ const InviteForm = ({ connection, toggleInvite }) => {
   return (
     <div className={classes.form}>
       <TextField
-        {...email}
         id={`${relation.id}Email`}
+        value={email}
+        onChange={handleChange}
         name="email"
         label="email"
         variant="outlined"
@@ -69,4 +77,8 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default InviteForm
+const mapDispatchToProps = dispatch => ({
+  updateConnection: connection => dispatch(updateConnection(connection))
+})
+
+export default connect(null, mapDispatchToProps)(InviteForm)
