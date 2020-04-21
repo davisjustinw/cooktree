@@ -24,10 +24,7 @@ class ConnectionsController < ApplicationController
     connection.save
 
     if connection.persisted?
-      relation.invitation from: current_user if !relation[:email].empty?
-      puts '***'
-      puts relation.status
-      puts '***'
+      connection.invitation if !relation[:email].empty?
       render connection_json(connection)
     else
       render invalid_connection(connection.errors, connection.user.errors)

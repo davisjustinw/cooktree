@@ -179,6 +179,10 @@
   [x] close invite form after invite
   [x] make invitation button on connections status specific
 
+# 20 April
+  [x] add theme palette
+  * new connection has option to invite
+  
   * token url for invite signup
   * invitation signup url
   * need validations in create connection
