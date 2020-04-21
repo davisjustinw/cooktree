@@ -181,10 +181,12 @@
 
 # 20 April
   [x] add theme palette
-  * new connection has option to invite
-  
-  * token url for invite signup
+  [x] new connection has option to invite
+  [x] token url for invite signup
+
   * invitation signup url
+
+    * redirects to signup screen?
   * need validations in create connection
   * aka on a person
 

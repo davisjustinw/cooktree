@@ -1,11 +1,8 @@
 class UserMailer < ApplicationMailer
-  def invitation(to, from)
-    @to = to
-    @from = from
-    puts "in the mailer "
-    puts @to[:email] #this isn't playing nice.  lost my email
-    puts @from
-    puts "still in"
+  def invitation(connection)
+    @to = connection.relation
+    @from = connection.user
+    @token = connection.confirmation_token
     mail(to:  @to[:email], subject: "CookTree Invitation")
   end
 end

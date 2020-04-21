@@ -4,13 +4,15 @@ class Connection < ApplicationRecord
   accepts_nested_attributes_for :relation
 
   def invitation
-    puts "before mailer"
-    puts self.relation
-    puts self.user
-    UserMailer.invitation(self.relation, self.user).deliver_now
-    puts "after mailer"
-    # use update attribute?
+    UserMailer.invitation(self).deliver_now
     self.relation.status = "INVITED"
     self.relation.save
+  end
+
+  def confirmation_token
+    if self.confirm_token.blank?
+        self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+    self.confirm_token
   end
 end
