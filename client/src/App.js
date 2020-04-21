@@ -49,4 +49,6 @@ const mapStateToProps = ({ user }) => {
   }
 }
 
+
+
 export default connect(mapStateToProps, { getCurrentUser })(withStyles(styles)(App));

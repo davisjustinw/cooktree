@@ -175,16 +175,14 @@
 # 19 April
   [x] Fixed new connection with no invite is showing as invited
   [x] onSubmit send invite change status to invited.
-  * refresh Connections after successful invite
+  [x] refresh Connections after successful invite
+  [x] close invite form after invite
+  [x] make invitation button on connections status specific
 
   * token url for invite signup
   * invitation signup url
-  * make invitation button on connections status specific
-
   * need validations in create connection
   * aka on a person
-
-  * invitation
 
 * cancel on avatar upload bombs out
 * root flashes login before redirect
