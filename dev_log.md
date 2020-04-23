@@ -184,6 +184,7 @@
   [x] new connection has option to invite
   [x] token url for invite signup
 
+  * show/hide controls for protected routes
   * invitation signup url
 
     * redirects to signup screen?

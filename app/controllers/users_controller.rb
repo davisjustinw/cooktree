@@ -16,6 +16,11 @@ def create
   end
 end
 
+def token_to_user
+  binding.pry
+
+end
+
 private
 
 def user_params

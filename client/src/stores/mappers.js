@@ -25,9 +25,14 @@ const mapConnectionToProps = ({ connection }) => {
   }
 }
 
+const mapShowControlsToProps = ({ ui }) => ({
+  showControls: ui.showControls
+})
+
 export {
   mapUserToProps,
   mapLoginStatusToProps,
   mapUiToProps,
-  mapConnectionToProps
+  mapConnectionToProps,
+  mapShowControlsToProps
 }

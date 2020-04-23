@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { changeHandler } from '../helpers/form'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import { submitSignup } from '../stores/user/userActions'
 
 import Typography from '@material-ui/core/Typography'
@@ -10,10 +11,12 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
-
 class Signup extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    const { match } = this.props
+    console.log(match)
+    match.params.token ? console.log('token present') : console.log('no token')
     this.state = {
       name: '',
       email: '',
@@ -160,4 +163,4 @@ const mapDispatchToProps = dispatch => ({
     submitSignup: user => dispatch(submitSignup(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Signup));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Signup)));

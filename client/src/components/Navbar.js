@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleMobileOpen } from '../stores/ui/uiActions'
+import { mapLoginStatusToProps } from '../stores/mappers'
 import { withRouter } from 'react-router'
 import { makeStyles } from '@material-ui/core/styles'
-
+import { toggleMobileOpen } from '../stores/ui/uiActions'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -13,13 +13,13 @@ import HistoryIcon from '@material-ui/icons/History'
 import SearchBar from './SearchBar'
 import Hidden from '@material-ui/core/Hidden'
 //navbar
-const Navbar = ({ toggleMobileOpen, location }) => {
+const Navbar = ({ toggleMobileOpen, location, status }) => {
   const classes = useStyles();
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
       {
-        location.pathname !== '/login' && location.pathname !== '/signup' ?
+        status === 'LOGGED_IN' ?
         (<>
           <Hidden lgUp implementation="css">
             <IconButton
@@ -60,4 +60,4 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default withRouter(connect(null, { toggleMobileOpen })(Navbar))
+export default withRouter(connect(mapLoginStatusToProps, { toggleMobileOpen })(Navbar))

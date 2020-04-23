@@ -5,17 +5,23 @@ import { Route, Redirect } from 'react-router-dom'
 import Loading from '../components/Loading'
 
 function PrivateRoute(props) {
-  const { children, redirectTo, ...rest } = props
+  const {
+    children,
+    redirectTo,
+    ...rest
+  } = props
   const { status, location } = rest
 
   const authRoute = () => {
     switch(status) {
       case 'LOGGED_IN':
         console.log('pr LOGGED_IN')
+
         // how do I pass props to children here
         return children
       case 'LOGGED_OUT':
         console.log('pr LOGGED_OUT')
+
         return (
           <Redirect
             to={{

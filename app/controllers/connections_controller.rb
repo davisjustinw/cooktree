@@ -52,6 +52,4 @@ class ConnectionsController < ApplicationController
     params.permit :name, :email, :avatar
   end
 
-
-
 end

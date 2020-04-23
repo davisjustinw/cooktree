@@ -1,17 +1,17 @@
 import React from 'react'
-import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { mapLoginStatusToProps } from '../../stores/mappers'
 import Navbar from '../Navbar'
 import MenuDrawer from '../MenuDrawer'
 
-const ControlContainer = ({ location }) => {
-  const showControls = location.pathname !== '/login' && location.pathname !== '/signup'
+const ControlContainer = ({ status }) => {
 
   return (
     <>
-      <Navbar showControls={showControls} />
-      { showControls ? (<MenuDrawer />) : ( null ) }
+      <Navbar />
+      { status === 'LOGGED_IN' ? (<MenuDrawer />) : ( null ) }
     </>
   )
 }
 
-export default withRouter(ControlContainer)
+export default connect(mapLoginStatusToProps)(ControlContainer)

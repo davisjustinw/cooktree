@@ -1,26 +1,17 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-import Login from '../views/Login'
-import Logout from '../views/Logout'
-import Signup from '../views/Signup'
-import UserRoutes from './UserRoutes'
+import PrivateRoutes from './PrivateRoutes'
+import PublicRoutes from './PublicRoutes'
 
 const RootRoutes = () => {
   return (
     <Switch>
       <Route path='/users/:id'>
-        <UserRoutes/>
-      </Route>
-      <Route path='/login'>
-        <Login/>
-      </Route>
-      <Route path='/logout' component={Logout} />
-      <Route path='/signup'>
-        <Signup/>
+        <PrivateRoutes/>
       </Route>
       <Route path='/'>
-        <Redirect to='/login'/>
+        <PublicRoutes/>
       </Route>
     </Switch>
   )
