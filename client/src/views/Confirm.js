@@ -25,11 +25,10 @@ class Confirm extends Component {
   componentDidMount() {
     const { token } = this.props.match.params
     console.log(`token: ${token}`)
-    fetch(`${url}/invite/${token}`, getHeaderAnon)
+    fetch(`${url}/signup/${token}`, getHeaderAnon)
       .then(resp => resp.json())
       .then(user => {
         console.log(user)
-
       })
 
   }

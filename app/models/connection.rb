@@ -12,6 +12,7 @@ class Connection < ApplicationRecord
   def confirmation_token
     if self.confirm_token.blank?
         self.confirm_token = SecureRandom.urlsafe_base64.to_s
+        self.save
     end
     self.confirm_token
   end
