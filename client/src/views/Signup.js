@@ -14,9 +14,6 @@ import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 class Signup extends Component {
   constructor(props) {
     super(props)
-    const { match } = this.props
-    console.log(match)
-    match.params.token ? console.log('token present') : console.log('no token')
     this.state = {
       name: '',
       email: '',
@@ -163,4 +160,4 @@ const mapDispatchToProps = dispatch => ({
     submitSignup: user => dispatch(submitSignup(user))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Signup)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Signup));

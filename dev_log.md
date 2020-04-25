@@ -184,12 +184,29 @@
   [x] new connection has option to invite
   [x] token url for invite signup
 
-  * show/hide controls for protected routes
-  * invitation signup url
+# 21 & 22 April
+  [x] show/hide controls for protected routes
+  [x] invitation signup url
+    [x] redirects to signup screen?
 
-    * redirects to signup screen?
-  * need validations in create connection
-  * aka on a person
+# 24 April
+  * invitation signup filled
+    - route signup/:token
+      - get token information
+      - get connection from api
+      - populate form
+  * post update with password
+    - change status to confirmed
+
+# 25 April
+  * get tokenConnection return user in connection action
+  * user placed in user state.  control form in user 
+
+
+* changed fields move to connection?
+
+* need validations in create connection
+* aka on a person
 
 * cancel on avatar upload bombs out
 * root flashes login before redirect

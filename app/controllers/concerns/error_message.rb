@@ -1,10 +1,9 @@
 module ErrorMessage
-  def invalid_input(user_errors, person_errors)
+  def invalid_input(user_errors)
     {
       json: {
         validation_errors: {
-          user: user_errors,
-          person:  person_errors
+          user: user_errors
         }
       },
       status: :bad_request

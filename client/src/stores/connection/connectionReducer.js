@@ -1,7 +1,16 @@
 const initialState = {
   submitSuccess: false,
   list: [],
-  current: ''
+  current: {
+    name: '',
+    email: '',
+    password: '',
+    avatar: '',
+    file: {
+      name: '',
+      url: null
+    }
+  }
 }
 
 function connection(state = initialState, action) {

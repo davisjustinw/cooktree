@@ -12,7 +12,7 @@ def create
     render user_json(current_user)
   else
     # need better response here
-    render invalid_input(@user.errors, @user.person.errors)
+    render invalid_input @user_errors
   end
 end
 

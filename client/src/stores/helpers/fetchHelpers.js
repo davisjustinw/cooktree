@@ -8,6 +8,13 @@ const getHeader = {
   }
 }
 
+const getHeaderAnon = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
 const jsonPostHeader = body => ({
   method: 'POST',
   credentials: 'include',
@@ -27,5 +34,6 @@ export {
   url,
   getHeader,
   postHeader,
-  jsonPostHeader
+  jsonPostHeader,
+  getHeaderAnon
 }

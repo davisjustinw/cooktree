@@ -39,6 +39,10 @@ class ConnectionsController < ApplicationController
     render connection_json(connection)
   end
 
+  def get_invitation_connection
+    binding.pry
+  end
+
   private
   def invitation_params
     params.require(:connection).permit(relation_attributes: [:id, :name, :email])

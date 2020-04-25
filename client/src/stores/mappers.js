@@ -22,6 +22,7 @@ const mapConnectionToProps = ({ connection }) => {
     name: current.name,
     avatar_url: current.avatar_url,
     relationship: current.relationship,
+    email: current.email
   }
 }
 

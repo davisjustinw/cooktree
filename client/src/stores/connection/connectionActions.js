@@ -1,4 +1,4 @@
-import { getHeader, url, postHeader } from '../helpers/fetchHelpers'
+import { getHeader, url, postHeader, getHeaderAnon } from '../helpers/fetchHelpers'
 
 const getConnection = id => {
   return dispatch => {
@@ -85,6 +85,30 @@ const updateConnection = connection => {
     dispatch({ type: 'UPDATE_CONNECTION', connection: connection })
   }
 }
+
+const getTokenConnection = token => {
+  return dispatch => {
+    dispatch({ type: 'GET_CONNECTION'})
+    fetch(`${url}/invite/${token}`, getHeaderAnon)
+      .then(resp => resp.json())
+      .then(connection => {
+        const { relation, relationship, id } = connection
+        dispatch({
+          type: 'GET_CONNECTION_COMPLETE',
+          current: {
+            connection_id: id,
+            relation_id: relation.id,
+            name: relation.name,
+            avatar_url: relation.avatar_url,
+            relationship: relationship,
+            email: relation.email
+          }
+        })
+      })
+  }
+}
+
+
 
 export {
   getConnections,
