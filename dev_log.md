@@ -200,11 +200,11 @@
 
 # 25 April
   * get tokenConnection return user in connection action
-  * user placed in user state.  control form in user 
+  * user placed in user state.  control form in user
 
 
 * changed fields move to connection?
-
+* bad token redirect to login or signup
 * need validations in create connection
 * aka on a person
 

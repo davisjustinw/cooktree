@@ -39,7 +39,7 @@ class ConnectionsController < ApplicationController
     render connection_json(connection)
   end
 
-  def get_invitation_connection
+  def get_invitation_user
     binding.pry
   end
 

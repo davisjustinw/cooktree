@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post '/signup', to: 'users#create'
   post '/invite', to: 'connections#invite'
-  get '/invite/:id', to: 'connections#get_invitation_connection'
+  get '/invite/:id', to: 'connections#get_invitation_user'
   #post '/signup/:token', to: 'users#token_to_user', as: :invitation
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
