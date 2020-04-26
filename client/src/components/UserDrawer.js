@@ -10,13 +10,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const UserDrawer = ({ email, name, avatar }) => {
+const UserDrawer = ({ email, name, avatar_url }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  let avatar_url = ''
-
-  if(avatar) {
-    avatar_url = `http://localhost:3001${avatar}`
-  }
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -34,7 +29,7 @@ const UserDrawer = ({ email, name, avatar }) => {
             alt={name || 'avatar'}
             src={avatar_url}
           >
-            {!avatar ? <ScatterPlotIcon/> : null}
+            {!avatar_url ? <ScatterPlotIcon/> : null}
           </Avatar>
         }
         title={name}

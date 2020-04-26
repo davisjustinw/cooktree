@@ -96,7 +96,7 @@ const getTokenUser = token => {
     dispatch({ type: 'GET_TOKEN_USER' })
     fetch(`${url}/signup/${token}`, getHeaderAnon)
       .then(resp => resp.json())
-      .then(user => {
+      .then(({ user }) => {
         dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user })
       })
   }

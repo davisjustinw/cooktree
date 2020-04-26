@@ -15,18 +15,15 @@ class Confirm extends Component {
       name: '',
       email: '',
       password: '',
-      avatar: '',
-      file: {
-        name: '',
-        url: null
-      }
+      avatar_file: '',
+      avatar_url: ''
     }
   }
 
   componentDidMount() {
     const { token } = this.props.match.params
     console.log(`token: ${token}`)
-    getTokenUser(token)
+    this.props.getTokenUser(token)
   }
 
   handleChange = changeHandler.bind(this);
@@ -59,7 +56,8 @@ class Confirm extends Component {
 
   render() {
     const { errors, classes, user } = this.props
-    const { handleChange, handleFileChange, handleSubmit } = this
+    const { handleChange, handleSubmit } = this
+    console.log(user)
     if(!user.name){
       return <Loading />
     } else {
@@ -69,7 +67,6 @@ class Confirm extends Component {
           errors={errors}
           user={user}
           handleChange={handleChange}
-          handleFileChange={handleFileChange}
           handleSubmit={handleSubmit}
         />
       )
@@ -83,7 +80,8 @@ const mapStateToProps = ({ error, user }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    submitSignup: user => dispatch(submitSignup(user))
+    submitSignup: user => dispatch(submitSignup(user)),
+    getTokenUser: token => dispatch(getTokenUser(token))
 })
 
 const useStyles = theme => ({

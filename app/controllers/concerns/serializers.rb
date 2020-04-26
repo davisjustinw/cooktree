@@ -1,14 +1,14 @@
 module Serializers
   def user_json(user)
-    avatar = ''
-    avatar = rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
+    avatar_url = ''
+    avatar_url = rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
     {
       json: {
         user: {
           id: user.id,
           name: user.name,
           email: user.email,
-          avatar: avatar
+          avatar_url: avatar_url
         }
       },
       status: :ok
@@ -20,11 +20,9 @@ module Serializers
       json: {
         user: {
           email: '',
-        },
-        person: {
           id: '',
           name: '',
-          avatar: ''
+          avatar_url: ''
         }
       },
       status: :ok

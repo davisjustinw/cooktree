@@ -1,9 +1,11 @@
+import { url } from '../helpers/fetchHelpers'
+
 const initialState = {
   status: 'LOGGING_IN',
   id: '',
   name: '',
   email: '',
-  avatar: ''
+  avatar_url: ''
 }
 
 function user(state = initialState, { type, user }) {
@@ -21,7 +23,7 @@ function user(state = initialState, { type, user }) {
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar
+        avatar_url: `${url}${user.avatar_url}`
       }
 
     case 'SUBMIT_LOGOUT':
@@ -31,7 +33,7 @@ function user(state = initialState, { type, user }) {
         id: '',
         name: '',
         email: '',
-        avatar: ''
+        avatar_url: ''
       }
 
     case 'SUBMIT_SIGNUP':
@@ -41,7 +43,7 @@ function user(state = initialState, { type, user }) {
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar
+        avatar_url: `${url}${user.avatar_url}`
       }
 
     case 'GET_CURRENT_USER':
@@ -51,20 +53,21 @@ function user(state = initialState, { type, user }) {
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar
+        avatar_url: `${url}${user.avatar_url}`
       }
 
     case 'GET_TOKEN_USER':
       return { ...state }
 
     case 'GET_TOKEN_USER_COMPLETE':
+      console.log(user)
       return {
         ...state,
         status: 'CONFIRMING',
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar
+        avatar_url: `${url}${user.avatar_url}`
       }
 
     default:

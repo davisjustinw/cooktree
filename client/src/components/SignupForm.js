@@ -7,7 +7,8 @@ import Button from '@material-ui/core/Button'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
 const SignupForm = ({ classes, errors, user, handleChange, handleSubmit }) => {
-
+  console.log('signup form')
+  console.log(user)
   return (
     <>
       <RedirectLoggedIn/>

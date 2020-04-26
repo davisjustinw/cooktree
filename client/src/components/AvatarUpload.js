@@ -3,8 +3,9 @@ import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import IconButton from '@material-ui/core/IconButton'
+import Loading from './Loading'
 
-class FileUpload extends Component {
+class AvatarUpload extends Component {
   constructor(props) {
     super(props)
     this.fileUpload = createRef()
@@ -27,28 +28,35 @@ class FileUpload extends Component {
 
   render() {
     const { classes, avatar_url } = this.props
-    return (
-      <>
-        <input
-          onChange={this.handleFileChange}
-          ref={this.fileUpload}
-          accept="image/*"
-          id='avatar_file'
-          name='avatar_file'
-          type="file"
-          hidden
-        />
-        <IconButton onClick={this.showFileUpload} >
-          <Avatar
-            alt='avatar image'
-            src={avatar_url}
-            className={classes.avatar}
-          >
-            <ScatterPlotIcon autoFocus/>
-          </Avatar>
-        </IconButton>
-      </>
-    )
+    console.log('AvatarUpload')
+    console.log(this.props)
+    if(!avatar_url){
+      return <Loading/>
+    } else {
+      return (
+        <>
+          <input
+            onChange={this.handleFileChange}
+            ref={this.fileUpload}
+            accept="image/*"
+            id='avatar_file'
+            name='avatar_file'
+            type="file"
+            hidden
+          />
+          <IconButton onClick={this.showFileUpload} >
+            <Avatar
+              alt='avatar image'
+              src={avatar_url}
+              className={classes.avatar}
+            >
+              <ScatterPlotIcon autoFocus/>
+            </Avatar>
+          </IconButton>
+        </>
+      )
+    }
+
   }
 }
 
@@ -63,4 +71,4 @@ const useStyles = theme => ({
   },
 });
 
-export default withStyles(useStyles)(FileUpload)
+export default withStyles(useStyles)(AvatarUpload)
