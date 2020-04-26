@@ -198,9 +198,13 @@
       - get token information
       - get connection from api
       - populate form
-* fix handleSubmit in Confirm component
-* post update with password
-  - change status to confirmed
+# 26 April
+  [x] fix handleSubmit in Confirm component
+  [x] post update with password
+  [x] change status to confirmed
+  * need connection complement created
+    * add invite from confirm form
+    * add relationship
 
 * credentials added on sign up? use across board?
 * changed fields move to connection (alias)?
@@ -208,7 +212,7 @@
 * need validations in create connection
 * aka on a person
 * check for connection
-* refresh on cennections gets stuck on loading after invite
+* refresh on connections gets stuck on loading after invite
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in

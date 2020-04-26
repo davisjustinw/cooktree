@@ -31,6 +31,7 @@ def token_to_user
 
   if user.persisted?
     user.status = "CONFIRMED"
+    user.save
     session[:user_id] = user.id
     render user_json(current_user)
   else
