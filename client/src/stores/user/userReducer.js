@@ -5,19 +5,20 @@ const initialState = {
   id: '',
   name: '',
   email: '',
+  password: '',
   avatar_url: '',
-  password: ''
+  avatar_file: ''
 }
 
 function user(state = initialState, { type, user, change }) {
   switch (type) {
-    case 'PENDING_LOGIN':
+    case 'SUBMIT_LOGIN':
       return {
         ...state,
         status: 'LOGGING_IN'
       }
 
-    case 'SUBMIT_LOGIN':
+    case 'SUBMIT_LOGIN_COMPLETE':
       return {
         ...state,
         status: 'LOGGED_IN',
@@ -34,21 +35,29 @@ function user(state = initialState, { type, user, change }) {
         id: '',
         name: '',
         email: '',
+        password: '',
         avatar_url: '',
-        password: ''
+        avatar_file: ''
+      }
+
+    case 'SUBMIT_LOGOUT_COMPLETE':
+      return {
+        ...state
       }
 
     case 'SUBMIT_SIGNUP':
       return {
         ...state,
-        status: 'LOGGED_IN',
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        avatar_url: `${url}${user.avatar_url}`
+        status: 'LOGGING_IN',
       }
 
     case 'GET_CURRENT_USER':
+      return {
+        ...state,
+        status: 'LOGGING_IN',
+      }
+
+    case 'GET_CURRENT_USER_COMPLETE':
       return {
         ...state,
         status: (user.email ? 'LOGGED_IN' : 'LOGGED_OUT'),

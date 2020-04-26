@@ -19,16 +19,16 @@ class Confirm extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      const { state, props } = this
-      const { name, email, password, avatar } = state
+      const { id, name, email, password, avatar_file } = this.props
       const data = new FormData()
 
+      data.append('id', id)
+      data.append('name', name)
       data.append('email', email)
       data.append('password', password)
-      data.append('name', name)
-      data.append('avatar', avatar)
+      data.append('avatar_file', avatar_file)
 
-      props.submitSignup(data);
+      this.props.submitSignup(data);
   }
 
   render() {

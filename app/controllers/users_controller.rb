@@ -8,7 +8,9 @@ def create
 
   if @user.persisted?
     session[:user_id] = @user.id
-    @user.avatar.attach(user_params[:avatar]) if !user_params[:avatar].blank?
+    if !user_params[:avatar_file].blank?
+      @user.avatar_file.attach(user_params[:avatar_file])
+    end
     render user_json(current_user)
   else
     # need better response here
@@ -24,7 +26,7 @@ end
 private
 
 def user_params
-  params.permit :name, :email, :password, :avatar
+  params.permit :name, :email, :password, :avatar_file
 end
 
 end

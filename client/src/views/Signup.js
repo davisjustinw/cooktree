@@ -28,7 +28,7 @@ class Signup extends Component {
       data.append('email', email)
       data.append('password', password)
       data.append('name', name)
-      data.append('avatar', avatar_file)
+      data.append('avatar_file', avatar_file)
 
       props.submitSignup(data);
   }

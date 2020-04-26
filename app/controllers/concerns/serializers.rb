@@ -1,7 +1,9 @@
 module Serializers
   def user_json(user)
     avatar_url = ''
-    avatar_url = rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
+    if user.avatar_file.attached?
+      avatar_url = rails_blob_path(user.avatar_file, only_path: true)
+    end
     {
       json: {
         user: {

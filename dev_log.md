@@ -189,26 +189,25 @@
   [x] invitation signup url
     [x] redirects to signup screen?
 
-# 24 April
-  * invitation signup filled
+# 24, 25 April
+  [x] cancel on avatar upload bombs out
+  [x] get tokenConnection return user in connection action
+  [x] user placed in user state.  control form in user
+  [x] invitation signup filled
     - route signup/:token
       - get token information
       - get connection from api
       - populate form
-  * post update with password
-    - change status to confirmed
-
-# 25 April
-  * get tokenConnection return user in connection action
-  * user placed in user state.  control form in user
-
+* fix handleSubmit in Confirm component
+* post update with password
+  - change status to confirmed
 
 * changed fields move to connection?
 * bad token redirect to login or signup
 * need validations in create connection
 * aka on a person
 * check for connection
-* cancel on avatar upload bombs out
+
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in
 * can I submit connection and return to connections without getConnections round trip

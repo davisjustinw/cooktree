@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Rails.application.routes.url_helpers
 
   has_secure_password validations: false
-  has_one_attached :avatar
+  has_one_attached :avatar_file
   has_many :recipe_users
   has_many :recipes, through: :recipe_users
 

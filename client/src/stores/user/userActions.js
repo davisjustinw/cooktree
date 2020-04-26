@@ -2,7 +2,7 @@ import { url, getHeaderAnon } from '../helpers/fetchHelpers'
 
 const submitLogin = ({email, password}) => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_LOGIN' })
+    dispatch({ type: 'SUBMIT_LOGIN' })
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -39,6 +39,7 @@ const submitLogout = () => {
     fetch('http://localhost:3001/logout', headers)
       .then(resp => resp.json())
       .then(({ message }) => {
+          dispatch({ type: 'SUBMIT_LOGOUT_COMPLETE' })
           console.log(message)
         }
       )
@@ -48,7 +49,7 @@ const submitLogout = () => {
 
 const submitSignup = userInfo => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_LOGIN' })
+    dispatch({ type: 'SUBMIT_SIGNUP' })
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -68,7 +69,7 @@ const submitSignup = userInfo => {
 const getCurrentUser = () => {
   console.log('getCurrentUser')
   return dispatch => {
-    dispatch({ type: 'PENDING_LOGIN' })
+    dispatch({ type: 'GET_CURRENT_USER' })
 
     const headers = {
       method: 'GET',
@@ -82,7 +83,7 @@ const getCurrentUser = () => {
       .then(resp => resp.json())
       .then(({ user }) => {
           dispatch({
-            type: 'GET_CURRENT_USER',
+            type: 'GET_CURRENT_USER_COMPLETE',
             user: user
           })
         }
@@ -108,7 +109,7 @@ const catch_errors_dispatch_login = (json, dispatch) => {
       console.log('user')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
-        type: 'SUBMIT_LOGIN',
+        type: 'SUBMIT_LOGIN_COMPLETE',
         user: user
       })
     } else if (error) {
