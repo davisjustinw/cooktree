@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-function changeHandler(event) {
+function changeHandler({ target }) {
   this.setState({
-    [event.target.name]: event.target.value
+    [target.name]: target.value
   })
 }
 
 function useFormInput (initialValue) {
     const [value, setValue] = useState(initialValue);
-    const handleChange = event => {
-        setValue(event.target.value);
+    const handleChange = ({ target }) => {
+        setValue(target.value);
     };
     return { value, onChange: handleChange };
 };

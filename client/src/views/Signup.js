@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { submitSignup } from '../stores/user/userActions'
 import SignupForm from '../components/SignupForm'
 
-
 class Signup extends Component {
   constructor(props) {
     super(props)
@@ -22,8 +21,6 @@ class Signup extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      console.log('handleSubmit')
-      console.log(this.state)
       const { state, props } = this
       const { name, email, password, avatar_file } = state
       const data = new FormData()

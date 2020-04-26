@@ -5,10 +5,11 @@ const initialState = {
   id: '',
   name: '',
   email: '',
-  avatar_url: ''
+  avatar_url: '',
+  password: ''
 }
 
-function user(state = initialState, { type, user }) {
+function user(state = initialState, { type, user, change }) {
   switch (type) {
     case 'PENDING_LOGIN':
       return {
@@ -33,7 +34,8 @@ function user(state = initialState, { type, user }) {
         id: '',
         name: '',
         email: '',
-        avatar_url: ''
+        avatar_url: '',
+        password: ''
       }
 
     case 'SUBMIT_SIGNUP':
@@ -60,7 +62,6 @@ function user(state = initialState, { type, user }) {
       return { ...state }
 
     case 'GET_TOKEN_USER_COMPLETE':
-      console.log(user)
       return {
         ...state,
         status: 'CONFIRMING',
@@ -68,6 +69,13 @@ function user(state = initialState, { type, user }) {
         name: user.name,
         email: user.email,
         avatar_url: `${url}${user.avatar_url}`
+      }
+
+    case 'UPDATE_USER_VALUE':
+      const { name, value } = change
+      return {
+        ...state,
+        [name]: value
       }
 
     default:

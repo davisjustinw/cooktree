@@ -1,43 +1,20 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { changeHandler } from '../helpers/form'
 import { connect } from 'react-redux'
-import { submitSignup, getTokenUser } from '../stores/user/userActions'
+import { submitSignup, getTokenUser, handleUserChange } from '../stores/user/userActions'
 import { withRouter } from 'react-router'
 import SignupForm from '../components/SignupForm'
-import Loading from '../components/Loading'
-
+import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
 class Confirm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      avatar_file: '',
-      avatar_url: ''
-    }
-  }
-
   componentDidMount() {
     const { token } = this.props.match.params
     console.log(`token: ${token}`)
     this.props.getTokenUser(token)
   }
 
-  handleChange = changeHandler.bind(this);
-
-  handleFileChange = ({ target }) => {
-    const file = target.files[0]
-
-    this.setState({
-      avatar: file,
-      file: {
-        name: target.value.split( '\\' ).pop(),
-        url: URL.createObjectURL(file)
-      }
-    })
+  handleChange = ({ target }) => {
+    this.props.handleUserChange({ name: target.name, value: target.value })
   }
 
   handleSubmit = event => {
@@ -57,11 +34,10 @@ class Confirm extends Component {
   render() {
     const { errors, classes, user } = this.props
     const { handleChange, handleSubmit } = this
-    console.log(user)
-    if(!user.name){
-      return <Loading />
-    } else {
-      return (
+
+    return (
+      <>
+        <RedirectLoggedIn />
         <SignupForm
           classes={classes}
           errors={errors}
@@ -69,8 +45,9 @@ class Confirm extends Component {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-      )
-    }
+      </>
+    )
+
   }
 }
 
@@ -81,7 +58,8 @@ const mapStateToProps = ({ error, user }) => ({
 
 const mapDispatchToProps = dispatch => ({
     submitSignup: user => dispatch(submitSignup(user)),
-    getTokenUser: token => dispatch(getTokenUser(token))
+    getTokenUser: token => dispatch(getTokenUser(token)),
+    handleUserChange: change => dispatch(handleUserChange(change))
 })
 
 const useStyles = theme => ({

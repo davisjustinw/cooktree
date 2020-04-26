@@ -125,10 +125,20 @@ const catch_errors_dispatch_login = (json, dispatch) => {
     }
 }
 
+const handleUserChange = change => {
+  return dispatch => {
+    dispatch({
+      type: 'UPDATE_USER_VALUE',
+      change: change
+    })
+  }
+}
+
 export {
   submitLogin,
   submitLogout,
   submitSignup,
   getCurrentUser,
-  getTokenUser
+  getTokenUser,
+  handleUserChange
 }

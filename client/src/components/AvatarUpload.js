@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import IconButton from '@material-ui/core/IconButton'
-import Loading from './Loading'
 
 class AvatarUpload extends Component {
   constructor(props) {
@@ -17,46 +16,40 @@ class AvatarUpload extends Component {
   }
 
   handleFileChange = ({ target }) => {
-    console.log('handleFileChange')
     const { handleChange } = this.props
-    const file = target.files[0]
-    const file_url = URL.createObjectURL(file)
-    //url: URL.createObjectURL(file)
-    handleChange({ target: { name: 'avatar_file', value: file }})
-    handleChange({ target: { name: 'avatar_url', value: file_url }})
+    // conditional protects against user canceling
+    if(target.files[0]) {
+      const file = target.files[0]
+      const file_url = URL.createObjectURL(file)
+      handleChange({ target: { name: 'avatar_file', value: file }})
+      handleChange({ target: { name: 'avatar_url', value: file_url }})
+    }
   }
 
   render() {
     const { classes, avatar_url } = this.props
-    console.log('AvatarUpload')
-    console.log(this.props)
-    if(!avatar_url){
-      return <Loading/>
-    } else {
-      return (
-        <>
-          <input
-            onChange={this.handleFileChange}
-            ref={this.fileUpload}
-            accept="image/*"
-            id='avatar_file'
-            name='avatar_file'
-            type="file"
-            hidden
-          />
-          <IconButton onClick={this.showFileUpload} >
-            <Avatar
-              alt='avatar image'
-              src={avatar_url}
-              className={classes.avatar}
-            >
-              <ScatterPlotIcon autoFocus/>
-            </Avatar>
-          </IconButton>
-        </>
-      )
-    }
-
+    return (
+      <>
+        <input
+          onChange={this.handleFileChange}
+          ref={this.fileUpload}
+          accept="image/*"
+          id='avatar_file'
+          name='avatar_file'
+          type="file"
+          hidden
+        />
+        <IconButton onClick={this.showFileUpload} >
+          <Avatar
+            alt='avatar image'
+            src={avatar_url}
+            className={classes.avatar}
+          >
+            <ScatterPlotIcon autoFocus/>
+          </Avatar>
+        </IconButton>
+      </>
+    )
   }
 }
 
