@@ -1,9 +1,14 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { mapUserToProps } from '../stores/mappers'
 
-const RedirectLoggedIn = ({ status, id }) => {
+const RedirectLoggedIn = ({ status, id, match, location, history }) => {
+    console.log('RedirectLoggedIn')
+    console.log(match)
+    console.log(location)
+    console.log(history)
   if (status === 'LOGGED_IN') {
     console.log("redirecting from login")
     // may need a check here for authorized routes
@@ -13,4 +18,4 @@ const RedirectLoggedIn = ({ status, id }) => {
   return null
 }
 
-export default connect(mapUserToProps)(RedirectLoggedIn)
+export default withRouter(connect(mapUserToProps)(RedirectLoggedIn))

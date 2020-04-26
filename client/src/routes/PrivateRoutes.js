@@ -12,16 +12,17 @@ const PrivateRoutes = () => {
   console.log('private routes')
   return (
     <Switch>
-      <PrivateRoute path={`${match.url}/connections/new`} redirectTo='/login'>
+      <PrivateRoute exact path={`${match.url}/connections/new`} redirectTo='/login'>
         <ConnectionNew />
       </PrivateRoute>
-      <PrivateRoute path={`${match.url}/connections/:id`} redirectTo='/login'>
+      <PrivateRoute exact path={`${match.url}/connections/:id`} redirectTo='/login'>
         <Connection />
       </PrivateRoute>
-      <PrivateRoute path={`${match.url}/connections`} redirectTo='/login'>
+      <PrivateRoute exact path={`${match.url}/connections`} redirectTo='/login'>
         <Connections />
       </PrivateRoute>
-      <Route path={`${match.url}/recipes`} component={Recipes}/>
+      <Route exact path={`${match.url}/recipes`} component={Recipes}/>
+
     </Switch>
   )
 }

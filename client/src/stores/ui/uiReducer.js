@@ -10,6 +10,11 @@ function ui(state = initialState, action) {
         ...state,
         mobileOpen: (!state.mobileOpen)
       }
+    case 'TOGGLE_MOBILE_OPEN_FALSE':
+      return {
+        ...state,
+        mobileOpen: false
+      }
     case 'TOGGLE_CONTROLS_ON':
       console.log('toggle controls on dispatch')
       return {

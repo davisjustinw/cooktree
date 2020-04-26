@@ -3,6 +3,7 @@ import { url } from '../helpers/fetchHelpers'
 const initialState = {
   status: 'LOGGING_IN',
   id: '',
+  token: '',
   name: '',
   email: '',
   password: '',
@@ -10,7 +11,7 @@ const initialState = {
   avatar_file: ''
 }
 
-function user(state = initialState, { type, user, change }) {
+function user(state = initialState, { type, user, token, change }) {
   switch (type) {
     case 'SUBMIT_LOGIN':
       return {
@@ -33,6 +34,7 @@ function user(state = initialState, { type, user, change }) {
         ...state,
         status: 'LOGGED_OUT',
         id: '',
+        token: '',
         name: '',
         email: '',
         password: '',
@@ -49,6 +51,12 @@ function user(state = initialState, { type, user, change }) {
       return {
         ...state,
         status: 'LOGGING_IN',
+      }
+
+    case 'SUBMIT_TOKEN_SIGNUP':
+      return {
+        ...state,
+        status: 'LOGGING_IN'
       }
 
     case 'GET_CURRENT_USER':
@@ -75,6 +83,7 @@ function user(state = initialState, { type, user, change }) {
         ...state,
         status: 'CONFIRMING',
         id: user.id,
+        token: token,
         name: user.name,
         email: user.email,
         avatar_url: `${url}${user.avatar_url}`

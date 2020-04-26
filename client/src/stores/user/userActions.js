@@ -27,7 +27,7 @@ const submitLogin = ({email, password}) => {
 const submitLogout = () => {
   return dispatch => {
     dispatch({ type: 'SUBMIT_LOGOUT' })
-    dispatch({ type: 'TOGGLE_MOBILE_OPEN'})
+    dispatch({ type: 'TOGGLE_MOBILE_OPEN_FALSE'})
     const headers = {
       method: 'DELETE',
       credentials: 'include',
@@ -52,6 +52,25 @@ const submitSignup = userInfo => {
     dispatch({ type: 'SUBMIT_SIGNUP' })
     const headers = {
       method: 'POST',
+      credentials: 'include',
+      body: userInfo
+    }
+    fetch('http://localhost:3001/signup', headers)
+      .then(resp => resp.json())
+      .then(json => {
+        catch_errors_dispatch_login(json, dispatch)
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
+  }
+}
+
+const submitTokenSignup = userInfo => {
+  return (dispatch) => {
+    dispatch({ type: 'SUBMIT_TOKEN_SIGNUP' })
+    const headers = {
+      method: 'PUT',
       credentials: 'include',
       body: userInfo
     }
@@ -98,7 +117,7 @@ const getTokenUser = token => {
     fetch(`${url}/signup/${token}`, getHeaderAnon)
       .then(resp => resp.json())
       .then(({ user }) => {
-        dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user })
+        dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user, token: token })
       })
   }
 }
@@ -139,6 +158,7 @@ export {
   submitLogin,
   submitLogout,
   submitSignup,
+  submitTokenSignup,
   getCurrentUser,
   getTokenUser,
   handleUserChange

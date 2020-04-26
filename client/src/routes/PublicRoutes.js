@@ -10,19 +10,17 @@ const PublicRoutes = () => {
   console.log('public routes')
   return (
     <Switch>
-      <Route path='/login'>
+      <Route exact path='/login'>
         <Login/>
       </Route>
-      <Route path='/logout' component={Logout} />
-      <Route path='/signup/:token'>
+      <Route exact path='/logout' component={Logout} />
+      <Route exact path='/signup/:token'>
         <Confirm/>
       </Route>
-      <Route path='/signup'>
+      <Route exact path='/signup'>
         <Signup/>
       </Route>
-      <Route path='/'>
-        <Redirect to='/login'/>
-      </Route>
+      <Redirect to='/login'/>
     </Switch>
   )
 }

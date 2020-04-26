@@ -202,11 +202,13 @@
 * post update with password
   - change status to confirmed
 
-* changed fields move to connection?
+* credentials added on sign up? use across board?
+* changed fields move to connection (alias)?
 * bad token redirect to login or signup
 * need validations in create connection
 * aka on a person
 * check for connection
+* refresh on cennections gets stuck on loading after invite
 
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in

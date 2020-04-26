@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import { submitSignup, getTokenUser, handleUserChange } from '../stores/user/userActions'
+import { submitTokenSignup, getTokenUser, handleUserChange } from '../stores/user/userActions'
 import { withRouter } from 'react-router'
 import SignupForm from '../components/SignupForm'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
@@ -19,16 +19,17 @@ class Confirm extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      const { id, name, email, password, avatar_file } = this.props
+      const { token, name, email, password, avatar_file } = this.props.user
+
       const data = new FormData()
 
-      data.append('id', id)
+      data.append('token', token)
       data.append('name', name)
       data.append('email', email)
       data.append('password', password)
       data.append('avatar_file', avatar_file)
-
-      this.props.submitSignup(data);
+    
+      this.props.submitTokenSignup(data);
   }
 
   render() {
@@ -57,7 +58,7 @@ const mapStateToProps = ({ error, user }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    submitSignup: user => dispatch(submitSignup(user)),
+    submitTokenSignup: user => dispatch(submitTokenSignup(user)),
     getTokenUser: token => dispatch(getTokenUser(token)),
     handleUserChange: change => dispatch(handleUserChange(change))
 })
