@@ -17,8 +17,8 @@ class User < ApplicationRecord
   #status: NO_INVITE, INVITED, CONFIRMED
   # need to validate email & password presence on signup but not add connection
   def avatar_url
-    if self.avatar.attached?
-      rails_blob_path(self.avatar, disposition: "attachment", only_path: true)
+    if self.avatar_file.attached?
+      rails_blob_path(self.avatar_file, disposition: "attachment", only_path: true)
     end
   end
 

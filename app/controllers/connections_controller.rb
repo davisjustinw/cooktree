@@ -54,7 +54,7 @@ class ConnectionsController < ApplicationController
   end
 
   def relation_params
-    params.permit :name, :email, :avatar
+    params.permit :name, :email, :avatar_file
   end
 
 end

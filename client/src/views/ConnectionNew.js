@@ -32,7 +32,7 @@ class ConnectionNew extends Component {
     const { avatar_file, name, relationship, email } = this.state
     const data = new FormData()
 
-    data.append('avatar', avatar_file)
+    data.append('avatar_file', avatar_file)
     data.append('name', name)
     data.append('relationship', relationship)
     data.append('email', email)
