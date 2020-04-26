@@ -20,33 +20,19 @@ class ConnectionNew extends Component {
       name: '',
       email: '',
       relationship: '',
-      file: {
-        name: '',
-        url: null
-      },
-      avatar: '',
+      avatar_file: '',
+      avatar_url: '',
     }
   }
 
   handleChange = changeHandler.bind(this);
 
-  handleFileChange = ({ target }) => {
-    const file = target.files[0]
-    this.setState({
-      avatar: file,
-      file: {
-        name: target.value.split( '\\' ).pop(),
-        url: URL.createObjectURL(file)
-      }
-    })
-  }
-
   handleSubmit = event => {
     event.preventDefault()
-    const { avatar, name, relationship, email } = this.state
+    const { avatar_file, name, relationship, email } = this.state
     const data = new FormData()
 
-    data.append('avatar', avatar)
+    data.append('avatar', avatar_file)
     data.append('name', name)
     data.append('relationship', relationship)
     data.append('email', email)
@@ -54,9 +40,9 @@ class ConnectionNew extends Component {
   }
 
   render() {
-    const { handleChange, handleFileChange, handleSubmit } = this
+    const { handleChange, handleSubmit } = this
     const { classes, errors, userId, submitSuccess, resetSuccess } = this.props
-    const { file, name, relationship, email } = this.state
+    const { avatar_url, avatar_file, name, relationship, email } = this.state
 
     if (submitSuccess === true) {
       resetSuccess()
@@ -71,9 +57,9 @@ class ConnectionNew extends Component {
 
             <form noValidate className={classes.form} onSubmit={handleSubmit}>
               <AvatarUpload id="avatar"
-                handleFileChange={handleFileChange}
-                name="avatar"
-                file={{ name: file.name, url: file.url }}
+                handleChange={handleChange}
+                avatar_file={avatar_file}
+                avatar_url={avatar_url}
               />
               <TextField id="name"
                 value={name}

@@ -54,6 +54,19 @@ function user(state = initialState, { type, user }) {
         avatar: user.avatar
       }
 
+    case 'GET_TOKEN_USER':
+      return { ...state }
+
+    case 'GET_TOKEN_USER_COMPLETE':
+      return {
+        ...state,
+        status: 'CONFIRMING',
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar
+      }
+
     default:
       return state;
   }

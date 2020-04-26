@@ -13,53 +13,39 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      avatar: '',
-      file: {
-        name: '',
-        url: null
-      }
+      avatar_file: '',
+      avatar_url: ''
     }
   }
 
   handleChange = changeHandler.bind(this);
 
-  handleFileChange = ({ target }) => {
-    const file = target.files[0]
-
-    this.setState({
-      avatar: file,
-      file: {
-        name: target.value.split( '\\' ).pop(),
-        url: URL.createObjectURL(file)
-      }
-    })
-  }
-
   handleSubmit = event => {
       event.preventDefault()
+      console.log('handleSubmit')
+      console.log(this.state)
       const { state, props } = this
-      const { name, email, password, avatar } = state
+      const { name, email, password, avatar_file } = state
       const data = new FormData()
 
       data.append('email', email)
       data.append('password', password)
       data.append('name', name)
-      data.append('avatar', avatar)
+      data.append('avatar', avatar_file)
 
       props.submitSignup(data);
   }
 
   render() {
     const { errors, classes } = this.props
-    const { state, handleChange, handleFileChange, handleSubmit } = this
+    const { state, handleChange, handleSubmit } = this
 
     return (
       <SignupForm
         classes={classes}
         errors={errors}
-        state={state}
+        user={state}
         handleChange={handleChange}
-        handleFileChange={handleFileChange}
         handleSubmit={handleSubmit}
       />
     )

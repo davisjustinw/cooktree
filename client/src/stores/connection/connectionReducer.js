@@ -16,9 +16,8 @@ const initialState = {
 function connection(state = initialState, action) {
   switch(action.type) {
     case 'GET_CONNECTIONS':
-      return {
-        ...state,
-      }
+      return { ...state }
+
     case 'GET_CONNECTIONS_COMPLETE':
       const { connections } = action
       return {
@@ -26,18 +25,16 @@ function connection(state = initialState, action) {
         list: connections
       }
     case 'GET_CONNECTION':
-      return {
-        ...state,
-      }
+      return { ...state }
+
     case 'GET_CONNECTION_COMPLETE':
       return {
         ...state,
         current: action.current
       }
     case 'POST_CONNECTION':
-      return {
-        ...state,
-      }
+      return { ...state }
+
     case 'POST_CONNECTION_COMPLETE':
       console.log('post connection complete')
 

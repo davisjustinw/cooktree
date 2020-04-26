@@ -15,23 +15,33 @@ class FileUpload extends Component {
     this.fileUpload.current.click();
   }
 
+  handleFileChange = ({ target }) => {
+    console.log('handleFileChange')
+    const { handleChange } = this.props
+    const file = target.files[0]
+    const file_url = URL.createObjectURL(file)
+    //url: URL.createObjectURL(file)
+    handleChange({ target: { name: 'avatar_file', value: file }})
+    handleChange({ target: { name: 'avatar_url', value: file_url }})
+  }
+
   render() {
-    const { handleFileChange, classes, id, name, file } = this.props
+    const { classes, avatar_url } = this.props
     return (
       <>
         <input
-          onChange={handleFileChange}
+          onChange={this.handleFileChange}
           ref={this.fileUpload}
           accept="image/*"
-          id={id}
-          name={name}
+          id='avatar_file'
+          name='avatar_file'
           type="file"
           hidden
         />
         <IconButton onClick={this.showFileUpload} >
           <Avatar
-            alt={file.name || 'upload avatar'}
-            src={file.url}
+            alt='avatar image'
+            src={avatar_url}
             className={classes.avatar}
           >
             <ScatterPlotIcon autoFocus/>

@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { changeHandler } from '../helpers/form'
 import { connect } from 'react-redux'
-import { submitSignup } from '../stores/user/userActions'
+import { submitSignup, getTokenUser } from '../stores/user/userActions'
 import { withRouter } from 'react-router'
 import SignupForm from '../components/SignupForm'
-import { url, getHeaderAnon } from '../stores/helpers/fetchHelpers'
+import Loading from '../components/Loading'
+
 
 class Confirm extends Component {
   constructor(props) {
@@ -25,12 +26,7 @@ class Confirm extends Component {
   componentDidMount() {
     const { token } = this.props.match.params
     console.log(`token: ${token}`)
-    fetch(`${url}/signup/${token}`, getHeaderAnon)
-      .then(resp => resp.json())
-      .then(user => {
-        console.log(user)
-      })
-
+    getTokenUser(token)
   }
 
   handleChange = changeHandler.bind(this);
@@ -62,24 +58,28 @@ class Confirm extends Component {
   }
 
   render() {
-    const { errors, classes } = this.props
-    const { state, handleChange, handleFileChange, handleSubmit } = this
-
-    return (
-      <SignupForm
-        classes={classes}
-        errors={errors}
-        state={state}
-        handleChange={handleChange}
-        handleFileChange={handleFileChange}
-        handleSubmit={handleSubmit}
-      />
-    )
+    const { errors, classes, user } = this.props
+    const { handleChange, handleFileChange, handleSubmit } = this
+    if(!user.name){
+      return <Loading />
+    } else {
+      return (
+        <SignupForm
+          classes={classes}
+          errors={errors}
+          user={user}
+          handleChange={handleChange}
+          handleFileChange={handleFileChange}
+          handleSubmit={handleSubmit}
+        />
+      )
+    }
   }
 }
 
-const mapStateToProps = ({ error }) => ({
-  errors: error.validation_errors
+const mapStateToProps = ({ error, user }) => ({
+  errors: error.validation_errors,
+  user: user
 })
 
 const mapDispatchToProps = dispatch => ({

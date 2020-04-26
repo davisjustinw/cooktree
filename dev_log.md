@@ -207,7 +207,7 @@
 * bad token redirect to login or signup
 * need validations in create connection
 * aka on a person
-
+* check for connection
 * cancel on avatar upload bombs out
 * root flashes login before redirect
 * can I stop wierd flash on redirect on not logged in

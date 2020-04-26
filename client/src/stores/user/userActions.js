@@ -1,3 +1,4 @@
+import { url, getHeaderAnon } from '../helpers/fetchHelpers'
 
 const submitLogin = ({email, password}) => {
   return (dispatch) => {
@@ -90,6 +91,17 @@ const getCurrentUser = () => {
   }
 }
 
+const getTokenUser = token => {
+  return dispatch => {
+    dispatch({ type: 'GET_TOKEN_USER' })
+    fetch(`${url}/signup/${token}`, getHeaderAnon)
+      .then(resp => resp.json())
+      .then(user => {
+        dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user })
+      })
+  }
+}
+
 const catch_errors_dispatch_login = (json, dispatch) => {
     const { user, error, validation_errors } = json
     if(user){
@@ -117,5 +129,6 @@ export {
   submitLogin,
   submitLogout,
   submitSignup,
-  getCurrentUser
+  getCurrentUser,
+  getTokenUser
 }

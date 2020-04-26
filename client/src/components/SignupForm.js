@@ -6,8 +6,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
-const SignupForm = ({ classes, errors, state, handleChange, handleSubmit, handleFileChange }) => {
-  const { file } = state
+const SignupForm = ({ classes, errors, user, handleChange, handleSubmit }) => {
+
   return (
     <>
       <RedirectLoggedIn/>
@@ -17,16 +17,15 @@ const SignupForm = ({ classes, errors, state, handleChange, handleSubmit, handle
         </Typography>
 
         <AvatarUpload
-          handleFileChange={handleFileChange}
-          id="avatar"
-          name="avatar"
-          file={file}
+          handleChange={handleChange}
+          avatar_file={user.avatar_file}
+          avatar_url={user.avatar_url}
         />
 
         <form noValidate className={classes.form} onSubmit={handleSubmit}>
           <TextField
             onChange={handleChange}
-            value={state.name}
+            value={user.name}
             error={!!errors.user.name}
             helperText={errors.user.name}
             variant="filled"
@@ -39,7 +38,7 @@ const SignupForm = ({ classes, errors, state, handleChange, handleSubmit, handle
           />
           <TextField
             onChange={handleChange}
-            value={state.email}
+            value={user.email}
             error={!!errors.user.email}
             helperText={errors.user.email}
             variant="filled"
@@ -54,7 +53,7 @@ const SignupForm = ({ classes, errors, state, handleChange, handleSubmit, handle
 
           <TextField
             onChange={handleChange}
-            value={state.password}
+            value={user.password}
             error={!!errors.user.password}
             helperText={errors.user.password}
             variant="filled"
