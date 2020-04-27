@@ -213,6 +213,8 @@
 
   * Recipe View
 
+  * seed with password
+
 * credentials added on sign up? use across board?
 * changed fields move to connection (alias)?
 * bad token redirect to login or signup

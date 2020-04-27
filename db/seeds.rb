@@ -13,20 +13,64 @@ def get_avatar(name)
   open("https://api.adorable.io/avatars/60/#{name}.png")
 end
 
-def get_faked_avatar(name)
-  faked = Faker::Avatar.image(slug: name, size: '60x60')
-  puts faked
-  open(faked)
+def get_status
+  stati = ["NO_INVITE", "INVITED", "CONFIRMED"]
+  stati.sample
 end
 
-moot = Person.first
+def create_connection
+
+end
+
+moot = User.new(
+  name: 'moot',
+  email: 'one@two.com',
+  password_digest: User.digest('password'),
+  status: "CONFIRMED"
+)
+
+avatar = get_avatar 'moot'
+moot.avatar_file.attach io: avatar, filename: "moot.png"
+moot.save
+
 
 5.times do
-  name = Faker::Ancient.hero
-  puts name
-  p = User.create name: name
-  avatar = get_avatar name
-  p.avatar.attach io: avatar, filename: "#{name}.png"
-  moot.connections.create relation: p, relationship: Faker::Relationship.familial
-  sleep 5
+
+  hero = {
+    name: Faker::Ancient.hero,
+    status: get_status
+  }
+
+  case hero[:status]
+  when "NO_INVITE"
+    if [true, false].sample
+      hero[:password_digest] = User.digest('password')
+      hero[:email] = Faker::Internet.email(name: hero[:name])
+    end
+  when "INVITED"
+    hero[:email] = Faker::Internet.email(name: hero[:name])
+  when "CONFIRMED"
+    hero[:password_digest] = User.digest('password')
+    hero[:email] = Faker::Internet.email(name: hero[:name])
+  end
+
+  puts "#{hero[:name]}"
+  u = User.new
+  u.attributes = hero
+  avatar = get_avatar hero[:name]
+  u.avatar_file.attach io: avatar, filename: "#{hero[:name]}.png"
+  u.save
+
+  case hero[:status]
+  when "NO_INVITE"
+    Connection.create user: moot, relation: u, relationship: Faker::Relationship.familial
+  when "INVITED"
+    Connection.create user: moot, relation: u, relationship: Faker::Relationship.familial
+  when "CONFIRMED"
+    Connection.create user: moot, relation: u, relationship: Faker::Relationship.familial
+    Connection.create user: u, relation: moot, relationship: Faker::Relationship.familial
+  end
+  sleep 2
 end
+
+#moot.connections.create relation: p, relationship: Faker::Relationship.familial
