@@ -202,9 +202,16 @@
   [x] fix handleSubmit in Confirm component
   [x] post update with password
   [x] change status to confirmed
-  * need connection complement created
-    * add invite from confirm form
-    * add relationship
+  [x] need connection complement created
+    [x] add invite from confirm form
+    [x] add relationship
+
+# 27 April
+  * Recipes View
+    - Recipe
+    - Recipe make
+
+  * Recipe View
 
 * credentials added on sign up? use across board?
 * changed fields move to connection (alias)?
@@ -215,7 +222,7 @@
 * refresh on connections gets stuck on loading after invite
 
 * root flashes login before redirect
-* can I stop wierd flash on redirect on not logged in
+* can I stop weird flash on redirect on not logged in
 * can I submit connection and return to connections without getConnections round trip
 X nav components in people Component?
 X re-write Login to functional component with useState
@@ -252,7 +259,7 @@ X might need a check in login for authorized from
 [x] Users are People
 [x] People don't have to be users
 * People connect to Recipes
-* People may connect to other people
+[x] People may connect to other people
 * Connections have meta data (ate, cooked etc)
 
 * User can step through different makes of a Recipe.
