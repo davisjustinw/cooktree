@@ -5,10 +5,7 @@ import { connect } from 'react-redux'
 import { mapUserToProps } from '../stores/mappers'
 
 const RedirectLoggedIn = ({ status, id, match, location, history }) => {
-    console.log('RedirectLoggedIn')
-    console.log(match)
-    console.log(location)
-    console.log(history)
+    
   if (status === 'LOGGED_IN') {
     console.log("redirecting from login")
     // may need a check here for authorized routes

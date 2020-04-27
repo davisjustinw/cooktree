@@ -116,8 +116,17 @@ const getTokenUser = token => {
     dispatch({ type: 'GET_TOKEN_USER' })
     fetch(`${url}/signup/${token}`, getHeaderAnon)
       .then(resp => resp.json())
-      .then(({ user }) => {
+      .then(({ user, connection }) => {
+        const { relation, id } = connection
         dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user, token: token })
+        dispatch({
+          type: 'GET_CONNECTION_COMPLETE',
+          current: {
+            id: id,
+            relation_id: relation.id,
+            name: relation.name,
+            avatar_url: relation.avatar_url,
+          } })
       })
   }
 }

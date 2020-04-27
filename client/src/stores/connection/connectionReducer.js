@@ -2,24 +2,24 @@ const initialState = {
   submitSuccess: false,
   list: [],
   current: {
+    id: '',
+    relation_id: '',
     name: '',
     email: '',
-    password: '',
-    avatar: '',
-    file: {
-      name: '',
-      url: null
-    }
+    avatar_url: '',
+    avatar_file: '',
+    relationship: ''
   }
 }
 
 function connection(state = initialState, action) {
-  switch(action.type) {
+  const { type, current, connection, connections, change } = action
+  
+  switch(type) {
     case 'GET_CONNECTIONS':
       return { ...state }
 
     case 'GET_CONNECTIONS_COMPLETE':
-      const { connections } = action
       return {
         ...state,
         list: connections
@@ -30,7 +30,10 @@ function connection(state = initialState, action) {
     case 'GET_CONNECTION_COMPLETE':
       return {
         ...state,
-        current: action.current
+        current: {
+          ...state.current,
+          ...current
+        }
       }
     case 'POST_CONNECTION':
       return { ...state }
@@ -48,19 +51,29 @@ function connection(state = initialState, action) {
         submitSuccess: false
       }
     case 'UPDATE_CONNECTION':
-      const newConnection = action.connection
       console.log("in update connection")
-      const newList = state.list.map(connection => {
-          if(connection.id === newConnection.id){
-            return newConnection
-          } else {
+      const newList = state.list.map(thisConnection => {
+          if(thisConnection.id === connection.id){
             return connection
+          } else {
+            return thisConnection
           }
       })
       return {
         ...state,
         list: newList
       }
+
+    case 'UPDATE_CONNECTION_VALUE':
+      const { name, value } = change
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          [name]: value
+        }
+      }
+
     default:
       return state
   }

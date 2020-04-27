@@ -3,7 +3,11 @@ import { withStyles } from '@material-ui/core/styles'
 import { changeHandler } from '../helpers/form'
 import { connect } from 'react-redux'
 import { submitSignup } from '../stores/user/userActions'
-import SignupForm from '../components/SignupForm'
+import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
+import Typography from '@material-ui/core/Typography'
+import AvatarUpload from '../components/AvatarUpload'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 class Signup extends Component {
   constructor(props) {
@@ -38,13 +42,74 @@ class Signup extends Component {
     const { state, handleChange, handleSubmit } = this
 
     return (
-      <SignupForm
-        classes={classes}
-        errors={errors}
-        user={state}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      <>
+        <RedirectLoggedIn/>
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Sign Up
+          </Typography>
+
+          <AvatarUpload
+            handleChange={handleChange}
+            avatar_file={state.avatar_file}
+            avatar_url={state.avatar_url}
+          />
+          <form noValidate className={classes.form} onSubmit={handleSubmit}>
+            <TextField
+              onChange={handleChange}
+              value={state.name}
+              error={!!errors.user.name}
+              helperText={errors.user.name}
+              variant="filled"
+              margin="normal"
+              fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              required
+            />
+
+            <TextField
+              onChange={handleChange}
+              value={state.email}
+              error={!!errors.user.email}
+              helperText={errors.user.email}
+              variant="filled"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              type="email"
+              required
+            />
+
+            <TextField
+              onChange={handleChange}
+              value={state.password}
+              error={!!errors.user.password}
+              helperText={errors.user.password}
+              variant="filled"
+              margin="normal"
+              fullWidth
+              id="password"
+              label="Password"
+              name="password"
+              required
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Sign Up
+            </Button>
+          </form>
+        </div>
+      </>
     )
   }
 }

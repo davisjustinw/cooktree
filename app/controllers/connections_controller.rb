@@ -41,7 +41,7 @@ class ConnectionsController < ApplicationController
 
   def get_invitation_user
     connection = Connection.find_by(confirm_token: params[:token])
-    render connection ? user_json(connection.relation) : empty_user_json
+    render connection ? invitation_json(connection) : empty_user_json
   end
 
   private

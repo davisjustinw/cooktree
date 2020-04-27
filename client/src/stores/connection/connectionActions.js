@@ -86,10 +86,20 @@ const updateConnection = connection => {
   }
 }
 
+const handleConnectionChange = change => {
+  return dispatch => {
+    dispatch({
+      type: 'UPDATE_CONNECTION_VALUE',
+      change: change
+    })
+  }
+}
+
 export {
   getConnections,
   postConnection,
   getConnection,
   resetSuccess,
-  updateConnection
+  updateConnection,
+  handleConnectionChange
 }

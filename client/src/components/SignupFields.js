@@ -6,22 +6,10 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 
-const SignupForm = ({ classes, errors, user, handleChange, handleSubmit }) => {
-  
+const SignupField = ({ classes, errors, user, handleChange, handleSubmit }) => {
+
   return (
     <>
-      <RedirectLoggedIn/>
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-
-        <AvatarUpload
-          handleChange={handleChange}
-          avatar_file={user.avatar_file}
-          avatar_url={user.avatar_url}
-        />
-
         <form noValidate className={classes.form} onSubmit={handleSubmit}>
           <TextField
             onChange={handleChange}
@@ -65,19 +53,10 @@ const SignupForm = ({ classes, errors, user, handleChange, handleSubmit }) => {
             required
           />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            Sign Up
-          </Button>
+
         </form>
-      </div>
     </>
   )
 }
 
-export default SignupForm
+export default SignupFields
