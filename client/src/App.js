@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import RootRoutes from './routes/RootRoutes'
 import ControlContainer from './components/containers/ControlContainer'
 import { withStyles } from '@material-ui/core/styles'
@@ -6,8 +7,11 @@ import Container from '@material-ui/core/Container'
 import ErrorMessage from './components/ErrorMessage'
 import Box from '@material-ui/core/Box'
 import Copyright from './components/Copyright'
-
+import { getCurrentUser } from './stores/user/userActions'
 class App extends Component {
+  componentDidMount(){
+    getCurrentUser()
+  }
 
   render() {
     const { classes } = this.props
@@ -38,4 +42,8 @@ const styles = theme => ({
   }
 })
 
-export default withStyles(styles)(App);
+const mapDispatchToProps = dispatch => ({
+  getCurrentUser: dispatch(getCurrentUser())
+})
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(App));

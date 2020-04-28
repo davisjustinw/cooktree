@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Switch, useRouteMatch } from 'react-router-dom'
 
 import PrivateRoute from '../redirects/PrivateRoute'
 import Connections from '../views/Connections'
