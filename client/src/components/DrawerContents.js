@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import Hidden from '@material-ui/core/Hidden'
 import UserDrawer from './UserDrawer'
 
-const DrawerContents = ({ person_id, toggleMobileOpen, temporary }) => {
+const DrawerContents = ({ id, toggleMobileOpen, temporary }) => {
   const classes = useStyles()
   const handleMenuClick = event => {
     temporary && toggleMobileOpen(event)
@@ -27,12 +27,12 @@ const DrawerContents = ({ person_id, toggleMobileOpen, temporary }) => {
         <ListItem
           button onClick={handleMenuClick}
           component={RouterLink}
-          to={`/people/${person_id}/connections`} >
+          to={`/users/${id}/connections`} >
             <ListItemText primary="Connections" />
         </ListItem>
         <ListItem button onClick={handleMenuClick}
           component={RouterLink}
-          to={`/people/${person_id}/recipes`}>
+          to={`/users/${id}/recipes`}>
             <ListItemText primary="Recipes" />
         </ListItem>
       </List>

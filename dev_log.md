@@ -207,13 +207,20 @@
     [x] add relationship
 
 # 27 April
+  [x] seed with password
+  [x] built out seeds
+  [x] recipes and recipe stub component with proper routes
+  [x] fixed old routing in drawer links
+
+  * fix refresh issue
+
   * Recipes View
     - Recipe
     - Recipe make
 
   * Recipe View
 
-  * seed with password
+
 
 * credentials added on sign up? use across board?
 * changed fields move to connection (alias)?
