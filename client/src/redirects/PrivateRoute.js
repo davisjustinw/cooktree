@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapUserToProps } from '../stores/mappers'
 import { Route, Redirect } from 'react-router-dom'
-import Loading from '../components/Loading'
+import Loading from '../shared/Loading'
 
 function PrivateRoute(props) {
   const {

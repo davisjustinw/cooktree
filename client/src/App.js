@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import RootRoutes from './routes/RootRoutes'
-import ControlContainer from './components/containers/ControlContainer'
+import ControlContainer from './layout/ControlContainer'
 import { withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import ErrorMessage from './components/ErrorMessage'
+import ErrorMessage from './shared/ErrorMessage'
 import Box from '@material-ui/core/Box'
-import Copyright from './components/Copyright'
+import Copyright from './layout/Copyright'
 import { getCurrentUser } from './stores/user/userActions'
+
 class App extends Component {
   componentDidMount(){
     getCurrentUser()

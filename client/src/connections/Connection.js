@@ -8,7 +8,7 @@ import { url } from '../stores/helpers/fetchHelpers'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
-import Loading from '../components/Loading'
+import Loading from '../shared/Loading'
 
 class Connection extends Component {
   componentDidMount(){

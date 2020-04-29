@@ -2,11 +2,11 @@ import React from 'react'
 import { Switch, useRouteMatch } from 'react-router-dom'
 
 import PrivateRoute from '../redirects/PrivateRoute'
-import Connections from '../views/Connections'
-import Connection from '../views/Connection'
-import ConnectionNew from '../views/ConnectionNew'
-import Recipes from '../views/Recipes'
-import Recipe from '../views/Recipe'
+import Connections from '../connections/Connections'
+import Connection from '../connections/Connection'
+import ConnectionNew from '../connections/ConnectionNew'
+import Recipes from '../recipes/Recipes'
+import Recipe from '../recipes/Recipe'
 
 const PrivateRoutes = () => {
   const match = useRouteMatch('/users/:id')

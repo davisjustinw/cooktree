@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { changeHandler } from '../helpers/form'
+import { changeHandler } from '../shared/form'
 import { connect } from 'react-redux'
 import { submitSignup } from '../stores/user/userActions'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 import Typography from '@material-ui/core/Typography'
-import AvatarUpload from '../components/AvatarUpload'
+import AvatarUpload from '../connections/AvatarUpload'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 

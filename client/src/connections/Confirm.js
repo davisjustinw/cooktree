@@ -6,10 +6,10 @@ import { handleConnectionChange } from '../stores/connection/connectionActions'
 import { withRouter } from 'react-router'
 import RedirectLoggedIn from '../redirects/RedirectLoggedIn'
 import Typography from '@material-ui/core/Typography'
-import AvatarUpload from '../components/AvatarUpload'
+import AvatarUpload from './AvatarUpload'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import Loading from '../components/Loading'
+import Loading from '../shared/Loading'
 
 class Confirm extends Component {
   componentDidMount() {

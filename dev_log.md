@@ -211,14 +211,19 @@
   [x] built out seeds
   [x] recipes and recipe stub component with proper routes
   [x] fixed old routing in drawer links
+  [x] fix refresh issue
+  [x] stubbed recipes view
+  [x] started recipe store files
 
-  * fix refresh issue
-
+# 28 April
+  [x] finish stubbing recipe store
   * Recipes View
     - Recipe
-    - Recipe make
+    - Recipe makes recipe card expands to show list of makes?
 
   * Recipe View
+    * Step list
+    * History gutter with makes
 
 
 

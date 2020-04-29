@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import Login from '../views/Login'
-import Logout from '../views/Logout'
-import Signup from '../views/Signup'
-import Confirm from '../views/Confirm'
+import Login from '../users/Login'
+import Logout from '../users/Logout'
+import Signup from '../users/Signup'
+import Confirm from '../connections/Confirm'
 
 const PublicRoutes = () => {
   console.log('public routes')

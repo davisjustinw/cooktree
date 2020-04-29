@@ -1,38 +1,38 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getConnections } from '../stores/connection/connectionActions'
+import { getRecipes } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
-import ConnectionCard from '../components/ConnectionCard'
-import Loading from '../components/Loading'
+import RecipeCard from './RecipeCard'
+import Loading from '../shared/Loading'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import Typography from '@material-ui/core/Typography'
 
 class Connections extends Component {
   componentDidMount() {
-    this.props.getConnections(this.props.userId)
+    this.props.getRecipes(this.props.userId)
   }
 
   render(){
-    const { connections, classes, userId } = this.props
-    if(!connections){
+    const { recipes, classes, userId } = this.props
+    if(!recipes){
       return <Loading/>
     } else {
       return (
       <>
         <Typography variant='h4' gutterBottom>
-          Connections
+          Recipes
         </Typography>
         {
-          connections.map(connection => {
-            return <ConnectionCard key={connection.id} connection={connection}/>
+          recipes.map(recipe => {
+            return <RecipeCard key={recipe.id} recipe={recipe}/>
           })
         }
         <Fab
           component={RouterLink}
-          to={`/users/${userId}/connections/new`}
+          to={`/users/${userId}/recipes/new`}
           color="secondary"
           className={classes.fab}
         >
@@ -44,15 +44,15 @@ class Connections extends Component {
   }
 }
 
-const mapStateToProps = ({ connection, user }) => {
+const mapStateToProps = ({ recipe, user }) => {
   return {
-    connections: connection.list,
+    recipes: recipe.list,
     userId: user.id
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getConnections: userId => dispatch(getConnections(userId))
+  getRecipes: userId => dispatch(getRecipes(userId))
 })
 
 const useStyles = theme => ({

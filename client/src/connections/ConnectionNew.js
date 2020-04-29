@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 
-import { changeHandler } from '../helpers/form'
+import { changeHandler } from '../shared/form'
 import { postConnection, resetSuccess } from '../stores/connection/connectionActions'
 
 import Button from '@material-ui/core/Button'
-import AvatarUpload from '../components/AvatarUpload'
+import AvatarUpload from './AvatarUpload'
 import { Redirect } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField'
