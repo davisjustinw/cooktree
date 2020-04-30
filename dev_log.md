@@ -225,7 +225,8 @@
     * Step list
     * History gutter with makes
 
-
+* move titles to Navbar
+* click on step to convert to step form
 
 * credentials added on sign up? use across board?
 * changed fields move to connection (alias)?
@@ -241,6 +242,8 @@
 X nav components in people Component?
 X re-write Login to functional component with useState
 X might need a check in login for authorized from
+
+
 
 * list recipes and contributions on connection show page
 * what does authorization look like for different users

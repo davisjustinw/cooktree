@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
+import { withStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 import Loading from '../shared/Loading'
+
+import Steps from './Steps'
 
 class Recipe extends Component {
   componentDidMount(){
@@ -13,15 +16,26 @@ class Recipe extends Component {
   }
 
   render() {
-    const { name } = this.props
+    const { name, classes } = this.props
     if(!name){
       return <Loading/>
     } else {
       return (
         <>
-          <Typography variant='h4' >{name}</Typography>
-
-
+          <Typography
+            variant='h5'
+            className={classes.title}
+          >
+            {name}
+          </Typography>
+          <Typography
+            variant='subtitle2'
+            className={classes.subtitle}
+            color='textSecondary'
+          >
+            Make Alias
+          </Typography>
+          <Steps />
         </>
       )
     } // else
@@ -40,4 +54,17 @@ const mapStateToProps = ({ recipe }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Recipe))
+const useStyles = theme => ({
+  title: {
+    marginBottom: theme.spacing(0)
+  },
+  subtitle: {
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(2)
+  },
+  sectionSubtitle: {
+    marginTop: theme.spacing(2)
+  }
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Recipe)))

@@ -7,21 +7,25 @@
   * password
 
 has_many makes
+has_many recipes through makes
 
+has_many memories
 ### Recipe
-  has_many make_users
-  has_many makes through make_users
+  Name
+  has_many makes
+  has_many cooks through makes class_name :user
 
-### Make_User
-  * role
-  belongs_to user
-  belongs_to make
-  
 ### Makes
 - alias
+- version name
 - date time
-initial make is the pioneering user?
-belongs_to user
+belongs_to cook class_name :user
+belongs_to recipe
+
+initial memory is the note
+has_many memories
+has_many users through memories
+
 has_many steps
 has_many ingredient_summaries
 
@@ -53,6 +57,7 @@ has_many steps through step_ingredients
 
 belongs_to Make
 belongs_to User
+has_many participants class_name user
 
 ### Connection
   belongs_to User
