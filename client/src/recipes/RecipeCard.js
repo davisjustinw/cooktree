@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/Styles'
+import { withStyles, withTheme } from '@material-ui/core/Styles'
 import Typography from '@material-ui/core/Typography'
 import Ingredient from './Ingredient'
 import Card from '@material-ui/core/Card'
@@ -9,8 +9,6 @@ import Divider from '@material-ui/core/Divider'
 import { EditorState } from 'draft-js'
 import createSubtitlePlugin from '../plugins/subtitlePlugin'
 import Editor from 'draft-js-plugins-editor'
-
-const subtitlePlugin = createSubtitlePlugin();
 
 class RecipeCard extends Component {
   constructor(props) {
@@ -27,6 +25,8 @@ class RecipeCard extends Component {
   }
 
   render() {
+    const { theme } = this.props
+    const subtitlePlugin = createSubtitlePlugin({ background: theme.palette.primary.main })
     return (
       <>
         <Card variant='outlined' >
@@ -58,4 +58,4 @@ const useStyles = theme => ({
   }
 })
 
-export default withStyles(useStyles)(RecipeCard)
+export default withTheme(withStyles(useStyles)(RecipeCard))
