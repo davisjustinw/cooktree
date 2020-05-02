@@ -6,8 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 import Loading from '../shared/Loading'
-
-import Steps from './Steps'
+import RecipeCard from './RecipeCard'
 
 class Recipe extends Component {
   componentDidMount(){
@@ -35,7 +34,7 @@ class Recipe extends Component {
           >
             Make Alias
           </Typography>
-          <Steps />
+          <RecipeCard />
         </>
       )
     } // else

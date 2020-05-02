@@ -225,6 +225,14 @@
     * Step list
     * History gutter with makes
 
+# 29 April
+  * stubbed steps
+  * pivoting to no steps.  Single rich text area for recipe.
+    - Draft.js
+    - list and prose mode
+    - Fraction formatting
+    - number in list (amount) sits left justified.  The rest tabs in
+
 * move titles to Navbar
 * click on step to convert to step form
 

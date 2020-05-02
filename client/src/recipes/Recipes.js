@@ -4,7 +4,7 @@ import { getRecipes } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
-import RecipeCard from './RecipeCard'
+import RecipeListing from './RecipeListing'
 import Loading from '../shared/Loading'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
@@ -27,7 +27,7 @@ class Connections extends Component {
         </Typography>
         {
           recipes.map(recipe => {
-            return <RecipeCard key={recipe.id} recipe={recipe}/>
+            return <RecipeListing key={recipe.id} recipe={recipe}/>
           })
         }
         <Fab
