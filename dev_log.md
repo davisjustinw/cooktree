@@ -217,22 +217,38 @@
 
 # 28 April
   [x] finish stubbing recipe store
-  * Recipes View
-    - Recipe
-    - Recipe makes recipe card expands to show list of makes?
-
-  * Recipe View
-    * Step list
-    * History gutter with makes
+  [x] Recipes View
+    [x] Recipe
 
 # 29 April
-  * stubbed steps
-  * pivoting to no steps.  Single rich text area for recipe.
+  [x] stubbed steps
+  [x] pivoted to no steps.  Single rich text area for recipe.
     - Draft.js
     - list and prose mode
     - Fraction formatting
     - number in list (amount) sits left justified.  The rest tabs in
 
+# 30 April - 1 May
+  [x] SPIKE - research rich text area libraries
+    - DraftJS/DraftJS plugins, Quill, Roll my own
+    - Libraries overly complicated for limited benefit in this use case
+    - research limited line based simple styling for recipe
+
+# 2 May
+  [x] pivot to single low pro text area with virtual feel of recipe card
+    - user liked the simplicity.
+  [x] RecipeCard with textarea and alias text field controled to local state
+  [x] Recipe component with Name loaded from store
+  * wire up Recipe to store
+    - recipe name
+    - makes
+  * update or new buttons
+
+
+  * History gutter with makes
+
+  - update only available if you are the user
+  - update available if owner is an unconfirmed connection
 * move titles to Navbar
 * click on step to convert to step form
 

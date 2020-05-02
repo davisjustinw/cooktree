@@ -4,11 +4,12 @@ import { withRouter } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 
-import Typography from '@material-ui/core/Typography'
 import Loading from '../shared/Loading'
 import RecipeCard from './RecipeCard'
+import InputBase from '@material-ui/core/InputBase'
 
 class Recipe extends Component {
+
   componentDidMount(){
     console.log('recipe mounting')
     this.props.getRecipe(this.props.match.params.id)
@@ -16,19 +17,24 @@ class Recipe extends Component {
 
   render() {
     const { name, classes } = this.props
+    console.log(classes)
     if(!name){
       return <Loading/>
     } else {
       return (
         <>
-          <Typography
-            variant='h5'
-            className={classes.title}
-          >
-            {name}
-          </Typography>
-
+          <div className={classes.paper}>
+          <InputBase
+            classes={{
+              root: classes.root,
+              input: classes.input
+            }}
+            type='text'
+            value={name}
+            placeholder='Recipe Name...'
+          />
           <RecipeCard />
+          </div>
         </>
       )
     } // else
@@ -48,8 +54,25 @@ const mapStateToProps = ({ recipe }) => {
 }
 
 const useStyles = theme => ({
-  title: {
-    marginBottom: theme.spacing(0)
+  paper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  root: {
+
+    alignSelf: 'flex-start'
+  },
+  input: {
+    marginBottom: theme.spacing(0),
+    padding: theme.spacing(0),
+    color: theme.palette.text.primary,
+    ...theme.typography.h5,
+    '&::placeholder':{
+      color: theme.palette.text.secondary,
+      opacity: 1,
+      ...theme.typography.h5
+    }
   }
 })
 

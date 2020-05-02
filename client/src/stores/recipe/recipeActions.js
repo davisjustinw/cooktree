@@ -9,7 +9,12 @@ const getRecipe = id => {
         type: 'GET_RECIPE_COMPLETE',
         current: {
           id: 1,
-          name: 'rad recipe'
+          name: 'rad recipe',
+          makes: [
+            { id: 1, alias: "Grandma's", content: 'weee' },
+            { id: 2, alias: "Moot's", content: 'double weee' },
+            { id: 3, alias: "Lexa's", content: 'double weee with a bit' },
+          ]
         }
       })
     )
@@ -37,40 +42,6 @@ const getRecipes = id => {
   }
 }
 
-const postRecipe = recipe => {
-  return dispatch => {
-    dispatch({ type: 'POST_RECIPE' })
-    fetch(`${url}/recipes`, postHeader(recipe))
-      .then(resp => resp.json())
-      .then(json => {
-        catch_errors_dispatch_connections(json, dispatch)
-      })
-      .catch((error) => {
-        console.error('Fetch error', error)
-      })
-  }
-}
-
-const catch_errors_dispatch_connections = (json, dispatch) => {
-    const { id, error, validation_errors } = json
-    if(id){
-      dispatch({ type: 'CLEAR_ERRORS' })
-      dispatch({
-        type: 'POST_RECIPE_COMPLETE'
-      })
-    } else if (error) {
-      dispatch({
-        type: 'UPDATE_ERRORS',
-        error: error
-      })
-    } else if (validation_errors) {
-      dispatch({
-        type: 'UPDATE_VALIDATION_ERRORS',
-        validation_errors: validation_errors
-      })
-    }
-}
-
 const resetSuccess = () => {
   return dispatch => {
     dispatch({ type: 'SUBMIT_SUCCESS' })
@@ -93,9 +64,8 @@ const handleRecipeChange = change => {
 }
 
 export {
-  getRecipes,
-  postRecipe,
   getRecipe,
+  getRecipes,
   resetSuccess,
   updateRecipe,
   handleRecipeChange

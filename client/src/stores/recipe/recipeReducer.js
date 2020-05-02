@@ -3,7 +3,8 @@ const initialState = {
   list: [],
   current: {
     id: '',
-    name: ''
+    name: '',
+    makes: []
   }
 }
 
@@ -11,10 +12,10 @@ function recipe(state = initialState, action) {
   const { type, current, recipes, recipe, change } = action
 
   switch(type) {
-    case 'GET_RECIPES':
+    case 'GET_RECIPE_LIST':
       return { ...state }
 
-    case 'GET_RECIPES_COMPLETE':
+    case 'GET_RECIPE_LIST_COMPLETE':
       return {
         ...state,
         list: recipes
