@@ -1,61 +1,40 @@
-import React, { Component } from 'react'
-import { withStyles, withTheme } from '@material-ui/core/Styles'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/Styles'
+import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import Ingredient from './Ingredient'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import { EditorState } from 'draft-js'
-import createSubtitlePlugin from '../plugins/subtitlePlugin'
-import Editor from 'draft-js-plugins-editor'
+import { useFormInput } from '../shared/form'
 
-class RecipeCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editorState: EditorState.createEmpty(),
-    }
-  }
+const RecipeCard = () => {
+  const content = useFormInput('')
+  const classes = useStyles()
 
-  onChange = (editorState) => {
-    this.setState({
-      editorState,
-    });
-  }
+  return (
+    <>
+      <Typography
+        variant='subtitle2'
+        className={classes.subtitle}
+        color='textSecondary'
+      >
+        Make Alias
+      </Typography>
 
-  render() {
-    const { theme } = this.props
-    const subtitlePlugin = createSubtitlePlugin({ background: theme.palette.primary.main })
-    return (
-      <>
-        <Card variant='outlined' >
-          <CardContent className={this.props.classes.root}>
-            <Editor
-              editorState={this.state.editorState}
-              onChange={this.onChange}
-              plugins={[subtitlePlugin]}
-            />
-          </CardContent >
-        </Card>
-      </>
-    )
-  }
+      <TextField
+        id='content-field'
+        placeholder='start typing...'
+        {...content}
+        multiline
+        fullWidth
+        variant="outlined"
+      />
+    </>
+  )
 }
 
-const useStyles = theme => ({
+const useStyles = makeStyles(theme => ({
   subtitle: {
-    color: "red"
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(2)
   },
-  root: {
-    padding: theme.spacing(3),
-  },
-  list: {
-    paddingBottom: '0px'
-  },
-  sectionSubtitle: {
-    marginTop: theme.spacing(2)
-  }
-})
+}))
 
-export default withTheme(withStyles(useStyles)(RecipeCard))
+export default RecipeCard

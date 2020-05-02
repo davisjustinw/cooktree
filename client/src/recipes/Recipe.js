@@ -27,13 +27,7 @@ class Recipe extends Component {
           >
             {name}
           </Typography>
-          <Typography
-            variant='subtitle2'
-            className={classes.subtitle}
-            color='textSecondary'
-          >
-            Make Alias
-          </Typography>
+
           <RecipeCard />
         </>
       )
@@ -56,13 +50,6 @@ const mapStateToProps = ({ recipe }) => {
 const useStyles = theme => ({
   title: {
     marginBottom: theme.spacing(0)
-  },
-  subtitle: {
-    marginTop: theme.spacing(0),
-    marginBottom: theme.spacing(2)
-  },
-  sectionSubtitle: {
-    marginTop: theme.spacing(2)
   }
 })
 
