@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
+import { handleRecipeChange } from '../stores/recipe/recipeActions'
 
 import Loading from '../shared/Loading'
 import RecipeCard from './RecipeCard'
@@ -15,9 +16,14 @@ class Recipe extends Component {
     this.props.getRecipe(this.props.match.params.id)
   }
 
+  handleRecipeChange = ({ target }) => {
+    this.props.handleRecipeChange({ name: target.name, value: target.value })
+  }
+
+
   render() {
     const { name, classes } = this.props
-    console.log(classes)
+
     if(!name){
       return <Loading/>
     } else {
@@ -30,7 +36,9 @@ class Recipe extends Component {
               input: classes.input
             }}
             type='text'
+            name='name'
             value={name}
+            onChange={this.handleRecipeChange}
             placeholder='Recipe Name...'
           />
           <RecipeCard />
@@ -42,7 +50,8 @@ class Recipe extends Component {
 } // class Connection
 
 const mapDispatchToProps = dispatch => ({
-  getRecipe: recipeId => dispatch(getRecipe(recipeId))
+  getRecipe: recipeId => dispatch(getRecipe(recipeId)),
+  handleRecipeChange: change => dispatch(handleRecipeChange(change))
 })
 
 const mapStateToProps = ({ recipe }) => {

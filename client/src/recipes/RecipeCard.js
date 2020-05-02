@@ -37,15 +37,15 @@ const RecipeCard = () => {
         fullWidth
         variant="outlined"
       />
-      <ButtonGroup fullwidth
+      <ButtonGroup
         classes={{
           root: classes.buttonGroup
         }}
       >
-        <Button fullwidth>
+        <Button >
           Update
         </Button >
-        <Button fullwidth>
+        <Button >
           Make New
         </Button >
       </ButtonGroup>
