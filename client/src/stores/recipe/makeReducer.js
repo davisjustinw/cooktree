@@ -2,6 +2,7 @@ const initialState = {
   list: [],
   current: {
     id: '',
+    cookId: '',
     alias: '',
     content: ''
   }

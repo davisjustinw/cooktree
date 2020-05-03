@@ -17,9 +17,9 @@ const getRecipe = id => {
       dispatch({
         type: 'GET_MAKE_LIST_COMPLETE',
         list: [
-          { id: 1, alias: "Grandma's", content: 'weee' },
-          { id: 2, alias: "Moot's", content: 'double weee' },
-          { id: 3, alias: "Lexa's", content: 'double weee with a bit' },
+          { id: 1, cookId: 2, alias: "Grandma's", content: 'weee' },
+          { id: 2, cookId: 1, alias: "Moot's", content: 'double weee' },
+          { id: 3, cookId: 2, alias: "Lexa's", content: 'double weee with a bit' },
         ]
       })
     )

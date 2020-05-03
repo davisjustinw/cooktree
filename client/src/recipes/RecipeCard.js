@@ -2,16 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/Styles'
 import TextField from '@material-ui/core/TextField'
-import { handleMakeChange, updateMakeList } from '../stores/recipe/makeActions'
+import { handleMakeChange } from '../stores/recipe/makeActions'
 import InputBase from '@material-ui/core/InputBase'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import Button from '@material-ui/core/Button'
 
-const RecipeCard = ({ make, handleMakeChange, updateMakeList }) => {
+import MakeButtons from './MakeButtons'
+
+const RecipeCard = ({ make, handleMakeChange }) => {
   const classes = useStyles()
-  const handleUpdateMakeList = () => {
-    updateMakeList(make)
-  }
 
   return (
     <>
@@ -42,20 +39,8 @@ const RecipeCard = ({ make, handleMakeChange, updateMakeList }) => {
         fullWidth
         variant="outlined"
       />
-      <ButtonGroup
-        classes={{
-          root: classes.buttonGroup
-        }}
-      >
-        <Button
-          onClick={handleUpdateMakeList}
-        >
-          Update
-        </Button >
-        <Button >
-          Make New
-        </Button >
-      </ButtonGroup>
+      <MakeButtons make={make}/>
+
     </>
   )
 }
@@ -75,15 +60,11 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     marginTop: theme.spacing(2)
-  },
-  buttonGroup: {
-    marginTop: theme.spacing(2)
   }
 }))
 
 const mapDispatchToProps = dispatch => ({
   handleMakeChange: ({ target }) => dispatch(handleMakeChange(target)),
-  updateMakeList: make => dispatch(updateMakeList(make))
 })
 
 export default connect(null, mapDispatchToProps)(RecipeCard)
