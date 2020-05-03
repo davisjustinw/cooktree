@@ -239,21 +239,19 @@
     - user liked the simplicity.
   [x] RecipeCard with textarea and alias text field controled to local state
   [x] Recipe component with Name loaded from store
-  * wire up Recipe to store
+  [x] wire up Recipe to store
     - recipe name
     - makes
-  * update or new buttons
+  [x] wired update button to store
 
-
+# 3 May
   * History gutter with makes
+
+  * hold state in component instead of store?
 
   - update only available if you are the user
   - update available if owner is an unconfirmed connection
 * move titles to Navbar
-* click on step to convert to step form
-
-* credentials added on sign up? use across board?
-* changed fields move to connection (alias)?
 * bad token redirect to login or signup
 * need validations in create connection
 * aka on a person

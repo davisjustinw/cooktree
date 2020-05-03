@@ -1,19 +1,30 @@
 const initialState = {
-  mobileOpen: false,
+  menuOpen: false,
+  historyOpen: false,
   showControls: false,
 }
 
 function ui(state = initialState, action) {
   switch(action.type){
-    case 'TOGGLE_MOBILE_OPEN':
+    case 'TOGGLE_MENU_OPEN':
       return {
         ...state,
-        mobileOpen: (!state.mobileOpen)
+        menuOpen: (!state.menuOpen)
       }
-    case 'TOGGLE_MOBILE_OPEN_FALSE':
+    case 'TOGGLE_MENU_OPEN_FALSE':
       return {
         ...state,
-        mobileOpen: false
+        menuOpen: false
+      }
+    case 'TOGGLE_HISTORY_OPEN':
+      return {
+        ...state,
+        historyOpen: (!state.historyOpen)
+      }
+    case 'TOGGLE_HISTORY_OPEN_FALSE':
+      return {
+        ...state,
+        historyOpen: false
       }
     case 'TOGGLE_CONTROLS_ON':
       console.log('toggle controls on dispatch')

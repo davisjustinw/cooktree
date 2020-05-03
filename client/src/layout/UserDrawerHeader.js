@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const UserDrawer = ({ email, name, avatar_url }) => {
+const UserDrawerHeader = ({ email, name, avatar_url }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -62,4 +62,4 @@ const UserDrawer = ({ email, name, avatar_url }) => {
   )
 }
 
-export default connect(mapUserToProps)(UserDrawer)
+export default connect(mapUserToProps)(UserDrawerHeader)

@@ -11,7 +11,8 @@ const mapLoginStatusToProps = ({ user }) => ({
 })
 
 const mapUiToProps = ({ ui }) => ({
-  mobileOpen: ui.mobileOpen
+  menuOpen: ui.menuOpen,
+  historyOpen: ui.historyOpen
 })
 
 const mapConnectionToProps = ({ connection }) => {

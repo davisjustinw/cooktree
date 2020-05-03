@@ -1,5 +1,9 @@
-const toggleMobileOpen = event => {
-  return dispatch => dispatch({ type: 'TOGGLE_MOBILE_OPEN'})
+const toggleMenuOpen = event => {
+  return dispatch => dispatch({ type: 'TOGGLE_MENU_OPEN'})
+}
+
+const toggleHistoryOpen = event => {
+  return dispatch => dispatch({ type: 'TOGGLE_HISTORY_OPEN'})
 }
 
 const toggleControlsOn = () => {
@@ -13,7 +17,8 @@ const toggleControlsOff = () => {
 }
 
 export {
-  toggleMobileOpen,
+  toggleMenuOpen,
+  toggleHistoryOpen,
   toggleControlsOn,
   toggleControlsOff
 }

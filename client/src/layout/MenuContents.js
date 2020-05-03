@@ -8,12 +8,12 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Divider from '@material-ui/core/Divider'
 import Hidden from '@material-ui/core/Hidden'
-import UserDrawer from './UserDrawer'
+import UserDrawerHeader from './UserDrawerHeader'
 
-const DrawerContents = ({ id, toggleMobileOpen, temporary }) => {
+const MenuContents = ({ id, toggleMenuOpen, temporary }) => {
   const classes = useStyles()
   const handleMenuClick = event => {
-    temporary && toggleMobileOpen(event)
+    temporary && toggleMenuOpen(event)
   }
 
   return (
@@ -21,7 +21,7 @@ const DrawerContents = ({ id, toggleMobileOpen, temporary }) => {
       <Hidden mdDown implementation="css" >
         <div className={classes.toolbar}/>
       </Hidden>
-      <UserDrawer/>
+      <UserDrawerHeader/>
       <Divider/>
       <List>
         <ListItem
@@ -44,4 +44,4 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default connect(mapUserToProps)(DrawerContents)
+export default connect(mapUserToProps)(MenuContents)

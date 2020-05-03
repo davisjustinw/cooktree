@@ -9,10 +9,10 @@ import Button from '@material-ui/core/Button'
 
 const RecipeCard = ({ make, handleMakeChange, updateMake }) => {
   const classes = useStyles()
-
   const handleUpdateMake = () => {
     updateMake(make)
   }
+
   return (
     <>
       <InputBase

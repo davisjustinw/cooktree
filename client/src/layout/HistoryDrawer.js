@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { mapUiToProps } from '../stores/mappers'
-import { toggleMenuOpen } from '../stores/ui/uiActions'
+import { toggleHistoryOpen } from '../stores/ui/uiActions'
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
-import MenuContents from './MenuContents'
+import HistoryContents from './HistoryContents'
 
-const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
+const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
   const classes = useStyles()
 
   return (
@@ -16,19 +16,19 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
         <Drawer
           variant="temporary"
           anchor='left'
-          open={menuOpen}
-          onClose={toggleMenuOpen}
+          open={historyOpen}
+          onClose={toggleHistoryOpen}
 
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
         >
-          <MenuContents toggleMenuOpen={toggleMenuOpen} temporary />
+          <HistoryContents toggleHistoryOpen={toggleHistoryOpen} temporary />
         </Drawer>
       </Hidden>
       <Hidden mdDown implementation="css">
         <Drawer variant="permanent" open >
-          <MenuContents toggleMenuOpen={toggleMenuOpen} />
+          <HistoryContents toggleHistoryOpen={toggleHistoryOpen} />
         </Drawer>
       </Hidden>
     </nav>
@@ -45,4 +45,4 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default connect(mapUiToProps, { toggleMenuOpen })(MenuDrawer)
+export default connect(mapUiToProps, { toggleHistoryOpen })(HistoryDrawer)
