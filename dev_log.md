@@ -246,6 +246,8 @@
 
 # 3 May
   [x] History drawer
+  [x] copyright to footer
+  
   * history drawer styling
   * add makes to history drawer
 

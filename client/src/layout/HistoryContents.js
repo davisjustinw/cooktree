@@ -9,9 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText'
 
 import Hidden from '@material-ui/core/Hidden'
 
-const HistoryContents = ({ id, toggleHistoryOpen, temporary }) => {
+const HistoryContents = ({ makes, recipe, toggleHistoryOpen, temporary }) => {
   const classes = useStyles()
-  const handleMenuClick = event => {
+  const handleHistoryClick = event => {
     temporary && toggleHistoryOpen(event)
   }
 
@@ -22,17 +22,21 @@ const HistoryContents = ({ id, toggleHistoryOpen, temporary }) => {
       </Hidden>
 
       <List>
-        <ListItem
-          button onClick={handleMenuClick}
-          component={RouterLink}
-          to={`/users/${id}/connections`} >
-            <ListItemText primary="Make1" />
-        </ListItem>
-        <ListItem button onClick={handleMenuClick}
-          component={RouterLink}
-          to={`/users/${id}/recipes`}>
-            <ListItemText primary="Make2" />
-        </ListItem>
+
+        {
+          makes.map(make => {
+            return (
+              <ListItem
+                key={`history-make-${make.id}`}
+                button onClick={handleHistoryClick}
+                component={RouterLink}
+                to={`/recipes/${recipe.id}/makes/${make.id}`} >
+                  <ListItemText primary={make.alias} />
+              </ListItem>
+            )
+          })
+        }
+
       </List>
     </>
   )
@@ -42,4 +46,9 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default connect(mapUserToProps)(HistoryContents)
+const mapStateToProps = ({ make, recipe }) => ({
+  recipe: recipe.current,
+  makes: make.list
+})
+
+export default connect(mapStateToProps)(HistoryContents)

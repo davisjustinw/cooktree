@@ -11,7 +11,7 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
   const classes = useStyles()
 
   return (
-    <nav >
+    <menu >
       <Hidden lgUp implementation="css">
         <Drawer
           variant="temporary"
@@ -35,7 +35,7 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
           <HistoryContents toggleHistoryOpen={toggleHistoryOpen} />
         </Drawer>
       </Hidden>
-    </nav>
+    </menu>
   )
 }
 
