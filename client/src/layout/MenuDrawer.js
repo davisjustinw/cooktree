@@ -9,7 +9,6 @@ import MenuContents from './MenuContents'
 
 const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
 
-
   return (
     <nav >
       <Hidden lgUp implementation="css">

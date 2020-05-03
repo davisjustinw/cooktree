@@ -10,7 +10,7 @@ import Recipe from '../recipes/Recipe'
 
 const PrivateRoutes = () => {
   const match = useRouteMatch('/users/:id')
-  
+
   return (
     <Switch>
       <PrivateRoute exact path={`${match.url}/connections/new`} redirectTo='/login'>

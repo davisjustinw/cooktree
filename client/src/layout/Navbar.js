@@ -9,10 +9,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import HistoryIcon from '@material-ui/icons/History'
+
 import SearchBar from './SearchBar'
 import Hidden from '@material-ui/core/Hidden'
-//navbar
+import HistoryButton from './HistoryButton'
+
 const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
   const classes = useStyles();
   return (
@@ -38,16 +39,7 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
             </Typography>
           </Hidden>
           <SearchBar />
-
-          <Hidden lgUp implementation="css">
-            <IconButton
-              onClick={ toggleHistoryOpen }
-              edge="start"
-              color="inherit"
-            >
-              <HistoryIcon />
-            </IconButton>
-          </Hidden>
+          <HistoryButton toggleHistoryOpen={toggleHistoryOpen} />
           </>
         ) : null
       }

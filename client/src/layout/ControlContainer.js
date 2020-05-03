@@ -6,7 +6,6 @@ import MenuDrawer from './MenuDrawer'
 import HistoryDrawer from './HistoryDrawer'
 
 const ControlContainer = ({ status }) => {
-
   return (
     <>
       <Navbar />
