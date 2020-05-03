@@ -4,12 +4,12 @@ import Link from '@material-ui/core/Link'
 
 const Copyright = () => (
   <Typography variant="body2" color="textSecondary" align="center">
-     {'Copyright © '}
+     {/*'Copyright © '*/}
      <Link color="inherit" href="https://github.com/davisjustinw/cooktree">
-       Justin Davis
+       Justin Davis,
      </Link>{' '}
      {new Date().getFullYear()}
-     {'.'}
+     {/*'.'*/}
    </Typography>
 )
 

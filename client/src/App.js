@@ -23,10 +23,11 @@ class App extends Component {
           <div className={classes.toolbar} />
           <ErrorMessage/>
           <RootRoutes/>
-          <Box mt={8}>
-            <Copyright />
-          </Box>
+
         </Container>
+        <Box mt={8} className={classes.footer}>
+          <Copyright />
+        </Box>
       </div>
     )
   }
@@ -34,12 +35,18 @@ class App extends Component {
 
 const styles = theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
   },
   toolbar: theme.mixins.toolbar,
   content: {
+
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  footer: {
+    alignSelf: 'center'
   }
 })
 
