@@ -9,10 +9,9 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-
-import SearchBar from './SearchBar'
 import Hidden from '@material-ui/core/Hidden'
 import HistoryButton from './HistoryButton'
+//import SearchBar from './SearchBar' Pulled for after MVP
 
 const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
   const classes = useStyles();
@@ -38,7 +37,7 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
               Cook Tree
             </Typography>
           </Hidden>
-          <SearchBar />
+          {/*<SearchBar />*/}
           <HistoryButton toggleHistoryOpen={toggleHistoryOpen} />
           </>
         ) : null

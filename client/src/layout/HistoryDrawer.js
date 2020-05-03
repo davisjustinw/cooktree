@@ -14,7 +14,7 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
     <>
     {recipesMatch ? (
       <menu >
-        <Hidden lgUp implementation="css">
+        <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
             anchor='right'
@@ -28,7 +28,7 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
             <HistoryContents toggleHistoryOpen={toggleHistoryOpen} temporary />
           </Drawer>
         </Hidden>
-        <Hidden mdDown implementation="css">
+        <Hidden smDown implementation="css">
           <Drawer
             variant="permanent"
             open

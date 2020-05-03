@@ -1,3 +1,4 @@
+// Pulled for after MVP
 import React from 'react'
 import { fade, makeStyles } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'

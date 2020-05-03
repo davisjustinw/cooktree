@@ -9,7 +9,7 @@ const HistoryButton = ({ toggleHistoryOpen }) => {
   return (
     <>
       { recipesMatch ? (
-        <Hidden lgUp implementation="css">
+        <Hidden mdUp implementation="css">
           <IconButton
             onClick={ toggleHistoryOpen }
             edge="start"

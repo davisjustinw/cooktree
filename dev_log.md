@@ -249,18 +249,20 @@
   [x] copyright to footer
   [x] list makes in history Drawer
   [x] wire make up to view
+  [x] display history icon only on recipe routes
+  
+  - update only available if you are the user (hide update button)
+  - update available if owner is an unconfirmed connection
 
-  * display history icon only on recipe routes
   * history drawer styling
     - add avatar and maker name
 
-  * add makes to history drawer
 
   * dry up drawer components
-  * hold state in component instead of store?
+  * hold state in component instead of store? use map list instead of current?
 
-  - update only available if you are the user (hide update button)
-  - update available if owner is an unconfirmed connection
+
+
 * add unsaved changes indicator
   - updated date?
 * move titles to Navbar

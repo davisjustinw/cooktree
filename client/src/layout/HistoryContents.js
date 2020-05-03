@@ -15,12 +15,14 @@ const HistoryContents =
 
   const handleHistoryClick = (id, event) => {
     changeCurrentMake(id)
+
+    // for close on navigate away
     //temporary && toggleHistoryOpen()
   }
 
   return (
     <>
-      <Hidden mdDown implementation="css" >
+      <Hidden smDown implementation="css" >
         <div className={classes.toolbar}/>
       </Hidden>
 
