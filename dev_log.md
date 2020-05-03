@@ -248,8 +248,9 @@
   [x] History drawer
   [x] copyright to footer
   [x] list makes in history Drawer
-  * take user from recipe route
-    - recipe/:id/make/:id ?
+  [x] wire make up to view
+
+  * display history icon only on recipe routes
   * history drawer styling
     - add avatar and maker name
 

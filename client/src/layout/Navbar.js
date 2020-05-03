@@ -43,7 +43,6 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
             <IconButton
               onClick={ toggleHistoryOpen }
               edge="start"
-              className={classes.menuButton}
               color="inherit"
             >
               <HistoryIcon />
