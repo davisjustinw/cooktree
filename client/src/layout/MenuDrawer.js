@@ -11,7 +11,7 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
   const classes = useStyles()
 
   return (
-    <nav className={classes.drawer} >
+    <nav >
       <Hidden lgUp implementation="css">
         <Drawer
           variant="temporary"

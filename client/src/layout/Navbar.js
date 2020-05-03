@@ -38,14 +38,17 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
             </Typography>
           </Hidden>
           <SearchBar />
-          <IconButton
-            onClick={ toggleHistoryOpen }
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-          >
-            <HistoryIcon />
-          </IconButton>
+
+          <Hidden lgUp implementation="css">
+            <IconButton
+              onClick={ toggleHistoryOpen }
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+            >
+              <HistoryIcon />
+            </IconButton>
+          </Hidden>
           </>
         ) : null
       }

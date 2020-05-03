@@ -11,11 +11,11 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
   const classes = useStyles()
 
   return (
-    <nav className={classes.drawer} >
+    <nav >
       <Hidden lgUp implementation="css">
         <Drawer
           variant="temporary"
-          anchor='left'
+          anchor='right'
           open={historyOpen}
           onClose={toggleHistoryOpen}
 
@@ -27,7 +27,11 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
         </Drawer>
       </Hidden>
       <Hidden mdDown implementation="css">
-        <Drawer variant="permanent" open >
+        <Drawer
+          variant="permanent"
+          open
+          anchor='right'
+        >
           <HistoryContents toggleHistoryOpen={toggleHistoryOpen} />
         </Drawer>
       </Hidden>

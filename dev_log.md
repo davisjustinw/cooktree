@@ -245,8 +245,11 @@
   [x] wired update button to store
 
 # 3 May
-  * History gutter with makes
+  [x] History drawer
+  * history drawer styling
+  * add makes to history drawer
 
+  * dry up drawer components
   * hold state in component instead of store?
 
   - update only available if you are the user
