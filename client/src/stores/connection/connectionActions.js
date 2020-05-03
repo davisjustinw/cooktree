@@ -88,10 +88,7 @@ const updateConnection = connection => {
 
 const handleConnectionChange = change => {
   return dispatch => {
-    dispatch({
-      type: 'UPDATE_CONNECTION_VALUE',
-      change: change
-    })
+    dispatch({ type: 'UPDATE_CONNECTION_VALUE', change: change })
   }
 }
 

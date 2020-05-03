@@ -86,7 +86,7 @@ const submitTokenSignup = userInfo => {
 }
 
 const getCurrentUser = () => {
-  console.log('getCurrentUser')
+  
   return dispatch => {
     dispatch({ type: 'GET_CURRENT_USER' })
 

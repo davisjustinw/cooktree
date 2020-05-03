@@ -1,17 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/Styles'
 import TextField from '@material-ui/core/TextField'
-import { useFormInput } from '../shared/form'
+import { handleMakeChange, updateMake } from '../stores/recipe/makeActions'
 import InputBase from '@material-ui/core/InputBase'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 
-
-const RecipeCard = () => {
-  const content = useFormInput('')
-  const alias = useFormInput('')
+const RecipeCard = ({ make, handleMakeChange, updateMake }) => {
   const classes = useStyles()
 
+  const handleUpdateMake = () => {
+    updateMake(make)
+  }
   return (
     <>
       <InputBase
@@ -21,7 +22,9 @@ const RecipeCard = () => {
         }}
         type='text'
         placeholder='alias...'
-        {...alias}
+        name='alias'
+        value={make.alias}
+        onChange={handleMakeChange}
       />
 
       <TextField
@@ -30,7 +33,9 @@ const RecipeCard = () => {
         }}
         id='content-field'
         placeholder='start typing...'
-        {...content}
+        name='content'
+        value={make.content}
+        onChange={handleMakeChange}
         multiline
         rows='10'
         rowsMax='100'
@@ -42,7 +47,9 @@ const RecipeCard = () => {
           root: classes.buttonGroup
         }}
       >
-        <Button >
+        <Button
+          onClick={handleUpdateMake}
+        >
           Update
         </Button >
         <Button >
@@ -60,10 +67,10 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: theme.palette.text.secondary,
     ...theme.typography.subtitle2,
-    '&::placeholder':{
+    '&::placeholder': {
       color: theme.palette.text.secondary,
       opacity: 1,
-      ...theme.typography.subtitle2
+      ...theme.typography.subtitle2,
     }
   },
   content: {
@@ -74,4 +81,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default RecipeCard
+const mapDispatchToProps = dispatch => ({
+  handleMakeChange: ({ target }) => dispatch(handleMakeChange(target)),
+  updateMake: make => dispatch(updateMake(make))
+})
+
+export default connect(null, mapDispatchToProps)(RecipeCard)

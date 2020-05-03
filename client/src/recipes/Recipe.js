@@ -20,11 +20,10 @@ class Recipe extends Component {
     this.props.handleRecipeChange({ name: target.name, value: target.value })
   }
 
-
   render() {
-    const { name, classes } = this.props
+    const { id, name, make, classes } = this.props
 
-    if(!name){
+    if(!id){
       return <Loading/>
     } else {
       return (
@@ -41,7 +40,7 @@ class Recipe extends Component {
             onChange={this.handleRecipeChange}
             placeholder='Recipe Name...'
           />
-          <RecipeCard />
+          <RecipeCard make={make}/>
           </div>
         </>
       )
@@ -54,13 +53,11 @@ const mapDispatchToProps = dispatch => ({
   handleRecipeChange: change => dispatch(handleRecipeChange(change))
 })
 
-const mapStateToProps = ({ recipe }) => {
-  const { current } = recipe
-  return {
-    id: current.id,
-    name: current.name
-  }
-}
+const mapStateToProps = ({ recipe, make }) => ({
+  id: recipe.current.id,
+  name: recipe.current.name,
+  make: make.current
+})
 
 const useStyles = theme => ({
   paper: {
@@ -69,7 +66,6 @@ const useStyles = theme => ({
     alignItems: 'center',
   },
   root: {
-
     alignSelf: 'flex-start'
   },
   input: {

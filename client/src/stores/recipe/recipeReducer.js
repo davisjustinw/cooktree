@@ -3,8 +3,7 @@ const initialState = {
   list: [],
   current: {
     id: '',
-    name: '',
-    makes: []
+    name: ''
   }
 }
 

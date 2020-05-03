@@ -1,4 +1,4 @@
-import { url, postHeader } from '../helpers/fetchHelpers'
+//import { url, postHeader } from '../helpers/fetchHelpers'
 import { fakeFetch } from '../helpers/fakeAPI'
 
 const getRecipe = id => {
@@ -9,15 +9,21 @@ const getRecipe = id => {
         type: 'GET_RECIPE_COMPLETE',
         current: {
           id: 1,
-          name: 'rad recipe',
-          makes: [
-            { id: 1, alias: "Grandma's", content: 'weee' },
-            { id: 2, alias: "Moot's", content: 'double weee' },
-            { id: 3, alias: "Lexa's", content: 'double weee with a bit' },
-          ]
+          name: 'rad recipe'
         }
       })
     )
+    fakeFetch(
+      dispatch({
+        type: 'GET_MAKELIST_COMPLETE',
+        list: [
+          { id: 1, alias: "Grandma's", content: 'weee' },
+          { id: 2, alias: "Moot's", content: 'double weee' },
+          { id: 3, alias: "Lexa's", content: 'double weee with a bit' },
+        ]
+      })
+    )
+
   }
 }
 
