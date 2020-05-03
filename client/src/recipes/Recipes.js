@@ -25,6 +25,7 @@ class Connections extends Component {
         <Typography variant='h4' gutterBottom>
           Recipes
         </Typography>
+        {console.log(recipes)}
         {
           recipes.map(recipe => {
             return <RecipeListing key={recipe.id} recipe={recipe}/>

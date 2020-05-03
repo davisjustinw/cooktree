@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapUiToProps } from '../stores/mappers'
 import { toggleMenuOpen } from '../stores/ui/uiActions'
-import { makeStyles } from '@material-ui/core/styles'
+
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import MenuContents from './MenuContents'
 
 const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
-  const classes = useStyles()
+
 
   return (
     <nav >
@@ -34,15 +34,5 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
     </nav>
   )
 }
-
-const useStyles = makeStyles(theme => ({
-  drawer: {
-    [theme.breakpoints.up('lg')]: {
-      width: 240,
-      flexShrink: 0,
-    }
-  },
-  toolbar: theme.mixins.toolbar,
-}));
 
 export default connect(mapUiToProps, { toggleMenuOpen })(MenuDrawer)

@@ -13,7 +13,7 @@ import UserDrawerHeader from './UserDrawerHeader'
 const MenuContents = ({ id, toggleMenuOpen, temporary }) => {
   const classes = useStyles()
   const handleMenuClick = event => {
-    temporary && toggleMenuOpen(event)
+    temporary && toggleMenuOpen()
   }
 
   return (

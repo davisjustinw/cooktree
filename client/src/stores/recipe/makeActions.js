@@ -1,13 +1,12 @@
 
-const updateMake = make => {
+const updateMakeList = make => {
   return dispatch => {
-    dispatch({ type: 'UPDATE_MAKE', make: make })
+    dispatch({ type: 'UPDATE_MAKE_LIST', make: make })
   }
 }
 
 const handleMakeChange = change => {
   return dispatch => {
-    console.log(change)
     dispatch({
       type: 'UPDATE_MAKE_VALUE',
       change: change
@@ -15,7 +14,17 @@ const handleMakeChange = change => {
   }
 }
 
+const changeCurrentMake = id => {
+  return dispatch => {
+    dispatch({
+      type: 'CHANGE_CURRENT_MAKE',
+      makeId: id
+    })
+  }
+}
+
 export {
-  updateMake,
+  updateMakeList,
   handleMakeChange,
+  changeCurrentMake
 }

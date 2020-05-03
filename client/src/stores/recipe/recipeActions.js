@@ -15,7 +15,7 @@ const getRecipe = id => {
     )
     fakeFetch(
       dispatch({
-        type: 'GET_MAKELIST_COMPLETE',
+        type: 'GET_MAKE_LIST_COMPLETE',
         list: [
           { id: 1, alias: "Grandma's", content: 'weee' },
           { id: 2, alias: "Moot's", content: 'double weee' },
@@ -32,7 +32,7 @@ const getRecipes = id => {
     dispatch({ type: 'GET_RECIPES'})
     fakeFetch(
       dispatch({
-      type: 'GET_RECIPES_COMPLETE',
+      type: 'GET_RECIPE_LIST_COMPLETE',
       recipes: [
         {
           id: 1,

@@ -247,15 +247,21 @@
 # 3 May
   [x] History drawer
   [x] copyright to footer
-  
+  [x] list makes in history Drawer
+  * take user from recipe route
+    - recipe/:id/make/:id ?
   * history drawer styling
+    - add avatar and maker name
+
   * add makes to history drawer
 
   * dry up drawer components
   * hold state in component instead of store?
 
-  - update only available if you are the user
+  - update only available if you are the user (hide update button)
   - update available if owner is an unconfirmed connection
+* add unsaved changes indicator
+  - updated date?
 * move titles to Navbar
 * bad token redirect to login or signup
 * need validations in create connection

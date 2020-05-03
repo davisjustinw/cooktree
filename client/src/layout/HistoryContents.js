@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { mapUserToProps } from '../stores/mappers'
-import { Link as RouterLink } from 'react-router-dom'
+import { changeCurrentMake } from '../stores/recipe/makeActions'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -9,10 +8,14 @@ import ListItemText from '@material-ui/core/ListItemText'
 
 import Hidden from '@material-ui/core/Hidden'
 
-const HistoryContents = ({ makes, recipe, toggleHistoryOpen, temporary }) => {
+const HistoryContents =
+  ({ makes, recipe, toggleHistoryOpen, temporary, changeCurrentMake }) => {
+
   const classes = useStyles()
-  const handleHistoryClick = event => {
-    temporary && toggleHistoryOpen(event)
+
+  const handleHistoryClick = (id, event) => {
+    changeCurrentMake(id)
+    //temporary && toggleHistoryOpen()
   }
 
   return (
@@ -27,11 +30,10 @@ const HistoryContents = ({ makes, recipe, toggleHistoryOpen, temporary }) => {
           makes.map(make => {
             return (
               <ListItem
-                key={`history-make-${make.id}`}
-                button onClick={handleHistoryClick}
-                component={RouterLink}
-                to={`/recipes/${recipe.id}/makes/${make.id}`} >
-                  <ListItemText primary={make.alias} />
+                key={make.id}
+                button onClick={e => handleHistoryClick(make.id, e)}
+              >
+                <ListItemText primary={make.alias} />
               </ListItem>
             )
           })
@@ -51,4 +53,8 @@ const mapStateToProps = ({ make, recipe }) => ({
   makes: make.list
 })
 
-export default connect(mapStateToProps)(HistoryContents)
+const mapDispatchToProps = dispatch => ({
+  changeCurrentMake: id => dispatch(changeCurrentMake(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryContents)

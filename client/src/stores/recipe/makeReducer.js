@@ -8,17 +8,17 @@ const initialState = {
 }
 
 function make(state = initialState, action) {
-  const { make, type, list, change } = action
+  const { make, type, list, change, makeId } = action
   switch(type){
-    case 'GET_MAKELIST_COMPLETE':
+    case 'GET_MAKE_LIST_COMPLETE':
       return {
         ...state,
         list: list,
         current: list[0]
       }
 
-    case 'UPDATE_MAKE':
-      console.log("in update make")
+    case 'UPDATE_MAKE_LIST':
+      console.log("in update make list")
       const newList = state.list.map(listMake => {
           if(listMake.id === make.id){
             return make
@@ -32,14 +32,21 @@ function make(state = initialState, action) {
       }
 
     case 'UPDATE_MAKE_VALUE':
-      console.log('in UPDATE_MAKE_VALUE')
       const { name, value } = change
-
       return {
         ...state,
         current: {
           ...state.current,
           [name]: value
+        }
+      }
+
+    case 'CHANGE_CURRENT_MAKE':
+      const newMake = state.list.find(thisMake => thisMake.id === makeId)
+      return {
+        ...state,
+        current: {
+          ...newMake
         }
       }
 

@@ -1,8 +1,8 @@
-const toggleMenuOpen = event => {
+const toggleMenuOpen = () => {
   return dispatch => dispatch({ type: 'TOGGLE_MENU_OPEN'})
 }
 
-const toggleHistoryOpen = event => {
+const toggleHistoryOpen = () => {
   return dispatch => dispatch({ type: 'TOGGLE_HISTORY_OPEN'})
 }
 
