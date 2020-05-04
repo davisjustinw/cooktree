@@ -250,22 +250,19 @@
   [x] list makes in history Drawer
   [x] wire make up to view
   [x] display history icon only on recipe routes
-  
-  - update only available if you are the user (hide update button)
+  [x] update only available if you are the user (hide update button)
+
   - update available if owner is an unconfirmed connection
 
   * history drawer styling
     - add avatar and maker name
 
-
   * dry up drawer components
   * hold state in component instead of store? use map list instead of current?
 
-
-
 * add unsaved changes indicator
   - updated date?
-* move titles to Navbar
+
 * bad token redirect to login or signup
 * need validations in create connection
 * aka on a person

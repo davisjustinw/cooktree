@@ -9,7 +9,11 @@ const MakeButtons = ({ make, user, updateMakeList }) => {
   const classes = useStyles()
   return (
     <>
-      <ButtonGroup classes={{ root: classes.buttonGroup }} >
+      <ButtonGroup
+        color='primary'
+        variant='contained'
+        classes={{ root: classes.buttonGroup }}
+      >
 
         <Button
           onClick={() => updateMakeList(make)}
