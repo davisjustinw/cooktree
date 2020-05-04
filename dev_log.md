@@ -252,8 +252,17 @@
   [x] display history icon only on recipe routes
   [x] update only available if you are the user (hide update button)
   [x] recipe input in card remove border
+  [x] add recipe and makes to seeds
+
+# 4 May
    * wire up makes to api
-   
+    - get recipes
+      - action
+      - api route
+    - get recipe
+      - action
+      - api route
+
   - update available if owner is an unconfirmed connection
 
   * history drawer styling

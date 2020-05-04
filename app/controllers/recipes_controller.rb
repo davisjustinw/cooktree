@@ -6,4 +6,8 @@ class RecipesController < ApplicationController
     @recipes = current_person.recipes
     render json: @recipes, status: :ok
   end
+
+  def show
+
+  end
 end

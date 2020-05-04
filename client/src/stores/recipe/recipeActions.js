@@ -4,49 +4,42 @@ import { fakeFetch } from '../helpers/fakeAPI'
 const getRecipe = id => {
   return dispatch => {
     dispatch({ type: 'GET_RECIPE'})
-    fakeFetch(
-      dispatch({
-        type: 'GET_RECIPE_COMPLETE',
-        current: {
-          id: 1,
-          name: 'rad recipe'
-        }
-      })
-    )
-    fakeFetch(
-      dispatch({
-        type: 'GET_MAKE_LIST_COMPLETE',
-        list: [
-          { id: 1, cookId: 2, alias: "Grandma's", content: 'weee' },
-          { id: 2, cookId: 1, alias: "Moot's", content: 'double weee' },
-          { id: 3, cookId: 2, alias: "Lexa's", content: 'double weee with a bit' },
-        ]
-      })
-    )
+    fetch(`${url}/recipes/${id}`, getHeader)
+      .then(resp => resp.json())
+      .then(recipe => {
 
-  }
-}
+        dispatch({
+          type: 'GET_RECIPE_COMPLETE',
+          current: {
+            id: recipe.id,
+            name: recipe.id
+          }
+        })
+        // make { id: 1, cookId: 2, alias: "Grandma's", content: 'weee' }
+        dispatch({
+          type: 'GET_MAKE_LIST_COMPLETE',
+          list: recipe.makes
+        })
+      })
+  } // end dispatch anonymous
+} // end getRecipe
 
 const getRecipes = id => {
   return dispatch => {
     dispatch({ type: 'GET_RECIPES'})
-    fakeFetch(
-      dispatch({
-      type: 'GET_RECIPE_LIST_COMPLETE',
-      recipes: [
-        {
-          id: 1,
-          name: 'rad recipe1'
-        },
-        {
-          id: 2,
-          name: 'rad recipe2'
-        }
-      ]
+    fetch(`${url}/recipes`, getHeader)
+      .then(resp => resp.json())
+      .then(recipes => {
+
+        dispatch({
+          type: 'GET_RECIPE_LIST_COMPLETE',
+          recipes: recipes
+        })
+
       })
-    )
-  }
-}
+
+  } // end dispatch anonymous
+} // end getRecipes
 
 const resetSuccess = () => {
   return dispatch => {
