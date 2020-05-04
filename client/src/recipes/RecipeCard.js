@@ -55,7 +55,8 @@ const useStyles = makeStyles(theme => ({
     alignSelf: 'flex-start'
   },
   cardRoot: {
-    width: '100%'
+    width: '100%',
+    marginTop: theme.spacing(2),
   },
   input: {
     color: theme.palette.text.secondary,

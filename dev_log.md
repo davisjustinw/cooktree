@@ -251,7 +251,9 @@
   [x] wire make up to view
   [x] display history icon only on recipe routes
   [x] update only available if you are the user (hide update button)
-
+  [x] recipe input in card remove border
+   * wire up makes to api
+   
   - update available if owner is an unconfirmed connection
 
   * history drawer styling

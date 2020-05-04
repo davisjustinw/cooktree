@@ -3,8 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
   has_one_attached :avatar_file
-  has_many :recipe_users
-  has_many :recipes, through: :recipe_users
+  has_many :recipes, through: :makes
 
   has_many :connections
   has_many :relations, through: :connections
