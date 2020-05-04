@@ -7,8 +7,8 @@ const initialState = {
   name: '',
   email: '',
   password: '',
-  avatar_url: '',
-  avatar_file: ''
+  avatarUrl: '',
+  avatarFile: ''
 }
 
 function user(state = initialState, { type, user, token, change }) {
@@ -26,7 +26,7 @@ function user(state = initialState, { type, user, token, change }) {
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar_url: `${url}${user.avatar_url}`
+        avatarUrl: `${url}${user.avatarUrl}`
       }
 
     case 'SUBMIT_LOGOUT':
@@ -38,8 +38,8 @@ function user(state = initialState, { type, user, token, change }) {
         name: '',
         email: '',
         password: '',
-        avatar_url: '',
-        avatar_file: ''
+        avatarUrl: '',
+        avatarFile: ''
       }
 
     case 'SUBMIT_LOGOUT_COMPLETE':
@@ -72,7 +72,7 @@ function user(state = initialState, { type, user, token, change }) {
         id: user.id,
         name: user.name,
         email: user.email,
-        avatar_url: `${url}${user.avatar_url}`
+        avatarUrl: `${url}${user.avatarUrl}`
       }
 
     case 'GET_TOKEN_USER':
@@ -86,7 +86,7 @@ function user(state = initialState, { type, user, token, change }) {
         token: token,
         name: user.name,
         email: user.email,
-        avatar_url: `${url}${user.avatar_url}`
+        avatarUrl: `${url}${user.avatarUrl}`
       }
 
     case 'UPDATE_USER_VALUE':

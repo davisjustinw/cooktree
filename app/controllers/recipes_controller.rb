@@ -3,11 +3,12 @@ class RecipesController < ApplicationController
 
   def index
     redirect_if_not_logged_in
-    @recipes = current_person.recipes
-    render json: @recipes, status: :ok
+    recipes = current_person.recipes
+    render json: recipes, status: :ok
   end
 
   def show
 
+    render json: { message: "empty"}, status: :ok
   end
 end

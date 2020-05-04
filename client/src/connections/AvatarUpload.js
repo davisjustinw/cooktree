@@ -21,28 +21,28 @@ class AvatarUpload extends Component {
     if(target.files[0]) {
       const file = target.files[0]
       const file_url = URL.createObjectURL(file)
-      handleChange({ target: { name: 'avatar_file', value: file }})
-      handleChange({ target: { name: 'avatar_url', value: file_url }})
+      handleChange({ target: { name: 'avatarFile', value: file }})
+      handleChange({ target: { name: 'avatarUrl', value: file_url }})
     }
   }
 
   render() {
-    const { classes, avatar_url } = this.props
+    const { classes, avatarUrl } = this.props
     return (
       <>
         <input
           onChange={this.handleFileChange}
           ref={this.fileUpload}
           accept="image/*"
-          id='avatar_file'
-          name='avatar_file'
+          id='avatarFile'
+          name='avatarFile'
           type="file"
           hidden
         />
         <IconButton onClick={this.showFileUpload} >
           <Avatar
             alt='avatar image'
-            src={avatar_url}
+            src={avatarUrl}
             className={classes.avatar}
           >
             <ScatterPlotIcon autoFocus/>

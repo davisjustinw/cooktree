@@ -2,7 +2,7 @@ const mapUserToProps = ({ user }) => ({
   id: user.id,
   name: user.name,
   email: user.email,
-  avatar_url: user.avatar_url,
+  avatarUrl: user.avatarUrl,
   status: user.status
 })
 
@@ -21,7 +21,7 @@ const mapConnectionToProps = ({ connection }) => {
     connection_id: current.connection_id,
     relation_id: current.relation_id,
     name: current.name,
-    avatar_url: current.avatar_url,
+    avatarUrl: current.avatarUrl,
     relationship: current.relationship,
     email: current.email
   }

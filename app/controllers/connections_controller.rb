@@ -6,13 +6,15 @@ class ConnectionsController < ApplicationController
     redirect_if_not_logged_in
     user = User.find_by(id: params[:id])
     connections = user.connections
-    render connection_json(connections)
+    #render connection_json(connections)
+    render json: connections
   end
 
   def show
     redirect_if_not_logged_in
     connection = Connection.find_by(id: params[:id])
-    render connection_json(connection)
+    #render connection_json(connection)
+    render json: connection
   end
 
   def create
@@ -25,7 +27,8 @@ class ConnectionsController < ApplicationController
 
     if connection.persisted?
       connection.invitation if !relation[:email].empty?
-      render connection_json(connection)
+      #render connection_json(connection)
+      render json: connection
     else
       render invalid_connection(connection.errors, connection.user.errors)
     end
@@ -36,7 +39,8 @@ class ConnectionsController < ApplicationController
     connection = Connection.find params[:id]
     connection.update(invitation_params)
     connection.invitation
-    render connection_json(connection)
+    #render connection_json(connection)
+    render json: connection
   end
 
   def get_invitation_user

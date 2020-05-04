@@ -12,7 +12,8 @@ def create
     if !avatar_params[:avatar_file].blank?
       user.avatar_file.attach(avatar_params[:avatar_file])
     end
-    render user_json(current_user)
+    # render user_json(current_user)
+    render json: current_user
   else
     # need better response here
     render invalid_input user_errors
@@ -35,7 +36,8 @@ def token_to_user
   if user.save
     connection.save
     session[:user_id] = user.id
-    render user_json(current_user)
+    #render user_json(current_user)
+    render json: current_user
   else
     render invalid_input user_errors
   end

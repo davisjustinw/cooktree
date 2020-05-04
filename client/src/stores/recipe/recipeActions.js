@@ -1,5 +1,5 @@
-//import { url, postHeader } from '../helpers/fetchHelpers'
-import { fakeFetch } from '../helpers/fakeAPI'
+import { url, getHeader } from '../helpers/fetchHelpers'
+//import { fakeFetch } from '../helpers/fakeAPI'
 
 const getRecipe = id => {
   return dispatch => {
@@ -7,7 +7,7 @@ const getRecipe = id => {
     fetch(`${url}/recipes/${id}`, getHeader)
       .then(resp => resp.json())
       .then(recipe => {
-
+        console.log(recipe)
         dispatch({
           type: 'GET_RECIPE_COMPLETE',
           current: {
@@ -21,6 +21,7 @@ const getRecipe = id => {
           list: recipe.makes
         })
       })
+      .catch(console.log)
   } // end dispatch anonymous
 } // end getRecipe
 
@@ -37,7 +38,7 @@ const getRecipes = id => {
         })
 
       })
-
+      .catch(console.log)
   } // end dispatch anonymous
 } // end getRecipes
 

@@ -20,8 +20,8 @@ class ConnectionNew extends Component {
       name: '',
       email: '',
       relationship: '',
-      avatar_file: '',
-      avatar_url: '',
+      avatarFile: '',
+      avatarUrl: '',
     }
   }
 
@@ -29,10 +29,10 @@ class ConnectionNew extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const { avatar_file, name, relationship, email } = this.state
+    const { avatarFile, name, relationship, email } = this.state
     const data = new FormData()
 
-    data.append('avatar_file', avatar_file)
+    data.append('avatarFile', avatarFile)
     data.append('name', name)
     data.append('relationship', relationship)
     data.append('email', email)
@@ -42,7 +42,7 @@ class ConnectionNew extends Component {
   render() {
     const { handleChange, handleSubmit } = this
     const { classes, errors, userId, submitSuccess, resetSuccess } = this.props
-    const { avatar_url, avatar_file, name, relationship, email } = this.state
+    const { avatarUrl, avatarFile, name, relationship, email } = this.state
 
     if (submitSuccess === true) {
       resetSuccess()
@@ -58,8 +58,8 @@ class ConnectionNew extends Component {
             <form noValidate className={classes.form} onSubmit={handleSubmit}>
               <AvatarUpload id="avatar"
                 handleChange={handleChange}
-                avatar_file={avatar_file}
-                avatar_url={avatar_url}
+                avatarFile={avatarFile}
+                avatarUrl={avatarUrl}
               />
               <TextField id="name"
                 value={name}

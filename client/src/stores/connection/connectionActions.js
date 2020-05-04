@@ -13,7 +13,7 @@ const getConnection = id => {
             connection_id: id,
             relation_id: relation.id,
             name: relation.name,
-            avatar_url: relation.avatar_url,
+            avatarUrl: relation.avatarUrl,
             relationship: relationship
           }
         })

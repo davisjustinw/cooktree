@@ -16,8 +16,8 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      avatar_file: '',
-      avatar_url: ''
+      avatarFile: '',
+      avatarUrl: ''
     }
   }
 
@@ -26,13 +26,13 @@ class Signup extends Component {
   handleSubmit = event => {
       event.preventDefault()
       const { state, props } = this
-      const { name, email, password, avatar_file } = state
+      const { name, email, password, avatarFile } = state
       const data = new FormData()
 
       data.append('email', email)
       data.append('password', password)
       data.append('name', name)
-      data.append('avatar_file', avatar_file)
+      data.append('avatarFile', avatarFile)
 
       props.submitSignup(data);
   }
@@ -51,8 +51,8 @@ class Signup extends Component {
 
           <AvatarUpload
             handleChange={handleChange}
-            avatar_file={state.avatar_file}
-            avatar_url={state.avatar_url}
+            avatarFile={state.avatarFile}
+            avatarUrl={state.avatarUrl}
           />
           <form noValidate className={classes.form} onSubmit={handleSubmit}>
             <TextField

@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 
-const UserDrawerHeader = ({ email, name, avatar_url }) => {
+const UserDrawerHeader = ({ email, name, avatarUrl }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -27,9 +27,9 @@ const UserDrawerHeader = ({ email, name, avatar_url }) => {
         avatar={
           <Avatar
             alt={name || 'avatar'}
-            src={avatar_url}
+            src={avatarUrl}
           >
-            {!avatar_url ? <ScatterPlotIcon/> : null}
+            {!avatarUrl ? <ScatterPlotIcon/> : null}
           </Avatar>
         }
         title={name}

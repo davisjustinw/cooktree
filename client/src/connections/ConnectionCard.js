@@ -17,7 +17,7 @@ import InviteForm from './InviteForm'
 
 const ConnectionCard = ({ connection }) => {
   const { id, relation, relationship } = connection
-  const { name, avatar_url } = relation
+  const { name, avatarUrl } = relation
 
   const match = useRouteMatch('/users/:id')
   const [expand, setExpand] = useState(false)
@@ -31,9 +31,9 @@ const ConnectionCard = ({ connection }) => {
         avatar={
           <Avatar
             alt={name || 'avatar'}
-            src={`${url}${avatar_url}`}
+            src={`${url}${avatarUrl}`}
           >
-            {!avatar_url ? <ScatterPlotIcon/> : null}
+            {!avatarUrl ? <ScatterPlotIcon/> : null}
           </Avatar>
         }
         title={name}

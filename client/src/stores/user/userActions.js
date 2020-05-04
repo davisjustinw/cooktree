@@ -86,7 +86,7 @@ const submitTokenSignup = userInfo => {
 }
 
 const getCurrentUser = () => {
-  
+
   return dispatch => {
     dispatch({ type: 'GET_CURRENT_USER' })
 
@@ -100,7 +100,7 @@ const getCurrentUser = () => {
 
     fetch('http://localhost:3001/get_current_user', headers)
       .then(resp => resp.json())
-      .then(({ user }) => {
+      .then(user => {
           dispatch({
             type: 'GET_CURRENT_USER_COMPLETE',
             user: user
@@ -125,22 +125,23 @@ const getTokenUser = token => {
             id: id,
             relation_id: relation.id,
             name: relation.name,
-            avatar_url: relation.avatar_url,
+            avatarUrl: relation.avatarUrl,
           } })
       })
   }
 }
 
-const catch_errors_dispatch_login = (json, dispatch) => {
-    const { user, error, validation_errors } = json
-    if(user){
+const catch_errors_dispatch_login = (user, dispatch) => {
+    console.log(user)
+    //const { user, error, validation_errors } = json
+    if(user.id){
       console.log('user')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
         type: 'SUBMIT_LOGIN_COMPLETE',
         user: user
       })
-    } else if (error) {
+    } /*else if (error) {
       dispatch({
         type: 'UPDATE_ERRORS',
         error: error
@@ -151,7 +152,7 @@ const catch_errors_dispatch_login = (json, dispatch) => {
         type: 'UPDATE_VALIDATION_ERRORS',
         validation_errors: validation_errors
       })
-    }
+    }*/
 }
 
 const handleUserChange = change => {

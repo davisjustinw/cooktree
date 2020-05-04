@@ -28,7 +28,7 @@ class Confirm extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      const { token, name, email, password, avatar_file } = this.props.user
+      const { token, name, email, password, avatarFile } = this.props.user
       const { relation_id, relationship } = this.props.connection
       const data = new FormData()
 
@@ -36,7 +36,7 @@ class Confirm extends Component {
       data.append('name', name)
       data.append('email', email)
       data.append('password', password)
-      data.append('avatar_file', avatar_file)
+      data.append('avatarFile', avatarFile)
 
       data.append('relation_id', relation_id)
       data.append('relationship', relationship)
@@ -60,8 +60,8 @@ class Confirm extends Component {
 
             <AvatarUpload
               handleChange={handleUserChange}
-              avatar_file={user.avatar_file}
-              avatar_url={user.avatar_url}
+              avatarFile={user.avatarFile}
+              avatarUrl={user.avatarUrl}
             />
             <form noValidate className={classes.form} onSubmit={handleSubmit}>
               <TextField

@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      render user_json(current_user)
+      #render user_json(current_user)
+      render json: current_user
     else
       render invalid_credentials
     end
@@ -19,7 +20,12 @@ class SessionsController < ApplicationController
   end
 
   def get_current_user
-    render logged_in? ? user_json(current_user) : empty_user_json
+    #render logged_in? ? user_json(current_user) : empty_user_json
+    if logged_in?
+      render json: current_user
+    else
+      render empty_user_json
+    end
   end
 
   private

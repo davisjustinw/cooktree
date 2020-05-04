@@ -17,7 +17,7 @@ class Connection extends Component {
   }
 
   render() {
-    const { name, avatar_url, relationship } = this.props
+    const { name, avatarUrl, relationship } = this.props
     if(!name){
       return <Loading/>
     } else {
@@ -27,9 +27,9 @@ class Connection extends Component {
           <Typography variant='h6'>{relationship}</Typography>
           <Avatar
             alt={name || 'avatar'}
-            src={`${url}${avatar_url}`}
+            src={`${url}${avatarUrl}`}
           >
-            {!avatar_url ? <ScatterPlotIcon/> : null}
+            {!avatarUrl ? <ScatterPlotIcon/> : null}
           </Avatar>
         </>
       )

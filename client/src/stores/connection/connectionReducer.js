@@ -6,15 +6,15 @@ const initialState = {
     relation_id: '',
     name: '',
     email: '',
-    avatar_url: '',
-    avatar_file: '',
+    avatarUrl: '',
+    avatarFile: '',
     relationship: ''
   }
 }
 
 function connection(state = initialState, action) {
   const { type, current, connection, connections, change } = action
-  
+
   switch(type) {
     case 'GET_CONNECTIONS':
       return { ...state }
