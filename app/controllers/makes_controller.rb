@@ -1,5 +1,13 @@
 class MakesController < ApplicationController
 
+  def create
+    redirect_if_not_logged_in
+    make = Make.new(new_make_params)
+    make.user = current_user
+    make.save
+    render json: make, status: :ok
+  end
+
   def update
     redirect_if_not_logged_in
     make = Make.find_by(id: params[:id])
@@ -11,5 +19,9 @@ class MakesController < ApplicationController
 
   def make_params
     params.require(:make).permit(:id, :alias, :content)
+  end
+
+  def new_make_params
+    params.require(:make).permit(:recipe_id, :alias, :content)
   end
 end

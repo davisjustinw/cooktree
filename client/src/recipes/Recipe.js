@@ -40,7 +40,7 @@ class Recipe extends Component {
             onChange={this.handleRecipeChange}
             placeholder='Recipe Name...'
           />
-          <RecipeCard make={make}/>
+          <RecipeCard recipeId={id} make={make}/>
           </div>
         </>
       )

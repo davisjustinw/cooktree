@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/get_current_user', to: 'sessions#get_current_user'
 
-  resources :makes, only: [:update]
+  resources :makes, only: [:create, :update]
   resources :recipes, only: [:index, :show]
   resources :connections, only: [:index, :create, :show]
 end

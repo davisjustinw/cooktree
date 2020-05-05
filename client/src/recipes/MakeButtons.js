@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/Styles'
-import { updateMake } from '../stores/recipe/makeActions'
+import { updateMake, addNewMake } from '../stores/recipe/makeActions'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 
-const MakeButtons = ({ make, user, updateMake }) => {
+const MakeButtons = ({ recipeId, make, user, updateMake, addNewMake }) => {
   const classes = useStyles()
 
   return (
@@ -23,7 +23,9 @@ const MakeButtons = ({ make, user, updateMake }) => {
           Update
         </Button >
 
-        <Button >
+        <Button
+          onClick={() => addNewMake(recipeId, make)}
+        >
           Make New
         </Button >
       </ButtonGroup>
@@ -39,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 }))
 const mapStateToProps = ({ user }) => ({ user })
 const mapDispatchToProps = dispatch => ({
-  updateMake: make => dispatch(updateMake(make))
+  updateMake: make => dispatch(updateMake(make)),
+  addNewMake: (recipeId, make) => dispatch(addNewMake(recipeId, make))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MakeButtons)

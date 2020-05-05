@@ -270,8 +270,9 @@
 # 5 May
   * wire make new to store
   * wire make new to api
-  * history icon sitting on left
-  * connection confirm avatar not showing
+    - alias uniqness validation within recipe context
+  [x] history icon sitting on left
+  * on connection confirm, avatar not showing
 
   - update available if owner is an unconfirmed connection
   * history drawer styling

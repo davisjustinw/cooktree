@@ -1,9 +1,39 @@
 import { url } from '../helpers/fetchHelpers'
 
-const updateMake = make => {
+
+const addNewMake = (recipeId, make) => {
+  return dispatch => {
+    dispatch({ type: 'ADD_NEW_MAKE'})
+    console.log('addNewMake')
+    console.log(make)
+    const headers = {
+      method: 'POST',
+      credentials: 'include',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        make: {
+          recipe_id: recipeId,
+          alias: make.alias,
+          content: make.content,
+        }
+      })
+    }
+    console.log(headers)
+    fetch(`${url}/makes`, headers)
+      .then(resp => resp.json())
+      .then(make => {
+        console.log(make)
+        dispatch({ type: 'ADD_NEW_MAKE_COMPLETE', make: make })
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
+  }
+}
+
+const updateMake = (make) => {
   return dispatch => {
     dispatch({ type: 'UPDATE_MAKE' })
-    dispatch({ type: ''})
     const headers = {
       method: 'PUT',
       credentials: 'include',
@@ -41,6 +71,7 @@ const changeCurrentMake = id => {
 }
 
 export {
+  addNewMake,
   updateMake,
   handleMakeChange,
   changeCurrentMake
