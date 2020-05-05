@@ -23,8 +23,11 @@ function make(state = initialState, action) {
         current: list[0]
       }
 
-    case 'UPDATE_MAKE_LIST':
-      console.log("in update make list")
+    case 'UPDATE_MAKE':
+      return { ...state }
+      
+    case 'UPDATE_MAKE_COMPLETE':
+      console.log("in update make")
       const newList = state.list.map(listMake => {
           if(listMake.id === make.id){
             return make

@@ -1,7 +1,24 @@
+import { url } from '../helpers/fetchHelpers'
 
-const updateMakeList = make => {
+const updateMake = make => {
   return dispatch => {
-    dispatch({ type: 'UPDATE_MAKE_LIST', make: make })
+    dispatch({ type: 'UPDATE_MAKE' })
+    dispatch({ type: ''})
+    const headers = {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ make: make })
+    }
+    console.log(headers)
+    fetch(`${url}/makes/${make.id}`, headers)
+      .then(resp => resp.json())
+      .then(make => {
+        dispatch({ type: 'UPDATE_MAKE_COMPLETE', make: make })
+      })
+      .catch((error) => {
+        console.error('Fetch error', error)
+      })
   }
 }
 
@@ -24,7 +41,7 @@ const changeCurrentMake = id => {
 }
 
 export {
-  updateMakeList,
+  updateMake,
   handleMakeChange,
   changeCurrentMake
 }

@@ -40,7 +40,7 @@ class Confirm extends Component {
 
       data.append('relation_id', relation_id)
       data.append('relationship', relationship)
-
+      console.log(data)
       this.props.submitTokenSignup(data);
   }
 

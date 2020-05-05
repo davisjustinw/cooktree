@@ -258,18 +258,24 @@
   [x] add AMS serializer for cleaner serialization
   [x] error catching in login
   [x] wire up makes to api
-    - get recipes
-      - action
-      - api route
-    - get recipe
-      - action
-      - api route
+    [x] get recipes
+      [x] action
+      [x] api route
+    [x] get recipe
+      [x] action
+      [x] api route
+  [x] listitem focus different color
+  * wire updateMakeList to api
+    - need formdata
+  * wire make new to store
+  * wire make new to api
+
+  * connection confirm avatar not showing
 
   - update available if owner is an unconfirmed connection
-
   * history drawer styling
     - add avatar and maker name
-    - listitem focus different color
+
 
   * dry up drawer components
   * hold state in component instead of store? use map list instead of current?
@@ -292,8 +298,6 @@ X nav components in people Component?
 X re-write Login to functional component with useState
 X might need a check in login for authorized from
 
-
-
 * list recipes and contributions on connection show page
 * what does authorization look like for different users
 
@@ -304,31 +308,25 @@ X might need a check in login for authorized from
   - name
   - password
   - avatar
-* User can search and invite people to their circle
+* User can search
+[x] User can invite people to their circle
 * User can search Recipes
 * User can search People and see Recipes they are connected to
 * User can create a Recipe
   - Name
-* User can add steps
-* Steps contain
-  - ingredients
-  - tools
-  - techniques (one or many)
-  - photo
-  - output (usable in later steps?)
+
 * memories
   - quotes
   - photos
   - connections to people
 * users can add memories to Recipes.
 
-[x] Users are People
-[x] People don't have to be users
-* People connect to Recipes
+[x] Users don't have to be logged in users
+[x] People connect to Recipes/makes
 [x] People may connect to other people
 * Connections have meta data (ate, cooked etc)
 
-* User can step through different makes of a Recipe.
+[x] User can step through different makes of a Recipe.
 * User can make a new iteration of a Recipe.
 * User can iterate off any make of a Recipe.
 * User can see who made a specific version of a Recipe.

@@ -13,7 +13,7 @@ const submitLogin = ({email, password}) => {
         user: { email, password }
       })
     }
-    fetch('http://localhost:3001/login', headers)
+    fetch(`${url}/login`, headers)
       .then(resp => resp.json())
       .then(json => {
         catch_errors_dispatch_login(json, dispatch)
@@ -36,7 +36,7 @@ const submitLogout = () => {
       }
     }
 
-    fetch('http://localhost:3001/logout', headers)
+    fetch(`${url}/logout`, headers)
       .then(resp => resp.json())
       .then(({ message }) => {
           dispatch({ type: 'SUBMIT_LOGOUT_COMPLETE' })
@@ -55,7 +55,7 @@ const submitSignup = userInfo => {
       credentials: 'include',
       body: userInfo
     }
-    fetch('http://localhost:3001/signup', headers)
+    fetch(`${url}/signup`, headers)
       .then(resp => resp.json())
       .then(json => {
         catch_errors_dispatch_login(json, dispatch)
@@ -74,7 +74,7 @@ const submitTokenSignup = userInfo => {
       credentials: 'include',
       body: userInfo
     }
-    fetch('http://localhost:3001/signup', headers)
+    fetch(`${url}/signup`, headers)
       .then(resp => resp.json())
       .then(json => {
         catch_errors_dispatch_login(json, dispatch)
@@ -98,7 +98,7 @@ const getCurrentUser = () => {
       }
     }
 
-    fetch('http://localhost:3001/get_current_user', headers)
+    fetch(`${url}/get_current_user`, headers)
       .then(resp => resp.json())
       .then(user => {
           dispatch({
