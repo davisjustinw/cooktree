@@ -131,28 +131,28 @@ const getTokenUser = token => {
   }
 }
 
-const catch_errors_dispatch_login = (user, dispatch) => {
-    console.log(user)
+const catch_errors_dispatch_login = (resp, dispatch) => {
+    console.log(resp)
     //const { user, error, validation_errors } = json
-    if(user.id){
+    if(resp.id){
       console.log('user')
       dispatch({ type: 'CLEAR_ERRORS' })
       dispatch({
         type: 'SUBMIT_LOGIN_COMPLETE',
-        user: user
+        user: resp
       })
-    } /*else if (error) {
+    } else if (resp.error) {
       dispatch({
         type: 'UPDATE_ERRORS',
-        error: error
+        error: resp.error
       })
-    } else if (validation_errors) {
+    } else if (resp.validation_errors) {
       console.log('validation_errors')
       dispatch({
         type: 'UPDATE_VALIDATION_ERRORS',
-        validation_errors: validation_errors
+        validation_errors: resp.validation_errors
       })
-    }*/
+    }
 }
 
 const handleUserChange = change => {

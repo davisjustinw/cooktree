@@ -12,7 +12,7 @@ const getRecipe = id => {
           type: 'GET_RECIPE_COMPLETE',
           current: {
             id: recipe.id,
-            name: recipe.id
+            name: recipe.name
           }
         })
         // make { id: 1, cookId: 2, alias: "Grandma's", content: 'weee' }
@@ -31,7 +31,7 @@ const getRecipes = id => {
     fetch(`${url}/recipes`, getHeader)
       .then(resp => resp.json())
       .then(recipes => {
-
+        console.log(recipes)
         dispatch({
           type: 'GET_RECIPE_LIST_COMPLETE',
           recipes: recipes

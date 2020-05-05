@@ -255,6 +255,8 @@
   [x] add recipe and makes to seeds
 
 # 4 May
+  [x] add AMS serializer for cleaner serialization
+  * error catching in login
    * wire up makes to api
     - get recipes
       - action
@@ -271,6 +273,8 @@
   * dry up drawer components
   * hold state in component instead of store? use map list instead of current?
 
+* fix signup validations (connection vs sign up)
+* clear error when routing to new page
 * add unsaved changes indicator
   - updated date?
 
@@ -291,7 +295,7 @@ X might need a check in login for authorized from
 
 * list recipes and contributions on connection show page
 * what does authorization look like for different users
-* clear error when routing to new page
+
 
 # User Stories
 [x] User can sign up

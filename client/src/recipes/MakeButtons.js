@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 
 const MakeButtons = ({ make, user, updateMakeList }) => {
   const classes = useStyles()
+
   return (
     <>
       <ButtonGroup
@@ -17,7 +18,7 @@ const MakeButtons = ({ make, user, updateMakeList }) => {
 
         <Button
           onClick={() => updateMakeList(make)}
-          disabled={make.cookId !== user.id}
+          disabled={make.cook.id !== user.id}
         >
           Update
         </Button >

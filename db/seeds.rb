@@ -88,9 +88,16 @@ recipe = Recipe.create(
 7.times do
   recipe.makes.create(
     alias: "#{Faker::Hipster.word} #{Faker::Food.ingredient}",
-    cook: heros.sample,
+    user: heros.sample,
     content: make_dish
   )
 end
+
+recipe.makes.create(
+  alias: "#{Faker::Hipster.word} #{Faker::Food.ingredient}",
+  user: heros[0],
+  content: make_dish
+)
+
 
 #moot.connections.create relation: p, relationship: Faker::Relationship.familial

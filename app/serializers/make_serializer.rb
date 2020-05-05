@@ -2,9 +2,6 @@ class MakeSerializer < ActiveModel::Serializer
   attributes :id, :alias, :content, :cook
 
   def cook
-    {
-      id: object.cook.id,
-      name: object.cook.name
-    }
+    ActiveModel::SerializableResource.new(object.user, serializer: UserSerializer)
   end
 end
