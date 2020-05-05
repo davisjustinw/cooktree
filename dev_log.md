@@ -268,41 +268,41 @@
   [x] wire updateMakeList to api
 
 # 5 May
-  * wire make new to store
-  * wire make new to api
-    - alias uniqness validation within recipe context
+  [x] wire make new to store
+  [x] wire make new to api
+
   [x] history icon sitting on left
   * on connection confirm, avatar not showing
+  * User Can create a Recipe
+    - FAB
+    - Name w first make
 
-  - update available if owner is an unconfirmed connection
   * history drawer styling
     - add avatar and maker name
+    - update/created date
+
+  * fix signup validations (connection vs sign up)
+
+  * add unsaved changes indicator
+    - updated date?
+
+  * need validations in create connection
+
+  * list recipes and contributions on connection show page
 
 
-  * dry up drawer components
-  * hold state in component instead of store? use map list instead of current?
+# EdgyCasey Refactory
 
-* fix signup validations (connection vs sign up)
+* dry up drawer components
 * clear error when routing to new page
-* add unsaved changes indicator
-  - updated date?
-
-* bad token redirect to login or signup
-* need validations in create connection
-* aka on a person
-* check for connection
-* refresh on connections gets stuck on loading after invite
-
+* update available if owner is an unconfirmed connection
+* alias uniqness validation within recipe context
 * root flashes login before redirect
 * can I stop weird flash on redirect on not logged in
 * can I submit connection and return to connections without getConnections round trip
-X nav components in people Component?
-X re-write Login to functional component with useState
-X might need a check in login for authorized from
-
-* list recipes and contributions on connection show page
-* what does authorization look like for different users
-
+* refresh on connections gets stuck on loading after invite
+* bad token redirect to login or signup
+* hold state in component instead of store? use map list instead of current?
 
 # User Stories
 [x] User can sign up
@@ -310,7 +310,6 @@ X might need a check in login for authorized from
   - name
   - password
   - avatar
-* User can search
 [x] User can invite people to their circle
 * User can search Recipes
 * User can search People and see Recipes they are connected to
@@ -322,6 +321,7 @@ X might need a check in login for authorized from
   - photos
   - connections to people
 * users can add memories to Recipes.
+* Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
 
 [x] Users don't have to be logged in users
 [x] People connect to Recipes/makes
@@ -329,7 +329,6 @@ X might need a check in login for authorized from
 * Connections have meta data (ate, cooked etc)
 
 [x] User can step through different makes of a Recipe.
-* User can make a new iteration of a Recipe.
-* User can iterate off any make of a Recipe.
+[x] User can make a new iteration of a Recipe.
+[x] User can iterate off any make of a Recipe.
 * User can see who made a specific version of a Recipe.
-* Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
