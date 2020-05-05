@@ -256,8 +256,8 @@
 
 # 4 May
   [x] add AMS serializer for cleaner serialization
-  * error catching in login
-   * wire up makes to api
+  [x] error catching in login
+  [x] wire up makes to api
     - get recipes
       - action
       - api route
@@ -269,6 +269,7 @@
 
   * history drawer styling
     - add avatar and maker name
+    - listitem focus different color
 
   * dry up drawer components
   * hold state in component instead of store? use map list instead of current?

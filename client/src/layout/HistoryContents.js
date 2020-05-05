@@ -9,15 +9,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Hidden from '@material-ui/core/Hidden'
 
 const HistoryContents =
-  ({ makes, recipe, toggleHistoryOpen, temporary, changeCurrentMake }) => {
+  ({ makes, currentMake, recipe, toggleHistoryOpen, temporary, changeCurrentMake }) => {
 
   const classes = useStyles()
 
   const handleHistoryClick = (id, event) => {
     changeCurrentMake(id)
-
-    // for close on navigate away
-    //temporary && toggleHistoryOpen()
   }
 
   return (
@@ -33,6 +30,7 @@ const HistoryContents =
             return (
               <ListItem
                 key={make.id}
+                selected={make.id === currentMake.id}
                 button onClick={e => handleHistoryClick(make.id, e)}
               >
                 <ListItemText primary={make.alias} />
@@ -52,7 +50,8 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = ({ make, recipe }) => ({
   recipe: recipe.current,
-  makes: make.list
+  makes: make.list,
+  currentMake: make.current
 })
 
 const mapDispatchToProps = dispatch => ({
