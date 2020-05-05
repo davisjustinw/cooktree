@@ -265,11 +265,12 @@
       [x] action
       [x] api route
   [x] listitem focus different color
-  * wire updateMakeList to api
-    - need formdata
+  [x] wire updateMakeList to api
+
+# 5 May
   * wire make new to store
   * wire make new to api
-
+  * history icon sitting on left
   * connection confirm avatar not showing
 
   - update available if owner is an unconfirmed connection

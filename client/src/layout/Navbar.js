@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Hidden from '@material-ui/core/Hidden'
 import HistoryButton from './HistoryButton'
-//import SearchBar from './SearchBar' Pulled for after MVP
+//import SearchBar from './SearchBar'
 
 const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
   const classes = useStyles();
@@ -37,14 +37,16 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
               Cook Tree
             </Typography>
           </Hidden>
-          {/*<SearchBar />*/}
+          {/* <SearchBar/> pulled for MVP */}
+          <Hidden smUp implementation="css" className={classes.title}>
+
+          </Hidden>
           <HistoryButton toggleHistoryOpen={toggleHistoryOpen} />
           </>
         ) : null
       }
       </Toolbar>
     </AppBar>
-
   )
 }
 
@@ -57,7 +59,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
-  }
+  },
+
 }))
 
 export default withRouter(connect(mapLoginStatusToProps, { toggleMenuOpen, toggleHistoryOpen })(Navbar))
