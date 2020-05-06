@@ -274,8 +274,8 @@
   [x] history icon sitting on left
   * on connection confirm, avatar not showing
   [x] User Can create a Recipe
-    - FAB
-    - Name w first make
+    [x] FAB
+    [x] Name w first make
 
   * history drawer styling
     - add avatar and maker name

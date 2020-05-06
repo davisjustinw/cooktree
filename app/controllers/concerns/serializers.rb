@@ -30,13 +30,13 @@ module Serializers
           id: user.id,
           name: user.name,
           email: user.email,
-          avatar_url: avatar_url
+          avatarUrl: avatar_url
         },
         connection: {
           relation: {
             id: relation.id,
             name: relation.name,
-            avatar_url: relation.avatar_url
+            avatarUrl: relation.avatar_url
           }
         }
       },
@@ -71,7 +71,7 @@ module Serializers
     }
   end
 
-  
+
 
 
 end

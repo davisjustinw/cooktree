@@ -21,7 +21,6 @@ def create
 end
 
 def token_to_user
-  binding.pry
   user = Connection.find_by(confirm_token: params[:token]).relation
   render invalid_credentials if !user
 

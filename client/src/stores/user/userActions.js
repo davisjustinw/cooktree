@@ -118,6 +118,7 @@ const getTokenUser = token => {
       .then(resp => resp.json())
       .then(({ user, connection }) => {
         const { relation, id } = connection
+        console.log(relation)
         dispatch({ type: 'GET_TOKEN_USER_COMPLETE', user: user, token: token })
         dispatch({
           type: 'GET_CONNECTION_COMPLETE',
