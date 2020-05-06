@@ -272,10 +272,12 @@
   [x] wire make new to api
 
   [x] history icon sitting on left
-  * on connection confirm, avatar not showing
+  [x] on connection confirm, avatar not showing
   [x] User Can create a Recipe
     [x] FAB
     [x] Name w first make
+
+# 6 May
 
   * history drawer styling
     - add avatar and maker name
@@ -314,7 +316,7 @@
 [x] User can invite people to their circle
 * User can search Recipes
 * User can search People and see Recipes they are connected to
-* User can create a Recipe
+[x] User can create a Recipe
   - Name
 
 * memories

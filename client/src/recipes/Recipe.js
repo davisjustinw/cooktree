@@ -4,10 +4,10 @@ import { withRouter } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
-
+import { handleMakeChange } from '../stores/recipe/makeActions'
 import Loading from '../shared/Loading'
+import RecipeHeader from './RecipeHeader'
 import RecipeCard from './RecipeCard'
-import InputBase from '@material-ui/core/InputBase'
 
 class Recipe extends Component {
 
@@ -20,6 +20,10 @@ class Recipe extends Component {
     this.props.handleRecipeChange({ name: target.name, value: target.value })
   }
 
+  handleMakeChange = ({ target }) => {
+    this.props.handleMakeChange({ name: target.name, value: target.value })
+  }
+
   render() {
     const { recipe, make, classes } = this.props
 
@@ -29,18 +33,18 @@ class Recipe extends Component {
       return (
         <>
           <div className={classes.paper}>
-          <InputBase
-            classes={{
-              root: classes.root,
-              input: classes.input
-            }}
-            type='text'
-            name='name'
-            value={recipe.name}
-            onChange={this.handleRecipeChange}
-            placeholder='Recipe Name...'
-          />
-          <RecipeCard recipe={recipe} make={make}/>
+
+          <RecipeHeader
+            handleRecipeChange={this.handleRecipeChange}
+            handleMakeChange={this.handleMakeChange}
+            recipe={recipe}
+            make={make}
+            />
+          <RecipeCard
+            handleMakeChange={this.handleMakeChange}
+            recipe={recipe}
+            make={make}
+            />
           </div>
         </>
       )
@@ -50,7 +54,8 @@ class Recipe extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getRecipe: recipeId => dispatch(getRecipe(recipeId)),
-  handleRecipeChange: change => dispatch(handleRecipeChange(change))
+  handleRecipeChange: change => dispatch(handleRecipeChange(change)),
+  handleMakeChange: change => dispatch(handleMakeChange(change)),
 })
 
 const mapStateToProps = ({ recipe, make }) => ({
@@ -63,20 +68,6 @@ const useStyles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  root: {
-    alignSelf: 'flex-start'
-  },
-  input: {
-    marginBottom: theme.spacing(0),
-    padding: theme.spacing(0),
-    color: theme.palette.text.primary,
-    ...theme.typography.h5,
-    '&::placeholder':{
-      color: theme.palette.text.secondary,
-      opacity: 1,
-      ...theme.typography.h5
-    }
   }
 })
 
