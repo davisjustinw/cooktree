@@ -1,39 +1,57 @@
 import React from 'react'
-import InputBase from '@material-ui/core/InputBase'
 import { makeStyles } from '@material-ui/core/styles'
+import { url } from '../stores/helpers/fetchHelpers'
+import Avatar from '@material-ui/core/Avatar'
+import InputBase from '@material-ui/core/InputBase'
+
 
 const RecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) => {
   const classes = useStyles()
+  
   return (
-    <>
-      <InputBase
-        classes={{
-          root: classes.nameRoot,
-          input: classes.nameInput
-        }}
-        type='text'
-        name='name'
-        value={recipe.name}
-        onChange={handleRecipeChange}
-        placeholder='Recipe Name...'
+    <div className={classes.header}>
+      <Avatar
+        alt='cook'
+        src={`${url}${make.cook.avatarUrl}`}
+        className={classes.avatar}
       />
+      <div>
+        <InputBase
+          classes={{
+            root: classes.nameRoot,
+            input: classes.nameInput
+          }}
+          type='text'
+          name='name'
+          value={recipe.name}
+          onChange={handleRecipeChange}
+          placeholder='Recipe Name...'
+        />
 
-      <InputBase
-        classes={{
-          root: classes.aliasRoot,
-          input: classes.aliasInput
-        }}
-        type='text'
-        placeholder='alias...'
-        name='alias'
-        value={make.alias}
-        onChange={handleMakeChange}
-      />
-    </>
+        <InputBase
+          classes={{
+            root: classes.aliasRoot,
+            input: classes.aliasInput
+          }}
+          type='text'
+          placeholder='alias...'
+          name='alias'
+          value={make.alias}
+          onChange={handleMakeChange}
+        />
+      </div>
+    </div>
   )
 }
 
 const useStyles = makeStyles(theme => ({
+  avatar: {
+    margin: theme.spacing(1)
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
   aliasRoot: {
     alignSelf: 'flex-start'
   },
@@ -60,7 +78,7 @@ const useStyles = makeStyles(theme => ({
       ...theme.typography.h5
     }
   }
-  
+
 }))
 
 export default RecipeHeader

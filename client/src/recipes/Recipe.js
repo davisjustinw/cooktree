@@ -27,7 +27,7 @@ class Recipe extends Component {
   render() {
     const { recipe, make, classes } = this.props
 
-    if(!recipe.id){
+    if(!make.cook.avatarUrl){
       return <Loading/>
     } else {
       return (
