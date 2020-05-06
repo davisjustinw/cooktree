@@ -8,7 +8,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import MakeButtons from './MakeButtons'
 
-const RecipeCard = ({ recipeId, make, handleMakeChange }) => {
+const RecipeCard = ({ recipe, make, handleMakeChange }) => {
   const classes = useStyles()
 
   return (
@@ -44,7 +44,7 @@ const RecipeCard = ({ recipeId, make, handleMakeChange }) => {
         </CardContent>
       </Card>
 
-      <MakeButtons recipeId={recipeId} make={make}/>
+      <MakeButtons recipe={recipe} make={make}/>
 
     </>
   )

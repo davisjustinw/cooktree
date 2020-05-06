@@ -7,6 +7,7 @@ import Connection from '../connections/Connection'
 import ConnectionNew from '../connections/ConnectionNew'
 import Recipes from '../recipes/Recipes'
 import Recipe from '../recipes/Recipe'
+import RecipeNew from '../recipes/RecipeNew'
 
 const PrivateRoutes = () => {
   const match = useRouteMatch('/users/:id')
@@ -22,11 +23,15 @@ const PrivateRoutes = () => {
       <PrivateRoute exact path={`${match.url}/connections`} redirectTo='/login'>
         <Connections />
       </PrivateRoute>
-      <PrivateRoute exact path={`${match.url}/recipes`} redirectTo='/login'>
-        <Recipes/>
+
+      <PrivateRoute exact path={`${match.url}/recipes/new`} redirectTo='/login'>
+        <RecipeNew/>
       </PrivateRoute>
       <PrivateRoute exact path={`${match.url}/recipes/:id`} redirectTo='/login'>
         <Recipe/>
+      </PrivateRoute>
+      <PrivateRoute exact path={`${match.url}/recipes`} redirectTo='/login'>
+        <Recipes/>
       </PrivateRoute>
     </Switch>
   )

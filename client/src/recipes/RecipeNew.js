@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getRecipe } from '../stores/recipe/recipeActions'
+import { clearRecipe } from '../stores/recipe/recipeActions'
+import { clearMake } from '../stores/recipe/makeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 
-import Loading from '../shared/Loading'
 import RecipeCard from './RecipeCard'
 import InputBase from '@material-ui/core/InputBase'
 
 class Recipe extends Component {
 
   componentDidMount(){
-    console.log('recipe mounting')
-    this.props.getRecipe(this.props.match.params.id)
+    this.props.clearRecipe()
+    this.props.clearMake()
   }
 
   handleRecipeChange = ({ target }) => {
@@ -22,34 +22,31 @@ class Recipe extends Component {
 
   render() {
     const { recipe, make, classes } = this.props
-
-    if(!recipe.id){
-      return <Loading/>
-    } else {
-      return (
-        <>
-          <div className={classes.paper}>
-          <InputBase
-            classes={{
-              root: classes.root,
-              input: classes.input
-            }}
-            type='text'
-            name='name'
-            value={recipe.name}
-            onChange={this.handleRecipeChange}
-            placeholder='Recipe Name...'
-          />
-          <RecipeCard recipe={recipe} make={make}/>
-          </div>
-        </>
-      )
-    } // else
+  
+    return (
+      <>
+        <div className={classes.paper}>
+        <InputBase
+          classes={{
+            root: classes.root,
+            input: classes.input
+          }}
+          type='text'
+          name='name'
+          value={recipe.name}
+          onChange={this.handleRecipeChange}
+          placeholder='Recipe Name...'
+        />
+        <RecipeCard recipe={recipe} make={make}/>
+        </div>
+      </>
+    )
   } //render
 } // class Connection
 
 const mapDispatchToProps = dispatch => ({
-  getRecipe: recipeId => dispatch(getRecipe(recipeId)),
+  clearRecipe: () => dispatch(clearRecipe()),
+  clearMake: () => dispatch(clearMake()),
   handleRecipeChange: change => dispatch(handleRecipeChange(change))
 })
 

@@ -1,5 +1,10 @@
 import { url, getHeader } from '../helpers/fetchHelpers'
 //import { fakeFetch } from '../helpers/fakeAPI'
+const clearRecipe = () => {
+  return dispatch => {
+    dispatch({ type: 'CLEAR_RECIPE' })
+  }
+}
 
 const getRecipe = id => {
   return dispatch => {
@@ -64,6 +69,7 @@ const handleRecipeChange = change => {
 }
 
 export {
+  clearRecipe,
   getRecipe,
   getRecipes,
   resetSuccess,

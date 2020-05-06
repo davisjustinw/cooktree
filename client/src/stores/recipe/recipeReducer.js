@@ -11,6 +11,14 @@ function recipe(state = initialState, action) {
   const { type, current, recipes, recipe, change } = action
 
   switch(type) {
+    case 'CLEAR_RECIPE':
+      return {
+        ...state,
+        current: {
+          id: '',
+          name: ''
+        }
+      }
     case 'GET_RECIPE_LIST':
       return { ...state }
 

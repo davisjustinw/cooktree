@@ -273,7 +273,7 @@
 
   [x] history icon sitting on left
   * on connection confirm, avatar not showing
-  * User Can create a Recipe
+  [x] User Can create a Recipe
     - FAB
     - Name w first make
 
@@ -293,6 +293,7 @@
 
 # EdgyCasey Refactory
 
+* consider current as make nested in recipe instead of separate stores
 * dry up drawer components
 * clear error when routing to new page
 * update available if owner is an unconfirmed connection

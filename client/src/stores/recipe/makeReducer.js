@@ -16,6 +16,22 @@ const initialState = {
 function make(state = initialState, action) {
   const { make, type, list, change, makeId } = action
   switch(type){
+    case 'CLEAR_MAKE':
+
+      return {
+        ...state,
+        current: {
+          id: '',
+          alias: '',
+          content: '',
+          cook: {
+            id: '',
+            name: '',
+            email: '',
+            avatarUrl: ''
+          }
+        }
+      }
     case 'GET_MAKE_LIST_COMPLETE':
       return {
         ...state,

@@ -1,7 +1,12 @@
 import { url } from '../helpers/fetchHelpers'
 
+const clearMake = () => {
+  return dispatch => {
+    dispatch({ type: 'CLEAR_MAKE' })
+  }
+}
 
-const addNewMake = (recipeId, make) => {
+const addNewMake = (recipe, make) => {
   return dispatch => {
     dispatch({ type: 'ADD_NEW_MAKE'})
     console.log('addNewMake')
@@ -12,9 +17,13 @@ const addNewMake = (recipeId, make) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         make: {
-          recipe_id: recipeId,
+          recipe_id: recipe.id,
           alias: make.alias,
           content: make.content,
+        },
+        recipe: {
+          id: recipe.id,
+          name: recipe.name
         }
       })
     }
@@ -71,6 +80,7 @@ const changeCurrentMake = id => {
 }
 
 export {
+  clearMake,
   addNewMake,
   updateMake,
   handleMakeChange,
