@@ -5,7 +5,7 @@ import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 import { handleMakeChange } from '../stores/recipe/makeActions'
-import Loading from '../shared/Loading'
+
 import RecipeHeader from './RecipeHeader'
 import RecipeCard from './RecipeCard'
 
@@ -27,9 +27,6 @@ class Recipe extends Component {
   render() {
     const { recipe, make, classes } = this.props
 
-    if(!make.cook.avatarUrl){
-      return <Loading/>
-    } else {
       return (
         <>
           <div className={classes.paper}>
@@ -48,7 +45,6 @@ class Recipe extends Component {
           </div>
         </>
       )
-    } // else
   } //render
 } // class Connection
 

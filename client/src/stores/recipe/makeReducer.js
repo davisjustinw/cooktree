@@ -4,6 +4,7 @@ const initialState = {
     id: '',
     alias: '',
     content: '',
+    updatedAt: '',
     cook: {
       id: '',
       name: '',
@@ -24,6 +25,7 @@ function make(state = initialState, action) {
           id: '',
           alias: '',
           content: '',
+          updatedAt: '',
           cook: {
             id: '',
             name: '',
