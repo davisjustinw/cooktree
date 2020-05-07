@@ -23,6 +23,7 @@ class User < ApplicationRecord
     end
   end
 
+  # for seeding valid usable passwords
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

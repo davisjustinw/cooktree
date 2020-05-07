@@ -279,22 +279,28 @@
 
 # 6 May
 
-  * history drawer styling
-    - add avatar and maker name
-    - update/created date
+  [x] history drawer styling
+    [x] add avatar and maker name
+    [x] update/created date
+
+# 7 May
+  * memories
+    - quotes
+    - photos
+    - connections to people
+  * users can add memories to Recipes.
+  * Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
 
   * fix signup validations (connection vs sign up)
-
   * add unsaved changes indicator
     - updated date?
-
   * need validations in create connection
-
   * list recipes and contributions on connection show page
 
 
 # EdgyCasey Refactory
 
+* change updated at times stamps to 'just now', 'today' etc.
 * consider current as make nested in recipe instead of separate stores
 * dry up drawer components
 * clear error when routing to new page
@@ -334,4 +340,4 @@
 [x] User can step through different makes of a Recipe.
 [x] User can make a new iteration of a Recipe.
 [x] User can iterate off any make of a Recipe.
-* User can see who made a specific version of a Recipe.
+[x] User can see who made a specific version of a Recipe.

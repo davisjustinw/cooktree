@@ -24,6 +24,10 @@ def get_avatar(name)
   open("https://api.adorable.io/avatars/60/#{name}.png")
 end
 
+def get_photo
+  open("https://loremflickr.com/320/240/food,dining,family")
+end
+
 def get_status
   stati = ["NO_INVITE", "INVITED", "CONFIRMED"]
   stati.sample
@@ -86,7 +90,7 @@ recipe = Recipe.create(
   name: Faker::Hipster.sentence(word_count: 2, supplemental: true)
 )
 7.times do
-  recipe.makes.create(
+  make = recipe.makes.create(
     alias: "#{Faker::Hipster.word} #{Faker::Food.ingredient}",
     user: heros.sample,
     content: make_dish
@@ -98,6 +102,16 @@ recipe.makes.create(
   user: heros[0],
   content: make_dish
 )
+
+make = Make.last
+
+5.times do
+  photo = get_photo
+  memory = make.memories.build(share: Faker::Hipster.sentence)
+  memory.photo_file.attach io: photo, filename: "#{SecureRandom.urlsafe_base64.to_s}.jpg"
+  make.save
+end
+
 
 
 #moot.connections.create relation: p, relationship: Faker::Relationship.familial
