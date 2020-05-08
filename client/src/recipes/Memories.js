@@ -1,20 +1,27 @@
-import React { Component } from 'react'
+import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
-import Memory from './Memory'
+import Loading from '../shared/Loading'
 
-class Memories extends Component {
-  componentDidMount(){
-    this.props.getMemories(this.props.recipe)
-  }
+const Memories = ({ memories }) => {
 
-  render(){
-
+  if(memories){
     return (
       <>
-
+        {
+          memories.map(memory => {
+            return (
+              <Typography variant='body1'>
+                {memory.share}
+              </Typography>
+            )
+          })
+        }
       </>
     )
-  }// end render
-}// end class
+  } else {
+    return <Loading/>
+  }
+}
+
 
 export default Memories

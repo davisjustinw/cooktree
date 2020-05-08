@@ -25,6 +25,10 @@ const getRecipe = id => {
           type: 'GET_MAKE_LIST_COMPLETE',
           list: recipe.makes
         })
+        dispatch({
+          type: 'GET_MEMORY_LIST_COMPLETE',
+          list: recipe.memories
+        })
       })
       .catch(console.log)
   } // end dispatch anonymous

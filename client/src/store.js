@@ -8,7 +8,8 @@ import {
 import user from './stores/user/userReducer'
 import connection from './stores/connection/connectionReducer'
 import recipe from './stores/recipe/recipeReducer'
-import make from './stores/recipe/makeReducer'
+import make from './stores/make/makeReducer'
+import memory from './stores/memory/memoryReducer'
 import ui from './stores/ui/uiReducer'
 import error from './stores/error/errorReducer'
 import thunk from 'redux-thunk'
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   connection,
   recipe,
   make,
+  memory,
   ui,
   error
 })

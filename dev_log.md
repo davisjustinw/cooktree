@@ -291,6 +291,9 @@
   * users can add memories to Recipes.
   * Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
 
+  * refresh isn't waiting for recipe to get memories
+
+  * get validations (when user not used)
   * fix signup validations (connection vs sign up)
   * add unsaved changes indicator
     - updated date?
@@ -300,6 +303,9 @@
 
 # EdgyCasey Refactory
 
+* HOC for Loading? to wrap what's being loaded
+* length limit on recipe title
+* are some of my class method dispatches necessary?
 * change updated at times stamps to 'just now', 'today' etc.
 * consider current as make nested in recipe instead of separate stores
 * dry up drawer components

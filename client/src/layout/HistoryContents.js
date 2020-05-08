@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeCurrentMake } from '../stores/recipe/makeActions'
+import { changeCurrentMake } from '../stores/make/makeActions'
 import { makeStyles } from '@material-ui/core/styles'
 import { url } from '../stores/helpers/fetchHelpers'
 

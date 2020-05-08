@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/Styles'
-import { updateMake, addNewMake } from '../stores/recipe/makeActions'
+import { updateMake, addNewMake } from '../stores/make/makeActions'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 

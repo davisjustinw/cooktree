@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { clearRecipe } from '../stores/recipe/recipeActions'
-import { clearMake } from '../stores/recipe/makeActions'
+import { clearMake } from '../stores/make/makeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 

@@ -4,10 +4,11 @@ import { withRouter } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
-import { handleMakeChange } from '../stores/recipe/makeActions'
+import { handleMakeChange } from '../stores/make/makeActions'
 
 import RecipeHeader from './RecipeHeader'
 import RecipeCard from './RecipeCard'
+import Memories from './Memories'
 
 class Recipe extends Component {
 
@@ -25,7 +26,7 @@ class Recipe extends Component {
   }
 
   render() {
-    const { recipe, make, classes } = this.props
+    const { recipe, make, classes, memories } = this.props
 
       return (
         <>
@@ -42,6 +43,8 @@ class Recipe extends Component {
             recipe={recipe}
             make={make}
             />
+
+          <Memories memories={memories} />
           </div>
         </>
       )
@@ -54,9 +57,10 @@ const mapDispatchToProps = dispatch => ({
   handleMakeChange: change => dispatch(handleMakeChange(change)),
 })
 
-const mapStateToProps = ({ recipe, make }) => ({
+const mapStateToProps = ({ recipe, make, memory }) => ({
   recipe: recipe.current,
-  make: make.current
+  make: make.current,
+  memories: memory.list
 })
 
 const useStyles = theme => ({
