@@ -48,6 +48,7 @@ const Memories = ({ memories }) => {
                       </Avatar>
                     }
                     title={memory.user.name}
+                    subheader={memory.updatedAt}
                   />
               </Card>
             )
