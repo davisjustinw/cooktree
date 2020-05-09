@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 
 const MakeButtons = ({ recipe, make, user, updateMake, addNewMake }) => {
   const classes = useStyles()
-  
+
   return (
     <>
       <ButtonGroup
@@ -28,6 +28,12 @@ const MakeButtons = ({ recipe, make, user, updateMake, addNewMake }) => {
         >
           Save New
         </Button >
+        <Button
+          onClick={() => addNewMake(recipe, make)}
+        >
+          Share Memory
+        </Button >
+
       </ButtonGroup>
 
     </>

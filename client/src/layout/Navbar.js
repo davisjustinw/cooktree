@@ -21,7 +21,7 @@ const Navbar = ({ toggleMenuOpen, toggleHistoryOpen, location, status }) => {
       {
         status === 'LOGGED_IN' ?
         (<>
-          <Hidden lgUp implementation="css">
+          <Hidden mdUp implementation="css">
             <IconButton
               onClick={ toggleMenuOpen }
               edge="start"

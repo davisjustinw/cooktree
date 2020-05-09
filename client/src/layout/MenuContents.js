@@ -18,7 +18,7 @@ const MenuContents = ({ id, toggleMenuOpen, temporary }) => {
 
   return (
     <>
-      <Hidden mdDown implementation="css" >
+      <Hidden smDown implementation="css" >
         <div className={classes.toolbar}/>
       </Hidden>
       <UserDrawerHeader/>

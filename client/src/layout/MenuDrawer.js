@@ -11,7 +11,7 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
 
   return (
     <nav >
-      <Hidden lgUp implementation="css">
+      <Hidden mdUp implementation="css">
         <Drawer
           variant="temporary"
           anchor='left'
@@ -25,7 +25,7 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
           <MenuContents toggleMenuOpen={toggleMenuOpen} temporary />
         </Drawer>
       </Hidden>
-      <Hidden mdDown implementation="css">
+      <Hidden smDown implementation="css">
         <Drawer variant="permanent" open >
           <MenuContents toggleMenuOpen={toggleMenuOpen} />
         </Drawer>

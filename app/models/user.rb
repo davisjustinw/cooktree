@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one_attached :avatar_file
 
   has_many :makes
+  has_many :memories
   has_many :recipes, -> { distinct }, through: :makes
 
   has_many :connections

@@ -2,15 +2,6 @@ include Rails.application.routes.url_helpers
 require 'open-uri'
 require 'faker'
 
-# Faker::Food.description #=> "Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant."
-# Faker::Food.dish #=> "Caesar Salad"
-# Faker::Food.fruits #=> "Peaches"
-# Faker::Food.ingredient #=> "Adzuki Beans"
-# Faker::Food.measurement #=> "1/4 tablespoon"
-# Faker::Food.metric_measurement #=> "centiliter"
-# Faker::Food.spice #=> "Caraway Seed"
-# Faker::Food.sushi #=> "Sea bream"
-# Faker::Food.vegetables #=> "Broccolini"
 def make_dish
   num = [3,5,7,9]
   dish = "#{Faker::Hipster.paragraph}\n\n"
