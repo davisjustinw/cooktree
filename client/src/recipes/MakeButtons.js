@@ -42,7 +42,7 @@ const MakeButtons = ({ recipe, make, user, updateMake, addNewMake }) => {
 
 const useStyles = makeStyles(theme => ({
   buttonGroup: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(4)
   }
 }))
 const mapStateToProps = ({ user }) => ({ user })

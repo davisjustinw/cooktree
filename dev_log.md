@@ -283,16 +283,16 @@
     [x] add avatar and maker name
     [x] update/created date
 
-# 7 May
-  * memories
+# 7,8,9 May
+  [x] memories
     - quotes
     - photos
     - connections to people
   * users can add memories to Recipes.
-  * Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
+  [x] Memories can be connected to a specific make of a Recipe signaling an event like a holiday.
 
-  * refresh isn't waiting for recipe to get memories
-
+  * recipe title width control
+  * history drawer width control
   * get validations (when user not used)
   * fix signup validations (connection vs sign up)
   * add unsaved changes indicator
