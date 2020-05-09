@@ -100,6 +100,7 @@ make = Make.last
   photo = get_photo
   memory = make.memories.build(share: Faker::Hipster.sentence)
   memory.photo_file.attach io: photo, filename: "#{SecureRandom.urlsafe_base64.to_s}.jpg"
+  memory.user = heros.sample
   make.save
 end
 
