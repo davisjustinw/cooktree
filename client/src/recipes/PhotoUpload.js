@@ -2,7 +2,7 @@ import React, { createRef, Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
 import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined'
-import IconButton from '@material-ui/core/IconButton'
+
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActionArea from '@material-ui/core/CardActionArea'
 

@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   resources :makes, only: [:create, :update]
   resources :recipes, only: [:index, :show]
   resources :connections, only: [:index, :create, :show]
-  resources :memories, only: [:index]
+  resources :memories, only: [:index, :create]
 end

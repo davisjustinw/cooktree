@@ -299,7 +299,7 @@
     - updated date?
   * need validations in create connection
   * list recipes and contributions on connection show page
-
+  * nav drawer stuck open on login
 
 # EdgyCasey Refactory
 

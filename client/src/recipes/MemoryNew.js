@@ -1,18 +1,28 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/Styles'
-import { url } from '../stores/helpers/fetchHelpers'
+import { connect } from 'react-redux'
+import { postMemory } from '../stores/memory/memoryActions'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
+
 import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined'
-import Loading from '../shared/Loading'
+
 import PhotoUpload from './PhotoUpload'
 
-const MemoryNew = ({ make, memory, handleMemoryChange }) => {
+const MemoryNew = ({ make, memory, handleMemoryChange, postMemory }) => {
   const classes = useStyles()
+
+  const handlePostMemory = () => {
+    const data = new FormData()
+
+    data.append('make_id', make.id)
+    data.append('photo_file', memory.photoFile)
+    data.append('share', memory.share)
+
+    postMemory(data);
+  }
 
   return (
       <>
@@ -40,7 +50,11 @@ const MemoryNew = ({ make, memory, handleMemoryChange }) => {
             />
           </CardContent >
           <CardActions >
-            <Button size="small" color="primary">
+            <Button
+              onClick={handlePostMemory}
+              size="small"
+              color="primary"
+            >
               Save
             </Button>
             <Button size="small" color="primary">
@@ -70,4 +84,8 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default MemoryNew
+const mapDispatchToProps = dispatch => ({
+  postMemory: data => dispatch(postMemory(data))
+})
+
+export default connect(null, mapDispatchToProps)(MemoryNew)

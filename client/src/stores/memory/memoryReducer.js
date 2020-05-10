@@ -2,8 +2,10 @@ const initialState = {
   list: [],
   current: {
     id: '',
+    makeId: '',
     share: '',
-    photo_url: '',
+    photoUrl: '',
+    photoFile: ''
   }
 }
 

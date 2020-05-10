@@ -8,6 +8,7 @@ class Memory < ApplicationRecord
   #has_many :participants, class_name: 'User'
 
   def photo_url
+    
     if self.photo_file.attached?
       rails_blob_path(self.photo_file, disposition: "attachment", only_path: true)
     end

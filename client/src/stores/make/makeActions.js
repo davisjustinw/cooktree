@@ -9,8 +9,6 @@ const clearMake = () => {
 const addNewMake = (recipe, make) => {
   return dispatch => {
     dispatch({ type: 'ADD_NEW_MAKE'})
-    console.log('addNewMake')
-    console.log(make)
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -27,7 +25,6 @@ const addNewMake = (recipe, make) => {
         }
       })
     }
-    console.log(headers)
     fetch(`${url}/makes`, headers)
       .then(resp => resp.json())
       .then(make => {
