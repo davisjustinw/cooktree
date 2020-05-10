@@ -13,7 +13,7 @@ const handleMemoryChange = change => {
 const postMemory = data => {
   console.log('addNewMemory')
   return dispatch => {
-    dispatch({ type: 'ADD_NEW_MEMORY'})
+    dispatch({ type: 'POST_MEMORY'})
     const headers = {
       method: 'POST',
       credentials: 'include',
@@ -24,7 +24,8 @@ const postMemory = data => {
       .then(memory => {
         console.log('memory returned')
         console.log(memory)
-        dispatch({ type: 'ADD_NEW_MEMORY_COMPLETE', memory: memory })
+        dispatch({ type: 'POST_MEMORY_COMPLETE', memory: memory })
+        dispatch({ type: 'CLEAR_MEMORY' })
       })
       .catch((error) => {
         console.error('Fetch error', error)

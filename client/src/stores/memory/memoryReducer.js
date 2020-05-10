@@ -10,7 +10,7 @@ const initialState = {
 }
 
 function memory(state = initialState, action) {
-  const { type, change, list } = action
+  const { type, change, list, memory } = action
   switch(type){
     case 'CLEAR_MEMORY':
 
@@ -44,6 +44,17 @@ function memory(state = initialState, action) {
           ...state.current,
           [name]: value
         }
+      }
+
+    case 'POST_MEMORY':
+      return {
+        ...state
+      }
+
+    case 'POST_MEMORY_COMPLETE':
+      return {
+        ...state,
+        list: [...state.list, memory],
       }
 
     default:

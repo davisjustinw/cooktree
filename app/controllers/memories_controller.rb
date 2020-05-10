@@ -15,6 +15,7 @@ class MemoriesController < ApplicationController
     if !photo_params[:photo_file].blank?
       memory.photo_file.attach(photo_params[:photo_file])
     end
+    
     render json: memory, status: :ok
   end
 
