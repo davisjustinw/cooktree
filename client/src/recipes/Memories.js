@@ -18,9 +18,9 @@ const Memories = ({ memories }) => {
     return (
       <div className={classes.root}>
         <Carousel
-          animation='slide'
-          autoplay='false'
-          //interal='2000'
+          animation='fade'
+          autoplay='true'
+          interal='3000'
         >
         {
           memories.map(memory => {
