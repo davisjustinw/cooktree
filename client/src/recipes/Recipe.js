@@ -5,10 +5,13 @@ import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 import { handleMakeChange } from '../stores/make/makeActions'
+import { handleMemoryChange } from '../stores/memory/memoryActions'
+import { changeHandler } from '../shared/form'
 
 import RecipeHeader from './RecipeHeader'
 import RecipeCard from './RecipeCard'
 import Memories from './Memories'
+import MemoryNew from './MemoryNew'
 
 class Recipe extends Component {
 
@@ -25,8 +28,14 @@ class Recipe extends Component {
     this.props.handleMakeChange({ name: target.name, value: target.value })
   }
 
+  handleMemoryChange = ({ target }) => {
+    this.props.handleMemoryChange({ name: target.name, value: target.value })
+  }
+
+  handleChange = changeHandler.bind(this)
+
   render() {
-    const { recipe, make, classes, memories } = this.props
+    const { recipe, make, memory, classes, memories } = this.props
 
       return (
         <>
@@ -45,6 +54,11 @@ class Recipe extends Component {
             />
 
           <Memories memories={memories} />
+          <MemoryNew
+            make={make}
+            memory={memory}
+            handleMemoryChange={this.handleMemoryChange}
+          />
           </div>
         </>
       )
@@ -55,12 +69,14 @@ const mapDispatchToProps = dispatch => ({
   getRecipe: recipeId => dispatch(getRecipe(recipeId)),
   handleRecipeChange: change => dispatch(handleRecipeChange(change)),
   handleMakeChange: change => dispatch(handleMakeChange(change)),
+  handleMemoryChange: change => dispatch(handleMemoryChange(change)),
 })
 
 const mapStateToProps = ({ recipe, make, memory }) => ({
   recipe: recipe.current,
   make: make.current,
-  memories: memory.list
+  memories: memory.list,
+  memory: memory.current
 })
 
 const useStyles = theme => ({

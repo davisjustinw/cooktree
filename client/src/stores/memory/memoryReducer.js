@@ -8,7 +8,7 @@ const initialState = {
 }
 
 function memory(state = initialState, action) {
-  const { type, list } = action
+  const { type, change, list } = action
   switch(type){
     case 'CLEAR_MEMORY':
 
@@ -16,8 +16,10 @@ function memory(state = initialState, action) {
         ...state,
         current: {
           id: '',
+          makeId: '',
           share: '',
-          photo_url: '',
+          photoUrl: '',
+          photoFile: ''
         }
       }
 
@@ -27,11 +29,19 @@ function memory(state = initialState, action) {
       }
 
     case 'GET_MEMORY_LIST_COMPLETE':
-      
       return {
         ...state,
-        list: list,
-        current: list[0]
+        list: list
+      }
+
+    case 'UPDATE_MEMORY_VALUE':
+      const { name, value } = change
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          [name]: value
+        }
       }
 
     default:

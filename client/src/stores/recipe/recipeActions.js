@@ -12,7 +12,7 @@ const getRecipe = id => {
     fetch(`${url}/recipes/${id}`, getHeader)
       .then(resp => resp.json())
       .then(recipe => {
-        console.log(recipe)
+        //console.log(recipe)
         dispatch({
           type: 'GET_RECIPE_COMPLETE',
           current: {

@@ -25,7 +25,7 @@ class ConnectionNew extends Component {
     }
   }
 
-  handleChange = changeHandler.bind(this);
+  handleChange = changeHandler.bind(this)
 
   handleSubmit = event => {
     event.preventDefault()

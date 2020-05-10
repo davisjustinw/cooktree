@@ -1,23 +1,16 @@
-import { url, getHeader } from '../helpers/fetchHelpers'
+//import { url, getHeader } from '../helpers/fetchHelpers'
 
-const getMemories = recipeId => {
-  console.log('getting memories')
+const handleMemoryChange = change => {
+  console.log('handleMemoryChange')
   return dispatch => {
-    dispatch({ type: 'GET_MEMORY_LIST'})
-    fetch(`${url}/memories?recipe=${recipeId}`, getHeader)
-      .then(resp => resp.json())
-      .then(memories => {
-        console.log(memories)
-        dispatch({
-          type: 'GET_MEMORY_LIST_COMPLETE',
-          memories: memories
-        })
+    dispatch({
+      type: 'UPDATE_MEMORY_VALUE',
+      change: change
+    })
+  }
+}
 
-      })
-      .catch(console.log)
-  } // end dispatch anonymous
-} // end getRecipes
 
 export {
-  getMemories
+  handleMemoryChange
 }
