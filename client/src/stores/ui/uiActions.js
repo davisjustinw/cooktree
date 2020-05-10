@@ -16,9 +16,14 @@ const toggleControlsOff = () => {
   return dispatch => dispatch({ type: 'TOGGLE_CONTROLS_OFF' })
 }
 
+const toggleNewMemory = () => {
+  return dispatch => dispatch({ type: 'TOGGLE_NEW_MEMORY'})
+}
+
 export {
   toggleMenuOpen,
   toggleHistoryOpen,
   toggleControlsOn,
-  toggleControlsOff
+  toggleControlsOff,
+  toggleNewMemory,
 }

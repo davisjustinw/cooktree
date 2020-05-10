@@ -2,6 +2,7 @@ const initialState = {
   menuOpen: false,
   historyOpen: false,
   showControls: false,
+  showNewMemory: false
 }
 
 function ui(state = initialState, action) {
@@ -38,6 +39,13 @@ function ui(state = initialState, action) {
         ...state,
         showControls: false
       }
+
+    case 'TOGGLE_NEW_MEMORY':
+      return {
+        ...state,
+        showNewMemory: (!state.showNewMemory)
+      }
+
     default:
       return state
   }

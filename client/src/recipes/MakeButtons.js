@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/Styles'
 import { updateMake, addNewMake } from '../stores/make/makeActions'
+import { toggleNewMemory } from '../stores/ui/uiActions'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 
-const MakeButtons = ({ recipe, make, user, updateMake, addNewMake }) => {
+const MakeButtons = ({ recipe, make, user, updateMake, addNewMake, toggleNewMemory }) => {
   const classes = useStyles()
 
   return (
@@ -29,7 +30,7 @@ const MakeButtons = ({ recipe, make, user, updateMake, addNewMake }) => {
           Save New
         </Button >
         <Button
-          onClick={() => addNewMake(recipe, make)}
+          onClick={() => toggleNewMemory()}
         >
           Share Memory
         </Button >
@@ -48,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 const mapStateToProps = ({ user }) => ({ user })
 const mapDispatchToProps = dispatch => ({
   updateMake: make => dispatch(updateMake(make)),
-  addNewMake: (recipe, make) => dispatch(addNewMake(recipe, make))
+  addNewMake: (recipe, make) => dispatch(addNewMake(recipe, make)),
+  toggleNewMemory: () => dispatch(toggleNewMemory())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MakeButtons)

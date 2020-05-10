@@ -35,7 +35,7 @@ class Recipe extends Component {
   handleChange = changeHandler.bind(this)
 
   render() {
-    const { recipe, make, memory, classes, memories } = this.props
+    const { recipe, make, memory, classes, memories, showNewMemory } = this.props
 
       return (
         <>
@@ -53,12 +53,17 @@ class Recipe extends Component {
             make={make}
             />
 
-          <Memories memories={memories} />
-          <MemoryNew
-            make={make}
-            memory={memory}
-            handleMemoryChange={this.handleMemoryChange}
-          />
+          {
+            showNewMemory ? (
+              <MemoryNew
+                make={make}
+                memory={memory}
+                handleMemoryChange={this.handleMemoryChange}
+              />
+            ) : (
+              <Memories memories={memories} />
+            )
+          }
           </div>
         </>
       )
@@ -72,11 +77,12 @@ const mapDispatchToProps = dispatch => ({
   handleMemoryChange: change => dispatch(handleMemoryChange(change)),
 })
 
-const mapStateToProps = ({ recipe, make, memory }) => ({
+const mapStateToProps = ({ recipe, make, memory, ui }) => ({
   recipe: recipe.current,
   make: make.current,
   memories: memory.list,
-  memory: memory.current
+  memory: memory.current,
+  showNewMemory: ui.showNewMemory
 })
 
 const useStyles = theme => ({

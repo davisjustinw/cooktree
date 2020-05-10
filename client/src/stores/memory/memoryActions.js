@@ -26,6 +26,7 @@ const postMemory = data => {
         console.log(memory)
         dispatch({ type: 'POST_MEMORY_COMPLETE', memory: memory })
         dispatch({ type: 'CLEAR_MEMORY' })
+        dispatch({ type: 'TOGGLE_NEW_MEMORY'})
       })
       .catch((error) => {
         console.error('Fetch error', error)
