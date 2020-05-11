@@ -10,6 +10,7 @@ import Loading from '../shared/Loading'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
 
 class Recipes extends Component {
   componentDidMount() {
@@ -26,13 +27,16 @@ class Recipes extends Component {
         <Typography variant='h4' gutterBottom>
           Recipes
         </Typography>
-        <List>
-        {
-          recipes.map(recipe => (
-            <RecipeListing key={recipe.id} recipe={recipe}/>
-          ))
-        }
-        </List>
+        <Paper >
+          <List>
+          {
+            recipes.map(recipe => (
+              <RecipeListing key={recipe.id} recipe={recipe}/>
+            ))
+          }
+          </List>
+        </Paper>
+
         <Fab
           component={RouterLink}
           to={`/users/${userId}/recipes/new`}
@@ -59,6 +63,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const useStyles = theme => ({
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+  },
   fab: {
     margin: theme.spacing(0),
     top: 'auto',
