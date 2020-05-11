@@ -5,12 +5,13 @@ import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
 import RecipeListing from './RecipeListing'
+import List from '@material-ui/core/List'
 import Loading from '../shared/Loading'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import Typography from '@material-ui/core/Typography'
 
-class Connections extends Component {
+class Recipes extends Component {
   componentDidMount() {
     this.props.getRecipes(this.props.userId)
   }
@@ -25,12 +26,13 @@ class Connections extends Component {
         <Typography variant='h4' gutterBottom>
           Recipes
         </Typography>
-        {console.log(recipes)}
+        <List>
         {
-          recipes.map(recipe => {
-            return <RecipeListing key={recipe.id} recipe={recipe}/>
-          })
+          recipes.map(recipe => (
+            <RecipeListing key={recipe.id} recipe={recipe}/>
+          ))
         }
+        </List>
         <Fab
           component={RouterLink}
           to={`/users/${userId}/recipes/new`}
@@ -67,4 +69,4 @@ const useStyles = theme => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Connections))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Recipes))

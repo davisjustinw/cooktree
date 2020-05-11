@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/Styles'
 import { connect } from 'react-redux'
 import { postMemory } from '../stores/memory/memoryActions'
-import { toggleNewMemoryOff } from '../stores/ui/uiActions'
+
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 

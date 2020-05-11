@@ -27,13 +27,16 @@ const MenuContents = ({ id, toggleMenuOpen, temporary }) => {
         <ListItem
           button onClick={handleMenuClick}
           component={RouterLink}
-          to={`/users/${id}/connections`} >
-            <ListItemText primary="Connections" />
+          to={`/users/${id}/connections`}
+        >
+          <ListItemText primary="Connections" />
         </ListItem>
-        <ListItem button onClick={handleMenuClick}
+        <ListItem
+          button onClick={handleMenuClick}
           component={RouterLink}
-          to={`/users/${id}/recipes`}>
-            <ListItemText primary="Recipes" />
+          to={`/users/${id}/recipes`}
+        >
+          <ListItemText primary="Recipes" />
         </ListItem>
       </List>
     </>
