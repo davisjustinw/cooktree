@@ -36,6 +36,10 @@ const addNewMake = (recipe, make) => {
       .then(make => {
         console.log(make)
         dispatch({ type: 'ADD_NEW_MAKE_COMPLETE', make: make })
+        dispatch({
+          type: 'UPDATE_RECIPE_VALUE',
+          change: { name: 'id' , value: make.id }
+        })
       })
       .catch((error) => {
         console.error('Fetch error', error)

@@ -36,7 +36,7 @@ class Recipe extends Component {
 
   render() {
     const { recipe, make, memory, classes, memories, showNewMemory } = this.props
-
+    
       return (
         <>
           <div className={classes.paper}>

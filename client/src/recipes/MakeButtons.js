@@ -31,6 +31,7 @@ const MakeButtons = ({ recipe, make, user, updateMake, addNewMake, toggleNewMemo
         </Button >
         <Button
           onClick={() => toggleNewMemory()}
+          disabled={recipe.id === ''}
         >
           Share Memory
         </Button >

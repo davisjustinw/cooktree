@@ -12,10 +12,8 @@ def create
 
     if !avatar_params[:avatar_file].blank?
       user.avatar_file.attach(avatar_params[:avatar_file])
-
     end
     # render user_json(current_user)
-    
     render json: current_user
   else
     # need better response here

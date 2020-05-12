@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { clearRecipe } from '../stores/recipe/recipeActions'
-import { clearMake, clearMakeList } from '../stores/make/makeActions'
+import { clearMake, clearMakeList, handleMakeChange } from '../stores/make/makeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 
+import NewRecipeHeader from './NewRecipeHeader'
 import RecipeCard from './RecipeCard'
-import InputBase from '@material-ui/core/InputBase'
+
 
 class RecipeNew extends Component {
 
@@ -21,24 +22,24 @@ class RecipeNew extends Component {
     this.props.handleRecipeChange({ name: target.name, value: target.value })
   }
 
+  handleMakeChange = ({ target }) => {
+    this.props.handleMakeChange({ name: target.name, value: target.value })
+  }
+
   render() {
     const { recipe, make, classes } = this.props
 
     return (
       <>
         <div className={classes.paper}>
-        <InputBase
-          classes={{
-            root: classes.root,
-            input: classes.input
-          }}
-          type='text'
-          name='name'
-          value={recipe.name}
-          onChange={this.handleRecipeChange}
-          placeholder='Recipe Name...'
-        />
-        <RecipeCard recipe={recipe} make={make}/>
+
+        <NewRecipeHeader
+          handleRecipeChange={this.handleRecipeChange}
+          handleMakeChange={this.handleMakeChange}
+          recipe={recipe}
+          make={make}
+          />
+        <RecipeCard recipe={recipe} make={make} handleMakeChange={this.handleMakeChange}/>
         </div>
       </>
     )
@@ -49,7 +50,8 @@ const mapDispatchToProps = dispatch => ({
   clearRecipe: () => dispatch(clearRecipe()),
   clearMake: () => dispatch(clearMake()),
   clearMakeList: () => dispatch(clearMakeList()),
-  handleRecipeChange: change => dispatch(handleRecipeChange(change))
+  handleRecipeChange: change => dispatch(handleRecipeChange(change)),
+  handleMakeChange: change => dispatch(handleMakeChange(change))
 })
 
 const mapStateToProps = ({ recipe, make }) => ({

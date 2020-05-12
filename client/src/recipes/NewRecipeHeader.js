@@ -1,23 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { url } from '../stores/helpers/fetchHelpers'
-import Avatar from '@material-ui/core/Avatar'
+
 import InputBase from '@material-ui/core/InputBase'
 import Typography from '@material-ui/core/Typography'
 
-import Loading from '../shared/Loading'
-
-const RecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) => {
+const NewRecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) => {
   const classes = useStyles()
-  if (make.cook.avatarUrl){
-    
+
     return (
       <div className={classes.header}>
-        <Avatar
-          alt='cook'
-          src={`${url}${make.cook.avatarUrl}`}
-          className={classes.avatar}
-        />
         <div className={classes.captions}>
           <InputBase
             classes={{
@@ -48,17 +39,11 @@ const RecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) =>
         </div>
       </div>
     )
-  } else {
-    return <Loading/>
-  }
 
 }
 
 const useStyles = makeStyles(theme => ({
-  avatar: {
-    margin: theme.spacing(1),
-    alignSelf: 'center'
-  },
+
   header: {
     display: 'flex',
     flexDirection: 'row',
@@ -98,4 +83,4 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default RecipeHeader
+export default NewRecipeHeader
