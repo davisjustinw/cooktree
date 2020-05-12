@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { clearRecipe } from '../stores/recipe/recipeActions'
-import { clearMake } from '../stores/make/makeActions'
+import { clearMake, clearMakeList } from '../stores/make/makeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 
 import RecipeCard from './RecipeCard'
 import InputBase from '@material-ui/core/InputBase'
 
-class Recipe extends Component {
+class RecipeNew extends Component {
 
   componentDidMount(){
     this.props.clearRecipe()
     this.props.clearMake()
+    this.props.clearMakeList()
   }
 
   handleRecipeChange = ({ target }) => {
@@ -22,7 +23,7 @@ class Recipe extends Component {
 
   render() {
     const { recipe, make, classes } = this.props
-  
+
     return (
       <>
         <div className={classes.paper}>
@@ -47,6 +48,7 @@ class Recipe extends Component {
 const mapDispatchToProps = dispatch => ({
   clearRecipe: () => dispatch(clearRecipe()),
   clearMake: () => dispatch(clearMake()),
+  clearMakeList: () => dispatch(clearMakeList()),
   handleRecipeChange: change => dispatch(handleRecipeChange(change))
 })
 
@@ -77,4 +79,4 @@ const useStyles = theme => ({
   }
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(Recipe)))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(RecipeNew)))

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 import { mapUiToProps } from '../stores/mappers'
 import { toggleMenuOpen } from '../stores/ui/uiActions'
 
@@ -8,6 +9,7 @@ import Hidden from '@material-ui/core/Hidden'
 import MenuContents from './MenuContents'
 
 const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
+
 
   return (
     <nav >
@@ -33,5 +35,7 @@ const MenuDrawer = ({ menuOpen, toggleMenuOpen }) => {
     </nav>
   )
 }
+
+
 
 export default connect(mapUiToProps, { toggleMenuOpen })(MenuDrawer)

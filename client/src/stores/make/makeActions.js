@@ -6,6 +6,12 @@ const clearMake = () => {
   }
 }
 
+const clearMakeList = () => {
+  return dispatch => {
+    dispatch({ type: 'CLEAR_MAKE_LIST' })
+  }
+}
+
 const addNewMake = (recipe, make) => {
   return dispatch => {
     dispatch({ type: 'ADD_NEW_MAKE'})
@@ -78,6 +84,7 @@ const changeCurrentMake = id => {
 
 export {
   clearMake,
+  clearMakeList,
   addNewMake,
   updateMake,
   handleMakeChange,

@@ -58,6 +58,7 @@ const submitSignup = userInfo => {
     fetch(`${url}/signup`, headers)
       .then(resp => resp.json())
       .then(json => {
+        console.log(json)
         catch_errors_dispatch_login(json, dispatch)
       })
       .catch((error) => {

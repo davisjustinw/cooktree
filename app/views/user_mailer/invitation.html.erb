@@ -1,4 +1,4 @@
-<h1>Welcome to Cook Tree <%= @to[:name] %>, </h1>
+<h1>Welcome <%= @to[:name] %>, </h1>
   <p>
      Please sign up and join my cooking tree.<br>
      <a href=<%= get_invitation_url(@token) %>><%= get_invitation_url(@token) %></a>

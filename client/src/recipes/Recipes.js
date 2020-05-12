@@ -63,9 +63,6 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const useStyles = theme => ({
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-  },
   fab: {
     margin: theme.spacing(0),
     top: 'auto',

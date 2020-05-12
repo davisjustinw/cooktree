@@ -9,10 +9,13 @@ def create
 
   if user.persisted?
     session[:user_id] = user.id
+
     if !avatar_params[:avatar_file].blank?
       user.avatar_file.attach(avatar_params[:avatar_file])
+
     end
     # render user_json(current_user)
+    
     render json: current_user
   else
     # need better response here
@@ -26,9 +29,9 @@ def token_to_user
 
   connection = Connection.new(connection_params)
   connection.user = user
-
   user.attributes = user_params
   user.status = "CONFIRMED"
+
   if !avatar_params[:avatar_file].blank?
     user.attributes = avatar_params[:avatar_file]
   end

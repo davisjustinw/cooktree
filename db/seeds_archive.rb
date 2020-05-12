@@ -4,7 +4,7 @@ require 'faker'
 
 def make_dish
   num = [3,5,7,9]
-  dish = "#{Faker::Food.description}\n\n"
+  dish = "#{Faker::Hipster.paragraph}\n\n"
   num.sample.times do
     dish += "#{Faker::Food.measurement} #{Faker::Food.ingredient}\n"
   end
@@ -12,7 +12,7 @@ def make_dish
 end
 
 def get_avatar(name)
-  File.open("./lib/seeds/avatars/#{name}.jpg")
+  open("https://api.adorable.io/avatars/60/#{name}.png")
 end
 
 def get_photo
@@ -25,22 +25,22 @@ def get_status
 end
 
 moot = User.new(
-  name: 'justin',
+  name: 'moot',
   email: 'one@two.com',
   password_digest: User.digest('password'),
   status: "CONFIRMED"
 )
 
-avatar = get_avatar 'justin'
-moot.avatar_file.attach io: avatar, filename: "justin.jpg"
+avatar = get_avatar 'moot'
+moot.avatar_file.attach io: avatar, filename: "moot.png"
 moot.save
 
 heros = [moot]
-avatars = Array (1..8)
 
-8.times do
+5.times do
   hero = {
-    name: Faker::Name.name,
+    #name: Faker::Ancient.hero,
+    name: Faker::Name.name
     status: get_status
   }
 
@@ -60,9 +60,8 @@ avatars = Array (1..8)
   puts "#{hero[:name]}"
   u = User.new
   u.attributes = hero
-  avatar_file = avatars.sample
-  avatar = get_avatar avatar_file
-  u.avatar_file.attach io: avatar, filename: "#{avatar_file}.jpg"
+  avatar = get_avatar hero[:name]
+  u.avatar_file.attach io: avatar, filename: "#{hero[:name]}.png"
   u.save
 
   heros.push u
@@ -83,14 +82,16 @@ recipes = []
 
 7.times do
   r = Recipe.create(
-    name: "#{Faker::Hipster.word} #{Faker::Food.ingredient}"
+    name: Faker::Hipster.sentence(word_count: 2, supplemental: true)
   )
   recipes.push r
 end
 
+
+
 20.times do
   recipes.sample.makes.create(
-    alias: "#{Faker::Verb.base} #{Faker::Food.ingredient}",
+    alias: "#{Faker::Hipster.word} #{Faker::Food.ingredient}",
     user: heros.sample,
     content: make_dish
   )

@@ -6,14 +6,16 @@ import { useRouteMatch } from 'react-router'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import HistoryContents from './HistoryContents'
+import { makeStyles } from '@material-ui/core/styles'
 
 const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
   const recipesMatch = useRouteMatch('/users/:id/recipes/:id')
+  const classes = useStyles()
 
   return (
     <>
     {recipesMatch ? (
-      <menu >
+      <menu className={classes.drawer} >
         <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
@@ -43,5 +45,11 @@ const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
   )
 
 }
+
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    width: 300
+  }
+}))
 
 export default connect(mapUiToProps, { toggleHistoryOpen })(HistoryDrawer)

@@ -34,6 +34,11 @@ function make(state = initialState, action) {
           }
         }
       }
+    case 'CLEAR_MAKE_LIST':
+      return {
+        ...state,
+        list:[]
+      }
     case 'GET_MAKE_LIST_COMPLETE':
       return {
         ...state,
