@@ -23,7 +23,6 @@ const PrivateRoutes = () => {
       <PrivateRoute exact path={`${match.url}/connections`} redirectTo='/login'>
         <Connections />
       </PrivateRoute>
-
       <PrivateRoute exact path={`${match.url}/recipes/new`} redirectTo='/login'>
         <RecipeNew/>
       </PrivateRoute>

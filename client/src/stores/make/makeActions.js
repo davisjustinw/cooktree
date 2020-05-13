@@ -34,11 +34,12 @@ const addNewMake = (recipe, make) => {
     fetch(`${url}/makes`, headers)
       .then(resp => resp.json())
       .then(make => {
+        console.log('returned make')
         console.log(make)
         dispatch({ type: 'ADD_NEW_MAKE_COMPLETE', make: make })
         dispatch({
           type: 'UPDATE_RECIPE_VALUE',
-          change: { name: 'id' , value: make.id }
+          change: { name: 'id' , value: make.recipeId }
         })
       })
       .catch((error) => {

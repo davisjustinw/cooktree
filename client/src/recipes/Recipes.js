@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getRecipes } from '../stores/recipe/recipeActions'
+import { getRecipes, clearRecipe } from '../stores/recipe/recipeActions'
+import { clearMake } from '../stores/make/makeActions'
 import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
@@ -15,6 +16,8 @@ import Paper from '@material-ui/core/Paper'
 class Recipes extends Component {
   componentDidMount() {
     this.props.getRecipes(this.props.userId)
+    this.props.clearRecipe()
+    this.props.clearMake()
   }
 
   render(){
@@ -59,7 +62,9 @@ const mapStateToProps = ({ recipe, user }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getRecipes: userId => dispatch(getRecipes(userId))
+  getRecipes: userId => dispatch(getRecipes(userId)),
+  clearRecipe: () => dispatch(clearRecipe()),
+  clearMake: () => dispatch(clearMake())
 })
 
 const useStyles = theme => ({

@@ -13,6 +13,7 @@ import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Carousel from 'react-material-ui-carousel'
 
 const Memories = ({ memories }) => {
+  console.log('memories')
   const classes = useStyles()
   if(memories){
     return (

@@ -16,7 +16,7 @@ import MemoryNew from './MemoryNew'
 class Recipe extends Component {
 
   componentDidMount(){
-    console.log('recipe mounting')
+    console.log('Recipe')
     this.props.getRecipe(this.props.match.params.id)
   }
 
@@ -36,37 +36,39 @@ class Recipe extends Component {
 
   render() {
     const { recipe, make, memory, classes, memories, showNewMemory } = this.props
-    
-      return (
-        <>
-          <div className={classes.paper}>
 
-          <RecipeHeader
-            handleRecipeChange={this.handleRecipeChange}
-            handleMakeChange={this.handleMakeChange}
-            recipe={recipe}
-            make={make}
-            />
-          <RecipeCard
-            handleMakeChange={this.handleMakeChange}
-            recipe={recipe}
-            make={make}
-            />
+    return (
+          <>
+            <div className={classes.paper}>
 
-          {
-            showNewMemory ? (
-              <MemoryNew
-                make={make}
-                memory={memory}
-                handleMemoryChange={this.handleMemoryChange}
+            <RecipeHeader
+              handleRecipeChange={this.handleRecipeChange}
+              handleMakeChange={this.handleMakeChange}
+              recipe={recipe}
+              make={make}
               />
-            ) : (
-              <Memories memories={memories} />
-            )
-          }
-          </div>
-        </>
-      )
+            <RecipeCard
+              handleMakeChange={this.handleMakeChange}
+              recipe={recipe}
+              make={make}
+              />
+
+            {
+              showNewMemory ? (
+                <MemoryNew
+                  make={make}
+                  memory={memory}
+                  handleMemoryChange={this.handleMemoryChange}
+                />
+              ) : (
+                <Memories memories={memories} />
+              )
+            }
+            </div>
+          </>
+        )
+
+
   } //render
 } // class Connection
 

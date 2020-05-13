@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { clearRecipe } from '../stores/recipe/recipeActions'
 import { clearMake, clearMakeList, handleMakeChange } from '../stores/make/makeActions'
 import { withStyles } from '@material-ui/core/styles'
@@ -16,6 +16,7 @@ class RecipeNew extends Component {
     this.props.clearRecipe()
     this.props.clearMake()
     this.props.clearMakeList()
+    console.log('RecipeNew')
   }
 
   handleRecipeChange = ({ target }) => {
@@ -27,22 +28,30 @@ class RecipeNew extends Component {
   }
 
   render() {
-    const { recipe, make, classes } = this.props
+    const { recipe, make, classes, user } = this.props
+      console.log('RecipeNew Render')
+      console.log(recipe)
+      console.log(make)
+      if(recipe.id) {
+        console.log(`recipe: ${recipe.id}`)
+        return <Redirect to={{ pathname: `/users/${user.id}/recipes/${recipe.id}` }} />
+      } else {
+        return (
+          <>
+            <div className={classes.paper}>
 
-    return (
-      <>
-        <div className={classes.paper}>
+            <NewRecipeHeader
+              handleRecipeChange={this.handleRecipeChange}
+              handleMakeChange={this.handleMakeChange}
+              recipe={recipe}
+              make={make}
+              />
+            <RecipeCard recipe={recipe} make={make} handleMakeChange={this.handleMakeChange}/>
+            </div>
+          </>
+        )
+      }
 
-        <NewRecipeHeader
-          handleRecipeChange={this.handleRecipeChange}
-          handleMakeChange={this.handleMakeChange}
-          recipe={recipe}
-          make={make}
-          />
-        <RecipeCard recipe={recipe} make={make} handleMakeChange={this.handleMakeChange}/>
-        </div>
-      </>
-    )
   } //render
 } // class Connection
 
@@ -54,9 +63,10 @@ const mapDispatchToProps = dispatch => ({
   handleMakeChange: change => dispatch(handleMakeChange(change))
 })
 
-const mapStateToProps = ({ recipe, make }) => ({
+const mapStateToProps = ({ recipe, make, user }) => ({
   recipe: recipe.current,
-  make: make.current
+  make: make.current,
+  user: user
 })
 
 const useStyles = theme => ({
