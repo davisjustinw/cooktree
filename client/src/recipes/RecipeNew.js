@@ -28,13 +28,9 @@ class RecipeNew extends Component {
   }
 
   render() {
-    const { recipe, make, classes, user } = this.props
-      console.log('RecipeNew Render')
-      console.log(recipe)
-      console.log(make)
+    const { recipe, make, classes } = this.props
       if(recipe.id) {
-        console.log(`recipe: ${recipe.id}`)
-        return <Redirect to={{ pathname: `/users/${user.id}/recipes/${recipe.id}` }} />
+        return <Redirect to={{ pathname: `/recipes/${recipe.id}` }} />
       } else {
         return (
           <>
@@ -63,10 +59,9 @@ const mapDispatchToProps = dispatch => ({
   handleMakeChange: change => dispatch(handleMakeChange(change))
 })
 
-const mapStateToProps = ({ recipe, make, user }) => ({
+const mapStateToProps = ({ recipe, make }) => ({
   recipe: recipe.current,
-  make: make.current,
-  user: user
+  make: make.current
 })
 
 const useStyles = theme => ({

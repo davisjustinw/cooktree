@@ -38,10 +38,10 @@ const RootRoutes = () => {
       <PrivateRoute exact path={`/users/:id/connections`} redirectTo='/login'>
         <Connections />
       </PrivateRoute>
-      <PrivateRoute exact path={`/users/:id/recipes/new`} redirectTo='/login'>
+      <PrivateRoute exact path={`/recipes/new`} redirectTo='/login'>
         <RecipeNew/>
       </PrivateRoute>
-      <PrivateRoute exact path={`/users/:id/recipes/:id`} redirectTo='/login'>
+      <PrivateRoute exact path={`/recipes/:id`} redirectTo='/login'>
         <Recipe/>
       </PrivateRoute>
       <PrivateRoute exact path={`/users/:id/recipes`} redirectTo='/login'>

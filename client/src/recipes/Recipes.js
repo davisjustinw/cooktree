@@ -21,7 +21,7 @@ class Recipes extends Component {
   }
 
   render(){
-    const { recipes, classes, userId } = this.props
+    const { recipes, classes } = this.props
     if(!recipes){
       return <Loading/>
     } else {
@@ -42,7 +42,7 @@ class Recipes extends Component {
 
         <Fab
           component={RouterLink}
-          to={`/users/${userId}/recipes/new`}
+          to={`/recipes/new`}
           color="secondary"
           className={classes.fab}
         >
