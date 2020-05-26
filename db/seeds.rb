@@ -35,6 +35,17 @@ avatar = get_avatar 'justin'
 moot.avatar_file.attach io: avatar, filename: "justin.jpg"
 moot.save
 
+mitt = User.new(
+  name: 'mitt',
+  email: 'two@three.com',
+  password_digest: User.digest('password'),
+  status: "CONFIRMED"
+)
+
+avatar = get_avatar 'justin'
+mitt.avatar_file.attach io: avatar, filename: "justin.jpg"
+mitt.save
+
 heros = [moot]
 avatars = Array (1..8)
 
