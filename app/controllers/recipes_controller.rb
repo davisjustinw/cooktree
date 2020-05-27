@@ -7,7 +7,12 @@ class RecipesController < ApplicationController
 
   def show
     redirect_if_not_logged_in
-    render json: Recipe.find(params[:id]), status: :ok
+    recipe = Recipe.find(params[:id])
+    # what are all the recipe_users
+    # what are all current user relations
+    # recipe_users include current relations?
+    binding.pry
+    render json: recipe, status: :ok
   end
 
   private

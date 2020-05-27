@@ -9,7 +9,7 @@ import HistoryContents from './HistoryContents'
 import { makeStyles } from '@material-ui/core/styles'
 
 const HistoryDrawer = ({ historyOpen, toggleHistoryOpen }) => {
-  const recipesMatch = useRouteMatch('/users/:id/recipes/:id')
+  const recipesMatch = useRouteMatch('/recipes/:id')
   const classes = useStyles()
 
   return (

@@ -31,4 +31,16 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def all_recipes
+    # User.recipes
+
+    Recipe.joins(:users).where(users: { id: family }).distinct.pluck(:id)
+    # Recipes for all connections
+    # family all current user and all connections users
+  end
+
+  def family
+    [self.id] + self.relations.pluck(:id)
+  end
+
 end
