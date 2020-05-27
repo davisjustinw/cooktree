@@ -17,7 +17,6 @@ function PrivateRoute(props) {
       case 'LOGGED_IN':
         console.log('pr LOGGED_IN')
 
-        // how do I pass props to children here
         return children
       case 'LOGGED_OUT':
         console.log('pr LOGGED_OUT')

@@ -5,12 +5,10 @@ import Avatar from '@material-ui/core/Avatar'
 import InputBase from '@material-ui/core/InputBase'
 import Typography from '@material-ui/core/Typography'
 
-import Loading from '../shared/Loading'
-
 const RecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) => {
   const classes = useStyles()
   if (make.cook.avatarUrl){
-    
+
     return (
       <div className={classes.header}>
         <Avatar
@@ -49,7 +47,7 @@ const RecipeHeader = ({ recipe, make, handleMakeChange, handleRecipeChange }) =>
       </div>
     )
   } else {
-    return <Loading/>
+    return null
   }
 
 }

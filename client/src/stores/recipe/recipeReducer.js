@@ -1,5 +1,6 @@
 const initialState = {
   submitSuccess: false,
+  forbidden: false,
   list: [],
   current: {
     id: '',
@@ -11,9 +12,21 @@ function recipe(state = initialState, action) {
   const { type, current, recipes, recipe, change } = action
 
   switch(type) {
+    case 'CLEAR_FORBIDDEN':
+      return {
+        ...state,
+        forbidden: false
+      }
+    case 'FORBIDDEN':
+      return {
+        ...state,
+        forbidden: true
+      }
     case 'CLEAR_RECIPE':
       return {
         ...state,
+        submitSuccess: false,
+        forbidden: false,
         current: {
           id: '',
           name: ''

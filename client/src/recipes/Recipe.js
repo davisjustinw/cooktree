@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { getRecipe } from '../stores/recipe/recipeActions'
 import { withStyles } from '@material-ui/core/styles'
 import { handleRecipeChange } from '../stores/recipe/recipeActions'
 import { handleMakeChange } from '../stores/make/makeActions'
 import { handleMemoryChange } from '../stores/memory/memoryActions'
 import { changeHandler } from '../shared/form'
-
+import Loading from '../shared/Loading'
 import RecipeHeader from './RecipeHeader'
 import RecipeCard from './RecipeCard'
 import Memories from './Memories'
@@ -35,38 +35,45 @@ class Recipe extends Component {
   handleChange = changeHandler.bind(this)
 
   render() {
-    const { recipe, make, memory, classes, memories, showNewMemory } = this.props
-
-    return (
-          <>
-            <div className={classes.paper}>
-
-            <RecipeHeader
-              handleRecipeChange={this.handleRecipeChange}
-              handleMakeChange={this.handleMakeChange}
-              recipe={recipe}
-              make={make}
-              />
-            <RecipeCard
-              handleMakeChange={this.handleMakeChange}
-              recipe={recipe}
-              make={make}
-              />
-
-            {
-              showNewMemory ? (
-                <MemoryNew
-                  make={make}
-                  memory={memory}
-                  handleMemoryChange={this.handleMemoryChange}
+    const { recipe, forbidden, user, make, memory, classes, memories, showNewMemory } = this.props
+    console.log(forbidden)
+    console.log(recipe)
+    console.log(recipe.id)
+    if(forbidden) {
+      return <Redirect to={`/users/${user.id}/recipes`} />
+    } else if (recipe.id) {
+      return (
+            <>
+              <div className={classes.paper}>
+              <RecipeHeader
+                handleRecipeChange={this.handleRecipeChange}
+                handleMakeChange={this.handleMakeChange}
+                recipe={recipe}
+                make={make}
                 />
-              ) : (
-                <Memories memories={memories} />
-              )
-            }
-            </div>
-          </>
-        )
+              <RecipeCard
+                handleMakeChange={this.handleMakeChange}
+                recipe={recipe}
+                make={make}
+                />
+              {
+                showNewMemory ? (
+                  <MemoryNew
+                    make={make}
+                    memory={memory}
+                    handleMemoryChange={this.handleMemoryChange}
+                  />
+                ) : (
+                  <Memories memories={memories} />
+                )
+              }
+              </div>
+            </>
+          )
+    } else {
+      return <Loading/>
+    }
+
 
 
   } //render
@@ -79,12 +86,14 @@ const mapDispatchToProps = dispatch => ({
   handleMemoryChange: change => dispatch(handleMemoryChange(change)),
 })
 
-const mapStateToProps = ({ recipe, make, memory, ui }) => ({
+const mapStateToProps = ({ recipe, make, memory, ui, user }) => ({
+  forbidden: recipe.forbidden,
   recipe: recipe.current,
   make: make.current,
   memories: memory.list,
   memory: memory.current,
-  showNewMemory: ui.showNewMemory
+  showNewMemory: ui.showNewMemory,
+  user: user
 })
 
 const useStyles = theme => ({

@@ -1,5 +1,5 @@
 import { url, getHeader } from '../helpers/fetchHelpers'
-//import { fakeFetch } from '../helpers/fakeAPI'
+
 const clearRecipe = () => {
   return dispatch => {
     dispatch({ type: 'CLEAR_RECIPE' })
@@ -12,23 +12,26 @@ const getRecipe = id => {
     fetch(`${url}/recipes/${id}`, getHeader)
       .then(resp => resp.json())
       .then(recipe => {
-        //console.log(recipe)
-        dispatch({
-          type: 'GET_RECIPE_COMPLETE',
-          current: {
-            id: recipe.id,
-            name: recipe.name
-          }
-        })
-        // make { id: 1, cookId: 2, alias: "Grandma's", content: 'weee' }
-        dispatch({
-          type: 'GET_MAKE_LIST_COMPLETE',
-          list: recipe.makes
-        })
-        dispatch({
-          type: 'GET_MEMORY_LIST_COMPLETE',
-          list: recipe.memories
-        })
+        console.log(recipe)
+        if(recipe.error) {
+          dispatch({ type: 'FORBIDDEN' })
+        } else {
+          dispatch({
+            type: 'GET_RECIPE_COMPLETE',
+            current: {
+              id: recipe.id,
+              name: recipe.name
+            }
+          })
+          dispatch({
+            type: 'GET_MAKE_LIST_COMPLETE',
+            list: recipe.makes
+          })
+          dispatch({
+            type: 'GET_MEMORY_LIST_COMPLETE',
+            list: recipe.memories
+          })
+        }
       })
       .catch(console.log)
   } // end dispatch anonymous

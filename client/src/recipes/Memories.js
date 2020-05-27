@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import Typography from '@material-ui/core/Typography'
-import Loading from '../shared/Loading'
+
 import Avatar from '@material-ui/core/Avatar'
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot'
 import Carousel from 'react-material-ui-carousel'
@@ -59,7 +59,7 @@ const Memories = ({ memories }) => {
       </div>
     )
   } else {
-    return <Loading/>
+    return null
   }
 }
 
