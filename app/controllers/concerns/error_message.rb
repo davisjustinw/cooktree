@@ -46,5 +46,17 @@ module ErrorMessage
     }
   end
 
-  
+  def not_authorized
+    {
+      json: {
+        error: {
+          status: '401',
+          message: "You don't have permission for this resource"
+        }
+      },
+      status: :unauthorized
+    }
+  end
+
+
 end
