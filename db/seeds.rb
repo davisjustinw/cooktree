@@ -123,6 +123,14 @@ make = Make.last
   make.save
 end
 
+r = Recipe.create(
+  name: "#{Faker::Hipster.word} #{Faker::Food.ingredient}"
+)
 
+r.makes.create(
+  alias: "#{Faker::Verb.base} #{Faker::Food.ingredient}",
+  user: mitt,
+  content: make_dish
+)
 
 #moot.connections.create relation: p, relationship: Faker::Relationship.familial
