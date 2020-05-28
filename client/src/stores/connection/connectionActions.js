@@ -6,7 +6,7 @@ const getConnection = id => {
     fetch(`${url}/connections/${id}`, getHeader)
       .then(resp => resp.json())
       .then(connection => {
-        const { relation, relationship, id } = connection
+        const { relation, relation_recipes, relationship, id,  } = connection
         dispatch({
           type: 'GET_CONNECTION_COMPLETE',
           current: {
@@ -16,6 +16,10 @@ const getConnection = id => {
             avatarUrl: relation.avatarUrl,
             relationship: relationship
           }
+        })
+        dispatch({
+          type: 'GET_RECIPE_LIST_COMPLETE',
+          recipes: relation_recipes
         })
       })
   }

@@ -35,10 +35,17 @@ class Recipe extends Component {
   handleChange = changeHandler.bind(this)
 
   render() {
-    const { recipe, forbidden, user, make, memory, classes, memories, showNewMemory } = this.props
-    console.log(forbidden)
-    console.log(recipe)
-    console.log(recipe.id)
+    const {
+      recipe,
+      forbidden,
+      user,
+      make,
+      memory,
+      classes,
+      memories,
+      showNewMemory
+    } = this.props
+
     if(forbidden) {
       return <Redirect to={`/users/${user.id}/recipes`} />
     } else if (recipe.id) {

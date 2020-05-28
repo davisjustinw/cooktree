@@ -32,6 +32,17 @@ function recipe(state = initialState, action) {
           name: ''
         }
       }
+    case 'CLEAR_RECIPES':
+      return {
+        ...state,
+        submitSuccess: false,
+        forbidden: false,
+        current: {
+          id: '',
+          name: ''
+        },
+        list: []
+      }
     case 'GET_RECIPE_LIST':
       return { ...state }
 

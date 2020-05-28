@@ -6,6 +6,12 @@ const clearRecipe = () => {
   }
 }
 
+const clearRecipes = () => {
+  return dispatch => {
+    dispatch({ type: 'CLEAR_RECIPES' })
+  }
+}
+
 const getRecipe = id => {
   return dispatch => {
     dispatch({ type: 'GET_RECIPE'})
@@ -39,8 +45,9 @@ const getRecipe = id => {
 
 const getRecipes = id => {
   return dispatch => {
+    console.log(id)
     dispatch({ type: 'GET_RECIPES'})
-    fetch(`${url}/recipes`, getHeader)
+    fetch(`${url}/recipes?id=${id}`, getHeader)
       .then(resp => resp.json())
       .then(recipes => {
         console.log(recipes)
@@ -77,6 +84,7 @@ const handleRecipeChange = change => {
 
 export {
   clearRecipe,
+  clearRecipes,
   getRecipe,
   getRecipes,
   resetSuccess,

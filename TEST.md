@@ -44,7 +44,9 @@ Taiko and Jest
   -> http://localhost:3000/login
 [x] http://localhost:3000/users/1/recipe no Login
   -> http://localhost:3000/login
- !* anything users/1 logged in as user 2 should be denied
+[x] http://localhost:3000/recipes/8 for user not connected
+  -> http://localhost:3000/users/1/recipes
+
  !* http://localhost:3000/users/1/connections logged in as user 2
  -> http://localhost:3000/users/2/connections
  !* http://localhost:3000/users/1/recipes logged in as user 2

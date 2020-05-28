@@ -1,5 +1,5 @@
 class ConnectionSerializer < ActiveModel::Serializer
-  attributes :id, :relationship, :relation
+  attributes :id, :relationship, :relation, :relation_recipes
 
   def relation
     {
@@ -9,6 +9,10 @@ class ConnectionSerializer < ActiveModel::Serializer
       email: object.relation.email,
       avatarUrl: object.relation.avatar_url
     }
+  end
+
+  def relation_recipes
+    ActiveModel::SerializableResource.new(object.relation.recipes,  each_serializer: RecipeSimpleSerializer)
   end
 
 end

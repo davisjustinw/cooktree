@@ -6,14 +6,13 @@ class ConnectionsController < ApplicationController
     redirect_if_not_logged_in
     user = User.find_by(id: params[:id])
     connections = user.connections
-    #render connection_json(connections)
     render json: connections
   end
 
   def show
     redirect_if_not_logged_in
+    # need to check for authorization
     connection = Connection.find_by(id: params[:id])
-    #render connection_json(connection)
     render json: connection
   end
 
