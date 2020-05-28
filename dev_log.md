@@ -301,6 +301,14 @@
   * list recipes and contributions on connection show page
   * nav drawer stuck open on login
 
+# Assessment Feedback
+  * no props to super() antipattern
+  * makeButtons confusing naming
+  * redundant naming RecipeNew should go in Recipe folder
+     * had makes and recipes in recipes folder
+     * new example New would go in recipe folder
+  * redundant use of () => in some handler calls
+
 # EdgyCasey Refactory
 
 * HOC for Loading? to wrap what's being loaded
