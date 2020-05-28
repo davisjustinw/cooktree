@@ -17,7 +17,7 @@ def create
     render json: current_user
   else
     # need better response here
-    render invalid_input user_errors
+    render invalid_input user.errors
   end
 end
 

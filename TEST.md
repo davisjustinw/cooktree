@@ -1,8 +1,8 @@
 Taiko and Jest
-
+clear error when navigating away
 
 # Signup
-  * click signup link
+  [x] click signup link
     -> http://localhost:3000/signup
 
   !* nothing entered ->
@@ -15,7 +15,7 @@ Taiko and Jest
     field level error
   !* username, no email, password ->
     field level error
-  !* no username, email, password ->
+  [x] no username, email, password ->
     field level error
   !* username, invalid email, password ->
     field level error
@@ -46,13 +46,9 @@ Taiko and Jest
   -> http://localhost:3000/login
 [x] http://localhost:3000/recipes/8 for user not connected
   -> http://localhost:3000/users/1/recipes
-
- !* http://localhost:3000/users/1/connections logged in as user 2
- -> http://localhost:3000/users/2/connections
- !* http://localhost:3000/users/1/recipes logged in as user 2
- -> http://localhost:3000/users/2/recipes
- !* http://localhost:3000/users/1/recipes/1 logged in as user 2
- -> http://localhost:3000/users/1/recipes
-
-change users/1/recipes/1 to recipes/1
- what does users/1/recipes/1 even mean?
+[x] http://localhost:3000/users/1/connections/2 for user not connected
+  -> http://localhost:3000/users/1/connections
+[x] http://localhost:3000/users/1/connections logged in as user 2
+  -> http://localhost:3000/users/2/connections
+[x] http://localhost:3000/users/1/recipes logged in as user 2
+  -> http://localhost:3000/users/2/recipes

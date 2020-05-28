@@ -24,6 +24,7 @@ class ConnectionsController < ApplicationController
 
     connection = Connection.new user: current_user, relationship: connection_params[:relationship]
     relation = User.create relation_params
+
     connection.relation = relation
     connection.save
 
