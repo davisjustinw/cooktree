@@ -1,5 +1,6 @@
 const initialState = {
   submitSuccess: false,
+  forbidden: false,
   list: [],
   current: {
     id: '',
@@ -16,9 +17,28 @@ function connection(state = initialState, action) {
   const { type, current, connection, connections, change } = action
 
   switch(type) {
+    case 'CLEAR_CONNECTION':
+      return {
+        ...state,
+        submitSuccess: false,
+        forbidden: false,
+        current: {
+          id: '',
+          relation_id: '',
+          name: '',
+          email: '',
+          avatarUrl: '',
+          avatarFile: '',
+          relationship: ''
+        }
+      }
     case 'GET_CONNECTIONS':
       return { ...state }
-
+    case 'CONNECTION_FORBIDDEN':
+      return {
+        ...state,
+        forbidden: true
+      }
     case 'GET_CONNECTIONS_COMPLETE':
       return {
         ...state,

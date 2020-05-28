@@ -80,9 +80,6 @@ class Recipe extends Component {
     } else {
       return <Loading/>
     }
-
-
-
   } //render
 } // class Connection
 

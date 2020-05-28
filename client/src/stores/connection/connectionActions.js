@@ -1,26 +1,36 @@
 import { getHeader, url, postHeader } from '../helpers/fetchHelpers'
 
+const clearConnection = () => {
+  return dispatch => {
+    dispatch({ type: 'CLEAR_CONNECTION' })
+  }
+}
+
 const getConnection = id => {
   return dispatch => {
     dispatch({ type: 'GET_CONNECTION'})
     fetch(`${url}/connections/${id}`, getHeader)
       .then(resp => resp.json())
       .then(connection => {
-        const { relation, relation_recipes, relationship, id,  } = connection
-        dispatch({
-          type: 'GET_CONNECTION_COMPLETE',
-          current: {
-            connection_id: id,
-            relation_id: relation.id,
-            name: relation.name,
-            avatarUrl: relation.avatarUrl,
-            relationship: relationship
-          }
-        })
-        dispatch({
-          type: 'GET_RECIPE_LIST_COMPLETE',
-          recipes: relation_recipes
-        })
+        if(connection.error){
+          dispatch({ type: 'CONNECTION_FORBIDDEN' })
+        } else {
+          dispatch({
+            type: 'GET_CONNECTION_COMPLETE',
+            current: {
+              connection_id: connection.id,
+              relation_id: connection.relation.id,
+              name: connection.relation.name,
+              avatarUrl: connection.relation.avatarUrl,
+              relationship: connection.relationship
+            }
+          })
+          dispatch({
+            type: 'GET_RECIPE_LIST_COMPLETE',
+            recipes: connection.relation_recipes
+          })
+        }
+
       })
   }
 }
@@ -28,12 +38,10 @@ const getConnection = id => {
 const getConnections = id => {
   return dispatch => {
     dispatch({ type: 'GET_CONNECTIONS'})
-    console.log('get connections')
-    console.log(id)
+
     fetch(`${url}/connections?id=${id}`, getHeader)
       .then(resp => resp.json())
       .then(connections => {
-          console.log(connections)
           dispatch({
             type: 'GET_CONNECTIONS_COMPLETE',
             connections: connections
@@ -97,6 +105,7 @@ const handleConnectionChange = change => {
 }
 
 export {
+  clearConnection,
   getConnections,
   postConnection,
   getConnection,

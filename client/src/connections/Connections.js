@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getConnections } from '../stores/connection/connectionActions'
+import { getConnections, clearConnection } from '../stores/connection/connectionActions'
 import { withStyles } from '@material-ui/core/styles'
 
 import { Link as RouterLink } from 'react-router-dom'
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 class Connections extends Component {
   componentDidMount() {
     this.props.getConnections(this.props.userId)
+    this.props.clearConnection()
   }
 
   render(){
@@ -52,7 +53,8 @@ const mapStateToProps = ({ connection, user }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getConnections: userId => dispatch(getConnections(userId))
+  getConnections: userId => dispatch(getConnections(userId)),
+  clearConnection: () => dispatch(clearConnection())
 })
 
 const useStyles = theme => ({

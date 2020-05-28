@@ -20,7 +20,7 @@ const getRecipe = id => {
       .then(recipe => {
         console.log(recipe)
         if(recipe.error) {
-          dispatch({ type: 'FORBIDDEN' })
+          dispatch({ type: 'RECIPE_FORBIDDEN' })
         } else {
           dispatch({
             type: 'GET_RECIPE_COMPLETE',
@@ -55,7 +55,6 @@ const getRecipes = id => {
           type: 'GET_RECIPE_LIST_COMPLETE',
           recipes: recipes
         })
-
       })
       .catch(console.log)
   } // end dispatch anonymous

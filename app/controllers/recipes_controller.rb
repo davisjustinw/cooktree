@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
 
   def index
     redirect_if_not_logged_in
-    
     render json: current_user.recipes, status: :ok
   end
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { getConnection } from '../stores/connection/connectionActions'
 import { getRecipes } from '../stores/recipe/recipeActions'
 import { url } from '../stores/helpers/fetchHelpers'
@@ -15,15 +15,16 @@ import RecipeListing from '../recipes/RecipeListing'
 
 class Connection extends Component {
   componentDidMount(){
-    console.log(`connection mounting ${this.props.match.params.id}`)
     this.props.getConnection(this.props.match.params.id)
   }
 
   render() {
-    const { connection, recipes } = this.props
+    const { forbidden, connection, recipes, user } = this.props
     const { name, avatarUrl, relationship } = connection
 
-    if(!name){
+    if(forbidden) {
+      return <Redirect to={`/users/${user.id}/connections`} />
+    } else if (!name) {
       return <Loading/>
     } else {
       return (
@@ -56,9 +57,11 @@ const mapDispatchToProps = dispatch => ({
   getRecipes: userId => dispatch(getRecipes(userId))
 })
 
-const mapStateToProps = ({ connection, recipe }) => ({
+const mapStateToProps = ({ connection, recipe, user }) => ({
+  forbidden: connection.forbidden,
   connection: connection.current,
-  recipes: recipe.list
+  recipes: recipe.list,
+  user: user
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Connection))

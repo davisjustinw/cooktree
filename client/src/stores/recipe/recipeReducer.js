@@ -12,12 +12,7 @@ function recipe(state = initialState, action) {
   const { type, current, recipes, recipe, change } = action
 
   switch(type) {
-    case 'CLEAR_FORBIDDEN':
-      return {
-        ...state,
-        forbidden: false
-      }
-    case 'FORBIDDEN':
+    case 'RECIPE_FORBIDDEN':
       return {
         ...state,
         forbidden: true

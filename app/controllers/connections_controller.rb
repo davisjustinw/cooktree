@@ -11,9 +11,12 @@ class ConnectionsController < ApplicationController
 
   def show
     redirect_if_not_logged_in
-    # need to check for authorization
-    connection = Connection.find_by(id: params[:id])
-    render json: connection
+    connection = current_user.connections.where(id: params[:id])
+    if connection.empty?
+      render not_authorized
+    else
+      render json: connection.first
+    end
   end
 
   def create
